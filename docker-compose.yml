@@ -1,0 +1,54 @@
+version: "3.7"
+
+volumes:
+  lad-database:
+
+services:
+  lad-db:
+    env_file: lad-db.env
+    image: bitnami/mongodb:3.6
+    volumes:
+      - type: volume
+        source: lad-database
+        target: /bitnami
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 127.0.0.1:37017:27017
+      - 127.0.0.1:38017:28017
+    restart: unless-stopped
+
+  lad-backend:
+    build: ./backend
+    env_file: lad-backend.env
+    depends_on:
+      - lad-db
+    expose:
+      - 8080
+    ports:
+      - 127.0.0.1:3001:8080
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/lad-backend/health"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  lad-frontend:
+    build:
+      context: ./frontend
+      args:
+        RUNNING_ENVIRONMENT: dev
+    depends_on:
+      - lad-backend
+    expose:
+      - 8080
+    ports:
+      - 127.0.0.1:3000:8080
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s

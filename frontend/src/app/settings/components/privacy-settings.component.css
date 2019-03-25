@@ -1,0 +1,79 @@
+.data-name {
+  width: 300px;
+}
+
+.settings-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+  margin: 10px;
+}
+
+.settings-overview-card {
+  grid-column: col-start 2 / span 10;
+}
+
+.active-row {
+  background-color: rgb(219, 219, 219);
+}
+
+.settings-buttons {
+  grid-column: col-start 2 / span 10;
+}
+
+.functionality-card {
+  grid-column: col-start 2 / span 10;
+}
+
+.enable-slider {
+  min-width: 150px;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .settings-overview-card {
+    grid-column: col-start 1 / span 12;
+  }
+
+  .functionality-card {
+    grid-column: col-start 1 / span 12;
+  }
+
+  .mat-card {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .mat-list-item {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .button-horizontal-list {
+    display: none;
+  }
+  
+  .mat-list-item-content {
+    padding-left: 0px;
+  }
+}
+
+@media (min-width: 769px) {
+  .selected-data-item {
+    grid-column: 2;
+  }
+
+  .mat-list button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .button-horizontal-list {
+    display: flex;
+  }
+
+  .functions-dropdown-list {
+    display: none;
+  }
+}

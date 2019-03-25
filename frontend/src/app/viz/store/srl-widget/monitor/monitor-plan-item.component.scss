@@ -1,0 +1,29 @@
+.goal-item-header {
+}
+
+.monitor-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-top: 4px;
+}
+
+.monitor-item-wrapper:hover {
+  border: 1px solid orange;
+}
+
+.item-complete {
+  border: 2px solid rgba(85, 168, 206, 0.966);
+}
+
+.item-completed-check {
+  background-color: rgba(85, 168, 206, 0.966);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 2px;
+}

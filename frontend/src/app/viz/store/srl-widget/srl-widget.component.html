@@ -1,0 +1,14 @@
+<div
+  class="srl-widget container-fluid page mt-2"
+  *ngIf="!(loading$ | async); else spinner"
+>
+  <router-outlet></router-outlet>
+</div>
+<app-srl-mobile-nav class="app-mobile-nav"> </app-srl-mobile-nav>
+<ng-template #spinner>
+  <div
+    class="loading-spinner d-flex align-items-center flex-column justify-content-center h-100"
+  >
+    <app-loading-indicator></app-loading-indicator>
+  </div>
+</ng-template>

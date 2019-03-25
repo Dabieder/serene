@@ -1,0 +1,61 @@
+@import "../../../../assets/css/variables.scss";
+
+.srl-widget {
+  position: relative;
+  padding-bottom: 64px;
+}
+
+.tab-btn {
+  background-color: $dipf-blue;
+}
+
+.nav-item > .active {
+  border-bottom: 1px solid $dipf-orange;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .goal-card {
+    grid-column: span 12;
+  }
+  .srl-widget {
+    padding-bottom: 64px;
+  }
+
+  .widget-tab {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .goal-card {
+    grid-column: span 12;
+  }
+  .srl-widget {
+    padding-bottom: 64px;
+  }
+
+  .widget-tab {
+    max-width: 500px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .srl-widget {
+    max-width: 960px;
+    padding-bottom: 64px;
+  }
+}
+
+.widget-tab {
+  position: relative;
+}
+
+.floating-bottom {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}

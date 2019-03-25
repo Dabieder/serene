@@ -1,0 +1,1 @@
+export default [["test@test.de", "test"], ["student000", "12345"]];

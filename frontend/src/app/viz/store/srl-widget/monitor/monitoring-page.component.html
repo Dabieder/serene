@@ -1,0 +1,84 @@
+<div class="container-fluid shadow dialog-page pb-4 d-flex flex-column">
+  <!-- <div class="container" *ngIf="learningPlansOpen.length === 0">
+    <div class="d-flex">
+      <h4>
+        You currently do not have any open plans, so there is nothing to see
+        here.
+      </h4>
+    </div>
+    <div class="d-flex">
+      <h4>
+        If you have things to do, go ahead and create some plans. They will help
+        you.
+      </h4>
+    </div>
+  </div> -->
+
+  <div class="dialog-page-header">
+    <h4 class="float-left" i8n>Monitor your progress</h4>
+
+    <div class="header-controls float-right">
+      <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>
+      <button class="ml-2 btn btn-rounded db-primary" (click)="submit()" i8n>
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body" *ngIf="learningPlans">
+    <div *ngFor="let learningPlan of learningPlansOpen">
+      <app-srl-monitor-plan-item
+        [learningPlan]="learningPlan"
+        (deleteItem)="deletePlan($event)"
+        (editItem)="editPlan($event)"
+        (planCompleted)="onPlanCompleted($event)"
+        (planChanged)="onPlanChanged($event)"
+      ></app-srl-monitor-plan-item>
+    </div>
+    <!-- 
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Overdue </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let learningPlan of learningPlans" class="mt-2">
+          <app-srl-monitor-plan-item
+            [learningPlan]="learningPlan"
+            (planChanged)="onPlanChanged($event)"
+            (deleteItem)="deletePlan($event)"
+            (editItem)="editPlan($event)"
+          ></app-srl-monitor-plan-item>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Future</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let learningPlan of learningPlans" class="mt-2">
+          <app-srl-monitor-plan-item
+            [learningPlan]="learningPlan"
+            (deleteItem)="deletePlan($event)"
+            (editItem)="editPlan($event)"
+            (planChanged)="onPlanChanged($event)"
+          ></app-srl-monitor-plan-item>
+        </div>
+      </mat-expansion-panel> -->
+
+    <app-srl-widget-card
+      class="col-md-12"
+      title="What affected your goal achievement lately?"
+    >
+      <app-reason
+        (reasonsChange)="onReasonsChanged($event)"
+        [reasons]="reasons"
+      ></app-reason>
+    </app-srl-widget-card>
+  </div>
+
+  <div class="align-self-center footer-controls">
+    <span class="cancel-btn mr-4" (click)="closeDialog()"> Cancel </span>
+    <button class="ml-4 btn btn-rounded db-primary" (click)="submit()" i8n>
+      Submit
+    </button>
+  </div>
+</div>

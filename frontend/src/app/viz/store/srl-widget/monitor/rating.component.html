@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <mat-slider class="mat-slider-wide" [(ngModel)]="value" (change)="onSliderValueChange($event)" (input)="onSliderValueInput($event)"
+      min="1" max="100"></mat-slider>
+    <h6 class="text-center pl-2">
+      {{value}} %
+    </h6>
+  </div>
+  <div class="justify-content-center align-items-center">
+    <button class="btn btn-primary btn-circle db-primary" data-toggle="button" (click)="overachieve()" color="primary">More
+      than 100%</button>
+  </div>
+</div>

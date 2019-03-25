@@ -1,0 +1,21 @@
+.mat-tab-label {
+  padding: 0 12px !important;
+  min-width: 12px !important;
+}
+
+.weekday-button {
+  font-size: 1.1em;
+}
+
+.btn-separator:after {
+  content: "";
+  float: left;
+  background: #adadad;
+  margin: 0px;
+  height: 34px;
+  width: 1px;
+}
+
+.monitoring-plan-item:hover {
+  border: 1px solid orange;
+}

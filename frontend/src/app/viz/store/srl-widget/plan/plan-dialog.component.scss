@@ -1,0 +1,46 @@
+.remove-btn {
+  width: 32px;
+  height: 32px;
+}
+label {
+  margin-bottom: 0px !important;
+}
+
+.close-btn {
+  z-index: 3000;
+}
+
+.scheduleCheckbox {
+  min-width: 120px;
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: center;
+}
+
+.weekly-hours-input {
+  width: 3em;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.learning-goal {
+  font-size: 1.3em;
+}
+
+.daily-plan-list {
+  overflow-y: scroll;
+}
+
+.total-hours {
+  font-size: 1.2rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(148, 148, 148);
+}
+
+.subplan {
+  position: relative;
+  border-bottom: 1px solid rgb(151, 151, 151);
+}

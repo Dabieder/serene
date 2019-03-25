@@ -1,0 +1,68 @@
+$dipf-blue-palette: (
+  50: #98caff,
+  100: #6699cc,
+  200: #236b9b,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2196f3,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  A100: #82b1ff,
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: #eee,
+    100: #eee,
+    200: #eee,
+    300: #eee,
+    400: #eee,
+    500: #eee,
+    600: #eee,
+    700: #eee,
+    800: #eee,
+    900: #eee,
+    A100: #eee,
+    A200: #eee,
+    A400: #eee,
+    A700: black,
+  )
+);
+$dipf-orange-palette: (
+  50: #ffca46,
+  100: #e19900,
+  200: #aa6b00,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  A100: #ffd180,
+  A200: #ffab40,
+  A400: #ff9100,
+  A700: #ff6d00,
+  contrast: (
+    50: #eee,
+    100: #eee,
+    200: #eee,
+    300: #eee,
+    400: #eee,
+    500: #eee,
+    600: #eee,
+    700: #eee,
+    800: #eee,
+    900: #eee,
+    A100: #eee,
+    A200: #eee,
+    A400: #eee,
+    A700: black,
+  )
+);
+$dipf-primary: mat-palette($dipf-blue-palette, 100, 50, 200);
+$dipf-accent: mat-palette($dipf-orange-palette, 100, 50, 200);
+$dipf-warn: mat-palette($mat-red, 600);
+$dipf-material-theme: mat-light-theme($dipf-primary, $dipf-accent, $dipf-warn);

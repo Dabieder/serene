@@ -1,0 +1,47 @@
+<mat-card class="consent-item-card">
+  <mat-card-header>
+    <mat-card-title>
+      <div class="card-title-with-icon">
+        <mat-icon matPrefix>{{ consentItem.icon }}</mat-icon>
+        <h3>{{ consentItem.name }}</h3>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-expansion-panel
+      (click)="expansionPanelClicked($event, consentItem.name)"
+      class="CLICKLOG LOG-expansion-data-type-read-more"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Click to read more </mat-panel-title>
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div>{{ consentItem.description }}</div>
+      <div class="mt-4">
+        <h3>What data is collected?</h3>
+        <ul>
+          <li *ngFor="let data of consentItem.dataCollected">{{ data }}</li>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-card-actions>
+      <label for="consentToggle">
+        <b> I consent to the processing of my {{ consentItem.name }} data:</b>
+      </label>
+      <br />
+      <mat-slide-toggle
+        #consentToggle
+        name="toggleArs"
+        class="consent-slide-toggle"
+        color="secondary"
+        (change)="onConsentChange($event)"
+        [(ngModel)]="consentItem.consented"
+      >
+        <b *ngIf="consentItem.consented">Yes</b>
+        <b *ngIf="!consentItem.consented">No</b>
+      </mat-slide-toggle>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

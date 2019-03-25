@@ -1,0 +1,15 @@
+<div class="container-fluid d-flex flex-column settings-page">
+  <a routerLink="/serene/monitor">Back</a>
+  <div class="dialog-page-header">
+    <h1 class="float-left" i8n>Settings</h1>
+
+    <div class="header-controls float-right">
+      <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>
+      <button class="ml-2 btn btn-rounded db-primary" (click)="submit()" i8n>
+        Submit
+      </button>
+    </div>
+  </div>
+  <h2>Notificaction Settings</h2>
+  <app-notification-settings></app-notification-settings>
+</div>

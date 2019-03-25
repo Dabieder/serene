@@ -1,0 +1,19 @@
+.card-title-with-icon {
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.card-title-with-icon > h3 {
+  margin: 0 0 0 15px;
+}
+
+.mat-slide-toggle-content {
+  white-space: pre-wrap !important;
+}
+
+@media (max-width: 720px) {
+  .mat-slide-toggle-content {
+    white-space: pre-wrap !important;
+  }
+}

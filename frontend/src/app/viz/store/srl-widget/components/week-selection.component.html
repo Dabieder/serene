@@ -1,0 +1,19 @@
+<div class="week-selection">
+  <button mat-icon-button class="round-icon" (click)="selectPreviousWeek()">
+    <mat-icon aria-label="Example icon-button with a heart icon"
+      >arrow_back_ios</mat-icon
+    >
+  </button>
+  <span (click)="weekSelectionClick($event)" *ngIf="selectedWeek"
+    ><b>{{ selectedWeek | weekDisplay }}</b></span
+  >
+  <button mat-icon-button class="round-icon" (click)="selectNextWeek()">
+    <mat-icon aria-label="Example icon-button with a heart icon"
+      >arrow_forward_ios</mat-icon
+    >
+  </button>
+  <app-week-overview
+    (weekSelectionChange)="onSelectedWeekChange($event)"
+    [visible]="showOverview"
+  ></app-week-overview>
+</div>

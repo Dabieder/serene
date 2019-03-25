@@ -1,0 +1,28 @@
+<app-content-row>
+  <div class="col-lg-12 mt-2">
+    <app-card title="My Courses">
+      <!-- <ul class="list-group">
+        <li class="list-group-item" *ngFor="let course of courses$ | async" href=# (click)="openCourse(course.id)">
+          <a href=#>
+            <h3>
+              {{course.name}}
+            </h3>
+          </a>
+      </ul> -->
+      <app-table>
+        <tr>
+          <th>Course</th>
+          <th style="width: 40px">StartDate</th>
+          <th style="width: 40px">EndDate</th>
+        </tr>
+        <tr *ngFor="let course of courses$ | async" (click)="openCourse(course.id)">
+          <td>
+            <a>{{course.title}}</a>
+          </td>
+          <td><span>{{course.startDate}}</span></td>
+          <td><span>{{course.endDate}}</span></td>
+        </tr>
+      </app-table>
+    </app-card>
+  </div>
+</app-content-row>

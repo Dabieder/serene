@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center align-items-center">
+  <mat-form-field class="date-plan-date-picker mr-2">
+    <input
+      (dateChange)="onDateChange($event)"
+      [value]="date | date: 'yyyy-MM-dd'"
+      (input)="date = parseDate($event.target.value)"
+      matInput
+      [matDatepicker]="datePicker"
+      (click)="datePicker.open()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+  <!-- <app-time-select
+    (timeChange)="onTimeChange($event)"
+    [time]="date"
+    class="ml-2"
+  ></app-time-select> -->
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="State" aria-label="State" type="time" />
+  </mat-form-field>
+</div>

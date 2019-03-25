@@ -1,0 +1,10 @@
+<div>
+  <button [ngClass]="trackingItem.selected ? 'selected' : ''" (click)="trackingItemClick($event)" mat-icon-button class="round-icon">
+    <mat-icon>
+      {{trackingItem.icon}}
+    </mat-icon>
+  </button>
+</div>
+<div class="activity-label">
+  <span>{{trackingItem.name}}</span>
+</div>

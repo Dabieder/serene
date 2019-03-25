@@ -1,0 +1,195 @@
+@import "/assets/css/variables.scss";
+@import "/assets/css/dropdown.scss";
+@import "/assets/css/grid.scss";
+@import "/assets/css/bootstrap-modifications.scss";
+@import "/assets/css/material-modifications.scss";
+@import "~@angular/material/theming";
+@include mat-core();
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "/assets/css/dipf-material-theme.scss";
+
+@include angular-material-theme($dipf-material-theme);
+
+.light-theme {
+  @include angular-material-theme($dipf-material-theme);
+}
+
+@media screen and (max-width: $media-xs) {
+  .grid-container {
+    margin: 10px 0px;
+  }
+}
+
+@media screen and (min-width: $media-sm) {
+  .app-mobile-nav {
+    position: fixed;
+    top: 0px;
+  }
+
+  .content-wrapper {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: $media-sm) {
+  .app-mobile-nav {
+    position: fixed;
+    bottom: 0px;
+  }
+
+  .content-wrapper {
+    margin-top: 0px;
+    margin-bottom: 70px;
+  }
+}
+
+.border-gray {
+  border: 1px solid $dipf-gray;
+}
+
+body {
+  background: #f4f6f9;
+}
+
+.dialog-page {
+  width: 100%;
+  z-index: 200;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 0px 5px 0px;
+}
+
+.dialog-page-header {
+  padding: 0.75rem 1.25rem;
+  background-color: $dipf-blue-lightest;
+  position: relative;
+}
+
+.cancel-btn {
+  cursor: pointer;
+  color: deepskyblue;
+}
+
+.close-btn {
+  width: 20px;
+  height: 20px;
+  border-color: transparent;
+  position: absolute;
+  background-repeat: no-repeat;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.close-btn:hover {
+  background-color: #aaaaaa;
+}
+
+.date-plan-date-picker .mat-form-field-infix {
+  width: 100px !important;
+}
+
+.db-primary {
+  background-color: $dipf-blue !important;
+  color: #efefef;
+}
+
+.db-btn-primary {
+  background-color: $dipf-blue !important;
+  border-color: $dipf-blue !important;
+  color: #efefef;
+}
+
+.db-secondary {
+  background-color: $dipf-orange !important;
+  color: #efefef;
+}
+
+.db-neutral {
+  background-color: $dipf-gray-light !important;
+  color: #efefef;
+}
+
+.db-btn-secondary {
+  background-color: $dipf-orange !important;
+  border-color: $dipf-orange !important;
+  color: #efefef;
+}
+
+.db-contrast {
+  background-color: $dipf-orange !important;
+}
+
+.btn-circle {
+  border-radius: 24px !important;
+}
+
+.btn-rounded {
+  border-radius: 5px !important;
+}
+
+.btn-shadow {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.toggle-nav-button {
+  left: 22px;
+  top: 14px;
+  width: 24px;
+  z-index: 120;
+  cursor: pointer;
+}
+
+.nav-menu {
+  position: fixed;
+  left: 22px;
+  top: 12px;
+  z-index: 220;
+  cursor: pointer;
+}
+
+.img-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.img-icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.loading-spinner {
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+
+.font-sm {
+  font-size: $font-size-small;
+}
+
+.card-header {
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}

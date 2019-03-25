@@ -1,0 +1,11 @@
+<select
+  class="custom-select"
+  (change)="onValueChange($event)"
+  required
+  [(ngModel)]="selectedTime"
+  [class.invalid]="!isValid"
+>
+  <option *ngFor="let t of times" [value]="t">
+    {{ t }}
+  </option>
+</select>

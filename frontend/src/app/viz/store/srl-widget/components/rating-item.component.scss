@@ -1,0 +1,98 @@
+@import "../../../../../assets/css/variables.scss";
+
+$item-width: 340px;
+$neutral-color: rgb(90, 90, 90);
+$button-hover-color: rgb(222, 222, 222);
+$icon-size: 32px;
+
+.item-icon {
+  width: $icon-size;
+  height: $icon-size;
+}
+
+.item-hindered {
+  box-shadow: inset 0 0 1.5rem rgba(206, 124, 124, 0.8) !important;
+}
+
+.item-helped {
+  box-shadow: inset 0 0 1.5rem rgba(113, 202, 113, 0.8) !important;
+}
+
+.rating-item {
+  border-radius: 5px;
+  position: relative;
+}
+
+.rating-item-label {
+  height: 46px;
+  text-overflow: ellipsis;
+}
+
+.vertical-divider {
+  height: 38px;
+  width: 1px;
+  background-color: $neutral-color;
+}
+
+.horizontal-divider {
+  width: 20px;
+  background-color: $neutral-color;
+  height: 1px;
+}
+
+.rating-item-button {
+  border: 1px solid $dipf-blue;
+  font-size: 1em;
+  cursor: pointer;
+  white-space: normal !important;
+  word-wrap: break-word;
+  background: none;
+}
+
+.rating-item-button:first-child,
+.rating-item-button:last-child {
+  width: 125px;
+}
+
+
+.rating-item-button:hover {
+  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%)
+    center/15000%;
+}
+
+.rating-item-button:active {
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.show-rating-buttons {
+  transform: scale(1);
+  transition: all 0.1s;
+}
+
+.hide-rating-buttons {
+  transform: scale(0);
+  transition: all 0.1s;
+}
+
+.rating-buttons {
+  position: absolute;
+  top: 0px;
+  background-color: white;
+  height: 120px;
+}
+
+.negative-selected {
+  // box-shadow: inset 0 0 1.5rem rgba(206, 124, 124, 0.7) !important;
+  background-color: rgba(206, 124, 124, 0.8);
+}
+
+.positive-selected {
+  // box-shadow: inset 0 0 1.5rem rgba(113, 202, 113, 0.8) !important;
+  background-color: rgba(113, 202, 113, 0.8);
+}
+
+.neutral-selected {
+  box-shadow: inset 0 0 1.5rem $dipf-blue !important;
+}

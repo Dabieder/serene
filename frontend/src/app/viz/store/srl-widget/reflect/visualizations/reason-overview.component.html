@@ -1,0 +1,58 @@
+<div class="reason-overview-wrap container">
+  <div
+    class="row"
+    *ngIf="
+      reasonsPositive.length > 0 || reasonsNegative.length > 0;
+      else noReasonsYet
+    "
+  >
+    <div *ngIf="reasonsPositive.length > 0" class="col-12">
+      <h5 i8n>Positive:</h5>
+      <ul class="list-group list-group-flush">
+        <li
+          *ngFor="let reason of reasonsPositive"
+          class="list-group-item rating-item"
+        >
+          <div class="d-flex flex-row justify-content-between font-sm">
+            <img
+              class="item-icon align-self-center d-flex"
+              src="{{ reason.icon }}"
+            />
+            <div class="reason-name">{{ reason.label }}</div>
+            <span class="reason-count badge badge-primary">{{
+              reason.count
+            }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="reasonsNegative.length > 0" class="col-12">
+      <h5 i8n>Negative:</h5>
+      <ul class="list-group list-group-flush">
+        <li
+          *ngFor="let reason of reasonsNegative"
+          class="list-group-item rating-item"
+        >
+          <div class="d-flex flex-row justify-content-between font-sm">
+            <img
+              class="item-icon align-self-center d-flex"
+              src="{{ reason.icon }}"
+            />
+            <div class="reason-name">{{ reason.label }}</div>
+            <span class="reason-count badge badge-primary">{{
+              reason.count
+            }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ng-template #noReasonsYet>
+    <div i8n>
+      As soon as you have monitored your goal achievement along with some
+      reasons, you will see an overview here of the most common factors to
+      influence your learning.
+    </div>
+  </ng-template>
+</div>

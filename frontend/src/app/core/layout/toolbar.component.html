@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg db-primary">
+  <a routerLink="/" class="navbar-brand">
+    <img
+      src="../../assets/images/TLA_Dashboard_Shield.png"
+      alt="TLA Logo"
+      class="brand-image"
+      style="opacity: .8"
+    />
+    TLA
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerlinkActive="active-sidenav">
+        <a routerLink="/widget" class="nav-link">
+          <img src="/assets/btn-icons/tactics_white.svg" class="toolbar-img" />
+          <span>Serene</span>
+        </a>
+      </li>
+      <li class="nav-item" routerlinkActive="active-sidenav">
+        <a routerLink="/user/consent/5bbc9e9cfc48c133c03a13d5" class="nav-link">
+          <img src="../assets/images/consent.svg" class="toolbar-img" />
+          <span>Consent</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav nav">
+      <li *appShowAuthed="false" class="nav-item d-none d-sm-inline-block">
+        <a routerLink="/user/signin" class="nav-link">Login</a>
+      </li>
+      <li *appShowAuthed="true" class="nav-item">
+        <a (click)="onLogoutClick()" class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

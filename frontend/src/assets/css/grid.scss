@@ -1,0 +1,17 @@
+@media screen and (max-width: 992px) {
+  .grid-card-6 {
+    grid-column: span 6;
+  }
+  .grid-card-12 {
+    grid-column: span 12;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .grid-card-6 {
+    grid-column: span 6;
+  }
+  .grid-card-12 {
+    grid-column: span 12;
+  }
+}

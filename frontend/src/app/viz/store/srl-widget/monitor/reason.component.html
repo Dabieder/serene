@@ -1,0 +1,22 @@
+<div>
+  <div class="activities">
+    <app-rating-item
+      class="mt-2"
+      *ngFor="let reason of reasons"
+      (itemChange)="onRatingItemChanged($event)"
+      [item]="reason"
+    ></app-rating-item>
+  </div>
+  <div class="custom">
+    <label for="learning-goal" class="control-label"> Other: </label>
+    <textarea
+      name="learning-goal"
+      [(ngModel)]="customReason"
+      id="user-message"
+      (change)="onCustomReasonChange($event)"
+      class="form-control learning-goal"
+      cols="20"
+      rows="2"
+    ></textarea>
+  </div>
+</div>

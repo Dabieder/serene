@@ -1,0 +1,71 @@
+<div class="auth-page ml-4 mr-4">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12 pt-2">
+        <div
+          class="log-in-top-space pt-8 pb-4 pl-4 mb-2 align-content-end d-flex"
+        >
+          <h1>Log in</h1>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+          <fieldset [disabled]="isSubmitting">
+            <fieldset class="form-group">
+              <input
+                formControlName="username"
+                autocomplete="username"
+                placeholder="Username"
+                class="form-control form-control-lg"
+                type="text"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                formControlName="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                class="form-control form-control-lg"
+                type="password"
+              />
+            </fieldset>
+            <div *ngIf="showIncorrectUsernamePassword" class="row">
+              <div class="col-md-6 offset-md-3 col-xs-12 pt-4">
+                <div class="alert alert-warning text-center" role="alert">
+                  Incorrect username or password.
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center pt-4 pb-4">
+              <button
+                class="btn btn-block btn-lg btn-primary pull-xs-right"
+                type="submit"
+              >
+                Log in
+              </button>
+            </div>
+          </fieldset>
+        </form>
+        <div
+          *ngIf="environment.allowThirdPartyLogIn"
+          class="mt-2 mb-4 text-center or-container"
+        >
+          <!-- <hr class="or-line" /> -->
+          <div class="or">OR</div>
+          <div class="d-flex justify-content-center pt-4 pb-4">
+            <button
+              class="btn btn-lg btn-block btn-primary pull-xs-right"
+              type="button"
+              (click)="casLoginClick()"
+            >
+              <img
+                class="goethe-logo"
+                src="assets/images/goethe-logo_head-only_white.svg"
+              />
+              Goethe Log In
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

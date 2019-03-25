@@ -1,0 +1,55 @@
+<div class="container pb-2 reflection-page">
+  <div class="row">
+    <app-srl-widget-card
+      class="col-md-6 card"
+      i8n-title
+      title="Goal Completion Rate"
+    >
+      <app-completed-plan-chart
+      [learningPlans]="learningPlans"
+      ></app-completed-plan-chart>
+    </app-srl-widget-card>
+    <!-- <app-srl-widget-card
+      class="col-md-6"
+      i8n-title
+      title="Goal Achievement Overview"
+    >
+      <app-learning-goal-chart
+        [monitorings]="monitorings"
+        class="mt-4"
+      ></app-learning-goal-chart>
+    </app-srl-widget-card> -->
+
+    <app-srl-widget-card
+      class="col-md-6 card"
+      i8n-title
+      title="Factors that affected you"
+    >
+      <app-reason-overview [monitorings]="monitorings"></app-reason-overview>
+    </app-srl-widget-card>
+  </div>
+  <!-- <div class="row">
+    <app-srl-widget-card
+      class="col-md-6"
+      i8n-title
+      title="Goal Completion Rate"
+    >
+      <app-completed-plan-overview></app-completed-plan-overview>
+    </app-srl-widget-card>
+  </div> -->
+  <!-- <div class="card-columns">
+    <app-srl-widget-card class="col-md-6" title="Goal Achievement Overview">
+      <app-learning-goal-chart
+        [monitorings]="monitorings"
+        class="mt-4"
+      ></app-learning-goal-chart>
+    </app-srl-widget-card>
+
+    <app-srl-widget-card class="col-md-6" title="Top Reasons">
+      <app-reason-overview [monitorings]="monitorings"></app-reason-overview>
+    </app-srl-widget-card>
+    <app-srl-widget-card class="col-md-12" title="Goal Completion Rate">
+      <app-completed-task-overview></app-completed-task-overview>
+    </app-srl-widget-card>
+  </div> -->
+</div>

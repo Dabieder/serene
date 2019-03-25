@@ -1,0 +1,27 @@
+@import "/variables.scss";
+
+.dropdown-item-text {
+  vertical-align: middle;
+}
+
+.dropdown-item-text-delete {
+  vertical-align: middle;
+}
+
+.dropdown-icon-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: $dipf-blue-lighter !important;
+}
+
+.delete-item > .dropdown-item-text {
+  color: #f23035 !important;
+}

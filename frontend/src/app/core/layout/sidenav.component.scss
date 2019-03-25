@@ -1,0 +1,34 @@
+@import "../../../assets/css/variables.scss";
+
+$sidenav-img-size: 50px;
+
+.active-sidenav {
+  background-color: $dipf-orange;
+}
+
+.sideNavLinkImg {
+  width: $sidenav-img-size;
+  height: $sidenav-img-size;
+  margin-left: 0px;
+}
+
+.main-sidebar {
+  width: $sidenav-width;
+}
+
+.nav-label {
+  color: rgb(243, 243, 243);
+}
+
+.sidebar-dipf-primary {
+  background-color: $dipf-blue;
+}
+
+.sidebar-dipf-primary a {
+  color: rgb(240, 240, 240);
+}
+
+.nav-sidebar > li {
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
+}

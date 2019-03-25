@@ -1,0 +1,42 @@
+.alerts-bar-wrap {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  z-index: 99999;
+}
+
+.alerts-bar {
+  min-width: 288px;
+}
+
+.alerts-bar-inner {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+}
+
+.alerts-info {
+  background-color: rgb(29, 29, 29);
+}
+
+.alerts-warning {
+  background-color: rgb(136, 125, 24);
+}
+
+.alerts-error {
+  background-color: rgb(151, 20, 20);
+}
+
+.alerts-success {
+  background-color: rgb(42, 107, 16);
+}
+
+.alerts-bar-action {
+  background: 0;
+  border: 0;
+  box-shadow: none;
+  align-self: center;
+  color: orange;
+  cursor: pointer;
+}

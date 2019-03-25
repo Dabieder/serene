@@ -1,0 +1,22 @@
+<div class="dropdown">
+  <button
+    class="btn bg-transparent"
+    type="button"
+    #dropdownMenuButton
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    (click)="toggle()"
+  >
+    <img src="/assets/icons/dotsmenu_white.svg" class="img-icon" />
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" routerLink="/serene/plan">Add Goal</a>
+    <a class="dropdown-item" routerLink="/serene/monitor">Monitor</a>
+    <a class="dropdown-item" routerLink="/serene/reflect">Reflect</a>
+    <hr />
+    <a class="dropdown-item" routerLink="/settings">Settings</a>
+    <hr />
+    <a class="dropdown-item" (click)="signOutClick($event)">Sign Out</a>
+  </div>
+</div>

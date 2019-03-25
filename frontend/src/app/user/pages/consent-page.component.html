@@ -1,0 +1,403 @@
+<section
+  class="mat-typography scrollWrapper"
+  id="consentFormWrapper"
+  #consentFormWrapper
+>
+  <div class="text-center">
+    <p class="lead" *ngIf="(loading$ | async)">Loading...</p>
+  </div>
+  <div class="grid-container" *ngIf="!(loading$ | async)">
+    <div class="consent-form">
+      <form [formGroup]="consentForm" (ngSubmit)="onSubmit()">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title> <h2>Declaration of consent</h2> </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <p>
+                Declaration of consent for Prof. Dr. Drachsler and the
+                Educational Technologies research team consisting of George
+                Ciordas-Hertel, Daniel Biedermann, and Jan Schneider from the
+                German Leibniz Institute for Educational Research (DIPF.de) for
+                the collection and processing of (personal) data within the
+                ‘Educational Technologies’ seminar at the Goethe University
+                Frankfurt am Main, Germany.
+              </p>
+              <p>
+                You are invited in the context of the Educational Technology
+                seminar to explore and experience a Technology-Enhanced Learning
+                (TEL) environment. The TEL environment is our joined subject of
+                research during the seminar. Together we want to explore the
+                potentials of TEL but also discuss its limitations and further
+                improvements.
+              </p>
+              <p>
+                The Technology-Enhanced Learning (TEL) environment consists of
+                four applications:
+              </p>
+              <ol>
+                <li>Virtual Learning Environment (Moodle)</li>
+                <li>Survey System (xAPI-Probe)</li>
+                <li>Self Regulated Learning Dashboard (SEREne)</li>
+                <li>Lecture Attendance Application (LAtency);</li>
+              </ol>
+
+              <p>
+                These four applications are connected to the Trusted Learning
+                Analytics (TLA) infrastructure and send data from your
+                interaction with the applications to the TLA infrastructure. In
+                order to run the TEL environment, we need your consent to the
+                collection and processing of your data within the seminar.
+              </p>
+            </div>
+
+            <div>
+              <p>Please note the following conditions:</p>
+              <ol>
+                <li>
+                  The TEL environment is not used for assessment purposes at any
+                  moment. Your participation in the TEL environment will not
+                  affect your final grade for the seminar. The final grade for
+                  the seminar will be solely based on the outcomes and
+                  achievements of your seminar project that needs to be
+                  delivered on 15.03.2019 via email.
+                </li>
+                <li>
+                  The TEL environment has been developed with great care. The
+                  data will always stay within the boundaries of the Goethe
+                  University Frankfurt am Main and no third-party software will
+                  be used. Nevertheless, the TEL environment is still in
+                  beta-testing and we can not guarantee a flawless and
+                  error-free operation at any moment.
+                </li>
+              </ol>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="dashboard-card consent-card">
+          <mat-card-header>
+            <mat-card-title>
+              <h2>What are the purposes of data collection?</h2>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <img
+                    class="consent-icon"
+                    src="../../../assets/images/improveUserSatis.png"
+                  />
+                </div>
+                <div class="col-md-10">
+                  <mat-expansion-panel
+                    (click)="
+                      consentItemExpanded($event, 'What Are Your Rights')
+                    "
+                  >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title
+                        class="log-expansion-terms-and-conditions"
+                      >
+                        Click to read more
+                      </mat-panel-title>
+                      <mat-panel-description> </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div #whatAreThePurposes>
+                      <p>
+                        The collection and processing of personal data within
+                        the seminar has two purposes:
+                      </p>
+                      <ol>
+                        <li>
+                          To explore and support your personal learning process.
+                          We are able to provide insights into your personal
+                          learning process, by collecting and processing your
+                          data in the TEL environment. You have the opportunity
+                          to explore your personal learner profile, by comparing
+                          your study plans with actual learning behavior in the
+                          TEL environment. This can help you to reflect and
+                          improve your personal learning approach.
+                        </li>
+                        <li>
+                          To research the effects of the TEL environment for the
+                          classroom of the future. We are interested in the
+                          advantages and disadvantages of a TEL environment and
+                          want to research how learners perceive such a TEL
+                          environment in order to understand how the classrooms
+                          of the future could be enriched with technological
+                          innovations.
+                        </li>
+                      </ol>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-divider></mat-divider>
+
+        <mat-card class="dashboard-card consent-card">
+          <mat-card-header>
+            <mat-card-title>
+              <h2>What does each application do? What data gets collected?</h2>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <p>
+                Each of the four applications collects different types of data.
+                Below you can read more details about the various types of data
+                that will be collected in the environment.
+              </p>
+              <p>
+                You can give your consent to each item individually.
+                Alternatively, you can click the button below to give consent to
+                all items at once.
+              </p>
+            </div>
+
+            <mat-card-actions>
+              <button
+                type="button"
+                (click)="consentToAll()"
+                mat-raised-button
+                color="primary"
+              >
+                Consent to all
+              </button>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+
+        <app-consent-item
+          *ngFor="let consentItem of consent.consentItems"
+          (consentChange)="consentItemChange(consentItem)"
+          (itemExpanded)="consentItemExpanded($event)"
+          [consentItem]="consentItem"
+        ></app-consent-item>
+
+        <mat-card class="dashboard-card consent-card">
+          <mat-card-header>
+            <mat-card-title>
+              <h2>What happens with the collected data?</h2>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <img
+                    class="consent-icon"
+                    src="../../../assets/images/anonymized3.png"
+                  />
+                </div>
+                <div class="col-md-10">
+                  <mat-expansion-panel
+                    (click)="
+                      consentItemExpanded($event, 'What Happens With The Data')
+                    "
+                  >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title
+                        class="log-expansion-terms-and-conditions"
+                      >
+                        Click to read more
+                      </mat-panel-title>
+                      <mat-panel-description> </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div>
+                      <p>
+                        Your data will be collected for the duration of the
+                        course and the analysis results will only be available
+                        to you and the course providers. Once the course is
+                        completed, the data will be anonymized and stored for
+                        research purposes for the following three years. Bounded
+                        by the European General Data Protection Regulation
+                        (GDPR), your personal data will not be disclosed or
+                        shared with other parties without additional consent.
+                        Data collected in the TEL environment will at no point
+                        be used to assess your study performance, your final
+                        grade is solely based on the outcomes of your study
+                        project.
+                      </p>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="dashboard-card consent-card">
+          <mat-card-header>
+            <mat-card-title> <h2>What are your rights?</h2> </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <img
+                    class="consent-icon"
+                    src="../../../assets/images/gravel.jpg"
+                  />
+                </div>
+                <div class="col-md-10">
+                  <mat-expansion-panel
+                    (click)="
+                      consentItemExpanded($event, 'What Are Your Rights')
+                    "
+                  >
+                    <mat-expansion-panel-header>
+                      <mat-panel-title
+                        class="log-expansion-terms-and-conditions"
+                      >
+                        Click to read more
+                      </mat-panel-title>
+                      <mat-panel-description> </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div>
+                      <p>
+                        The use of the TEL environment is voluntary. If you
+                        refuse to participate or revoke or restrict your
+                        consent, this will not result in any disadvantages for
+                        you. According to the European General Data Protection
+                        Regulation (GDPR), you have the following rights at any
+                        time:
+                      </p>
+                      <ul>
+                        <li>
+                          You have the right to
+                          <em>cancel your participation</em> without giving a
+                          reason and to delete your contributions without any
+                          disadvantages in any form.
+                        </li>
+                        <li>
+                          You have the
+                          <em>opportunity to obtain information</em> about the
+                          data collected from you.
+                        </li>
+                        <li>
+                          You can request a <em>correction of your data</em>.
+                        </li>
+                        <li>
+                          You can request a <em>deletion of your data</em>.
+                        </li>
+                        <li>
+                          You have the right at any time to
+                          <em>demand a restriction on the processing</em> of
+                          your data, to object to its further processing or to
+                          assert your right to data transferability.
+                        </li>
+                      </ul>
+                    </div>
+                  </mat-expansion-panel>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="dashboard-card consent-card">
+          <mat-card-content class="dashboard-card-content">
+            <h2>Do you have any questions?</h2>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <img
+                    class="consent-icon"
+                    src="../../../assets/images/whichservices.png"
+                  />
+                </div>
+                <div class="col-md-10">
+                  <div>
+                    <p>For content related questions, please contact:</p>
+                    <p>
+                      Prof. Dr. Drachsler, +49(0)69-24708-866,
+                      <a href="mailto:drachsler@dipf.de">drachsler@dipf.de</a>,
+                      Solmsstraße 73-75, 60486 Frankfurt am Main
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      For questions regarding the data collection or processing:
+                    </p>
+                    <p>
+                      The German Leibniz Institute for Educational Research
+                      (DIPF), Schloss Straße 29, 60486 Frankfurt am Main, is
+                      responsible for compliance with data protection
+                      regulations.
+                    </p>
+                    <ul>
+                      <li>
+                        Sebastian Wollny, +49(0)69-24708-866,
+                        <a href="mailto:wollny@dipf.de">wollny@dipf.de</a>,
+                        Solmsstraße 73-75, 60486 Frankfurt am Main
+                      </li>
+                      <li>
+                        Your contact person for questions regarding data
+                        protection is the Institute's Data Protection Officer:<a
+                          href="mailto:datenschutz@dipf.de"
+                          >datenschutz@dipf.de</a
+                        >.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title> <h2>Statement of consent</h2> </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              By giving your consent, you indicate that you have read and
+              understood the information above and had the opportunity to ask
+              questions
+            </p>
+            <mat-card-actions>
+              <mat-checkbox
+                formControlName="hasReadIntroduction"
+                class="consent-form-control"
+                name="checkboxIntroduction"
+                required
+              >
+                <b class="consent-form-control">
+                  I understand that I can choose not to opt-in into the
+                  processing of data and that by doing so, I will suffer no
+                  disadvantages
+                </b>
+              </mat-checkbox>
+              <br />
+              <mat-checkbox formControlName="hasReadTermsAndConditions">
+                <b class="consent-form-control">
+                  I have read and understood the terms and conditions.
+                </b>
+              </mat-checkbox>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+
+        <button
+          class="submitButton"
+          [disabled]="!consentForm.valid"
+          mat-raised-button
+          color="primary"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

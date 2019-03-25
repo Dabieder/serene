@@ -1,0 +1,8 @@
+<div>
+  <canvas [width]="canvasWidth" [height]="canvasHeight" #chartCanvas></canvas>
+  <div *ngIf="!surveyResults">
+      <div class=" info info-warning" role="alert">
+    <h4 class="alert-heading">No survey data found!</h4>
+    <p>Please fill out the questionnaire to see your survey results here</p>
+  </div>
+</div>

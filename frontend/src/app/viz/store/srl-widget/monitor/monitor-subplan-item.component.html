@@ -1,0 +1,43 @@
+<div
+  class="ml-4 d-flex justify-content-between align-items-center goal-item-header"
+>
+  <h6>{{ learningPlan.goal }}</h6>
+</div>
+
+<div class="row ml-4">
+  <img
+    src="/assets/icons/deadline_black.svg"
+    class="img-icon-small align-self-center"
+  />
+  <span class="ml-2"
+    >Due: {{ learningPlan.endDate | date: "yyyy/MM/dd, h:mm " }}</span
+  >
+</div>
+
+<div
+  *ngIf="learningPlan.subPlans.length <= 0"
+  class="row justify-content-center align-items-center"
+>
+  <mat-slider
+    class="mat-slider-wide"
+    [(ngModel)]="learningPlan.progress"
+    (change)="onSliderValueChange($event)"
+    (input)="onSliderValueInput($event)"
+    min="0"
+    max="100"
+    [color]="getSliderColor()"
+  ></mat-slider>
+  <h6 class="text-center pl-2">{{ learningPlan.progress }} %</h6>
+</div>
+
+<div
+  class="subgoals ml-4 mr-4 mb-4 mt-4"
+  *ngIf="learningPlan.subPlans?.length > 0"
+>
+  <h5>Subgoals</h5>
+  <div *ngFor="let subPlan of learningPlan.subPlans">
+    <app-srl-monitor-subplan-item
+      [learningPlan]="subPlan"
+    ></app-srl-monitor-subplan-item>
+  </div>
+</div>

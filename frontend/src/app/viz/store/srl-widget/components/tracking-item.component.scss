@@ -1,0 +1,25 @@
+.round-icon {
+  display: block;
+  border: 1px solid #aaaaaa;
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  margin: 0 auto !important;
+}
+
+.activity-label {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.activities {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.selected {
+  background-color: #ff9800;
+}

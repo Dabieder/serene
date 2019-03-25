@@ -1,0 +1,35 @@
+@import "../../../../../assets/css/variables.scss";
+
+.week-overview {
+  height: 200px;
+  width: 250px;
+  position: absolute;
+  z-index: 60;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+.show-expand-t-b {
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: all 0.2s;
+}
+
+.hide-expand-t-b {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.2s;
+}
+
+.week-row {
+  cursor: pointer;
+}
+
+.week-row:hover {
+  background-color: $dipf-blue;
+}
+
+.week-row:active {
+  background-color: $dipf-orange;
+}
+

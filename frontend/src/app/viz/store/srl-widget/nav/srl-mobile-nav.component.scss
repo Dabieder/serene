@@ -1,0 +1,63 @@
+@import "src/assets/css/variables.scss";
+
+.mobile-nav-list li {
+  width: 40%;
+  padding: 5px;
+}
+
+.mobile-bottom-nav {
+  width: 100vw;
+  background-color: $dipf-orange-lighter;
+}
+
+.active-mobile-nav-link {
+  background-color: $dipf-blue-dark;
+  box-shadow: 0px -4px 0px $dipf-orange-dark inset;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  list-style: none;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  justify-content: space-evenly;
+}
+
+.mobile-nav-img {
+  width: 32px;
+  height: 32px;
+}
+
+.mobile-bottom-nav-add-plan-link {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  width: 52px;
+  height: 52px;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+}
+
+.mobile-bottom-nav-add-plan-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 5px;
+}
+
+.bottom-nav-label {
+  text-align: center;
+  color: #efefef;
+}
+
+.mobile-nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

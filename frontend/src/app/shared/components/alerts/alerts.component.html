@@ -1,0 +1,13 @@
+<div class="alerts-bar-wrap" *ngIf="(alerts$ | async).length >= 0">
+  <div
+    class="alerts-bar shadow ml-4 mb-4 {{ getClassForType(alert) }}"
+    *ngFor="let alert of (alerts$ | async)"
+  >
+    <div class="alerts-bar-inner">
+      <div class="alerts-bar-message">
+        {{ alert.message }}
+      </div>
+      <button class="alerts-bar-action" (click)="removeAlert(alert)">OK</button>
+    </div>
+  </div>
+</div>

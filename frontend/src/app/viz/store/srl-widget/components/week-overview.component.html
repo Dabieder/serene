@@ -1,0 +1,11 @@
+<div class="week-overview flex-column text-dark bg-light shadow-sm" [ngClass]="{'show-expand-t-b' : visible, 'hide-expand-t-b': !visible}">
+  <div *ngFor="let plan of weekList" class="flex-row align-items-center"
+  class="week-row"
+  (click)="weekClick($event, plan)">
+    <div>{{plan.week.asDayString}}</div>
+    <!-- <div class="progress ml-4" style="width: 100px; height: 5px;">
+      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+        aria-valuemax="100"></div>
+    </div> -->
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card card-primary card-outline">
+  <div class="card-header d-flex p-0">
+    <h5 class="card-title p-3">{{title}}</h5>
+    <div *ngIf="showCardTools" class="card-tools">
+      <button *ngFor="let button of options.button" type="button" class="btn " [class.btn-tool]="button.icon"
+        [class.btn-primary]="button.label" (click)="clickButton(button)">
+        <i *ngIf="button.icon" [ngClass]="button.icon"></i> {{button.label}}</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div
+  class="monitor-item-wrapper"
+  [class.item-complete]="learningPlan.completed"
+>
+  <div *ngIf="learningPlan.completed" class="item-completed-check">
+    <img src="/assets/icons/checked_white.svg" class="img-icon-small" />
+  </div>
+  <div
+    class="ml-4 d-flex justify-content-between align-items-center goal-item-header"
+  >
+    <h5 class="mt-4 mb-4">{{ learningPlan.goal }}</h5>
+
+    <div class="menu">
+      <button
+        #dropdownMenuButton
+        mat-icon-button
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <img src="/assets/icons/dotsmenu_black.svg" class="img-icon" />
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div (click)="editClick()" class="dropdown-item">
+          <div class="dropdown-icon-item">
+            <!-- <object
+              class="img-icon-small"
+              data="/assets/icons/edit_black.svg"
+              type="image/svg+xml"
+            ></object> -->
+            <img src="/assets/icons/edit_black.svg" class="img-icon-small" />
+            <span class="dropdown-item-text">Edit</span>
+          </div>
+        </div>
+        <div (click)="deleteClick()" class="dropdown-item">
+          <div class="dropdown-icon-item delete-item">
+            <!-- <object
+                class="img-icon-small"
+                data="/assets/icons/edit_black.svg"
+                type="image/svg+xml"
+              ></object> -->
+            <img src="/assets/icons/trash_red.svg" class="img-icon-small" />
+            <span class="dropdown-item-text">Delete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ml-4">
+    <img
+      src="/assets/icons/deadline_black.svg"
+      class="img-icon-small align-self-center"
+    />
+    <span class="ml-2 mt-0">
+      {{ learningPlan.endDate | date: "yyyy/MM/dd, HH:mm " }}
+    </span>
+  </div>
+
+  <div
+    *ngIf="learningPlan.subPlans.length <= 0"
+    class="row justify-content-center align-items-center"
+  >
+    <mat-slider
+      class="mat-slider-wide"
+      [(ngModel)]="learningPlan.progress"
+      (change)="onSliderValueChange($event)"
+      (input)="onSliderValueInput($event)"
+      [color]="getSliderColor()"
+      min="0"
+      max="100"
+    ></mat-slider>
+    <span class="text-center pl-2">{{ learningPlan.progress }} %</span>
+  </div>
+
+  <div
+    class="subgoals mr-4 mb-4 mt-4"
+    *ngIf="learningPlan.subPlans?.length > 0"
+  >
+    <!-- <h5 class="ml-4">Subgoals</h5> -->
+    <div
+      class="ml-4"
+      [class.item-complete]="subPlan.completed"
+      *ngFor="let subPlan of learningPlan.subPlans"
+    >
+      <app-srl-monitor-subplan-item
+        [learningPlan]="subPlan"
+        (planChanged)="onSubPlanChanged($event)"
+      ></app-srl-monitor-subplan-item>
+    </div>
+  </div>
+
+  <!-- <button
+    *ngIf="learningPlan.completed"
+    (click)="onCompletedClick($event)"
+    class="m-4 btn btn-rounded db-secondary finish-button"
+  >
+    Goal completed!
+  </button> -->
+</div>

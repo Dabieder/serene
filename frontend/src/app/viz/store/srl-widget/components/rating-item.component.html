@@ -1,0 +1,38 @@
+<div class="rating-item d-flex flex-row" (click)="ratingItemClick($event)">
+  <div class="d-flex flex-column justify-content-center ml-2 mr-2">
+    <img class="item-icon align-self-center" src="{{ item.icon }}" />
+  </div>
+  <div>
+    <div class="rating-question mb-2" [innerHTML]="item.labelQuestion"></div>
+    <div class="rating-selection mr-2 mb-2">
+      <div class="btn-group btn-group" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          class="btn rating-item-button"
+          [ngClass]="{ 'positive-selected': item.rating > 0 }"
+          (click)="positiveClick()"
+        >
+          {{ item.labelHelped }}
+        </button>
+        <button
+          type="button"
+          [ngClass]="{
+            'neutal-selected': item.rating === 0
+          }"
+          class="btn rating-item-button"
+          (click)="neutralClick()"
+        >
+          -
+        </button>
+        <button
+          type="button"
+          [ngClass]="{ 'negative-selected': item.rating < 0 }"
+          (click)="negativeClick()"
+          class="btn rating-item-button"
+        >
+          {{ item.labelHindered }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

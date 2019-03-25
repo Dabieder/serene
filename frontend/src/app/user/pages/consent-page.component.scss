@@ -1,0 +1,60 @@
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.consent-card {
+  margin-top: 10px;
+}
+
+.submitButton {
+  margin-top: 10px;
+}
+
+.consent-form-control {
+  white-space: normal;
+}
+
+.terms-text {
+  max-height: 300px;
+  overflow: scroll;
+}
+
+.consent-icon{
+  width: 80px;
+  height: 80px;
+}
+
+.card-title {
+  width: 300px;
+}
+
+.data-type-card {
+  margin-top: 2px;
+}
+
+.card-title .mat-icon {
+  margin-right: 10px;
+}
+
+.scrollWrapper {
+  height: 80%;
+  overflow-y: scroll;
+}
+
+@media (max-width: 720px) {
+  .consent-form {
+    grid-column: 1 / span 12;
+  }
+
+  .mat-slide-toggle-content {
+    white-space: pre-wrap !important;
+  }
+}
+
+@media (min-width: 720px) {
+  .consent-form {
+    grid-column: 2 / span 10;
+  }
+}
