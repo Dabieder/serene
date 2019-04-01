@@ -1,3 +1,5 @@
+import { UserLogService } from "../../services/UserLogService";
+
 export class PlanController {
-  constructor() {}
+  constructor(private userLogService: UserLogService) {}
 }

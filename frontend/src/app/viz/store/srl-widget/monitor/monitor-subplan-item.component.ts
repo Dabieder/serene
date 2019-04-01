@@ -27,6 +27,8 @@ export class MonitorSubplanItemComponent implements OnInit {
 
     if (this.learningPlan.completed) {
       this.learningPlan.completionDate = new Date(Date.now());
+    } else {
+      this.learningPlan.completionDate = null;
     }
   }
 

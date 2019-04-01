@@ -6,9 +6,13 @@ import {
   generateNewPlanForId
 } from "../../models/SrlWidget/SrlWidget";
 import { NotificationService } from "../../services/NotificationService";
+import { UserLogService } from "../../services/UserLogService";
 
 export class SrlWidgetController {
-  constructor(private notificationService: NotificationService) {}
+  constructor(
+    private notificationService: NotificationService,
+    private userLogService: UserLogService
+  ) {}
 
   /**
    * Method to build the response for the frontend in one response
@@ -69,36 +73,14 @@ export class SrlWidgetController {
     userWidgetData.markModified("learningPlans");
     await this.saveWidgetData(userWidgetData, req, res, next);
 
-    return res.status(200).json({
+    res.status(200).json({
       message: "Updated Learning Plans successfully",
       errror: null
     });
-  };
 
-  deletePlans = async (req: Request, res: Response, next: NextFunction) => {
-    logger.verbose(`Deleting Learning Plans for user id: ${req.payload.sub}`);
-
-    let widgetData = await this.retrieveWidgetData(req, res, next);
-
-    widgetData = widgetData as SrlWidgetModel;
-
-    for (const planId of req.body) {
-      const index = widgetData.learningPlans.findIndex(x => x.id === planId);
-      if (index >= 0) {
-        widgetData.learningPlans = widgetData.learningPlans.splice(index, 1);
-        await this.notificationService.deletePlanReminder(
-          widgetData.learningPlans[index]
-        );
-      }
+    for (const plan of req.body) {
+      await this.userLogService.addEditLog(plan, req.payload.sub);
     }
-
-    widgetData.markModified("learningPlans");
-    await this.saveWidgetData(widgetData, req, res, next);
-
-    return res.status(200).json({
-      message: "Updated Learning Plans successfully",
-      errror: null
-    });
   };
 
   deletePlan = async (req: Request, res: Response, next: NextFunction) => {
@@ -113,21 +95,23 @@ export class SrlWidgetController {
       x => x.id === req.params.planId
     );
     if (index >= 0) {
-      userWidgetData.learningPlans.splice(index, 1);
-      logger.info(
-        `Deleted Learning Plan ${req.params.planId} for user ${req.payload.sub}`
-      );
+      const removedPlans = userWidgetData.learningPlans.splice(index, 1);
       userWidgetData.markModified("learningPlans");
       const saved = await this.saveWidgetData(userWidgetData, req, res, next);
 
-      await this.notificationService.deletePlanReminder(
-        userWidgetData.learningPlans[index]
-      );
-
-      return res.status(200).json({
+      res.status(200).json({
         message: `Deleted learning plan with ${req.params.planId}`,
         errror: null
       });
+
+      logger.info(
+        `Deleted Learning Plan ${req.params.planId} for user ${req.payload.sub}`
+      );
+
+      for (const removedPlan of removedPlans) {
+        await this.notificationService.deletePlanReminder(removedPlan);
+        await this.userLogService.addDeletionLog(removedPlan, req.payload.sub);
+      }
     } else {
       logger.error(
         `Plan ${req.params.planId} not found and could therefore not be deleted`

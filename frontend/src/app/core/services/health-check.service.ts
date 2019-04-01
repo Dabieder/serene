@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HealthCheck } from "src/app/shared/models/health-check";
 import { CoreState } from "../reducers/core.reducer";
 import { Store } from "@ngrx/store";
-import { interval } from "rxjs";
+import { interval, Observable, Subject, Observer } from "rxjs";
 import { HealthCheckAction } from "../actions/health-check.actions";
 
 @Injectable({
@@ -15,6 +15,30 @@ export class HealthCheckService {
     interval(this.interval).subscribe(x => {
       this.performHealthCheck();
     });
+
+    const socket = this.websocketHealthCheck();
+
+    socket.subscribe(m => {
+      console.log("Websocket Message: ", m);
+    });
+  }
+
+  websocketHealthCheck() {
+    const socket = new WebSocket("wss://echo.websocket.org");
+    const observable = Observable.create((obs: Observer<MessageEvent>) => {
+      socket.onmessage = obs.next.bind(observer);
+      socket.onerror = obs.error.bind(observer);
+      socket.onclose = obs.complete.bind(observer);
+      return socket.close.bind(socket);
+    });
+    const observer = {
+      next: (data: Object) => {
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.send(JSON.stringify(data));
+        }
+      }
+    };
+    return Subject.create(observer, observable);
   }
 
   performHealthCheck() {

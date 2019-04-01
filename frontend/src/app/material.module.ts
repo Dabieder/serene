@@ -22,7 +22,8 @@ import {
   MatTabsModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTooltipModule
 } from "@angular/material";
 
 const MODULES = [

@@ -54,7 +54,7 @@ export class NotificationController {
           const pushSubscription = await this.pushSubscriptionService.getSubscriptionForAccount(
             notification.accountName
           );
-          await this.sendNotificationsToSubscriptions(
+          await this.notificationService.sendNotificationsToSubscriptions(
             notification,
             pushSubscription
           );
@@ -68,41 +68,6 @@ export class NotificationController {
       return res.status(500).json({
         message: `Error trying to send notification subscriptions: ${error}`
       });
-    }
-  };
-
-  private sendNotificationsToSubscriptions = async (
-    notification: NotificationModel,
-    pushSubscription: PushNotificationSubscriptionModel
-  ) => {
-    for (const subscription of pushSubscription.subscriptions) {
-      const notificationPayload = {
-        notification: {
-          title: "Serene Push Notification Test",
-          body: "Here goes the body text",
-          vibrate: [100, 100, 200],
-          data: {
-            dateOfArrival: Date.now(),
-            primaryKey: 1
-          },
-          actions: [
-            {
-              action: "yes",
-              title: "yes"
-            },
-            {
-              action: "no",
-              title: "no"
-            }
-          ]
-        }
-      };
-
-      await webpush
-        .sendNotification(subscription, JSON.stringify(notificationPayload))
-        .catch(e => {
-          logger.error(`Could not send web push message due to error: `, e);
-        });
     }
   };
 }

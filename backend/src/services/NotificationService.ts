@@ -1,9 +1,13 @@
 import webpush from "web-push";
 import {
   NotificationType,
-  Notification
+  Notification,
+  NotificationModel
 } from "../models/Notification";
-import { PushNotificationSubscription } from "../models/PushNotificationSubscription";
+import {
+  PushNotificationSubscription,
+  PushNotificationSubscriptionModel
+} from "../models/PushNotificationSubscription";
 import logger from "../util/logger";
 import * as nodeCron from "node-cron";
 import { ScheduledTask } from "node-cron";
@@ -123,6 +127,53 @@ export class NotificationService {
         logger.error(`Error trying to update plan reminder`, error);
         return null;
       }
+    }
+  };
+
+  sendNotificationsToSubscriptions = async (
+    notification: NotificationModel,
+    pushSubscription: PushNotificationSubscriptionModel
+  ) => {
+    for (const subscription of pushSubscription.subscriptions) {
+      const planUrl = `/plan/${notification.planId}`;
+      const message = `Have you finished your plan ${
+        notification.planId
+      }? Remember to monitor your progress when you are done`;
+      const title = `Serene reminder`;
+      const notificationPayload = {
+        notification: {
+          icon: "/assets/icons/serene_icon.png",
+          title: title,
+          body: message,
+          requireInteraction: true,
+          vibrate: [100, 100, 200],
+          data: {
+            accountName: notification.accountName,
+            dateOfArrival: Date.now(),
+            primaryKey: 1,
+            urls: {
+              monitor: "/monitor",
+              plan: planUrl
+            }
+          },
+          actions: [
+            {
+              action: "monitor",
+              title: "Monitor"
+            },
+            {
+              action: "plan",
+              title: "Edit Plan"
+            }
+          ]
+        }
+      };
+
+      await webpush
+        .sendNotification(subscription, JSON.stringify(notificationPayload))
+        .catch(e => {
+          logger.error(`Could not send web push message due to error: `, e);
+        });
     }
   };
 }

@@ -32,6 +32,8 @@ export class MonitorPlanItemComponent implements OnInit {
     this.learningPlan.completed = event.value >= 100;
     if (this.learningPlan.completed) {
       this.learningPlan.completionDate = new Date(Date.now());
+    } else {
+      this.learningPlan.completionDate = null;
     }
 
     this.planChanged.emit(this.learningPlan);

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Store, select } from "@ngrx/store";
-import { SrlWidgetState, getSelectedLearningPlan } from "../store";
+import { Store } from "@ngrx/store";
+import { SrlWidgetState } from "../store";
 import { SubmitNewPlanAction } from "../store/srl-widget.actions";
 import { LearningPlan } from "../models/learning-plan";
 import { BaseComponent } from "src/app/core/base-component";
-import { takeUntil } from "rxjs/operators";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { TimeService } from "src/app/shared/services/time.service";
+import { PlanService } from "../services/plan.service";
 @Component({
   selector: "app-plan-dialog",
   templateUrl: "./plan-dialog.component.html",
@@ -19,23 +19,40 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
   useEndDate = true;
 
   title: string;
-  constructor(private store$: Store<SrlWidgetState>, private router: Router) {
+  constructor(
+    private store$: Store<SrlWidgetState>,
+    private router: Router,
+    private planService: PlanService,
+    private route: ActivatedRoute
+  ) {
     super();
+    this.route.paramMap.subscribe(params => {
+      const id = params.get("id");
+      console.log("Id is: ", params);
+      if (id === "new") {
+        this.title = "Add Goal";
+        this.plan = LearningPlan.createForDate(new Date(Date.now()));
+      } else {
+        this.title = "Edit Goal";
+        this.plan = this.planService.getPlanById(id);
+      }
+    });
+    // const id = params["id"];
 
-    this.store$
-      .pipe(
-        select(getSelectedLearningPlan),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(selectedLearningPlan => {
-        if (selectedLearningPlan) {
-          this.title = "Edit Goal";
-          this.plan = { ...selectedLearningPlan };
-        } else {
-          this.title = "Add Goal";
-          this.plan = LearningPlan.createForDate(new Date(Date.now()));
-        }
-      });
+    // this.store$
+    //   .pipe(
+    //     select(getLearningPlans),
+    //     takeUntil(this.unsubscribe$)
+    //   )
+    //   .subscribe(learningPlans => {
+    //     if (selectedLearningPlan) {
+    //       this.title = "Edit Goal";
+    //       this.plan = { ...selectedLearningPlan };
+    //     } else {
+    //       this.title = "Add Goal";
+    //       this.plan = LearningPlan.createForDate(new Date(Date.now()));
+    //     }
+    //   });
 
     this.calculateTotalTime();
   }

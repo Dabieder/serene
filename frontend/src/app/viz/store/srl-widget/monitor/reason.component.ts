@@ -22,7 +22,6 @@ export class ReasonComponent extends BaseComponent implements OnInit {
   set plan(plan: LearningPlan) {
     this._plan = plan;
     if (plan) {
-      this.reasons = plan.reasons;
       this.customReason = plan.comment;
     }
   }

@@ -17,6 +17,12 @@
     class="ml-2"
   ></app-time-select> -->
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="State" aria-label="State" type="time" />
+    <input
+      matInput
+      aria-label="State"
+      type="time"
+      [(ngModel)]="time"
+      (input)="onTimeChange($event)"
+    />
   </mat-form-field>
 </div>

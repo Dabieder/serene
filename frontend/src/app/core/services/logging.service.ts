@@ -28,6 +28,14 @@ export class LoggingService {
     return this.timestamp.toUTCString();
   }
 
+  public logNotificationClick(notification: any) {
+    this.logWhatever(notification, "notificationInteraction");
+  }
+
+  public logNavigation(navigation: any) {
+    this.logWhatever(navigation, "navigation");
+  }
+
   public logEvent(thing: any) {
     this.logWhatever(thing, "event");
   }

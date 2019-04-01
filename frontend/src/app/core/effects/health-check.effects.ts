@@ -11,7 +11,7 @@ import {
   HealthCheckErrorAction
 } from "../actions/health-check.actions";
 import { switchMap, map, catchError } from "rxjs/operators";
-import { ShowAlertAction } from "../actions/alerts.actions";
+import { ShowAlertAction, HideAlertAction } from "../actions/alerts.actions";
 import { ALERTS } from "src/app/shared/models/alert";
 
 @Injectable()
@@ -53,6 +53,16 @@ export class HealthCheckEffects {
     ofType<HealthCheckErrorAction>(HealthActionTypes.HEALTH_CHECK_ERROR),
     map(action => {
       return new ShowAlertAction({
+        alert: ALERTS.SERVER_CONNECTION_ERROR
+      });
+    })
+  );
+
+  @Effect()
+  public healthCheckSuccess: Observable<Action> = this.actions.pipe(
+    ofType<HealthCheckSuccessAction>(HealthActionTypes.HEALTH_CHECK_SUCCESS),
+    map(action => {
+      return new HideAlertAction({
         alert: ALERTS.SERVER_CONNECTION_ERROR
       });
     })

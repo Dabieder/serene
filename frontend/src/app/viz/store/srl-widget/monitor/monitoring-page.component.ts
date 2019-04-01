@@ -144,7 +144,7 @@ export class MonitoringPageComponent extends BaseComponent implements OnInit {
 
   editPlan(learningPlan: LearningPlan) {
     this.store$.dispatch(new ShowPlanDialogAction({ learningPlan }));
-    this.router.navigate(["/serene/plan/"]);
+    this.router.navigate(["/serene/plan/", learningPlan.id]);
   }
 
   submit() {

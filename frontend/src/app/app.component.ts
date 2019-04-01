@@ -36,7 +36,7 @@ export class AppComponent extends BaseComponent implements OnInit {
 
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
-        this.loggingServe.logEvent(val.url);
+        this.loggingServe.logNavigation(val.url);
       }
     });
   }

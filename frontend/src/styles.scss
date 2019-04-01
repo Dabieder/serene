@@ -60,9 +60,16 @@ body {
 }
 
 .dialog-page-header {
-  padding: 0.75rem 1.25rem;
-  background-color: $dipf-blue-lightest;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: $dipf-orange-light;
   position: relative;
+  @media screen and (max-width: $media-sm) {
+    padding: 0.75rem 1.25rem;
+  }
+  @media screen and (min-width: $media-sm) {
+    padding: 1.25rem 1.25rem;
+  }
 }
 
 .cancel-btn {
@@ -88,7 +95,7 @@ body {
 }
 
 .date-plan-date-picker .mat-form-field-infix {
-  width: 100px !important;
+  width: 90px !important;
 }
 
 .db-primary {

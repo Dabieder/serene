@@ -1,11 +1,33 @@
 import { Injectable } from "@angular/core";
 import { RatingItem } from "../models/rating-item";
+import { Store, select } from "@ngrx/store";
+import { SrlWidgetState, getLearningPlans } from "../store";
+import { takeUntil } from "rxjs/operators";
+import { LearningPlan } from "../models/learning-plan";
+import { BaseComponent } from "src/app/core/base-component";
 
 @Injectable({
   providedIn: "root"
 })
-export class PlanService {
-  constructor() {}
+export class PlanService extends BaseComponent {
+  learningPlans: LearningPlan[];
+
+  constructor(private store$: Store<SrlWidgetState>) {
+    super();
+    this.store$
+      .pipe(
+        select(getLearningPlans),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(learningPlans => {
+        this.learningPlans = learningPlans;
+      });
+  }
+
+  getPlanById(planId: string): LearningPlan | null {
+    const plan = this.learningPlans.find(x => x.id === planId);
+    return plan;
+  }
 
   // TODO: Move to server side
   public static getDefaultReasonsOffline() {

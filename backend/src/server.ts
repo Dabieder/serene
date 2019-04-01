@@ -36,6 +36,7 @@ import { SettingsController } from "./controllers/settingsController";
 import { SettingsService } from "./services/SettingsService";
 import { PushSubscriptionService } from "./services/PushSubscriptionService";
 import { PushSubscriptionController } from "./controllers/subscriptionController";
+import { UserLogService } from "./services/UserLogService";
 /**
  * Basic configurations of all middleware libraries are applied here.
  */
@@ -48,6 +49,7 @@ export class Server {
   notificationService: NotificationService;
   settingsService: SettingsService;
   pushSubscriptionService: PushSubscriptionService;
+  userLogService: UserLogService;
 
   userController: UserController;
   consentController: ConsentController;
@@ -141,6 +143,7 @@ export class Server {
       this.pushSubscriptionService
     );
     this.settingsService = new SettingsService();
+    this.userLogService = new UserLogService();
   }
 
   private async initControllers() {
@@ -153,9 +156,10 @@ export class Server {
 
     this.userController = new UserController(this.userService);
     this.queryController = new QueryController();
-    this.userLogController = new UserLogController();
+    this.userLogController = new UserLogController(this.userLogService);
     this.srlWidgetController = new SrlWidgetController(
-      this.notificationService
+      this.notificationService,
+      this.userLogService
     );
     this.xApiController = new XApiController();
     this.notificationController = new NotificationController(
@@ -318,6 +322,11 @@ export class Server {
       API_PREFIX + "/logs",
       jwtAuthRequired,
       this.userLogController.submitLogs
+    );
+
+    app.post(
+      API_PREFIX + "/logs/sw",
+      this.userLogController.submitServiceWorkerLogs
     );
 
     app.post(

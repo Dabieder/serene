@@ -28,6 +28,8 @@ export class SubPlanItemComponent implements OnInit {
   private _plan: Plan;
   @Input("plan")
   set plan(newPlan: Plan) {
+    newPlan.startDate = moment(newPlan.startDate).toDate();
+    newPlan.endDate = moment(newPlan.endDate).toDate();
     const roundedStartTime = TimeService.roundToQuarterHours({
       hours: newPlan.startDate.getHours(),
       minutes: newPlan.startDate.getMinutes()
@@ -73,27 +75,49 @@ export class SubPlanItemComponent implements OnInit {
     }
   }
 
-  onFromTimeChange(event: Time) {
-    this._plan.startDate = new Date(this._plan.endDate);
-    this._plan.startDate.setHours(event.hours, event.minutes);
-    if (!this.startDateBeforeEndDate()) {
-      if (this._plan.startDate.getHours() <= 23) {
-        this._plan.endDate = moment(this._plan.startDate)
-          .add(15, "m")
-          .toDate();
-      }
+  // onFromTimeChange(event: Time) {
+  //   this._plan.startDate = new Date(this._plan.endDate);
+  //   this._plan.startDate.setHours(event.hours, event.minutes);
+  //   if (!this.startDateBeforeEndDate()) {
+  //     if (this._plan.startDate.getHours() <= 23) {
+  //       this._plan.endDate = moment(this._plan.startDate)
+  //         .add(15, "m")
+  //         .toDate();
+  //     }
+  //   }
+  //   this.setTotalTime();
+  //   this.planChange.emit(this._plan);
+  // }
+
+  // onToTimeChange(event: Time) {
+  //   this._plan.endDate = new Date(this._plan.endDate);
+  //   this._plan.endDate.setHours(event.hours, event.minutes);
+
+  //   // Only 'accept' the new input if the to-time is after the from time
+  //   this.toTimeValid = this.startDateBeforeEndDate();
+  //   if (!this.toTimeValid) {
+  //     this.setTotalTime();
+  //     this.planChange.emit(this._plan);
+  //   }
+  // }
+
+  onStartDateChange(startDate: Date) {
+    console.log("Start Date change:", startDate);
+    this._plan.startDate = startDate;
+
+    this.toTimeValid = this.startDateBeforeEndDate();
+    if (this.toTimeValid) {
+      this.setTotalTime();
+      this.planChange.emit(this._plan);
     }
-    this.setTotalTime();
-    this.planChange.emit(this._plan);
   }
 
-  onToTimeChange(event: Time) {
-    this._plan.endDate = new Date(this._plan.endDate);
-    this._plan.endDate.setHours(event.hours, event.minutes);
+  onEndDateChange(endDate: Date) {
+    console.log("End Date change:", endDate);
+    this._plan.endDate = endDate;
 
-    // Only 'accept' the new input if the to-time is after the from time
     this.toTimeValid = this.startDateBeforeEndDate();
-    if (!this.toTimeValid) {
+    if (this.toTimeValid) {
       this.setTotalTime();
       this.planChange.emit(this._plan);
     }

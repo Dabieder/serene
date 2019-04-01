@@ -5,14 +5,12 @@ import { uniqueId } from "src/app/core/utility/utility-functions";
 export class LearningPlan implements Plan {
   id: string = uniqueId();
   plannedDuration = { hours: 0, minutes: 0 };
-  actualDuration = { hours: 0, minutes: 0 };
   progress = 0;
   comment = "";
   goal: string;
   creationDate: Date = new Date(Date.now());
   startDate: Date;
   endDate: Date;
-  reasons: RatingItem[] = [];
   subPlans: LearningPlan[] = [];
   parentPlan: LearningPlan;
   completed = false;

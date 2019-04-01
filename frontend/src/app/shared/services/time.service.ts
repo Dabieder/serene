@@ -22,6 +22,14 @@ export class TimeService {
 
   private _timeDisplayList;
 
+  static getTimeFromTimeString(timeString: string): Time {
+    const split = timeString.split(":");
+    return {
+      hours: +split[0],
+      minutes: +split[1]
+    };
+  }
+
   static addLeadingZero = v => (v >= 10 ? `${v}` : `0${v}`);
 
   static toTimeDisplay(time: Time) {

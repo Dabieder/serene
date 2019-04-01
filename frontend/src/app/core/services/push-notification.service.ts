@@ -5,6 +5,7 @@ import { map, catchError, tap } from "rxjs/operators";
 import { ENDPOINTS, ApiService } from "./api.service";
 import { AppState, isAuthenticated } from "src/app/reducers";
 import { Store } from "@ngrx/store";
+import { LoggingService } from "./logging.service";
 
 @Injectable({
   providedIn: "root"
@@ -17,18 +18,44 @@ export class PushNotificationService {
     private swPush: SwPush,
     private http: HttpClient,
     private apiService: ApiService,
-    private store$: Store<AppState>
+    private store$: Store<AppState>,
+    private logService: LoggingService
   ) {
-    this.store$.select(isAuthenticated).subscribe(authenticated => {
-      if (authenticated) {
-        this.subscribeToPushNotifications();
-      }
-    });
+    // this.store$.select(isAuthenticated).subscribe(authenticated => {
+    //   if (authenticated) {
+    //     this.subscribeToPushNotifications();
+    //   }
+    // });
+
+    // this.handleNotificationClicks();
   }
 
   handleNotificationClicks() {
-    this.swPush.notificationClicks.subscribe(value => {
-      console.log("Notification Click", value);
+    console.log("Subscribing to notification click");
+    this.swPush.notificationClicks.subscribe(event => {
+      console.log("Notification Click", event);
+      if (event.notification.data.url) {
+        console.log("Notification Has a data URL", event);
+        window.open(event.notification.data.url);
+      }
+      // this.logService.logNotificationClick(event);
+      fetch("http://localhost:8080/lad-backend/logs/sw", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          time: new Date(Date.now()).toUTCString(),
+          data: event,
+          type: "click:notification"
+        })
+      }).then(resp => {
+        console.log("Fetch post sw logs");
+      });
+    });
+
+    this.swPush.messages.subscribe(message => {
+      console.log("SWPush message receive", message);
     });
   }
 

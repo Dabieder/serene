@@ -1,12 +1,17 @@
-<div class="container shadow pb-4 dialog-page d-flex flex-column">
+<div class="shadow pb-4 dialog-page d-flex flex-column">
   <div
     class="dialog-page-header d-flex justify-content-between align-items-center"
   >
-    <h4 class="float-left mb-0" i8n>{{ title }}</h4>
+    <h4 class="float-left mb-0" i18n>{{ title }}</h4>
 
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>
-      <button class="ml-1 btn btn-rounded db-primary" (click)="submit()" i8n>
+      <button
+        class="ml-1 btn btn-rounded db-primary"
+        [disabled]="!plan.goal"
+        (click)="submit()"
+        i18n
+      >
         Submit
       </button>
     </div>
@@ -15,7 +20,7 @@
   <div class="card-body" *ngIf="plan">
     <app-srl-widget-card>
       <b>Goal</b>
-      <div class="mt-1 align-items-center justify-content-center">
+      <div class="align-items-center justify-content-center">
         <textarea
           name="learning-goal"
           id="user-message"
@@ -29,12 +34,13 @@
     </app-srl-widget-card>
 
     <app-srl-widget-card>
-      <b>Schedule</b>
-      <div class="d-flex flex-row align-items-center plan-schedule">
+      <b i18n>Schedule</b>
+      <div class="d-flex flex-row align-items-center">
         <mat-checkbox
           class="scheduleCheckbox"
           [(ngModel)]="useStartDate"
           labelPosition="after"
+          i18n
         >
           Start Date:
         </mat-checkbox>
@@ -56,6 +62,7 @@
           class="scheduleCheckbox"
           [(ngModel)]="useEndDate"
           labelPosition="after"
+          i18n
         >
           End Date:
         </mat-checkbox>
@@ -66,10 +73,15 @@
           ></app-plan-date>
         </div>
       </div>
+      <div *ngIf="!useEndDate && !useStartDate" class="alert alert-info">
+        You are more likely to reach goals when you assign a schedule to them.
+        <br />
+        <a href="#">Learn more about setting goals</a>
+      </div>
     </app-srl-widget-card>
 
     <app-srl-widget-card>
-      <b>Plans</b>
+      <b i18n>Plans</b>
       <div class="container mb-2">
         <div *ngFor="let subPlan of plan.subPlans" class="row subplan pb-2">
           <button
@@ -88,7 +100,7 @@
 
       <div class="container" *ngIf="plan.subPlans.length > 0">
         <div class="row align-items-center justify-content-center">
-          <b>Total:</b>
+          <b i18n>Total:</b>
           <span class="ml-2 total-hours">{{
             plan.plannedDuration | timedisplay
           }}</span>
@@ -96,14 +108,19 @@
       </div>
       <button class="btn db-primary shadow" (click)="addSubPlan($event)">
         <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
-        <span class="ml-2" i8n>Add Plan</span>
+        <span class="ml-2" i18n>Add Plan</span>
       </button>
     </app-srl-widget-card>
   </div>
 
   <div class="align-self-center footer-controls">
-    <span class="cancel-btn mr-4" (click)="closeDialog()"> Cancel </span>
-    <button class="ml-4 btn db-primary shadow" (click)="submit()" i8n>
+    <span class="cancel-btn mr-4" (click)="closeDialog()" i18n> Cancel </span>
+    <button
+      class="ml-4 btn db-primary shadow"
+      (click)="submit()"
+      [disabled]="!plan.goal"
+      i18n
+    >
       Submit
     </button>
   </div>

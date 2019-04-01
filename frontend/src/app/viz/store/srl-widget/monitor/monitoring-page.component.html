@@ -1,4 +1,4 @@
-<div class="container-fluid shadow dialog-page pb-4 d-flex flex-column">
+<div class="shadow dialog-page pb-4 d-flex flex-column">
   <!-- <div class="container" *ngIf="learningPlansOpen.length === 0">
     <div class="d-flex">
       <h4>
@@ -14,8 +14,10 @@
     </div>
   </div> -->
 
-  <div class="dialog-page-header">
-    <h4 class="float-left" i8n>Monitor your progress</h4>
+  <div
+    class="dialog-page-header d-flex justify-content-between align-items-center"
+  >
+    <h4 class="float-left mb-0" i8n>Monitor Goal Progress</h4>
 
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>

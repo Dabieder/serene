@@ -22,7 +22,7 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard]
       },
       {
-        path: "plan",
+        path: "plan/:id",
         component: PlanDialogComponent,
         canActivate: [AuthenticationGuard]
       },
