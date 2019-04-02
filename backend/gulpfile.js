@@ -24,7 +24,9 @@ const RUN_TESTS = "run:tests";
 const TEST = "test";
 const REMAP_COVERAGE = "remap:coverage";
 const WATCH = "watch";
+const COPY_ASSETS = "copy:assets";
 
+const ASSET_GLOB = "./assets/**/*";
 const TS_SRC_GLOB = "./src/**/*.ts";
 const TS_TEST_GLOB = "./test/**/*.ts";
 const JS_TEST_GLOB = "./build/test/**/*.js";
@@ -78,8 +80,15 @@ gulp.task(COMPILE_TYPESCRIPT, function() {
     .pipe(gulp.dest("./build"));
 });
 
+gulp.task(COPY_ASSETS, function() {
+  return gulp.src(ASSET_GLOB).pipe(gulp.dest("./build/assets"));
+});
+
 // Runs all required steps for the build in sequence.
-gulp.task(BUILD, gulp.series(CLEAN_BUILD, TSLINT, COMPILE_TYPESCRIPT));
+gulp.task(
+  BUILD,
+  gulp.series(CLEAN_BUILD, TSLINT, COMPILE_TYPESCRIPT)
+);
 
 // Generates a documentation based on the code comments in the *.ts files.
 gulp.task(

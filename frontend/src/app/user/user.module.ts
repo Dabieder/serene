@@ -20,8 +20,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ToolbarProfileComponent } from "./components/toolbar-profile.component";
 import { ContactFormComponent } from "./components/contact-form.component";
 import { ConsentEffects } from "./store/consent.effects";
-import { SrlWidgetModule } from "../viz/store/srl-widget/srl-widget.module";
 import { AuthEffects } from "./store/auth.effects";
+import { SrlWidgetModule } from "../srl/srl-widget.module";
 
 @NgModule({
   imports: [

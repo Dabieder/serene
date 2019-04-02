@@ -10,6 +10,7 @@ import { StoreModule } from "@ngrx/store";
 import { reducer } from "./store/settings.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { SettingsEffects } from "./store/settings.effects";
+import { SharedModule } from "../shared/shared.module";
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     StoreModule.forFeature("settings", reducer),
     EffectsModule.forFeature([SettingsEffects]),
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   declarations: [
     PrivacySettingsComponent,

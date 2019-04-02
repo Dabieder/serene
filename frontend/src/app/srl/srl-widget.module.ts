@@ -1,13 +1,10 @@
 import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { VizService } from "../../visualisation.service";
 import { ReflectionPageComponent } from "./reflect/reflection-page.component";
 import { SrlWidgetComponent } from "./srl-widget.component";
-import { VisualisationDynamicComponent } from "../../visualisation.dynamic.component";
 import { ChartsModule } from "ng2-charts";
 import { LearningGoalChartComponent } from "./reflect/visualizations/learning-goal-chart.component";
 import { SrlDimensionsChartComponent } from "./reflect/visualizations/srl-dimensions-chart.component";
-import { MaterialModule } from "../../../material.module";
 import { WeekSelectionComponent } from "./components/week-selection.component";
 import { MonitoringPageComponent } from "./monitor/monitoring-page.component";
 import { ReasonComponent } from "./monitor/reason.component";
@@ -39,6 +36,7 @@ import { CoreModule } from "src/app/core/core.module";
 import { SrlWidgetRoutingModule } from "./srl-widget-routing.module";
 import { RouterModule } from "@angular/router";
 import { SummaryComponent } from "./reflect/visualizations/summary.component";
+import { MaterialModule } from "../material.module";
 
 @NgModule({
   imports: [
@@ -97,12 +95,7 @@ import { SummaryComponent } from "./reflect/visualizations/summary.component";
   ]
 })
 export class SrlWidgetModule {
-  constructor(private service: VizService) {
-    this.service.addService(
-      "srlWidget",
-      new VisualisationDynamicComponent(SrlWidgetComponent)
-    );
-  }
+  constructor() {}
 
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{

@@ -72,10 +72,6 @@ export class ConsentEffects {
     ofType(UserActionTypes.CONSENT_RETRIEVE_SUCCESS),
     withLatestFrom(this.store.pipe(select(state => state))),
     map(([action, state]: [ConsentRetrieveSuccessAction, any]) => {
-      // if (!action.payload.consent.consented) {
-      //   const courseId = "5bbf3ed292b8de2f5483e13f";
-      //   this.navigateToFullscreenConsent(courseId);
-      // }
       return action;
     })
   );

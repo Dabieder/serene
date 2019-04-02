@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "user", loadChildren: "./user/user.module#UserModule" },
   {
     path: "serene",
-    loadChildren: "./viz/store/srl-widget/srl-widget.module#SrlWidgetModule",
+    loadChildren: "./srl/srl-widget.module#SrlWidgetModule",
     canActivate: [AuthenticationGuard]
   },
   {

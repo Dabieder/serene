@@ -18,7 +18,6 @@ import { HeaderService } from "./services/header.service";
 import { AuthenticationService } from "./services/authentication.service";
 import { ShowIfCourseSelectedDirective } from "./course-selected.directive";
 import { MobileNavComponent } from "./layout/mobile-nav.component";
-import { FullScreenOverlayComponent } from "./layout/full-screen-overlay";
 import { ToolbarDropdownComponent } from "./layout/toolbar-dropdown.component";
 import { RouteService } from "./services/route.service";
 import { HealthCheckService } from "./services/health-check.service";
@@ -33,7 +32,6 @@ export const COMPONENTS = [
   SidenavComponent,
   ToolbarComponent,
   MobileNavComponent,
-  FullScreenOverlayComponent,
   ToolbarDropdownComponent
 ];
 

@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { VizComponentInterface } from "../../visualisation.component.interface";
 import { Store, select } from "@ngrx/store";
 import {
   SelectedWeekChangeAction,
@@ -32,7 +31,7 @@ import { LearningPlan } from "./models/learning-plan";
   styleUrls: ["./srl-widget.component.scss"]
 })
 export class SrlWidgetComponent extends BaseComponent
-  implements VizComponentInterface, OnDestroy, OnInit {
+  implements OnDestroy, OnInit {
   selectedPlan: LearningPlan;
   selectedWeek: Week;
   selectedTabIndex = 0;
@@ -41,12 +40,6 @@ export class SrlWidgetComponent extends BaseComponent
   canEdit$ = this.store.pipe(select(getCanEditData));
   loading$ = this.store.pipe(select(getIsLoading));
   surveyResults$ = this.store.pipe(select(getSurveyResults));
-
-  setXapiEmit(callback: any): void {
-    this.srlXApiService.setCallback(callback);
-  }
-  setVisualisationData(id: string): void {}
-  setConfig(config: any): void {}
 
   constructor(
     private store: Store<SrlWidgetState>,

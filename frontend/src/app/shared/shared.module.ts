@@ -10,9 +10,11 @@ import { ExpanderComponent } from "./components/expander/expander.component";
 import { NavDropdownComponent } from "./components/dropdown/nav-dropdown.component";
 import { RouterModule } from "@angular/router";
 import { AlertsComponent } from "./components/alerts/alerts.component";
+import { NotificationDialogComponent } from "./components/dialogs/notification-dialog.component";
+import { MaterialModule } from "../material.module";
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
   declarations: [
     ContentRowComponent,
     ContentHeaderComponent,
@@ -26,7 +28,8 @@ import { AlertsComponent } from "./components/alerts/alerts.component";
     LoadingIndicatorComponent,
     ExpanderComponent,
     NavDropdownComponent,
-    AlertsComponent
+    AlertsComponent,
+    NotificationDialogComponent
   ],
   exports: [
     ContentRowComponent,
@@ -41,7 +44,9 @@ import { AlertsComponent } from "./components/alerts/alerts.component";
     LoadingIndicatorComponent,
     ExpanderComponent,
     NavDropdownComponent,
-    AlertsComponent
-  ]
+    AlertsComponent,
+    NotificationDialogComponent
+  ],
+  entryComponents: [NotificationDialogComponent]
 })
 export class SharedModule {}

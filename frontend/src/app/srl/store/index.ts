@@ -1,4 +1,4 @@
-import * as fromRoot from "../../../../reducers";
+import * as fromRoot from "../../reducers";
 import * as fromSrlWidget from "./srl-widget.reducer";
 import { ActionReducerMap, createSelector } from "@ngrx/store";
 import * as moment from "moment";

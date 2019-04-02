@@ -1,0 +1,23 @@
+<h1 mat-dialog-title i18n>Reminder Settings</h1>
+<div mat-dialog-content>
+  <p>How would you like to be notified in the future</p>
+  <mat-form-field>
+    <mat-checkbox [(ngModel)]="dialogResult.usePushNotifications"
+      >Push Notifications</mat-checkbox
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-checkbox [(ngModel)]="dialogResult.useEMailNotifications"
+      >Push Notifications</mat-checkbox
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="dialogResult.eMail" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="dialogResult" cdkFocusInitial>
+    Submit
+  </button>
+</div>

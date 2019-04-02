@@ -18,9 +18,9 @@
   </div>
 
   <div class="card-body" *ngIf="plan">
-    <app-srl-widget-card>
+    <div>
       <b>Goal</b>
-      <div class="align-items-center justify-content-center">
+      <div class="mt-2 align-items-center justify-content-center">
         <textarea
           name="learning-goal"
           id="user-message"
@@ -31,9 +31,9 @@
           rows="3"
         ></textarea>
       </div>
-    </app-srl-widget-card>
+    </div>
 
-    <app-srl-widget-card>
+    <div class="mt-4">
       <b i18n>Schedule</b>
       <div class="d-flex flex-row align-items-center">
         <mat-checkbox
@@ -44,7 +44,7 @@
         >
           Start Date:
         </mat-checkbox>
-        <div class="mt-1 d-flex flex-row align-items-center">
+        <div class="d-flex flex-row align-items-center">
           <app-plan-date
             [date]="plan.startDate"
             (dateChange)="onStartDateChange($event)"
@@ -78,9 +78,9 @@
         <br />
         <a href="#">Learn more about setting goals</a>
       </div>
-    </app-srl-widget-card>
+    </div>
 
-    <app-srl-widget-card>
+    <div>
       <b i18n>Plans</b>
       <div class="container mb-2">
         <div *ngFor="let subPlan of plan.subPlans" class="row subplan pb-2">
@@ -110,7 +110,7 @@
         <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
         <span class="ml-2" i18n>Add Plan</span>
       </button>
-    </app-srl-widget-card>
+    </div>
   </div>
 
   <div class="align-self-center footer-controls">
