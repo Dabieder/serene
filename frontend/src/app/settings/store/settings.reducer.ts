@@ -15,7 +15,11 @@ export interface SettingsState {
 const initialState: SettingsState = {
   enableNotifications: true,
   settings: {
-    enableNotifications: true
+    usePushNotifications: false,
+    useEMailNotifications: true,
+    eMailAddress: "",
+    dateFormat: "dd/MM/yyyy",
+    language: "en"
   }
 };
 
@@ -27,7 +31,7 @@ export function reducer(
     case SettingsActionTypes.SUBMIT_SETTINGS:
       return {
         ...state,
-        enableNotifications: action.payload.settings.enableNotifications,
+        enableNotifications: action.payload.settings.usePushNotifications,
         settings: action.payload.settings
       };
     case SettingsActionTypes.FETCH_SETTINGS_SUCCESS:

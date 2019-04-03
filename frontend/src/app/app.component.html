@@ -1,20 +1,4 @@
-<ng-container *ngIf="(showToolbar$ | async) === true">
-  <!-- <a
-    *ngIf="(showSidenav$ | async) === false"
-    class="toggle-nav-button fixed-top"
-    (click)="toggleNavigationClick($event)"
-  >
-    <i class="fas fa-bars"></i>
-  </a>
-  <a
-    *ngIf="(showSidenav$ | async) === true"
-    class="toggle-nav-button fixed-top"
-    (click)="toggleNavigationClick($event)"
-  >
-    <i class="fas fa-times"></i>
-  </a> -->
-  <!-- <app-toolbar> </app-toolbar> -->
-</ng-container>
+<ng-container *ngIf="(showToolbar$ | async) === true"> </ng-container>
 
 <div class="content-wrapper"><router-outlet></router-outlet></div>
 

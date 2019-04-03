@@ -1,12 +1,37 @@
-<div class="container">
-  <div class="row">
-    <div class="col-4">Enable Notifications</div>
-    <div class="col-8">
-      <mat-checkbox>
-        <b>
-          Enabled
-        </b>
-      </mat-checkbox>
-    </div>
+<div class="col-12">
+  <div class="col-sm-6">
+    <section>
+      <h4>Push Notifications</h4>
+      <p>
+        If you want to be reminded of your plans via notification, check the
+        checkbox below. Your browser will then ask you if it is acceptable for
+        this website to send you notifications. Please click accept to receive
+        notifications.
+      </p>
+      <div>
+        <mat-checkbox>
+          Enable
+        </mat-checkbox>
+      </div>
+    </section>
+    <hr />
+    <section>
+      <h4>E-Mail Notifications</h4>
+      <p>
+        If you want to be reminded of your plans and goals via e-mail, enter an
+        e-mail address below.
+      </p>
+      <mat-form-field class="example-full-width">
+        <input matInput [formControl]="emailFormControl" placeholder="Email" />
+        <mat-error *ngIf="emailFormControl.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <mat-checkbox>
+          Enable
+        </mat-checkbox>
+      </div>
+    </section>
   </div>
 </div>

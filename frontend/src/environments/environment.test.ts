@@ -4,7 +4,7 @@ export const environment = {
   xapi_backend_url:
     "https://tlacx311.edutec.guru/lrs-backend/resources/xapi/statements",
   cas_login_url: "https://ssl.studiumdigitale.uni-frankfurt.de/cas",
-  allowThirdPartyLogIn: false
+  allowThirdPartyLogIn: true
 };
 
 import "zone.js/dist/zone-error"; // Included with Angular CLI

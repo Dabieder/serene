@@ -12,7 +12,7 @@ export const environment = {
     password: "1234"
   },
   cas_login_url: "https://ssl.studiumdigitale.uni-frankfurt.de/cas",
-  allowThirdPartyLogIn: false
+  allowThirdPartyLogIn: true
 };
 
 /*
