@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { SubmitSettingsAction } from "../store/settings.action";
 import { SettingsState } from "../store/settings.reducer";
 import { NotificationDialogComponent } from "src/app/shared/components/dialogs/notification-dialog.component";
@@ -8,9 +8,13 @@ import {
   FormControl,
   FormGroupDirective,
   NgForm,
-  Validators
+  Validators,
+  FormGroup,
+  FormBuilder
 } from "@angular/forms";
 import { Settings } from "../models/settings";
+import { BaseComponent } from "src/app/core/base-component";
+import { takeUntil } from "rxjs/operators";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -31,13 +35,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: "./settings-page.component.html",
   styleUrls: ["./settings-page.component.scss"]
 })
-export class SettingsPageComponent implements OnInit {
+export class SettingsPageComponent extends BaseComponent implements OnInit {
+  settingsForm: FormGroup;
   settings: Settings;
   emailFormControl = new FormControl("", [Validators.email]);
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private store$: Store<SettingsState>, public dialog: MatDialog) {
+  constructor(
+    private store$: Store<SettingsState>,
+    public dialog: MatDialog,
+    private fb: FormBuilder
+  ) {
+    super();
+
     this.settings = {
       usePushNotifications: true,
       useEMailNotifications: true,
@@ -47,12 +58,29 @@ export class SettingsPageComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.store$
+    // .pipe(
+    //   select(getSettings),
+    //   takeUntil(this.unsubscribe$)
+    // )
+    // .subscribe(settings => {
+    //   if (settings) {
+    //     this.settings = {...settings};
+    //   }
+    // });
+    this.settingsForm = this.fb.group({
+      usePushNotifications: true,
+      useEmailNotifications: false,
+      eMailAddress: "d@b.de"
+    });
+  }
 
   closeDialog() {}
 
   submit() {
-    this.store$.dispatch(new SubmitSettingsAction({ settings: this.settings }));
+    const settings = { ...this.settings };
+    this.store$.dispatch(new SubmitSettingsAction({ settings }));
   }
 
   test() {

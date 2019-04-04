@@ -5,55 +5,52 @@
 
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()" i18n> Cancel </span>
-      <button
-        class="ml-1 btn btn-rounded db-primary"
-        [disabled]="!plan.goal"
-        (click)="submit()"
-        i18n
-      >
+      <button class="ml-1 btn btn-rounded db-primary" (click)="submit()" i18n>
         Submit
       </button>
     </div>
   </div>
-  <div class="col-12 mt-4">
-    <div class="col-sm-6">
-      <section>
-        <h4>Push Notifications</h4>
-        <p>
-          If you want to be reminded of your plans via notification, check the
-          checkbox below. Your browser will then ask you if it is acceptable for
-          this website to send you notifications. Please click accept to receive
-          notifications.
-        </p>
-        <div>
-          <mat-checkbox>
-            Enable
-          </mat-checkbox>
-        </div>
-      </section>
-      <hr />
-      <section>
-        <h4>E-Mail Notifications</h4>
-        <p>
-          If you want to be reminded of your plans and goals via e-mail, enter
-          an e-mail address below.
-        </p>
-        <mat-form-field class="example-full-width">
-          <input
-            matInput
-            [formControl]="emailFormControl"
-            placeholder="Email"
-          />
-          <mat-error *ngIf="emailFormControl.hasError('email')">
-            Please enter a valid email address
-          </mat-error>
-        </mat-form-field>
-        <div>
-          <mat-checkbox>
-            Enable
-          </mat-checkbox>
-        </div>
-      </section>
+  <form [formGroup]="settingsForm">
+    <div class="col-12 mt-4">
+      <div class="col-sm-6">
+        <section>
+          <h4>Push Notifications</h4>
+          <p>
+            If you want to be reminded of your plans via notification, check the
+            checkbox below. Your browser will then ask you if it is acceptable
+            for this website to send you notifications. Please click accept to
+            receive notifications.
+          </p>
+          <div>
+            <mat-checkbox formControlName="usePushNotifications">
+              Enable
+            </mat-checkbox>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <h4>E-Mail Notifications</h4>
+          <p>
+            If you want to be reminded of your plans and goals via e-mail, enter
+            an e-mail address below.
+          </p>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="eMailAddress"
+              placeholder="Email"
+            />
+            <mat-error *ngIf="emailFormControl.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <mat-checkbox formControlName="useEmailNotifications">
+              Enable
+            </mat-checkbox>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
