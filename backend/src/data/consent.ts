@@ -20,22 +20,6 @@ export const consent: any = {
   ],
   consentItems: [
     {
-      name: "Virtual Learning Environment (Moodle)",
-      description:
-        "The Moodle virtual learning environment is an application where you as a student can access course materials, interact with other course members, and post messages as well as assignments. For all interactions data that will be collected we record the time of interaction.",
-      id: "75cdee52-18eb-44f0-9196-dc5358a7f2d8",
-      dataCollected: [
-        "Forum post entires and replies",
-        "Pages viewed",
-        "Log in and log out time",
-        "Access and submission of assignments",
-        "Navigation data"
-      ],
-      purposes: [""],
-      icon: "record_voice_over",
-      consented: false
-    },
-    {
       name: "Self-Regulated Learning Dashboard (SEREne) ",
       id: "52e1b315-f5e1-4003-bb32-aeeaf0036580",
       description:

@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { PrivacySettingsComponent } from "./components/privacy-settings.component";
-import { Routes, RouterModule } from "@angular/router";
 import { MaterialModule } from "../material.module";
 import { CommonModule } from "@angular/common";
 import { CoreModule } from "../core/core.module";
@@ -11,23 +10,15 @@ import { reducer } from "./store/settings.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { SettingsEffects } from "./store/settings.effects";
 import { SharedModule } from "../shared/shared.module";
-
-const routes: Routes = [
-  {
-    path: "settings/privacy",
-    component: PrivacySettingsComponent
-  },
-  {
-    path: "**",
-    component: SettingsPageComponent
-  }
-];
+import { SettingsRoutingModule } from "./settings-routing.module";
+import { ConsentPageComponent } from "./components/consent-page.component";
+import { ConsentItemComponent } from "./components/consent-item.component";
 
 @NgModule({
   imports: [
     CommonModule,
     CoreModule,
-    RouterModule.forChild(routes),
+    SettingsRoutingModule,
     StoreModule.forFeature("settings", reducer),
     EffectsModule.forFeature([SettingsEffects]),
     MaterialModule,
@@ -36,7 +27,9 @@ const routes: Routes = [
   declarations: [
     PrivacySettingsComponent,
     NotificationSettingsComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    ConsentPageComponent,
+    ConsentItemComponent
   ]
 })
 export class SettingsModule {}

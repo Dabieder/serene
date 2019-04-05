@@ -4,6 +4,7 @@ import { NotificationSettingsComponent } from "./components/notification-setting
 import { AuthenticationGuard } from "../core/services";
 import { Routes, RouterModule } from "@angular/router";
 import { ConsentPageComponent } from "./components/consent-page.component";
+import { PrivacySettingsComponent } from "./components/privacy-settings.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,15 @@ const routes: Routes = [
         path: "consent",
         component: ConsentPageComponent,
         canActivate: [AuthenticationGuard]
+      },
+      {
+        path: "privacy",
+        component: PrivacySettingsComponent,
+        canActivate: [AuthenticationGuard]
+      },
+      {
+        path: "**",
+        redirectTo: "notifications"
       }
     ],
     canActivate: [AuthenticationGuard]

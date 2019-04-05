@@ -17,7 +17,7 @@ import { ToolbarComponent } from "./layout/toolbar.component";
 import { HeaderService } from "./services/header.service";
 import { AuthenticationService } from "./services/authentication.service";
 import { ShowIfCourseSelectedDirective } from "./course-selected.directive";
-import { MobileNavComponent } from "./layout/mobile-nav.component";
+
 import { ToolbarDropdownComponent } from "./layout/toolbar-dropdown.component";
 import { RouteService } from "./services/route.service";
 import { HealthCheckService } from "./services/health-check.service";
@@ -31,7 +31,6 @@ export const COMPONENTS = [
   ShowIfCourseSelectedDirective,
   SidenavComponent,
   ToolbarComponent,
-  MobileNavComponent,
   ToolbarDropdownComponent
 ];
 

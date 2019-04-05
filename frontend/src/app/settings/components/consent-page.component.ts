@@ -30,6 +30,7 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
   @ViewChild("termsAndConditions")
   termsAndConditions: ElementRef;
 
+  consentItemSerene: ConsentItem;
   ngOnInit() {
     this.consentForm = new FormGroup({
       hasReadIntroduction: new FormControl(false, Validators.requiredTrue),
@@ -47,7 +48,20 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
         this.consent = consent;
       });
 
-    this.loading$ = this.store.pipe(select(isLoading));
+    this.consentItemSerene = new ConsentItem(
+      "abc",
+      "Serene",
+      "Serene is an application where you can plan, monitor and reflect on your learning goals",
+      false,
+      "assessment",
+      [
+        "Learning goals",
+        "Time planning to reach the learning goals",
+        "Reflections on the accomplishment of the learning goals",
+        "Navigation data"
+      ]
+    );
+    // this.loading$ = this.store.pipe(select(isLoading));
   }
 
   consentToAll() {

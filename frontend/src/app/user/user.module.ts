@@ -3,12 +3,11 @@ import { CommonModule } from "@angular/common";
 import { UserRoutingModule } from "./user-routing.module";
 import { ConsentPageComponent } from "../settings/components/consent-page.component";
 import { MaterialModule } from "../material.module";
-import { ConsentService } from "./services/consent.service";
 import { CoreModule } from "../core/core.module";
 import { EventService } from "./services/event.service";
 import { TimelinePageComponent } from "./pages/timeline-page.component";
 import { TimelineItemComponent } from "./components/timeline-item.component";
-import { ConsentItemComponent } from "./components/consent-item.component";
+import { ConsentItemComponent } from "../settings/components/consent-item.component";
 import { LoginSelectionPageComponent } from "./pages/login-selection-page.component";
 import { SignupPageComponent } from "./pages/signup-page.component";
 import { SignInPageComponent } from "./pages/signin-page.component";
@@ -18,7 +17,7 @@ import { UserEffects } from "./store/user.effects";
 import { reducer } from "./store/user.reducers";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ToolbarProfileComponent } from "./components/toolbar-profile.component";
-import { ContactFormComponent } from "./components/contact-form.component";
+import { ContactFormComponent } from "../settings/components/contact-form.component";
 import { ConsentEffects } from "./store/consent.effects";
 import { AuthEffects } from "./store/auth.effects";
 import { SrlWidgetModule } from "../srl/srl-widget.module";
@@ -35,10 +34,8 @@ import { SrlWidgetModule } from "../srl/srl-widget.module";
     SrlWidgetModule
   ],
   declarations: [
-    ConsentPageComponent,
     TimelinePageComponent,
     TimelineItemComponent,
-    ConsentItemComponent,
     LoginSelectionPageComponent,
     SignupPageComponent,
     SignInPageComponent,
@@ -46,6 +43,6 @@ import { SrlWidgetModule } from "../srl/srl-widget.module";
     ContactFormComponent
   ],
   exports: [ToolbarProfileComponent],
-  providers: [ConsentService, EventService]
+  providers: [EventService]
 })
 export class UserModule {}

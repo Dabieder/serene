@@ -55,14 +55,14 @@ body {
   width: 100%;
   z-index: 200;
   background-color: white;
-  border-radius: 5px;
-  padding: 5px 0px 5px 0px;
+  border-radius: 2px;
+  padding: 0px 0px 5px 0px;
 }
 
 .dialog-page-header {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: $dipf-orange-light;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: $dipf-blue-lightest;
   position: relative;
   @media screen and (max-width: $media-sm) {
     padding: 0.75rem 1.25rem;

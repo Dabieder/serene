@@ -12,6 +12,7 @@ import { RouterModule } from "@angular/router";
 import { AlertsComponent } from "./components/alerts/alerts.component";
 import { NotificationDialogComponent } from "./components/dialogs/notification-dialog.component";
 import { MaterialModule } from "../material.module";
+import { MobileNavComponent } from "./components/mobile-nav.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
@@ -29,7 +30,8 @@ import { MaterialModule } from "../material.module";
     ExpanderComponent,
     NavDropdownComponent,
     AlertsComponent,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    MobileNavComponent
   ],
   exports: [
     ContentRowComponent,
@@ -45,7 +47,8 @@ import { MaterialModule } from "../material.module";
     ExpanderComponent,
     NavDropdownComponent,
     AlertsComponent,
-    NotificationDialogComponent
+    NotificationDialogComponent,
+    MobileNavComponent
   ],
   entryComponents: [NotificationDialogComponent]
 })

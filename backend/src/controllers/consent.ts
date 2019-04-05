@@ -15,6 +15,8 @@ export class ConsentController {
   ) {}
   getCourseConsent = (req: Request, res: Response, next: NextFunction) => {
     logger.verbose("Request Consent For User: " + req.payload.sub);
+
+    res.status(200);
   };
 
   postCourseConsent = async (

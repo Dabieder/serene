@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import {
   FormControl,
   FormGroupDirective,
@@ -6,6 +6,7 @@ import {
   NgForm
 } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
+import { Settings } from "../models/settings";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -28,6 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ["./notification-settings.component.scss"]
 })
 export class NotificationSettingsComponent implements OnInit {
+  @Input() settings: Settings;
   emailFormControl = new FormControl("", [Validators.email]);
 
   matcher = new MyErrorStateMatcher();

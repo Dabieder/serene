@@ -46,4 +46,14 @@ export class SettingsController {
       return next(err);
     }
   };
+
+  getConsentSettings = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    logger.info(`Retrieving Consent for ${req.payload.sub}`);
+    logger.error(`Method not really implemented at the moment`);
+    res.status(200);
+  };
 }

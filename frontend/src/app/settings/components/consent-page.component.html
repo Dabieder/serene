@@ -3,8 +3,8 @@
   id="consentFormWrapper"
   #consentFormWrapper
 >
-  <div class="text-center">
-    <p class="lead" *ngIf="(loading$ | async)">Loading...</p>
+  <div *ngIf="(loading$ | async)" class="d-flex justify-content-center">
+    <app-loading-indicator></app-loading-indicator>
   </div>
   <div class="grid-container" *ngIf="!(loading$ | async)">
     <div class="consent-form">
@@ -25,30 +25,19 @@
                 Frankfurt am Main, Germany.
               </p>
               <p>
-                You are invited in the context of the Educational Technology
-                seminar to explore and experience a Technology-Enhanced Learning
-                (TEL) environment. The TEL environment is our joined subject of
-                research during the seminar. Together we want to explore the
-                potentials of TEL but also discuss its limitations and further
-                improvements.
+                You are invited in the context of this seminar to explore and
+                experience a Technology-Enhanced Learning (TEL) environment. The
+                TEL environment is our joined subject of research during the
+                seminar. Together we want to explore the potentials of TEL but
+                also discuss its limitations and further improvements.
               </p>
-              <p>
-                The Technology-Enhanced Learning (TEL) environment consists of
-                four applications:
-              </p>
-              <ol>
-                <li>Virtual Learning Environment (Moodle)</li>
-                <li>Survey System (xAPI-Probe)</li>
-                <li>Self Regulated Learning Dashboard (SEREne)</li>
-                <li>Lecture Attendance Application (LAtency);</li>
-              </ol>
 
               <p>
-                These four applications are connected to the Trusted Learning
-                Analytics (TLA) infrastructure and send data from your
-                interaction with the applications to the TLA infrastructure. In
-                order to run the TEL environment, we need your consent to the
-                collection and processing of your data within the seminar.
+                This application is connected to the Trusted Learning Analytics
+                (TLA) infrastructure and send data from your interaction with
+                the applications to the TLA infrastructure. In order to run the
+                TEL environment, we need your consent to the collection and
+                processing of your data within the seminar.
               </p>
             </div>
 
@@ -60,8 +49,7 @@
                   moment. Your participation in the TEL environment will not
                   affect your final grade for the seminar. The final grade for
                   the seminar will be solely based on the outcomes and
-                  achievements of your seminar project that needs to be
-                  delivered on 15.03.2019 via email.
+                  achievements of your seminar project.
                 </li>
                 <li>
                   The TEL environment has been developed with great care. The
@@ -145,42 +133,57 @@
         <mat-card class="dashboard-card consent-card">
           <mat-card-header>
             <mat-card-title>
-              <h2>What does each application do? What data gets collected?</h2>
+              <h2>What does the application do? What data gets collected?</h2>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <div>
               <p>
-                Each of the four applications collects different types of data.
-                Below you can read more details about the various types of data
-                that will be collected in the environment.
+                Serene is a tool to assist you in planning and monitoring your
+                learning progress.
               </p>
               <p>
-                You can give your consent to each item individually.
-                Alternatively, you can click the button below to give consent to
-                all items at once.
+                In order to improve this application in the future, as well as
+                to do research on planning we would like to use the data that
+                you create in Serene.
               </p>
+              <p>
+                In Serene, we collect the following data:
+              </p>
+              <ul>
+                <li>Created Plans</li>
+                <li>Monitorings</li>
+                <li>Clicks in the application</li>
+              </ul>
             </div>
 
             <mat-card-actions>
-              <button
-                type="button"
-                (click)="consentToAll()"
-                mat-raised-button
-                color="primary"
+              <label for="consentToggle">
+                <b>
+                  I consent to the processing of personalized data in Serene:</b
+                >
+              </label>
+              <br />
+              <mat-slide-toggle
+                #consentToggle
+                name="toggleArs"
+                class="consent-slide-toggle"
+                color="secondary"
+                (change)="onConsentChange($event)"
+                formControlName="consentSerene"
               >
-                Consent to all
-              </button>
+                <b *ngIf="consentItemSerene.consented">Yes</b>
+                <b *ngIf="!consentItemSerene.consented">No</b>
+              </mat-slide-toggle>
             </mat-card-actions>
           </mat-card-content>
         </mat-card>
 
-        <app-consent-item
-          *ngFor="let consentItem of consent.consentItems"
-          (consentChange)="consentItemChange(consentItem)"
+        <!-- <app-consent-item
+          (consentChange)="consentItemChange(consentItemSerene)"
           (itemExpanded)="consentItemExpanded($event)"
-          [consentItem]="consentItem"
-        ></app-consent-item>
+          [consentItem]="consentItemSerene"
+        ></app-consent-item> -->
 
         <mat-card class="dashboard-card consent-card">
           <mat-card-header>

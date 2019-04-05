@@ -18,7 +18,7 @@ import {
   ConsentRetrieveErrorAction
 } from "./user.actions";
 import { Router } from "@angular/router";
-import { ConsentService } from "../services/consent.service";
+import { ConsentService } from "../../settings/services/consent.service";
 import { AppState } from "src/app/reducers";
 
 @Injectable()
@@ -60,11 +60,18 @@ export class ConsentEffects {
     switchMap(() => {
       // TODO: REMOVE DEBUG COURSE
       const courseId = "5bbf3ed292b8de2f5483e13f";
-      return this.consentService.getConsent(courseId).pipe(
-        map(consent => new ConsentRetrieveSuccessAction({ consent: consent })),
+      return (
+        this.consentService
+          .getConsent(courseId)
+          .pipe(
+            map(
+              consent => new ConsentRetrieveSuccessAction({ consent: consent })
+            )
+          ),
         catchError(error => of(new ConsentRetrieveErrorAction({ error })))
       );
-    })
+    }),
+    catchError(error => of(new ConsentRetrieveErrorAction({ error })))
   );
 
   @Effect({ dispatch: false })

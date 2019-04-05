@@ -55,7 +55,10 @@ export function reducer(
         consent: action.payload.consent,
         loading: false
       });
-
+    case UserActionTypes.CONSENT_RETRIEVE_ERROR:
+      return Object.assign({}, state, {
+        loading: false
+      });
     case AuthActionTypes.SIGNED_UP:
     case AuthActionTypes.AUTHENTICATION_SUCCESS:
       return Object.assign({}, state, {

@@ -1,0 +1,20 @@
+.secondary-menu {
+  background: #edecee;
+  box-shadow: 0 1px 2px 0 rgba(26, 24, 29, 0.2);
+}
+
+.secondary-menu .nav-link {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 16px 24px;
+  font-weight: bold;
+  color: #4e4a57;
+}
+
+.active-nav-link {
+  box-shadow: 0px -4px 0px orange inset;
+}
+
+.privacy-message {
+  height: 320px;
+}

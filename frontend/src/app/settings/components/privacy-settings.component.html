@@ -1,141 +1,87 @@
-<section class="mat-typography">
-  <h1>Privacy Settings</h1>
-  <div class="settings-wrapper">
-    <div class="settings-overview-card">
-      <mat-card>
-        <mat-card-header color="primary" class="card-title">
-          <mat-card-title>
-            <h3>Data by Course</h3>
-          </mat-card-title>
-        </mat-card-header>
-
-        <div class="mat-content-grid">
-
-          <div class="data-items-list">
-
-
-            <mat-list>
-              <mat-list-item *ngFor="let data of selectedCourse.data; let i = index" (click)="highlightClickedRow(courseIndex, i)"
-                [class.active-row]="i == selectedRow">
-                <span class="data-name">{{ data.name }}</span>
-                <div class="enable-slider">
-                  <mat-slide-toggle color="primary" [(ngModel)]="data.enabled" [checked]="data.enabled" [disabled]="disabled">
-                    <span *ngIf="data.enabled" class="label">Enabled</span>
-                    <span *ngIf="!data.enabled" class="label">Disabled</span>
-                  </mat-slide-toggle>
-                </div>
-
-                <div class="functions-dropdown-list">
-                  <button mat-icon-button [matMenuTriggerFor]="menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
-                      <mat-icon>save_alt</mat-icon>
-                      <span>Download</span>
-                    </button>
-                    <button mat-menu-item>
-                      <mat-icon>delete</mat-icon>
-                      <span>Delete</span>
-                    </button>
-                  </mat-menu>
-                </div>
-
-                <div class="button-horizontal-list">
-
-                  <button mat-raised-button>
-                    <mat-icon>save_alt</mat-icon>
-                    DOWNLOAD
-                  </button>
-                  <button mat-raised-button>
-                    <mat-icon>delete</mat-icon>
-                    DELETE
-                  </button>
-                </div>
-              </mat-list-item>
-            </mat-list>
+<div class="col-12">
+  <div class="col-sm-6">
+    <section>
+      <h4>Download</h4>
+      <p>
+        You can download all the data that has been collected about you. If you
+        choose to do so, an archive (.zip) will be created and you will be able
+        to download it once it is ready.
+      </p>
+      <button type="button" class="btn btn-primary">
+        Download
+      </button>
+    </section>
+    <hr />
+    <section>
+      <h4>Delete</h4>
+      <p>
+        You can request the deletion of all the <em>personalized</em> data that
+        is stored about you and which is not directly related to the
+        functionality of Serene, such as log data.
+      </p>
+      <p>
+        Please note that you cannot revert this process, so once your
+        personalized data is deleted, you will no longer receive personalized
+        recommendations.
+      </p>
+      <button type="button" class="btn btn-danger">
+        Delete
+      </button>
+    </section>
+    <hr />
+    <section>
+      <h4>Contact</h4>
+      <p>
+        You can contact us at any time if you have questions regarding the
+        collection, storage, or processing of your data. <br />
+        If you want, you can contact us directly via
+        <a href="mailto:drachsler@dipf.de">e-mail</a> or use the contact form
+        below.
+      </p>
+      <div class="form-area">
+        <form role="form">
+          <br style="clear:both" />
+          <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Your e-mail address where we should send our response"
+              required
+            />
           </div>
-        </div>
-      </mat-card>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="subject"
+              name="subject"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              class="form-control privacy-message"
+              type="textarea"
+              id="message"
+              placeholder="Your Message"
+            ></textarea>
+          </div>
 
-    </div>
-
-
-
-    <div class="functionality-card">
-
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="subheading-2">
-            <h3>
-              Download
-            </h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            You can download all the data that has been collected about you. If you choose to do so, an archive (.zip)
-            will be created
-            and you will be able to download it once it is ready.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">
-            <mat-icon>archive</mat-icon>
-            Create Download Archive
+          <button
+            type="button"
+            (click)="submit()"
+            id="submit"
+            name="submit"
+            class="btn btn-primary"
+          >
+            Send Message
           </button>
-        </mat-card-actions>
-      </mat-card>
-
-
-    </div>
-
-
-
-    <div class="functionality-card">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="subheading-2">
-            <h3>Delete</h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            You can delete all of the data that is stored about you.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">
-            <mat-icon>delete_forever</mat-icon>
-            Delete
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-
-    <div class="functionality-card">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="subheading-2">
-            <h3>Contact</h3>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>
-            You can contact us at any time if you have questions regarding the collection, storage, or processing of
-            your data. <br />
-            If you want, you can contact us via <a href="mailto:drachsler@dipf.de">Email</a> or use the contact form
-            below.
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary">
-            <mat-icon>home</mat-icon>
-            Contact
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-
+        </form>
+      </div>
+    </section>
   </div>
-</section>
+</div>

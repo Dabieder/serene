@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Consent } from "../../settings/models/consent";
+import { Consent } from "../models/consent";
 import { map } from "rxjs/operators";
-import { User } from "../models/user";
 import { getAuthenticatedUser, AppState } from "../../reducers";
 import { Store, select } from "@ngrx/store";
 import { ApiService } from "../../core/services";
@@ -15,29 +14,20 @@ export class ConsentService {
     this.init();
   }
   consent: Consent;
-  user: User;
-
-  init() {
-    this.store.pipe(select(getAuthenticatedUser)).subscribe(u => {
-      this.user = u;
-    });
-  }
+  url = "/settings/consent";
+  init() {}
 
   getConsent(courseId: string): Observable<Consent> {
-    if (this.user) {
-      const url = `/courses/${courseId}/consent`;
-      return this.apiService.get(url).pipe(
-        map(data => {
-          return data;
-        })
-      );
-    }
+    return this.apiService.get(this.url).pipe(
+      map(data => {
+        return data;
+      })
+    );
   }
 
   setConsent(consent: Consent, courseId: string): Observable<any> {
-    const url = `/courses/${courseId}/consent`;
     const consentObject = { consent: consent };
-    return this.apiService.post(url, consentObject).pipe(
+    return this.apiService.post(this.url, consentObject).pipe(
       map(response => {
         return response;
       })

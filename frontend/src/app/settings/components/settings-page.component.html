@@ -1,6 +1,7 @@
-<div class="container-fluid d-flex flex-column settings-page">
-  <a routerLink="/serene/monitor">Back</a>
-  <div class="dialog-page-header">
+<div class="shadow pb-4 dialog-page d-flex flex-column">
+  <!-- 
+      <a routerLink="/serene/monitor">Back</a>
+    <div class="dialog-page-header">
     <h4 class="float-left mb-0" i18n>Settings</h4>
 
     <div class="header-controls float-right">
@@ -9,51 +10,69 @@
         Submit
       </button>
     </div>
-  </div>
-  <nav class="nav d-flex justify-content-center col-12">
-    <a class="nav-link" href="/settings/notifications">Notifications</a>
-    <a class="nav-link" href="/settings/privacy">Privacy</a>
-    <a class="nav-link" href="/settings/consent">Consent</a>
+  </div> -->
+  <nav class="nav d-flex justify-content-center secondary-menu mb-4">
+    <a
+      routerLink="/settings/notifications"
+      routerLinkActive="active-nav-link"
+      class="nav-link"
+      >Notifications</a
+    >
+    <a
+      routerLink="/settings/privacy"
+      routerLinkActive="active-nav-link"
+      class="nav-link"
+      >Privacy</a
+    >
+    <a
+      routerLink="/settings/consent"
+      routerLinkActive="active-nav-link"
+      class="nav-link"
+      >Consent</a
+    >
   </nav>
-  <div class="col-12 mt-4">
-    <div class="col-sm-6">
-      <section>
-        <h4>Push Notifications</h4>
-        <p>
-          If you want to be reminded of your plans via notification, check the
-          checkbox below. Your browser will then ask you if it is acceptable for
-          this website to send you notifications. Please click accept to receive
-          notifications.
-        </p>
-        <div>
-          <mat-checkbox>
-            Enable
-          </mat-checkbox>
-        </div>
-      </section>
-      <hr />
-      <section>
-        <h4>E-Mail Notifications</h4>
-        <p>
-          If you want to be reminded of your plans and goals via e-mail, enter
-          an e-mail address below.
-        </p>
-        <mat-form-field class="example-full-width">
-          <input
-            matInput
-            [formControl]="emailFormControl"
-            placeholder="Email"
-          />
-          <mat-error *ngIf="emailFormControl.hasError('email')">
-            Please enter a valid email address
-          </mat-error>
-        </mat-form-field>
-        <div>
-          <mat-checkbox>
-            Enable
-          </mat-checkbox>
-        </div>
-      </section>
+  <router-outlet></router-outlet>
+  <!-- <form [formGroup]="settingsForm">
+    <div class="col-12 mt-4">
+      <div class="col-sm-6">
+        <section>
+          <h4>Push Notifications</h4>
+          <p>
+            If you want to be reminded of your plans via notification, check the
+            checkbox below. Your browser will then ask you if it is acceptable
+            for this website to send you notifications. Please click accept to
+            receive notifications.
+          </p>
+          <div>
+            <mat-checkbox formControlName="usePushNotifications">
+              Enable
+            </mat-checkbox>
+          </div>
+        </section>
+        <hr />
+        <section>
+          <h4>E-Mail Notifications</h4>
+          <p>
+            If you want to be reminded of your plans and goals via e-mail, enter
+            an e-mail address below.
+          </p>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              formControlName="eMailAddress"
+              placeholder="Email"
+            />
+            <mat-error *ngIf="emailFormControl.hasError('email')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <mat-checkbox formControlName="useEmailNotifications">
+              Enable
+            </mat-checkbox>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </form> -->
 </div>

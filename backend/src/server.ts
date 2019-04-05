@@ -243,6 +243,12 @@ export class Server {
       this.settingsController.postSettings
     );
 
+    app.get(
+      API_PREFIX + "/settings/consent",
+      jwtAuthRequired,
+      this.settingsController.getConsentSettings
+    );
+
     app.post(API_PREFIX + "/auth/signup", authController.postSignup);
     app.post(API_PREFIX + "/auth/signin", authController.postSignIn);
     app.get(API_PREFIX + "/auth/casvalidate", authController.getCasValidate);

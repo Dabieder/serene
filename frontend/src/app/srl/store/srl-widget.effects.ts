@@ -18,7 +18,8 @@ import {
   SubmitNewPlanAction,
   SubmitMonitoringAction,
   CompletePlanAction,
-  UpdatePlansAction
+  UpdatePlansAction,
+  DeletePlanAction
 } from "./srl-widget.actions";
 import { of } from "rxjs";
 import { Action, Store, select } from "@ngrx/store";
@@ -111,7 +112,7 @@ export class SrlWidgetEffects {
 
   @Effect({ dispatch: false })
   public learningPlanDeleteUpdateBackend = this.actions$.pipe(
-    ofType<SubmitNewPlanAction>(SrlWidgetActionTypes.DELETE_PLAN),
+    ofType<DeletePlanAction>(SrlWidgetActionTypes.DELETE_PLAN),
     switchMap(action => {
       return this.apiService
         .delete(`/widgets/srlwidget/learningplans/${action.payload.plan.id}`)
