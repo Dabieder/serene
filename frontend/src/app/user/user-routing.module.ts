@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ConsentPageComponent } from "./pages/consent-page.component";
+import { ConsentPageComponent } from "../settings/components/consent-page.component";
 import { TimelinePageComponent } from "./pages/timeline-page.component";
 import { SignupPageComponent } from "./pages/signup-page.component";
 import { SignInPageComponent } from "./pages/signin-page.component";

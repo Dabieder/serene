@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Consent } from "../models/consent";
+import { Consent } from "../../settings/models/consent";
 import { map } from "rxjs/operators";
 import { User } from "../models/user";
 import { getAuthenticatedUser, AppState } from "../../reducers";

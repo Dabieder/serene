@@ -38,18 +38,6 @@ const routes: Routes = [
     path: "home",
     component: SrlWidgetComponent,
     canActivate: [AuthenticationGuard]
-    // children: [
-    //   {
-    //     path: "monitor",
-    //     component: MonitoringPageComponent,
-    //     canActivate: [AuthenticationGuard]
-    //   },
-    //   {
-    //     path: "reflect",
-    //     component: ReflectionPageComponent,
-    //     canActivate: [AuthenticationGuard]
-    //   }
-    // ]
   },
   {
     path: "widget",

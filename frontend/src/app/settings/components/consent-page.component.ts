@@ -4,11 +4,11 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Store, select } from "@ngrx/store";
 import { takeUntil } from "rxjs/operators";
 import { getConsent, AppState, isLoading } from "../../reducers";
-import { User } from "../models/user";
+import { User } from "../../user/models/user";
 import {
   ConsentSubmitAction,
   ConsentRetrieveAction
-} from "../store/user.actions";
+} from "../../user/store/user.actions";
 import { BaseComponent } from "../../core/base-component";
 import { Observable } from "rxjs";
 import { LoggingService } from "src/app/core/services/logging.service";

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { ConsentItem } from "../models/consent-item";
+import { ConsentItem } from "../../settings/models/consent-item";
 
 @Component({
   selector: "app-consent-item",

@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { User } from "../models/user";
-import { Consent } from "../models/consent";
+import { Consent } from "../../settings/models/consent";
 
 export const enum UserActionTypes {
   CONSENT_SUBMIT = "[user] Consent Submit",

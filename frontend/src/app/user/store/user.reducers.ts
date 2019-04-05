@@ -1,6 +1,6 @@
 import { UserActionsUnion, UserActionTypes } from "./user.actions";
 import { User } from "../models/user";
-import { Consent } from "../models/consent";
+import { Consent } from "../../settings/models/consent";
 import { createSelector } from "@ngrx/store";
 import * as fromRoot from "../../reducers";
 import { AuthActionTypes, AuthActionsUnion } from "./auth.actions";

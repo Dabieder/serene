@@ -5,16 +5,16 @@
 
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()" i18n> Cancel </span>
-      <button
-        class="ml-1 btn btn-rounded db-primary"
-        [disabled]="!plan.goal"
-        (click)="submit()"
-        i18n
-      >
+      <button class="ml-1 btn btn-rounded db-primary" (click)="submit()" i18n>
         Submit
       </button>
     </div>
   </div>
+  <nav class="nav d-flex justify-content-center col-12">
+    <a class="nav-link" href="/settings/notifications">Notifications</a>
+    <a class="nav-link" href="/settings/privacy">Privacy</a>
+    <a class="nav-link" href="/settings/consent">Consent</a>
+  </nav>
   <div class="col-12 mt-4">
     <div class="col-sm-6">
       <section>

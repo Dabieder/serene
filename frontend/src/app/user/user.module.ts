@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { UserRoutingModule } from "./user-routing.module";
-import { ConsentPageComponent } from "./pages/consent-page.component";
+import { ConsentPageComponent } from "../settings/components/consent-page.component";
 import { MaterialModule } from "../material.module";
 import { ConsentService } from "./services/consent.service";
 import { CoreModule } from "../core/core.module";
