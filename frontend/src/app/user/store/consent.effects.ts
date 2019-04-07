@@ -60,16 +60,11 @@ export class ConsentEffects {
     switchMap(() => {
       // TODO: REMOVE DEBUG COURSE
       const courseId = "5bbf3ed292b8de2f5483e13f";
-      return (
-        this.consentService
-          .getConsent(courseId)
-          .pipe(
-            map(
-              consent => new ConsentRetrieveSuccessAction({ consent: consent })
-            )
-          ),
-        catchError(error => of(new ConsentRetrieveErrorAction({ error })))
-      );
+      return this.consentService
+        .getConsent(courseId)
+        .pipe(
+          map(consent => new ConsentRetrieveSuccessAction({ consent: consent }))
+        );
     }),
     catchError(error => of(new ConsentRetrieveErrorAction({ error })))
   );

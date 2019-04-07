@@ -21,6 +21,7 @@ import { AuthenticationService } from "../../core/services/authentication.servic
 import { ConsentRetrieveAction } from "./user.actions";
 import { RouteService } from "src/app/core/services/route.service";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
+import { User } from "../models/user";
 
 @Injectable()
 export class AuthEffects {
@@ -63,7 +64,7 @@ export class AuthEffects {
     ofType<TokenSessionLoginAction>(AuthActionTypes.TOKEN_SESSION_LOGIN),
     switchMap(() => {
       return this.apiService.get(ENDPOINTS.USER).pipe(
-        map(user => {
+        map((user: User) => {
           if (user) {
             return new AuthenticationSuccessAction({ user: user });
           } else {
@@ -117,7 +118,11 @@ export class AuthEffects {
       if (action.payload.user.token) {
         this.jwtService.saveToken(action.payload.user.token);
       }
-      this.navigateToOriginallyIntendedRoute();
+      if (action.payload.user.consented) {
+        this.navigateToOriginallyIntendedRoute();
+      } else {
+        this.navigateToConsentForm();
+      }
     }),
     map(() => {
       return new FetchSettingsAction();
@@ -158,5 +163,9 @@ export class AuthEffects {
     } else {
       this.router.navigate(["/serene/monitor"]);
     }
+  }
+
+  private navigateToConsentForm() {
+    this.router.navigate(["/consent"]);
   }
 }

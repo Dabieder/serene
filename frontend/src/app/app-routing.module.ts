@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: "serene",
     loadChildren: "./srl/srl-widget.module#SrlWidgetModule",
-    canActivate: [AuthenticationGuard]
+    // canActivate: [AuthenticationGuard]
   },
   {
     path: "settings",

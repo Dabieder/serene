@@ -14,17 +14,14 @@ const routes: Routes = [
       {
         path: "notifications",
         component: NotificationSettingsComponent,
-        canActivate: [AuthenticationGuard]
       },
       {
         path: "consent",
         component: ConsentPageComponent,
-        canActivate: [AuthenticationGuard]
       },
       {
         path: "privacy",
         component: PrivacySettingsComponent,
-        canActivate: [AuthenticationGuard]
       },
       {
         path: "**",

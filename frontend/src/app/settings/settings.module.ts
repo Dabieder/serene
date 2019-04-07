@@ -30,6 +30,7 @@ import { ConsentItemComponent } from "./components/consent-item.component";
     SettingsPageComponent,
     ConsentPageComponent,
     ConsentItemComponent
-  ]
+  ],
+  exports: [ConsentPageComponent]
 })
 export class SettingsModule {}

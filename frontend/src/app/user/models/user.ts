@@ -9,6 +9,7 @@ export class User {
   email: string;
   password: string;
   token: string;
+  consented: boolean;
   settings: {
     privacy: Setting[];
   };

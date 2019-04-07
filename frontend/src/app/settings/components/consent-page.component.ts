@@ -34,7 +34,11 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.consentForm = new FormGroup({
       hasReadIntroduction: new FormControl(false, Validators.requiredTrue),
-      hasReadTermsAndConditions: new FormControl(false, Validators.requiredTrue)
+      hasReadTermsAndConditions: new FormControl(
+        false,
+        Validators.requiredTrue
+      ),
+      consentSerene: new FormControl(false)
     });
 
     this.store.dispatch(new ConsentRetrieveAction());

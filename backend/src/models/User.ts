@@ -14,7 +14,7 @@ export interface UserModel extends mongoose.Document {
   salt: string;
   accountName: string;
   settings: object;
-  consentFormsSubmitted: Array<String>;
+  consented: boolean;
 
   profile: {
     firstName: string;
@@ -23,12 +23,6 @@ export interface UserModel extends mongoose.Document {
     location: string;
     picture: string;
   };
-
-  courses: [
-    {
-      id: string;
-    }
-  ];
 
   comparePassword: comparePasswordFunction;
   setPassword: setPasswordFunction;
@@ -49,11 +43,10 @@ type toAuthJSONFunction = () => object;
 const userSchema = new mongoose.Schema(
   {
     email: String,
+    consented: Boolean,
     password: String,
     accountName: { type: String, unique: true },
-    consentFormsSubmitted: [String],
     settings: Object,
-    courses: String,
     salt: String,
     profile: {
       firstName: String,
@@ -106,7 +99,8 @@ const comparePassword: comparePasswordFunction = function(candidatePassword) {
 const toAuthJSON: toAuthJSONFunction = function() {
   return {
     accountName: this.accountName,
-    token: this.generateJWT()
+    token: this.generateJWT(),
+    consented: this.consented
   };
 };
 

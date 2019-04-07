@@ -2,11 +2,13 @@
 
 .mobile-nav-list li {
   width: 40%;
+  max-width: 310px;
   padding: 5px;
 }
 
 .mobile-bottom-nav {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   background-color: $dipf-orange-lighter;
   box-shadow: 0 1px 2px 0 rgba(26, 24, 29, 0.24);
 }
@@ -26,7 +28,7 @@
   margin-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .mobile-nav-list > li {

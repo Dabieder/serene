@@ -1,4 +1,6 @@
-<div class="mobile-bottom-nav d-flex flex-row align-items-center">
+<nav
+  class="mobile-bottom-nav d-flex flex-row align-items-center justify-content-between"
+>
   <app-nav-dropdown></app-nav-dropdown>
   <ul class="mobile-nav-list db-primary">
     <li routerLinkActive="active-mobile-nav-link">
@@ -42,4 +44,10 @@
         <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
       </button>
     </a> -->
-</div>
+
+  <!-- <a routerLink="/settings" class="item-with-icon settings-item">
+    <img src="/assets/btn-icons/settings_white.svg" class="mobile-nav-img" />
+    <div class="bottom-nav-label">Settings</div>
+  </a> -->
+  <app-nav-dropdown></app-nav-dropdown>
+</nav>

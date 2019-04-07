@@ -19,11 +19,11 @@ export class PrivacySettingsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.settingsService.getSettingsData().subscribe(data => {
-      this.courseData = data;
-      this.selectedCourse = data[0];
-      this.selectedDataItem = this.selectedCourse.data[0];
-    });
+    // this.settingsService.getSettingsData().subscribe(data => {
+    //   this.courseData = data;
+    //   this.selectedCourse = data[0];
+    //   this.selectedDataItem = this.selectedCourse.data[0];
+    // });
   }
 
   getWidgetsForSelected() {
