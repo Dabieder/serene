@@ -1,5 +1,5 @@
 DB_URI=localhost:27017
-DB_NAME=
+DB_NAME=serene
 DB_PASSWORD=
 DB_USERNAME=
 JWT_SECRET=something

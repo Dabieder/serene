@@ -1,5 +1,6 @@
-<ng-container *ngIf="(showToolbar$ | async) === true"> </ng-container>
-
 <div class="content-wrapper"><router-outlet></router-outlet></div>
-<app-mobile-nav class="app-mobile-nav w-100"></app-mobile-nav>
+<app-mobile-nav
+  *ngIf="(showToolbar$ | async) === true && (isAuthenticated$ | async) === true"
+  class="app-mobile-nav w-100"
+></app-mobile-nav>
 <app-alerts></app-alerts>

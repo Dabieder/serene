@@ -7,7 +7,7 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { Store, select } from "@ngrx/store";
-import { AppState, isAuthenticated, getUser } from "../../reducers";
+import { AppState, getUser, getIsAuthenticated } from "../../reducers";
 import {
   TokenSessionLoginAction,
   AuthenticationRedirectAction
@@ -32,10 +32,9 @@ export class AuthenticationGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> {
-    const obs = this.store$.select(isAuthenticated);
-    console.log("AUTH GUARD!");
+    const obs = this.store$.select(getIsAuthenticated);
     return this.store$.pipe(
-      select(isAuthenticated),
+      select(getIsAuthenticated),
       withLatestFrom(this.store$.select(getUser)),
       map(([authed, user]) => {
         if (authed) {

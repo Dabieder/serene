@@ -45,11 +45,6 @@ export const getAlerts = createSelector(
   al => al.alerts
 );
 
-export const getShowSidenav = createSelector(
-  getLayoutState,
-  lay => lay.showSidenav
-);
-
 export const getShowToolbar = createSelector(
   getLayoutState,
   lay => lay.showToolbar
@@ -67,11 +62,6 @@ export const getAuthenticatedUser = createSelector(
 export const getConsent = createSelector(
   getUserState,
   user.getConsent
-);
-
-export const isAuthenticated = createSelector(
-  getUserState,
-  user.isAuthenticated
 );
 
 export const getCurrentUrl = createSelector(
@@ -105,4 +95,9 @@ export const isLoading = createSelector(
 export const getUser = createSelector(
   getUserState,
   userState => userState.user
+);
+
+export const getIsAuthenticated = createSelector(
+  getUserState,
+  userState => userState.authenticated
 );

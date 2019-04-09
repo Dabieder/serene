@@ -1,12 +1,6 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import {
-  AppState,
-  getShowSidenav,
-  getShowToolbar,
-  selectCurrentCourseId,
-  isAuthenticated
-} from "./reducers";
+import { AppState, getShowToolbar, getIsAuthenticated } from "./reducers";
 import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
@@ -22,10 +16,10 @@ import { takeUntil } from "rxjs/operators";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent extends BaseComponent implements OnInit {
-  showSidenav$: Observable<boolean> = this.store$.pipe(select(getShowSidenav));
   showToolbar$: Observable<boolean> = this.store$.pipe(select(getShowToolbar));
-  courseId$: Observable<any> = this.store$.pipe(select(selectCurrentCourseId));
-
+  isAuthenticated$: Observable<boolean> = this.store$.pipe(
+    select(getIsAuthenticated)
+  );
   constructor(
     private store$: Store<AppState>,
     private router: Router,

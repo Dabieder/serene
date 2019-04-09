@@ -3,7 +3,7 @@ import { SwPush } from "@angular/service-worker";
 import { HttpClient } from "@angular/common/http";
 import { map, catchError, tap } from "rxjs/operators";
 import { ENDPOINTS, ApiService } from "./api.service";
-import { AppState, isAuthenticated } from "src/app/reducers";
+import { AppState } from "src/app/reducers";
 import { Store } from "@ngrx/store";
 import { LoggingService } from "./logging.service";
 
@@ -26,8 +26,7 @@ export class PushNotificationService {
     //     this.subscribeToPushNotifications();
     //   }
     // });
-
-    // this.handleNotificationClicks();
+    this.handleNotificationClicks();
   }
 
   handleNotificationClicks() {
@@ -101,22 +100,5 @@ export class PushNotificationService {
     Notification.requestPermission(status => {
       console.log("Permission status: ", status);
     });
-  }
-
-  notificationTest() {
-    // Let's check if the browser supports notifications
-    if (!("Notification" in window)) {
-      alert("This browser does not support system notifications");
-    } else if (Notification.permission === "granted") {
-      // If it's okay let's create a notification
-      const notification = new Notification("Hi there!");
-    } else if (Notification.permission !== "denied") {
-      Notification.requestPermission(function(permission) {
-        // If the user accepts, let's create a notification
-        if (permission === "granted") {
-          const notification = new Notification("Hi there!");
-        }
-      });
-    }
   }
 }
