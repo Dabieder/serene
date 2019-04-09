@@ -1,0 +1,63 @@
+@import "src/assets/css/variables.scss";
+
+.cancel-btn {
+  cursor: pointer;
+  color: deepskyblue;
+}
+
+.close-btn {
+  width: 20px;
+  height: 20px;
+  border-color: transparent;
+  position: absolute;
+  background-repeat: no-repeat;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.btn {
+  box-shadow: 0 2px 2px 0 rgba(26, 24, 29, 0.16),
+    0 1px 4px 0 rgba(26, 24, 29, 0.12);
+  padding: 7.5px 15.5px;
+  border: 1px solid transparent !important;
+  color: #efefef;
+}
+
+.close-btn:hover {
+  background-color: #aaaaaa;
+}
+
+.db-btn-primary:hover {
+  background-color: $dipf-blue-lighter !important;
+}
+
+.db-btn-primary {
+  background-color: $dipf-blue !important;
+}
+
+.db-btn-secondary {
+  background-color: $dipf-orange !important;
+  color: #efefef;
+}
+
+.btn-circle {
+  border-radius: 24px !important;
+}
+
+.btn-rounded {
+  border-radius: 5px !important;
+}
+
+.btn-shadow {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}

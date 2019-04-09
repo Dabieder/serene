@@ -31,7 +31,6 @@ export function reducer(
     case SettingsActionTypes.SUBMIT_SETTINGS:
       return {
         ...state,
-        enableNotifications: action.payload.settings.usePushNotifications,
         settings: action.payload.settings
       };
     case SettingsActionTypes.FETCH_SETTINGS_SUCCESS:
@@ -43,3 +42,5 @@ export function reducer(
       return state;
   }
 }
+
+export const getSettings = (state: SettingsState) => state.settings;

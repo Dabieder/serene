@@ -35,13 +35,16 @@ export class SettingsService {
 
   updateSettings = async (accountName: string, settings: any) => {
     try {
-      const user = await User.findOneAndUpdate(
+      return await User.findOneAndUpdate(
         {
           accountName
         },
-        { settings }
+        {
+          $set: {
+            settings: settings
+          }
+        }
       ).exec();
-      return user;
     } catch (error) {
       logger.error(`Error trying to update settings`, error);
       return null;

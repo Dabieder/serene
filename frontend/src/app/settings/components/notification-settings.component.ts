@@ -1,12 +1,16 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import {
   FormControl,
   FormGroupDirective,
   Validators,
-  NgForm
+  NgForm,
+  FormGroup
 } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { Settings } from "../models/settings";
+import { SettingsService } from "../settings.service";
+import { BaseComponent } from "src/app/core/base-component";
+import { takeUntil } from "rxjs/operators";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -28,13 +32,47 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: "./notification-settings.component.html",
   styleUrls: ["./notification-settings.component.scss"]
 })
-export class NotificationSettingsComponent implements OnInit {
+export class NotificationSettingsComponent extends BaseComponent
+  implements OnInit {
   @Input() settings: Settings;
-  emailFormControl = new FormControl("", [Validators.email]);
+  formGroup: FormGroup = new FormGroup({
+    email: new FormControl("biedermann@dipf.de"),
+    usePushNotifications: new FormControl(true),
+    useEMailNotifications: new FormControl(true)
+  });
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() {}
+  constructor(private settingsService: SettingsService) {
+    super();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onChanges();
+  }
+
+  onChanges() {
+    this.formGroup
+      .get("usePushNotifications")
+      .valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .subscribe(val => {
+        console.log("Value Change usePushNotifications: ", val);
+        this.settingsService.updateSettings({ usePushNotifications: val });
+      });
+
+    this.formGroup
+      .get("useEMailNotifications")
+      .valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .subscribe(val => {
+        console.log("Value Change: ", val);
+        this.settingsService.updateSettings({ useEMailNotifications: val });
+      });
+  }
+
+  updateEMail() {
+    const email = {
+      email: this.formGroup.get("email").value
+    };
+    this.settingsService.updateSettings({ email });
+  }
 }
