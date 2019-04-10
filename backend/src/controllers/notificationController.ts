@@ -2,11 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import logger from "../util/logger";
 import webpush from "web-push";
 import { NotificationService } from "../services/NotificationService";
-import { Notification, NotificationModel } from "../models/Notification";
+import { Notification } from "../models/Notification";
 import moment = require("moment");
-import { PushNotificationSubscriptionModel } from "../models/PushNotificationSubscription";
 import { PushSubscriptionService } from "../services/PushSubscriptionService";
-import { User } from "../models/User";
 
 export class NotificationController {
   constructor(
@@ -52,7 +50,9 @@ export class NotificationController {
         );
 
         if (isBefore) {
-          await this.sendNotificationBasedOnPreference(notification);
+          await this.notificationService.sendNotificationBasedOnPreference(
+            notification
+          );
           // TODO: Delete notification after it has been sent
         }
       }
@@ -66,44 +66,4 @@ export class NotificationController {
       });
     }
   };
-
-  async sendNotificationBasedOnPreference(notification: NotificationModel) {
-    const user = await User.findOne({
-      accountName: notification.accountName
-    }).exec();
-
-    if (user.settings.usePushNotifications) {
-      await this.sendPushNotification(notification);
-    }
-    if (user.settings.useEMailNotifications) {
-      await this.sendEMailNotification(notification, user.settings.email);
-    }
-  }
-
-  async sendPushNotification(notification: NotificationModel) {
-    const pushSubscription = await this.pushSubscriptionService.getSubscriptionForAccount(
-      notification.accountName
-    );
-    await this.notificationService.sendNotificationsToSubscriptions(
-      notification,
-      pushSubscription
-    );
-  }
-
-  async sendEMailNotification(notification: NotificationModel, email: string) {
-    logger.error(
-      "Trying to send email notifications, but it is not yet implemented"
-    );
-    throw new Error("Not Implemented");
-  }
-
-  async sendTextNotification(
-    notification: NotificationModel,
-    phoneNumber: string
-  ) {
-    logger.error(
-      "Trying to send text notifications, but it is not yet implemented"
-    );
-    throw new Error("Not Implemented");
-  }
 }

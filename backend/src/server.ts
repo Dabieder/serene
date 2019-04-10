@@ -105,7 +105,6 @@ export class Server {
     );
     this.app.use(express.static("public"));
     passportConfig.initPassportLocal();
-    this.createDefaultDataForTesting();
     this.errorHandling(this.app);
 
     const http = require("http").Server(this.app);
@@ -116,12 +115,6 @@ export class Server {
 
     return true;
   }
-
-  // TODO: REMOVE
-  private createDefaultDataForTesting = () => {
-    this.courseController.generateDefaultCourseForTesting();
-    this.queryController.generateDefaultQueriesForTesting();
-  };
 
   private errorHandling = (app: express.Application): void => {
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
@@ -260,47 +253,6 @@ export class Server {
     app.post(API_PREFIX + "/auth/signup", authController.postSignup);
     app.post(API_PREFIX + "/auth/signin", authController.postSignIn);
     app.get(API_PREFIX + "/auth/casvalidate", authController.getCasValidate);
-    app.get(
-      API_PREFIX + "/dashboard/pages/:courseId",
-      jwtAuthOptional,
-      dashboardController.getDashboardPage
-    );
-
-    app.get(
-      API_PREFIX + "/courses/:courseId/consent",
-      jwtAuthOptional,
-      this.consentController.getCourseConsent
-    );
-    app.post(
-      API_PREFIX + "/courses/:courseId/consent",
-      jwtAuthRequired,
-      this.consentController.postCourseConsent
-    );
-    app.post(
-      API_PREFIX + "/courses",
-      jwtAuthRequired,
-      this.courseController.postCourse
-    );
-    app.get(
-      API_PREFIX + "/courses",
-      jwtAuthOptional,
-      this.courseController.getAllCourses
-    );
-    app.get(
-      API_PREFIX + "/courses/:courseId/pages",
-      jwtAuthOptional,
-      this.courseController.getCoursePages
-    );
-    app.get(
-      API_PREFIX + "/courses/:courseId/pages/:pageId/rows",
-      jwtAuthOptional,
-      this.courseController.getCourseRowsForPage
-    );
-    app.get(
-      API_PREFIX + "/courses/:courseId/pages/:pageId/rows/:columnId/co",
-      jwtAuthOptional,
-      this.courseController.getCourseRowsForPage
-    );
 
     app.get(API_PREFIX + "/health", healthController.getHealth);
 

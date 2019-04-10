@@ -4,10 +4,6 @@ import {
   Notification,
   NotificationModel
 } from "../models/Notification";
-import {
-  PushNotificationSubscription,
-  PushNotificationSubscriptionModel
-} from "../models/PushNotificationSubscription";
 import logger from "../util/logger";
 import * as nodeCron from "node-cron";
 import { ScheduledTask } from "node-cron";
@@ -16,14 +12,32 @@ import {
   LearningPlan
 } from "../models/SrlWidget/LearningPlan";
 import { PushSubscriptionService } from "./PushSubscriptionService";
+import { User } from "../models/User";
+import { createTransport, createTestAccount, Transporter } from "nodemailer";
 
 export class NotificationService {
   vapidPublic = process.env["VAPID_PUBLIC"];
   vapidPrivate = process.env["VAPID_PRIVATE"];
 
+  transporter: Transporter;
   schedules: ScheduledTask[] = [];
 
-  constructor(private pushSubscriptionService: PushSubscriptionService) {}
+  constructor(private pushSubscriptionService: PushSubscriptionService) {
+    // this.initialize();
+  }
+
+  async configureMailer() {
+    const testAccount = await createTestAccount();
+    this.transporter = createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass
+      }
+    });
+  }
 
   initialize() {
     webpush.setVapidDetails(
@@ -130,10 +144,26 @@ export class NotificationService {
     }
   };
 
+  async sendNotificationBasedOnPreference(notification: NotificationModel) {
+    const user = await User.findOne({
+      accountName: notification.accountName
+    }).exec();
+
+    if (user.settings.usePushNotifications) {
+      await this.sendNotificationsToSubscriptions(notification);
+    }
+    if (user.settings.useEMailNotifications) {
+      await this.sendEMailNotification(notification, user.settings.email);
+    }
+  }
+
   sendNotificationsToSubscriptions = async (
-    notification: NotificationModel,
-    pushSubscription: PushNotificationSubscriptionModel
+    notification: NotificationModel
   ) => {
+    const pushSubscription = await this.pushSubscriptionService.getSubscriptionForAccount(
+      notification.accountName
+    );
+
     for (const subscription of pushSubscription.subscriptions) {
       const planUrl = `/plan/${notification.planId}`;
       const message = `Have you finished your plan ${
@@ -176,4 +206,27 @@ export class NotificationService {
         });
     }
   };
+
+  async sendEMailNotification(notification: NotificationModel, email: string) {
+    logger.error(
+      "Trying to send email notifications, but it is not yet implemented"
+    );
+    const info = await this.transporter.sendMail({
+      from: `"Serene Application" <serene@edutec.guru`,
+      to: email,
+      subject: "Remember to Monitor your Learning",
+      text: "serene.edutec.guru"
+    });
+    logger.info(`Sent reminder mail: `, info);
+  }
+
+  async sendTextNotification(
+    notification: NotificationModel,
+    phoneNumber: string
+  ) {
+    logger.error(
+      "Trying to send text notifications, but it is not yet implemented"
+    );
+    throw new Error("Not Implemented");
+  }
 }
