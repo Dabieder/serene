@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { SubmitSettingsAction } from "../store/settings.action";
-import { SettingsState } from "../store/settings.reducer";
 import { NotificationDialogComponent } from "src/app/shared/components/dialogs/notification-dialog.component";
 import { MatDialog, ErrorStateMatcher } from "@angular/material";
 import {
@@ -43,7 +42,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
-    private store$: Store<SettingsState>,
+    private store$: Store<Settings>,
     public dialog: MatDialog,
     private fb: FormBuilder
   ) {

@@ -13,13 +13,13 @@ import {
 } from "./settings.action";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { of } from "rxjs";
-import { SettingsState } from "./settings.reducer";
+import { Settings } from "../models/settings";
 
 @Injectable()
 export class SettingsEffects {
   constructor(
     private actions$: Actions<Action>,
-    private store$: Store<SettingsState>,
+    private store$: Store<Settings>,
     private apiService: ApiService
   ) {}
 

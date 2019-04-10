@@ -2,31 +2,29 @@ import { Action } from "rxjs/internal/scheduler/Action";
 import { SettingsActionUnion, SettingsActionTypes } from "./settings.action";
 import { Settings } from "../models/settings";
 import * as fromRoot from "../../reducers";
+import { SettingsPageComponent } from "../components/settings-page.component";
 
 export interface AppState extends fromRoot.AppState {
-  settings: SettingsState;
-}
-
-export interface SettingsState {
-  enableNotifications: boolean;
   settings: Settings;
 }
 
-const initialState: SettingsState = {
-  enableNotifications: true,
-  settings: {
-    usePushNotifications: false,
-    useEMailNotifications: true,
-    eMailAddress: "",
-    dateFormat: "dd/MM/yyyy",
-    language: "en"
-  }
+// export interface SettingsState {
+//   enableNotifications: boolean;
+//   settings: Settings;
+// }
+
+const initialState: Settings = {
+  usePushNotifications: false,
+  useEMailNotifications: true,
+  eMailAddress: "",
+  dateFormat: "dd/MM/yyyy",
+  language: "en"
 };
 
 export function reducer(
   state: any = initialState,
   action: SettingsActionUnion
-): SettingsState {
+): Settings {
   switch (action.type) {
     case SettingsActionTypes.SUBMIT_SETTINGS:
       return {
@@ -43,4 +41,4 @@ export function reducer(
   }
 }
 
-export const getSettings = (state: SettingsState) => state.settings;
+export const getSettings = (state: Settings) => state;

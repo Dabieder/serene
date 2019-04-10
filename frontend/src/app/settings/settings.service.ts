@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { ApiService, ENDPOINTS } from "../core/services";
-import { SettingsState, getSettings } from "./store/settings.reducer";
+import { getSettings } from "./store/settings.reducer";
 import { Store, select } from "@ngrx/store";
 import { map, tap } from "rxjs/operators";
 import { Settings } from "./models/settings";
@@ -10,10 +10,7 @@ import { Settings } from "./models/settings";
 })
 export class SettingsService {
   settings: Settings;
-  constructor(
-    private apiService: ApiService,
-    private store$: Store<SettingsState>
-  ) {
+  constructor(private apiService: ApiService, private store$: Store<Settings>) {
     this.store$.pipe(select(getSettings)).subscribe(settings => {
       console.log("Got Settings In Settings Service: ", settings);
       this.settings = settings;

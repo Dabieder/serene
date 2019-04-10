@@ -11,13 +11,14 @@ import * as user from "../user/store/user.reducers";
 import * as core from "../core/reducers/core.reducer";
 import * as settings from "../settings/store/settings.reducer";
 import * as alerts from "../core/reducers/alerts.reducer";
+import { Settings } from "../settings/models/settings";
 
 export interface AppState {
   layout: fromLayout.State;
   router: fromRouter.RouterReducerState;
   user: user.UserState;
   core: core.CoreState;
-  settings: settings.SettingsState;
+  settings: Settings;
   alerts: alerts.AlertState;
 }
 
