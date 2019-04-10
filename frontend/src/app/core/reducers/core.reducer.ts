@@ -7,24 +7,50 @@ import {
   AuthActionsUnion
 } from "src/app/user/store/auth.actions";
 import { HealthCheck } from "src/app/shared/models/health-check";
+import { CoreActionsUnion, CoreActionTypes } from "../actions/core.actions";
 
 export interface CoreState {
   loading: boolean;
+  submitting: boolean;
   health: HealthCheck;
 }
 
 const initialState: CoreState = {
   loading: false,
+  submitting: false,
   health: {
     connected: false,
     message: ""
   }
 };
 
-export type ActionsUnion = UserActionsUnion | AuthActionsUnion;
+export type ActionsUnion =
+  | UserActionsUnion
+  | AuthActionsUnion
+  | CoreActionsUnion;
 
 export function reducer(state: any = initialState, action: ActionsUnion) {
   switch (action.type) {
+    case CoreActionTypes.LOADING_START:
+      return {
+        ...state,
+        loading: true
+      };
+    case CoreActionTypes.LOADING_END:
+      return {
+        ...state,
+        loading: false
+      };
+    case CoreActionTypes.SUBMISSION_START:
+      return {
+        ...state,
+        submitting: true
+      };
+    case CoreActionTypes.SUBMISSION_END:
+      return {
+        ...state,
+        submitting: false
+      };
     case AuthActionTypes.AUTHENTICATE:
     case UserActionTypes.CONSENT_RETRIEVE:
     case UserActionTypes.CONSENT_SUBMIT:

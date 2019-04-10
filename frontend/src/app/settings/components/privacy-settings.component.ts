@@ -50,5 +50,9 @@ export class PrivacySettingsComponent implements OnInit {
     this.router.navigateByUrl("/contact");
   }
 
+  sendMessage() {
+    throw new Error("Not Implemented");
+  }
+
   onCourseSelectionChange(event: any) {}
 }

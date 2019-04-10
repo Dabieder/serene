@@ -70,9 +70,8 @@ export class NotificationSettingsComponent extends BaseComponent
   }
 
   updateEMail() {
-    const email = {
+    this.settingsService.updateSettings({
       email: this.formGroup.get("email").value
-    };
-    this.settingsService.updateSettings({ email });
+    });
   }
 }

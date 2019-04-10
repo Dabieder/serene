@@ -12,8 +12,8 @@ export enum AlertType {
 
 export const ALERTS = {
   SERVER_CONNECTION_ERROR: {
-    type: AlertType.Error,
-    message: "Could not connect to the server"
+    type: AlertType.Warning,
+    message: "Trouble connecting to the server"
   },
   NEW_MESSAGE: {
     type: AlertType.Info,

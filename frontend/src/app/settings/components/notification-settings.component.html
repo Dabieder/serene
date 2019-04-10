@@ -2,23 +2,23 @@
   <div class="col-sm-6">
     <form [formGroup]="formGroup">
       <section>
-        <h4>Push Notifications</h4>
-        <p>
+        <h4 i18n>Push Notifications</h4>
+        <p i18n>
           If you want to be reminded of your plans via notification, check the
           checkbox below. Your browser will then ask you if it is acceptable for
           this website to send you notifications. Please click accept to receive
           notifications.
         </p>
         <div>
-          <mat-checkbox formControlName="usePushNotifications">
+          <mat-checkbox formControlName="usePushNotifications" i18n>
             Enable
           </mat-checkbox>
         </div>
       </section>
       <hr />
       <section>
-        <h4>E-Mail Notifications</h4>
-        <p>
+        <h4 i18n>E-Mail Notifications</h4>
+        <p i18n>
           If you want to be reminded of your plans and goals via e-mail, enter
           an e-mail address below.
         </p>
@@ -32,11 +32,12 @@
           type="button"
           class="ml-4 btn btn-primary"
           (click)="updateEMail()"
+          i18n
         >
           Update
         </button>
         <div>
-          <mat-checkbox formControlName="useEMailNotifications">
+          <mat-checkbox formControlName="useEMailNotifications" i18n>
             Enable
           </mat-checkbox>
         </div>

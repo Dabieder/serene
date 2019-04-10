@@ -13,36 +13,29 @@ const routes: Routes = [
     children: [
       {
         path: "monitor",
-        component: MonitoringPageComponent,
-        // canActivate: [AuthenticationGuard]
+        component: MonitoringPageComponent
       },
       {
         path: "reflect",
-        component: ReflectionPageComponent,
-        // canActivate: [AuthenticationGuard]
+        component: ReflectionPageComponent
       },
       {
         path: "plan/:id",
-        component: PlanDialogComponent,
-        // canActivate: [AuthenticationGuard]
+        component: PlanDialogComponent
       },
       {
         path: "new",
-        component: PlanDialogComponent,
-        // canActivate: [AuthenticationGuard]
+        component: PlanDialogComponent
       }
-    ],
-    canActivate: [AuthenticationGuard]
+    ]
   },
   {
     path: "home",
-    component: SrlWidgetComponent,
-    // canActivate: [AuthenticationGuard]
+    component: SrlWidgetComponent
   },
   {
     path: "widget",
-    component: SrlWidgetComponent,
-    // canActivate: [AuthenticationGuard]
+    component: SrlWidgetComponent
   }
 ];
 

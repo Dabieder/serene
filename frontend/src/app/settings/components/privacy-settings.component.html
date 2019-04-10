@@ -1,44 +1,44 @@
 <div class="col-12">
   <div class="col-sm-6">
     <section>
-      <h4>Download</h4>
-      <p>
+      <h4 i18n>Download</h4>
+      <p i18n>
         You can download all the data that has been collected about you. If you
         choose to do so, an archive (.zip) will be created and you will be able
         to download it once it is ready.
       </p>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" i18n>
         Download
       </button>
     </section>
     <hr />
     <section>
-      <h4>Delete</h4>
-      <p>
+      <h4 i18n>Delete</h4>
+      <p i18n>
         You can request the deletion of all the <em>personalized</em> data that
         is stored about you and which is not directly related to the
         functionality of Serene, such as log data.
       </p>
-      <p>
+      <p i18n>
         This process will remove the personlization from the following data:
       </p>
       <ul>
-        <li>Your Learning Plans</li>
-        <li>Your Monitorings</li>
-        <li>Your Click Data</li>
+        <li i18n>Your Learning Plans</li>
+        <li i18n>Your Monitorings</li>
+        <li i18n>Your Click Data</li>
       </ul>
-      <p>
+      <p i18n>
         Please note that you cannot revert this process, so once your
         personalized data is deleted, we will not be able to restore it.
       </p>
-      <button type="button" class="btn btn-danger">
+      <button type="button" class="btn btn-danger" i18n>
         Delete
       </button>
     </section>
     <hr />
     <section>
-      <h4>Contact</h4>
-      <p>
+      <h4 i18n>Contact</h4>
+      <p i18n>
         You can contact us at any time if you have questions regarding the
         collection, storage, or processing of your data. <br />
         If you want, you can contact us directly via
@@ -48,7 +48,9 @@
       <div class="form-area">
         <form role="form">
           <br style="clear:both" />
-          <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
+          <h3 style="margin-bottom: 25px; text-align: center;" i18n>
+            Contact Form
+          </h3>
           <div class="form-group">
             <input
               type="text"
@@ -80,7 +82,7 @@
 
           <button
             type="button"
-            (click)="submit()"
+            (click)="sendMessage()"
             id="submit"
             name="submit"
             class="btn btn-primary"

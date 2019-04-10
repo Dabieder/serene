@@ -41,6 +41,8 @@ export const getCoreState = (state: AppState) => state.core;
 
 export const getAlertsState = (state: AppState) => state.alerts;
 
+export const getSettingsState = (state: AppState) => state.settings;
+
 export const getAlerts = createSelector(
   getAlertsState,
   al => al.alerts

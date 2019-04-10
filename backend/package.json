@@ -23,6 +23,7 @@
     "serve-debug": "nodemon --inpect build/src/server.js"
   },
   "dependencies": {
+    "@types/socket.io": "^2.1.2",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
@@ -44,6 +45,7 @@
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "socket.io": "^2.2.0",
     "web-push": "^3.3.3",
     "xml2js": "^0.4.19",
     "xmldoc": "^1.1.2"

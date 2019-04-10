@@ -62,9 +62,11 @@ export class Server {
   settingsController: SettingsController;
   pushSubscriptionController: PushSubscriptionController;
 
+  app: express.Application;
+
   public async start() {
     moment.locale("de");
-    const app = express();
+    this.app = express();
 
     let connected = await this.connectToDatabase();
     if (!connected) {
@@ -73,38 +75,44 @@ export class Server {
     }
     logger.info(`Connected to database`);
 
-    app.set("port", constants.PORT);
-    app.set("views", path.join(__dirname, "../views"));
+    this.app.set("port", constants.PORT);
+    this.app.set("views", path.join(__dirname, "../views"));
 
-    this.setupCors(app);
-    app.set("view engine", "pug");
-    app.use(bodyParser.json());
-    app.use(expressValidator());
+    this.setupCors(this.app);
+    this.app.set("view engine", "pug");
+    this.app.use(bodyParser.json());
+    this.app.use(expressValidator());
 
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use((req, res, next) => {
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
+    this.app.use((req: Request, res: Response, next: NextFunction) => {
       res.locals.user = req.user;
       next();
     });
     await this.initServices();
     await this.initControllers();
-    this.setupRoutes(app);
+    this.setupRoutes(this.app);
     // Any unhandled routes
-    app.use((req: Request, res: Response, next: NextFunction) => {
+    this.app.use((req: Request, res: Response, next: NextFunction) => {
       logger.warn(`Requested ${req.method} for unhandled route: ${req.url}`);
       return next();
     });
-    app.listen(constants.PORT, () =>
+    this.app.listen(constants.PORT, () =>
       winston.log(
         "info",
         "--> Server successfully started at port " + constants.PORT
       )
     );
-    app.use(express.static("public"));
+    this.app.use(express.static("public"));
     passportConfig.initPassportLocal();
     this.createDefaultDataForTesting();
-    this.errorHandling(app);
+    this.errorHandling(this.app);
+
+    const http = require("http").Server(this.app);
+    const io = require("socket.io")(http);
+    io.on("connection", (s: any) => {
+      console.log("User Connected Socket: ", s);
+    });
 
     return true;
   }
@@ -115,7 +123,7 @@ export class Server {
     this.queryController.generateDefaultQueriesForTesting();
   };
 
-  private errorHandling = (app: express.Express): void => {
+  private errorHandling = (app: express.Application): void => {
     app.use((err: any, req: Request, res: Response, next: NextFunction) => {
       if (err) {
         if (err.name === "UnauthorizedError") {
@@ -190,7 +198,7 @@ export class Server {
     return connected;
   }
 
-  private setupCors(app: express.Express): void {
+  private setupCors(app: express.Application): void {
     // Set headers for CORS requests
     // TODO: Adjust these settings to your security concerns!
     app.use((req: Request, res: Response, next: any) => {
@@ -224,7 +232,7 @@ export class Server {
    * Setup all endpoints of your API. You can extend this method or if there are many different routes,
    * it might be better to move this to a separate class.
    */
-  private setupRoutes = (app: express.Express): void => {
+  private setupRoutes = (app: express.Application): void => {
     const API_PREFIX = process.env["API_PREFIX"] || "";
 
     app.get("/", (req: Request, res: Response) => {

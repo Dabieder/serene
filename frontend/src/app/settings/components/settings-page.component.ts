@@ -58,16 +58,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.store$
-    // .pipe(
-    //   select(getSettings),
-    //   takeUntil(this.unsubscribe$)
-    // )
-    // .subscribe(settings => {
-    //   if (settings) {
-    //     this.settings = {...settings};
-    //   }
-    // });
+    // window.scroll(0, 0);
     this.settingsForm = this.fb.group({
       usePushNotifications: true,
       useEmailNotifications: false,

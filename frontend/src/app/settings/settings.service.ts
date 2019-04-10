@@ -24,9 +24,11 @@ export class SettingsService {
   }
 
   // TODO: Put into ngrx store
-  updateSettings(settings: any) {
+  updateSettings(changedSettings: any) {
+    this.settings = { ...this.settings, ...changedSettings };
+
     this.apiService
-      .post(ENDPOINTS.SETTINGS, settings)
+      .post(ENDPOINTS.SETTINGS, this.settings)
       .pipe(
         tap(res => {
           console.log("Updated settings; ", res);
