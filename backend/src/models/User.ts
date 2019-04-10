@@ -13,7 +13,7 @@ export interface UserModel extends mongoose.Document {
   password: string;
   salt: string;
   accountName: string;
-  settings: object;
+  settings: any;
   consented: boolean;
 
   profile: {

@@ -45,6 +45,8 @@ export class NotificationSettingsComponent extends BaseComponent
 
   constructor(private settingsService: SettingsService) {
     super();
+
+    this.formGroup.patchValue(this.settingsService.settings);
   }
 
   ngOnInit() {
