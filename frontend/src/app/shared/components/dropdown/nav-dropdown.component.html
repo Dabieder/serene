@@ -11,12 +11,22 @@
     <img src="/assets/btn-icons/menu_white.svg" class="img-icon" />
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" routerLink="/serene/plan">Add Goal</a>
-    <a class="dropdown-item" routerLink="/serene/monitor">Monitor</a>
-    <a class="dropdown-item" routerLink="/serene/reflect">Reflect</a>
+    <a class="dropdown-item" routerLink="/serene/plan" i18n="@@addGoal"
+      >Add Goal</a
+    >
+    <a class="dropdown-item" routerLink="/serene/monitor" i18n="@@monitor"
+      >Monitor</a
+    >
+    <a class="dropdown-item" routerLink="/serene/reflect" i18n="@@reflect"
+      >Reflect</a
+    >
     <hr />
-    <a class="dropdown-item" routerLink="/settings">Settings</a>
+    <a class="dropdown-item" routerLink="/settings" i18n="@@settings"
+      >Settings</a
+    >
     <hr />
-    <a class="dropdown-item" (click)="signOutClick($event)">Sign Out</a>
+    <a class="dropdown-item" (click)="signOutClick($event)" i18n="@@signOut"
+      >Sign Out</a
+    >
   </div>
 </div>

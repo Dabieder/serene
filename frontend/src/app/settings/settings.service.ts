@@ -36,4 +36,11 @@ export class SettingsService {
       )
       .subscribe();
   }
+
+  getLanguage() {
+    // if (this.settings) {
+    //   return this.settings.language;
+    // }
+    return "de";
+  }
 }

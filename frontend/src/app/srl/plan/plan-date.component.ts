@@ -1,8 +1,25 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import { MatDatepickerInputEvent } from "@angular/material";
+import {
+  MatDatepickerInputEvent,
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS
+} from "@angular/material";
 import * as moment from "moment";
 import { Time } from "@angular/common";
 import { TimeService } from "src/app/shared/services/time.service";
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: "LL"
+  },
+  display: {
+    dateInput: "LL",
+    monthYearLabel: "MM YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "MMMM YYYY"
+  }
+};
 
 @Component({
   selector: "app-plan-date",

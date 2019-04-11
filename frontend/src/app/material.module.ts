@@ -23,8 +23,10 @@ import {
   MatProgressBarModule,
   MatSnackBarModule,
   MatAutocompleteModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MAT_DATE_LOCALE
 } from "@angular/material";
+import { SettingsService } from "./settings/settings.service";
 
 const MODULES = [
   [
@@ -57,17 +59,13 @@ const MODULES = [
 
 @NgModule({
   imports: MODULES,
-  exports: MODULES
-  // providers: [
-  //   {
-  //     provide: DateAdapter,
-  //     useClass: MomentDateAdapter,
-  //     deps: [MAT_DATE_LOCALE]
-  //   },
-  //   {
-  //     provide: MAT_DATE_FORMATS,
-  //     useValue: MAT_MOMENT_DATE_FORMATS
-  //   }
-  // ]
+  exports: MODULES,
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE,
+      deps: [SettingsService],
+      useFactory: settingsService => settingsService.getLanguage()
+    }
+  ]
 })
 export class MaterialModule {}

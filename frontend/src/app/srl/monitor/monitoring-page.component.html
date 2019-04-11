@@ -17,11 +17,17 @@
   <div
     class="dialog-page-header d-flex justify-content-between align-items-center"
   >
-    <h4 class="float-left mb-0" i8n>Monitor Goal Progress</h4>
+    <h4 class="float-left mb-0" i18n>Monitor Goal Progress</h4>
 
     <div class="header-controls float-right">
-      <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>
-      <button class="ml-2 btn btn-rounded db-primary" (click)="submit()" i8n>
+      <span class="cancel-btn" (click)="closeDialog()" i18n="@@cancel">
+        Cancel
+      </span>
+      <button
+        class="ml-2 btn btn-rounded db-primary"
+        (click)="submit()"
+        i18n="@@submit"
+      >
         Submit
       </button>
     </div>
@@ -69,6 +75,7 @@
     <app-srl-widget-card
       class="col-md-12"
       title="What affected your goal achievement lately?"
+      i18n="whatAffectedYourGoalAchievementLatelyHeader"
     >
       <app-reason
         (reasonsChange)="onReasonsChanged($event)"
@@ -78,8 +85,14 @@
   </div>
 
   <div class="align-self-center footer-controls">
-    <span class="cancel-btn mr-4" (click)="closeDialog()"> Cancel </span>
-    <button class="ml-4 btn btn-rounded db-primary" (click)="submit()" i8n>
+    <span class="cancel-btn mr-4" (click)="closeDialog()" i18n="@@cancel">
+      Cancel
+    </span>
+    <button
+      class="ml-4 btn btn-rounded db-primary"
+      (click)="submit()"
+      i18n="@@submit"
+    >
       Submit
     </button>
   </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -19,6 +19,11 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { EffectsModule } from "@ngrx/effects";
 import { SettingsModule } from "./settings/settings.module";
 import { SharedModule } from "./shared/shared.module";
+import { SettingsService } from "./settings/settings.service";
+import { registerLocaleData } from "@angular/common";
+import localeDe from "@angular/common/locales/de";
+
+registerLocaleData(localeDe, "de");
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +51,15 @@ import { SharedModule } from "./shared/shared.module";
       enabled: environment.production
     })
   ],
-  providers: [AuthenticationGuard, UserService],
+  providers: [
+    AuthenticationGuard,
+    UserService,
+    {
+      provide: LOCALE_ID,
+      deps: [SettingsService],
+      useFactory: settingsService => settingsService.getLanguage()
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

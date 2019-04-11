@@ -20,7 +20,7 @@ const initialState: Settings = {
   useEMailNotifications: true,
   eMailAddress: "",
   dateFormat: "dd/MM/yyyy",
-  language: "en"
+  language: "de"
 };
 
 export function reducer(

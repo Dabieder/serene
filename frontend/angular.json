@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-dashboard": {
+    "serene": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -35,6 +35,20 @@
             ]
           },
           "configurations": {
+            "production-de": {},
+            "de": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "aot": true,
+              "outputPath": "dist/serene-de",
+              "i18nFile": "src/i18n/messages.de.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "de"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -60,6 +74,7 @@
                   "with": "src/environments/environment.dev.ts"
                 }
               ],
+              "i18nFile": "src/locale/messages.de.xlf",
               "optimization": false,
               "outputHashing": "all",
               "sourceMap": true,
@@ -112,18 +127,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-dashboard:build"
+            "browserTarget": "serene:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-dashboard:build:production"
+              "browserTarget": "serene:build:production"
+            },
+            "de": {
+              "browserTarget": "serene:build:de"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-dashboard:build"
+            "browserTarget": "serene:build"
           }
         },
         "test": {
@@ -149,10 +167,22 @@
             "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
+        },
+        "xliffmerge": {
+          "builder": "@ngx-i18nsupport/tooling:xliffmerge",
+          "options": {
+            "xliffmergeOptions": {
+              "i18nFormat": "xlf",
+              "srcDir": "src/i18n",
+              "genDir": "src/i18n",
+              "defaultLanguage": "en",
+              "languages": ["en", "de"]
+            }
+          }
         }
       }
     },
-    "ng-dashboard-e2e": {
+    "serene-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -160,11 +190,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ng-dashboard:serve"
+            "devServerTarget": "serene:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ng-dashboard:serve:production"
+              "devServerTarget": "serene:serve:production"
             }
           }
         },
@@ -178,7 +208,7 @@
       }
     }
   },
-  "defaultProject": "ng-dashboard",
+  "defaultProject": "serene",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
