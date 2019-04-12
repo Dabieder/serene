@@ -53,7 +53,7 @@ export class SettingsController {
     next: NextFunction
   ) => {
     logger.info(`Retrieving Consent for ${req.payload.sub}`);
-    logger.error(`Method not really implemented at the moment`);
+    logger.error(`Method getConsentSettings not really implemented at the moment`);
     res.status(200);
   };
 }

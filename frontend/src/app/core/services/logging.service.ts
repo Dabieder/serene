@@ -4,6 +4,9 @@ import { ClickLogger } from "src/app/logging/click-logger";
 import { ApiService } from "./api.service";
 import { interval } from "rxjs";
 import { map, tap } from "rxjs/operators";
+import { AppState } from "src/app/reducers";
+import { Store } from "@ngrx/store";
+import { AuthenticationService } from "./authentication.service";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +17,10 @@ export class LoggingService {
   log = [];
   private timestamp: Date;
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthenticationService
+  ) {
     this.scrollLogger = new ScrollLogger();
     this.clickLogger = new ClickLogger();
     this.timestamp = new Date(Date.now());
@@ -53,17 +59,19 @@ export class LoggingService {
   }
 
   public submitLogs() {
-    if (this.log.length > 0) {
-      this.apiService
-        .post("/logs", this.log)
-        .pipe(
-          tap(response => {
-            if (!response.error) {
-              this.log = [];
-            }
-          })
-        )
-        .subscribe();
+    if (this.authService.isLoggedIn) {
+      if (this.log.length > 0) {
+        this.apiService
+          .post("/logs", this.log)
+          .pipe(
+            tap(response => {
+              if (!response.error) {
+                this.log = [];
+              }
+            })
+          )
+          .subscribe();
+      }
     }
   }
 

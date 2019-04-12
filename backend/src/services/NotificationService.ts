@@ -24,6 +24,8 @@ export class NotificationService {
 
   constructor(private pushSubscriptionService: PushSubscriptionService) {
     // this.initialize();
+    this.configureMailer();
+    this.configureWebPush();
   }
 
   async configureMailer() {
@@ -39,7 +41,7 @@ export class NotificationService {
     });
   }
 
-  initialize() {
+  configureWebPush() {
     webpush.setVapidDetails(
       "mailto:biedermann@dipf.de",
       this.vapidPublic,
@@ -58,25 +60,16 @@ export class NotificationService {
   }
 
   addPlanReminder = async (accountName: string, plan: any) => {
-    const subscription = await this.pushSubscriptionService.getSubscriptionForAccount(
-      accountName
-    );
-
-    if (subscription) {
-      const reminder = new Notification({
-        accountName,
-        type: NotificationType.LearningPlan,
-        dueDate: plan.endDate,
-        planId: plan.id
-      });
-      const newReminder = await reminder.save().catch(error => {
-        logger.error("Error trying to save subscription reminder", error);
-      });
-      return newReminder;
-    } else {
-      logger.warn(`No notification subscription found for the account`);
-      return null;
-    }
+    const reminder = new Notification({
+      accountName,
+      type: NotificationType.LearningPlan,
+      dueDate: plan.endDate,
+      planId: plan.id
+    });
+    const newReminder = await reminder.save().catch(error => {
+      logger.error("Error trying to save subscription reminder", error);
+    });
+    return newReminder;
   };
 
   handlePlanReminder = async (plan: LearningPlan, accountName: string) => {
@@ -166,9 +159,7 @@ export class NotificationService {
 
     for (const subscription of pushSubscription.subscriptions) {
       const planUrl = `/plan/${notification.planId}`;
-      const message = `Have you finished your plan ${
-        notification.planId
-      }? Remember to monitor your progress when you are done`;
+      const message = `Hast du deine Lernziel erreicht? Denk daran, deine Beobachtung durchzuführen`;
       const title = `Serene reminder`;
       const notificationPayload = {
         notification: {

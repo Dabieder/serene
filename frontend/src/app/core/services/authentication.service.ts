@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { ApiService } from ".";
 import { JwtService } from "./jwt.service";
-import { Store } from "@ngrx/store";
-import { AppState } from "../../reducers";
+import { Store, select } from "@ngrx/store";
+import { AppState, getAuthenticatedUser } from "../../reducers";
 import { AuthenticationSuccessAction } from "src/app/user/store/auth.actions";
 
 export const enum AuthProviders {
@@ -22,7 +22,7 @@ export class AuthenticationService {
   constructor(
     private jwtService: JwtService,
     private apiService: ApiService,
-    private store: Store<AppState>
+    private store$: Store<AppState>
   ) {
     const m = window.location.href.match(/(.*)[&?]ticket=([^&?]*)$/);
     if (m) {
@@ -33,6 +33,14 @@ export class AuthenticationService {
     } else {
       // this.login();
     }
+
+    this.store$.pipe(select(getAuthenticatedUser)).subscribe(user => {
+      if (user) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
   }
 
   ticketTobearer(ticket, service) {
@@ -42,7 +50,7 @@ export class AuthenticationService {
     return this.apiService.get(url).subscribe(data => {
       this.bearer = data;
       sessionStorage["bearer"] = this.bearer;
-      this.store.dispatch(
+      this.store$.dispatch(
         new AuthenticationSuccessAction({
           user: data.user,
           token: data.token

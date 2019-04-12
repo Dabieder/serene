@@ -1,6 +1,11 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import { AppState, getShowToolbar, getIsAuthenticated } from "./reducers";
+import {
+  AppState,
+  getShowToolbar,
+  getIsAuthenticated,
+  getSettingsState
+} from "./reducers";
 import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
@@ -23,7 +28,8 @@ export class AppComponent extends BaseComponent implements OnInit {
   constructor(
     private store$: Store<AppState>,
     private router: Router,
-    private loggingServe: LoggingService
+    private loggingServe: LoggingService,
+    private pushService: PushNotificationService
   ) {
     super();
     this.initMoment();
@@ -31,6 +37,12 @@ export class AppComponent extends BaseComponent implements OnInit {
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.loggingServe.logNavigation(val.url);
+      }
+    });
+
+    this.store$.pipe(select(getSettingsState)).subscribe(s => {
+      if (s.usePushNotifications) {
+        pushService.subscribeToPushNotifications();
       }
     });
   }
