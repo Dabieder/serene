@@ -27,9 +27,6 @@ DB_USERNAME
 DB_NAME
 
 are expected.
-
-The project also expects several environment variables to work.
-
 ## Running
 
 Run

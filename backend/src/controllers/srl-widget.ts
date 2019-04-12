@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import logger from "../../util/logger";
+import logger from "../util/logger";
 import {
   SrlWidgetModel,
   SrlWidget,
   generateNewPlanForId
-} from "../../models/SrlWidget/SrlWidget";
-import { NotificationService } from "../../services/NotificationService";
-import { UserLogService } from "../../services/UserLogService";
+} from "../models/SrlWidget/SrlWidget";
+import { NotificationService } from "../services/NotificationService";
+import { UserLogService } from "../services/UserLogService";
 
 export class SrlWidgetController {
   constructor(
@@ -109,7 +109,7 @@ export class SrlWidgetController {
       );
 
       for (const removedPlan of removedPlans) {
-        await this.notificationService.deletePlanReminder(removedPlan);
+        await this.notificationService.deleteRemindersForPlan(removedPlan);
         await this.userLogService.addDeletionLog(removedPlan, req.payload.sub);
       }
     } else {
@@ -194,21 +194,5 @@ export class SrlWidgetController {
 
     savedData = savedData as SrlWidgetModel;
     return savedData;
-  };
-
-  deleteLearningPlan = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    logger.verbose(`Deleting Learning Plan for user id: ${req.payload.sub}`);
-  };
-
-  getSurveyResults = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    logger.verbose(`Get survey results for account name: ${req.payload.sub}`);
   };
 }

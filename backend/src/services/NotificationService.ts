@@ -14,22 +14,31 @@ import {
 import { PushSubscriptionService } from "./PushSubscriptionService";
 import { User } from "../models/User";
 import { createTransport, createTestAccount, Transporter } from "nodemailer";
+import moment = require("moment");
 
 export class NotificationService {
   vapidPublic = process.env["VAPID_PUBLIC"];
   vapidPrivate = process.env["VAPID_PRIVATE"];
+  notificationInterval = +process.env["NOTIFICATION_CHECK_INTERVAL"]
+    ? +process.env["NOTIFICATION_CHECK_INTERVAL"]
+    : 60000;
 
   transporter: Transporter;
   schedules: ScheduledTask[] = [];
 
   constructor(private pushSubscriptionService: PushSubscriptionService) {
     // this.initialize();
-    this.configureMailer();
+  }
+
+  async initialie() {
+    await this.configureMailer();
     this.configureWebPush();
+    await this.sendAllRegisteredNotifications();
   }
 
   async configureMailer() {
     const testAccount = await createTestAccount();
+    console.log("TEST MAIL CREDENTIALS: ", testAccount);
     this.transporter = createTransport({
       host: "smtp.ethereal.email",
       port: 587,
@@ -59,6 +68,42 @@ export class NotificationService {
     };
   }
 
+  async sendAllRegisteredNotifications() {
+    const notifications = await Notification.find()
+      .exec()
+      .catch(e => {
+        logger.error(`Error trying to retrieve all subscriptions ${e}`);
+      });
+
+    if (!notifications) {
+      return false;
+    }
+
+    try {
+      for (const notification of notifications) {
+        // Check for each subscription if a message is due
+        // Currently because we do not have a lot of data, we can just iterate
+        // over all plans. In the future, they should be stored in something like
+        // "notifications due"
+        const isBefore = moment(notification.dueDate).isBefore(
+          new Date(Date.now())
+        );
+
+        if (isBefore) {
+          await this.sendNotificationBasedOnPreference(notification);
+          // TODO: Delete notification after it has been sent
+        }
+      }
+    } catch (error) {
+      logger.error("Error when trying to send all notifications");
+    }
+
+    setTimeout(() => {
+      logger.verbose("Scheduling again to send all notifications in ");
+      this.sendAllRegisteredNotifications();
+    }, this.notificationInterval);
+  }
+
   addPlanReminder = async (accountName: string, plan: any) => {
     const reminder = new Notification({
       accountName,
@@ -76,11 +121,11 @@ export class NotificationService {
     if (plan.remind) {
       await this.updateOrCreatePlanReminder(accountName, plan);
     } else {
-      await this.deletePlanReminder(plan);
+      await this.deleteRemindersForPlan(plan);
     }
   };
 
-  getPlanReminder = async (plan: LearningPlan) => {
+  getRemindersForPlan = async (plan: LearningPlan) => {
     const existing = await Notification.findOne({
       planId: plan.id
     })
@@ -95,11 +140,11 @@ export class NotificationService {
     return existing;
   };
 
-  deletePlanReminder = async (learningPlan: LearningPlan) => {
+  deleteRemindersForPlan = async (learningPlan: LearningPlan) => {
     const flattened = getLearningPlansFlattened([learningPlan]);
 
     for (const plan of flattened) {
-      const existing = await this.getPlanReminder(plan);
+      const existing = await this.getRemindersForPlan(plan);
 
       if (existing) {
         await existing.remove().catch(error => {
@@ -199,9 +244,6 @@ export class NotificationService {
   };
 
   async sendEMailNotification(notification: NotificationModel, email: string) {
-    logger.error(
-      "Trying to send email notifications, but it is not yet implemented"
-    );
     const info = await this.transporter.sendMail({
       from: `"Serene Application" <serene@edutec.guru`,
       to: email,

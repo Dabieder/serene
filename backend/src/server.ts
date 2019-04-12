@@ -26,7 +26,7 @@ import { QueryController } from "./controllers/queries";
 import { UserLogController } from "./controllers/userLogController";
 import { UserService } from "./services/UserService";
 import { UserController } from "./controllers/userController";
-import { SrlWidgetController } from "./controllers/widgets/srl-widget";
+import { SrlWidgetController } from "./controllers/srl-widget";
 import { SurveyAnalyzeService } from "./services/SurveyAnalyzeService";
 import { XApiController } from "./controllers/xapiStatements";
 import { DatabaseService } from "./services/DatabaseService";
@@ -143,6 +143,7 @@ export class Server {
     this.notificationService = new NotificationService(
       this.pushSubscriptionService
     );
+    await this.notificationService.initialie();
     this.settingsService = new SettingsService();
     this.userLogService = new UserLogService();
   }
