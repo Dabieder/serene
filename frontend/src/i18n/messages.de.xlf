@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="de">
+    <body>
+      <trans-unit id="ec156083fbe66b56debd2df73a03090f3e56ff47" datatype="html">
+        <source>Reminder Settings</source>
+        <target state="translated">Erinnerungseinstellungen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/dialogs/notification-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit><trans-unit id="generalSettings" datatype="html">
+        <source>General</source><target state="translated">Allgemein</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/settings-page.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit><trans-unit id="privacySettings" datatype="html">
+        <source>Privacy</source><target state="translated">Datenschutz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/settings-page.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit><trans-unit id="consentSettings" datatype="html">
+        <source>Consent</source><target state="translated">Einverständniserklärung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/settings-page.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit><trans-unit id="yes" datatype="html">
+        <source>Yes</source><target state="translated">Ja</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
+          <context context-type="linenumber">182</context>
+        </context-group>
+      </trans-unit><trans-unit id="no" datatype="html">
+        <source>No</source><target state="translated">Nein</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
+          <context context-type="linenumber">183</context>
+        </context-group>
+      </trans-unit><trans-unit id="clickToReadMore" datatype="html">
+        <source>
+                        Click to read more
+                      </source><target state="translated">Hier klicken, um mehr zu erfahren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
+          <context context-type="linenumber">220</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
+          <context context-type="linenumber">274</context>
+        </context-group>
+      </trans-unit>
+      
+      
+      
+      
+      
+      <trans-unit id="submit" datatype="html">
+        <source>
+          Submit
+        </source>
+        <target state="translated">Speichern</target>
+        
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/settings/components/consent-page.component.html</context><context context-type="linenumber">414</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context><context context-type="linenumber">30</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context><context context-type="linenumber">94</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context><context context-type="linenumber">14</context></context-group></trans-unit><trans-unit id="addGoal" datatype="html">
+        <source>Add Goal</source><target state="translated">Planen</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context><context context-type="linenumber">15</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context><context context-type="linenumber">9</context></context-group></trans-unit><trans-unit id="monitor" datatype="html">
+        <source>Monitor</source><target state="translated">Beobachten</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context><context context-type="linenumber">18</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context><context context-type="linenumber">15</context></context-group></trans-unit><trans-unit id="reflect" datatype="html">
+        <source>Reflect</source><target state="translated">Reflektieren</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context><context context-type="linenumber">21</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context><context context-type="linenumber">24</context></context-group></trans-unit><trans-unit id="settings" datatype="html">
+        <source>Settings</source><target state="translated">Einstellungen</target>
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context><context context-type="linenumber">25</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context><context context-type="linenumber">33</context></context-group></trans-unit><trans-unit id="signOut" datatype="html">
+        <source>Sign Out</source><target state="translated">Logout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      
+      
+      
+      
+      <trans-unit id="a1e831b966c346bbbc302742ed070915f803b99c" datatype="html">
+        <source>Goal Completion Rate</source>
+        <target state="translated">Rate an erreichten Zielen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/reflect/reflection-page.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="05e745de8d69ef590833f93f7488f77434996690" datatype="html">
+        <source>Factors that affected you</source>
+        <target state="translated">Faktoren für das Erreichen von Zielen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/reflect/reflection-page.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8b4bc68f1bf21bbb4c360633f6bde6fe0e63a08d" datatype="html">
+        <source>Monitor Goal Progress</source>
+        <target state="translated">Ziele überprüfen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source>
+        Cancel
+      </source>
+        <target state="translated">Abbrechen</target>
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context><context context-type="linenumber">23</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context><context context-type="linenumber">87</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context><context context-type="linenumber">8</context></context-group></trans-unit><trans-unit id="positive" datatype="html">
+        <source>Positive:</source><target state="new">Positive:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/reflect/visualizations/reason-overview.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit><trans-unit id="negative" datatype="html">
+        <source>Negative:</source><target state="new">Negative:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/reflect/visualizations/reason-overview.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="66abb23ed9adf4aa03eab3e4b75234d32748e44c" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ title }}"/></source>
+        <target state="translated">sdgefa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      
+      <trans-unit id="4a4f46a2dcec36bd5c8c371ceee55c2226dec27f" datatype="html">
+        <source>Schedule</source>
+        <target state="translated">Termine</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ca541cc6e7e934571f4066e0c2c1bcd4d3a7cfad" datatype="html">
+        <source>
+          Start Date:
+        </source>
+        <target state="translated">Anfang</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="90c842bc00ec132834251612a27c0c15b5d30261" datatype="html">
+        <source>
+          End Date:
+        </source>
+        <target state="translated">Ende</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ddcef56b981da3cd79e02d7e9d31c693d5dd4b39" datatype="html">
+        <source>Plans</source>
+        <target state="translated">Pläne</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e657507a4e9ff27ce501080e9e0b93cf6811a185" datatype="html">
+        <source>Total:</source>
+        <target state="translated">sadfasdf</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e72a74bd3b6a6bfec873d701ed3a0b0e20e5b117" datatype="html">
+        <source>Add Plan</source>
+        <target state="translated">Plan hinzufügen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c6f6f20c130c34728eaae3656466e25deb9d1dfa" datatype="html">
+        <source> Cancel </source>
+        <target state="translated">Abbrechen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="134d4dcbdf14d91b4d88bd9e920f3f0c91eebb43" datatype="html">
+        <source>
+      Submit
+    </source>
+    <target>Speichern</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3996df5b8328975f6ec0dbbc2c3104270a8e0455" datatype="html">
+        <source> Click to read more </source>
+        <target state="translated">Hier klicken, um mehr zu erfahren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/consent-item.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="download" datatype="html">
+        <source>Download</source>
+        <target state="translated">Download</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4be7d18aef3dc903901f4c76d0f2dc7e3222260b" datatype="html">
+        <source>
+        You can download all the data that has been collected about you. If you
+        choose to do so, an archive (.zip) will be created and you will be able
+        to download it once it is ready.
+      </source>
+        <target state="translated">Du kannst die gesamten herunterladen, die über dich gesammelt wurden. Wenn du das tust, wird ein .zip Archiv Erstellt, welches du herunterladen kannst, sobald es fertig ist.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="28bf49a8a90289c034b2970031814f8164f9e02d" datatype="html">
+        <source>
+        Download
+      </source>
+        <target state="translated">Download</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source>Delete</source>
+        <target state="translated">Löschen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="917ac0c0d3352791d9e1e3b936a3a29a615b8e5e" datatype="html">
+        <source>
+        You can request the deletion of all the <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>personalized<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> data that
+        is stored about you and which is not directly related to the
+        functionality of Serene, such as log data.
+      </source>
+        <target state="translated">sdfsdf</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ced3c2d19dfbe5665fef7b759451fdb97f94023d" datatype="html">
+        <source>
+        This process will remove the personlization from the following data:
+      </source>
+        <target state="translated">dsfasdf</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b50e691e130c152e4cebf3a5397f5f626bb3d54b" datatype="html">
+        <source>Your Learning Plans</source>
+        <target state="translated">Deine Lernpläne</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b42c93c9c76dab42f12d48415d229e967a69a05c" datatype="html">
+        <source>Your Monitorings</source>
+        <target state="translated">Deine Selbstbeobachtungen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9459fe0a83ff5c259427d4db4f96fe259f5614f8" datatype="html">
+        <source>Your Click Data</source>
+        <target state="translated">Deine Klick-Daten</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="157c30e851497e3e3eb50d15a4dc2430718fe5bc" datatype="html">
+        <source>
+        Please note that you cannot revert this process, so once your
+        personalized data is deleted, we will not be able to restore it.
+      </source>
+        <target state="translated">Diese Aktion kann nicht rückgängig gemacht werden. Sind die Daten einmal gelöscht, können sie nicht wiederhergestellt werden.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7acc4c320f2cec1d3d4e86dfa25ac5f5e6783b9" datatype="html">
+        <source>
+        Delete
+      </source>
+        <target state="translated">Löschen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34746fb1c7f3d2194d99652bdff89e6e14c9c4f4" datatype="html">
+        <source>Contact</source>
+        <target state="translated">Kontakt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="748a51043707df6d7664f6b9dfb23eca5f63927e" datatype="html">
+        <source>
+        You can contact us at any time if you have questions regarding the
+        collection, storage, or processing of your data. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        If you want, you can contact us directly via
+        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>e-mail<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or use the contact form
+        below.
+      </source>
+        <target state="translated">sadasdfdfasdffdasdf</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7ec9b8405870f5a8247706c1b3ef02a1b1dbda51" datatype="html">
+        <source>
+            Contact Form
+          </source>
+        <target state="translated">Kontaktformular</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a19858cfabb1c6709df7b6b0a4245a536cad65a1" datatype="html">
+        <source>Push Notifications</source>
+        <target state="translated">Push-Nachrichten</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="532f912f0ddf878f40ab2720a2ed44e1bb9d9dbd" datatype="html">
+        <source>
+          If you want to be reminded of your plans via notification, check the
+          checkbox below. Your browser will then ask you if it is acceptable for
+          this website to send you notifications. Please click accept to receive
+          notifications.
+        </source>
+        <target state="translated">asdfdfdfs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="13d836b7bce11585cee3d7ae02089e9015452164" datatype="html">
+        <source>
+            Enable
+          </source>
+        <target state="translated">Aktivieren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="81653b358b64baafc694e3c86c064a14bbe3ae75" datatype="html">
+        <source>E-Mail Notifications</source>
+        <target state="translated">E-Mail Erinnerungen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="24dcaa0d351c3aac468d6e1260828a9bf0cc044f" datatype="html">
+        <source>
+          If you want to be reminded of your plans and goals via e-mail, enter
+          an e-mail address below.
+        </source>
+        <target state="translated">Wenn du die Erinnerungen an deine Pläne über e-Mail erhalten möchtest, trag deine e-Mail Adresse unten ein</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3618ef2afb7155cd662abdd58c4929919f907b25" datatype="html">
+        <source>
+          Update
+        </source>
+        <target state="translated">Update</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

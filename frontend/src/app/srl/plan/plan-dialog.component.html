@@ -5,12 +5,14 @@
     <h4 class="float-left mb-0" i18n>{{ title }}</h4>
 
     <div class="header-controls float-right">
-      <span class="cancel-btn" (click)="closeDialog()"> Cancel </span>
+      <span class="cancel-btn" (click)="closeDialog()" i18n="@@cancel">
+        Cancel
+      </span>
       <button
-        class="ml-1 btn btn-rounded db-primary"
+        class="ml-2 btn btn-rounded db-primary"
         [disabled]="!plan.goal"
         (click)="submit()"
-        i18n
+        i18n="@@submit"
       >
         Submit
       </button>
@@ -19,7 +21,7 @@
 
   <div class="card-body" *ngIf="plan">
     <div>
-      <b>Goal</b>
+      <b i18n="@@goal">Goal</b>
       <div class="mt-2 align-items-center justify-content-center">
         <textarea
           name="learning-goal"
