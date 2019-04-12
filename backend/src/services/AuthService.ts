@@ -31,7 +31,7 @@ export const parseTokenFromRequest = (
     return auth.split(" ")[1];
   }
 
-  logger.info("No Token provided by the client");
+  logger.info(`No Token provided by the client for route ${req.route}`);
   return null;
 };
 

@@ -1,20 +1,3 @@
-/*
- *
- *  * Copyright 2018 Educational Technologies - DIPF | Leibniz Institute for Research and Information in Education (ciordas@dipf.de).
- *  *
- *  * Licensed under the GNU Lesser General Public License, Version 3.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  *      https://www.gnu.org/licenses/lgpl-3.0.en.html
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- */
 import { Request, Response, NextFunction } from "express";
 import * as querystring from "querystring";
 import * as xml2js from "xml2js";
@@ -25,9 +8,8 @@ import { IVerifyOptions } from "passport-local";
 import requestPromise from "request-promise";
 import xmldoc from "xmldoc";
 const request = require("request");
-// const rp = require("request-promise");
 
-export let getCasValidate = (
+export let getCasValidate = async (
   req: Request,
   response: Response,
   next: NextFunction
@@ -45,23 +27,6 @@ export let getCasValidate = (
 
   let userAuthJson = {};
   logger.debug("Attempting to login via CAS");
-
-  // requestPromise(validationurl)
-  //   .then((resp: any) => {
-  //     logger.debug("Request Promise: ", resp);
-  //     const doc = new xmldoc.XmlDocument(resp);
-  //     // const casUser = doc
-  //     //   .childNamed("cas:serviceResponse")
-  //     //   .childNamed("cas:authenticationSuccess")
-  //     //   .childNamed("cas:user");
-  //     const user = doc.valueWithPath(
-  //       "cas:serviceResponse.cas:authenticationSuccess.cas:user"
-  //     );
-  //     logger.silly(`Parsed CAS user ${user}`);
-  //   })
-  //   .catch(err => {
-  //     logger.error(`Error trying to validate CAS ${err}`);
-  //   });
 
   request(validationurl, {}, (err: any, res: any, body: any) => {
     if (err) {
@@ -84,6 +49,7 @@ export let getCasValidate = (
             { accountName: accountName },
             (err: any, existingUser) => {
               if (err) {
+                logger.error(`Error trying to retrieve existing user:`, err);
                 return next(err);
               }
               if (existingUser) {
@@ -91,15 +57,16 @@ export let getCasValidate = (
               } else {
                 user.save((err, product) => {
                   if (err) {
+                    logger.error(`Error trying to create new user:`, err);
                     return next(err);
                   }
                   logger.debug("Created user: " + accountName);
                   userAuthJson = product.toAuthJSON();
+                  return response.json({
+                    user: userAuthJson
+                  });
                 });
               }
-              return response.json({
-                user: userAuthJson
-              });
             }
           );
         } catch (e) {
