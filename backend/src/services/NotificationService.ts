@@ -38,7 +38,7 @@ export class NotificationService {
 
   async configureMailer() {
     const testAccount = await createTestAccount();
-    console.log("TEST MAIL CREDENTIALS: ", testAccount);
+    logger.debug("TEST MAIL CREDENTIALS: ", testAccount);
     this.transporter = createTransport({
       host: "smtp.ethereal.email",
       port: 587,
@@ -79,6 +79,8 @@ export class NotificationService {
       return false;
     }
 
+    const notificationsToDelete = [];
+
     try {
       for (const notification of notifications) {
         // Check for each subscription if a message is due
@@ -92,6 +94,8 @@ export class NotificationService {
         if (isBefore) {
           await this.sendNotificationBasedOnPreference(notification);
           // TODO: Delete notification after it has been sent
+          logger.debug("Deleting sent reminder");
+          await notification.remove();
         }
       }
     } catch (error) {
@@ -99,7 +103,7 @@ export class NotificationService {
     }
 
     setTimeout(() => {
-      logger.verbose("Scheduling again to send all notifications in ");
+      logger.debug("Scheduling again to send all notifications in ");
       this.sendAllRegisteredNotifications();
     }, this.notificationInterval);
   }
@@ -250,7 +254,7 @@ export class NotificationService {
       subject: "Remember to Monitor your Learning",
       text: "serene.edutec.guru"
     });
-    logger.info(`Sent reminder mail: `, info);
+    logger.debug(`Sent reminder mail to: `, info);
   }
 
   async sendTextNotification(

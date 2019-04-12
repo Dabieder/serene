@@ -19,7 +19,7 @@ import * as authController from "./controllers/auth";
 import logger from "./util/logger";
 import { KafkaService } from "./services/KafkaService";
 import { CourseController } from "./controllers/courses";
-import { ConsentController } from "./controllers/consent";
+import { ConsentController } from "./controllers/consentController";
 import { TrustStorService } from "./services/TrustStoreService";
 import { NextFunction } from "express-serve-static-core";
 import { QueryController } from "./controllers/queries";
@@ -134,11 +134,8 @@ export class Server {
   };
 
   private async initServices() {
-    this.kafkaService = new KafkaService();
-    this.trustStoreService = new TrustStorService();
     this.userService = new UserService();
     await this.userService.generateUsersFromFile();
-    this.surveyService = new SurveyAnalyzeService(this.kafkaService);
     this.pushSubscriptionService = new PushSubscriptionService();
     this.notificationService = new NotificationService(
       this.pushSubscriptionService
@@ -149,12 +146,7 @@ export class Server {
   }
 
   private async initControllers() {
-    this.courseController = new CourseController(this.kafkaService);
-    this.consentController = new ConsentController(
-      this.kafkaService,
-      this.trustStoreService,
-      this.userService
-    );
+    this.consentController = new ConsentController();
 
     this.userController = new UserController(this.userService);
     this.queryController = new QueryController();
