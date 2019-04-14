@@ -10,14 +10,11 @@ export interface LearningPlan {
 export const getLearningPlansFlattened = (
   learningPlans: LearningPlan[]
 ): LearningPlan[] => {
-  let flattened = [];
+  let flattened: any[] = [];
   for (const plan of learningPlans) {
     flattened.push(plan);
     if (plan.subPlans && plan.subPlans.length > 0) {
-      flattened = [
-        ...flattened,
-        ...this.getLearningPlansFlattened(plan.subPlans)
-      ];
+      flattened = [...flattened, ...getLearningPlansFlattened(plan.subPlans)];
     }
   }
   return flattened;

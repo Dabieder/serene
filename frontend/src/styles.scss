@@ -17,14 +17,14 @@
 
 @media screen and (max-width: $media-xs) {
   .grid-container {
-    margin: 10px 0px;
+    margin: 10px 0;
   }
 }
 
 @media screen and (min-width: $media-sm) {
   .app-mobile-nav {
     position: fixed;
-    top: 0px;
+    top: 0;
   }
 
   .content-wrapper {
@@ -35,11 +35,11 @@
 @media screen and (max-width: $media-sm) {
   .app-mobile-nav {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
   }
 
   .content-wrapper {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 70px;
   }
 }
@@ -57,7 +57,7 @@ body {
   z-index: 200;
   background-color: white;
   border-radius: 2px;
-  padding: 0px 0px 5px 0px;
+  padding: 0 0 5px 0;
 }
 
 .dialog-page-header {

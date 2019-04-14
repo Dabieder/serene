@@ -1,6 +1,6 @@
 import { KafkaService, KAFKA_TOPICS } from "./KafkaService";
 import logger from "../util/logger";
-import { SurveyData, SurveyDataModel } from "../models/SrlWidget/SurveyData";
+import { SurveyData, SurveyDataModel } from "../models/SRL/SurveyData";
 
 export enum SURVEY_KEYS {
   OSRLQ = "Online-Self-Reg-c4e86313ea"

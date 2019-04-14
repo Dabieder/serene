@@ -18,7 +18,7 @@ export interface AppState {
   router: fromRouter.RouterReducerState;
   user: user.UserState;
   core: core.CoreState;
-  settings: Settings;
+  settings: settings.SettingsState;
   alerts: alerts.AlertState;
 }
 
@@ -42,6 +42,11 @@ export const getCoreState = (state: AppState) => state.core;
 export const getAlertsState = (state: AppState) => state.alerts;
 
 export const getSettingsState = (state: AppState) => state.settings;
+
+export const getSettings = createSelector(
+  getSettingsState,
+  settingsState => settingsState.settings
+);
 
 export const getAlerts = createSelector(
   getAlertsState,

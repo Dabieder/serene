@@ -4,7 +4,7 @@ import {
   SrlWidgetModel,
   SrlWidget,
   generateNewPlanForId
-} from "../models/SrlWidget/SrlWidget";
+} from "../models/SRL/SrlWidget";
 import { NotificationService } from "../services/NotificationService";
 import { UserLogService } from "../services/UserLogService";
 

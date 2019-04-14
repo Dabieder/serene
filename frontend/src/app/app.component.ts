@@ -4,7 +4,8 @@ import {
   AppState,
   getShowToolbar,
   getIsAuthenticated,
-  getSettingsState
+  getSettingsState,
+  getSettings
 } from "./reducers";
 import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
@@ -40,7 +41,7 @@ export class AppComponent extends BaseComponent implements OnInit {
       }
     });
 
-    this.store$.pipe(select(getSettingsState)).subscribe(s => {
+    this.store$.pipe(select(getSettings)).subscribe(s => {
       if (s.usePushNotifications) {
         pushService.subscribeToPushNotifications();
       }

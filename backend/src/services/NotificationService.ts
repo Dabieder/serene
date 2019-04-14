@@ -10,7 +10,7 @@ import { ScheduledTask } from "node-cron";
 import {
   getLearningPlansFlattened,
   LearningPlan
-} from "../models/SrlWidget/LearningPlan";
+} from "../models/SRL/LearningPlan";
 import { PushSubscriptionService } from "./PushSubscriptionService";
 import { User } from "../models/User";
 import { createTransport, createTestAccount, Transporter } from "nodemailer";

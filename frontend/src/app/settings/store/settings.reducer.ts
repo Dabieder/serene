@@ -6,7 +6,7 @@ import { SettingsPageComponent } from "../components/settings-page.component";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface AppState extends fromRoot.AppState {
-  settings: Settings;
+  settings: SettingsState;
 }
 
 export interface SettingsState {
@@ -26,17 +26,17 @@ const initialState: Settings = {
 export function reducer(
   state: any = initialState,
   action: SettingsActionUnion
-): Settings {
+): SettingsState {
   switch (action.type) {
     case SettingsActionTypes.SUBMIT_SETTINGS:
       return {
         ...state,
-        ...action.payload.settings
+        settings: { ...action.payload.settings }
       };
     case SettingsActionTypes.FETCH_SETTINGS_SUCCESS:
       return {
         ...state,
-        ...action.payload.settings
+        settings: { ...action.payload.settings }
       };
     default:
       return state;
