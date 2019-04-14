@@ -5,7 +5,6 @@ import {
   NotificationModel
 } from "../models/Notification";
 import logger from "../util/logger";
-import * as nodeCron from "node-cron";
 import { ScheduledTask } from "node-cron";
 import {
   getLearningPlansFlattened,
@@ -33,7 +32,7 @@ export class NotificationService {
   async initialie() {
     await this.configureMailer();
     this.configureWebPush();
-    await this.sendAllRegisteredNotifications();
+    // await this.sendAllRegisteredNotifications();
   }
 
   async configureMailer() {
@@ -67,6 +66,8 @@ export class NotificationService {
       }
     };
   }
+
+  async sendAllNotificationsToListOfAccounts(accountNames: string[]) {}
 
   async sendAllRegisteredNotifications() {
     const notifications = await Notification.find()
@@ -102,10 +103,10 @@ export class NotificationService {
       logger.error("Error when trying to send all notifications");
     }
 
-    setTimeout(() => {
-      logger.debug("Scheduling again to send all notifications in ");
-      this.sendAllRegisteredNotifications();
-    }, this.notificationInterval);
+    // setTimeout(() => {
+    //   logger.debug("Scheduling again to send all notifications in ");
+    //   this.sendAllRegisteredNotifications();
+    // }, this.notificationInterval);
   }
 
   addPlanReminder = async (accountName: string, plan: any) => {

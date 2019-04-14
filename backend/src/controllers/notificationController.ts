@@ -26,6 +26,7 @@ export class NotificationController {
     next: NextFunction
   ) => {
     logger.info("Trying to send all pending web push messages");
+
     try {
       this.notificationService.sendAllRegisteredNotifications();
 

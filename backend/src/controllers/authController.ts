@@ -7,81 +7,127 @@ import { User, UserModel, getHashAndSalt } from "../models/User";
 import { IVerifyOptions } from "passport-local";
 import requestPromise from "request-promise";
 import xmldoc from "xmldoc";
+import { EventService } from "../services/EventService";
+import { EventUserCreate } from "../util/Events";
 const request = require("request");
 
-export let getCasValidate = async (
-  req: Request,
-  response: Response,
-  next: NextFunction
-) => {
-  const casValidateUrl =
-    "https://ssl.studiumdigitale.uni-frankfurt.de/cas/serviceValidate?";
-  const casurl = req.query.service;
-  const ticket = req.query.ticket;
+export class AuthController {
+  constructor(private eventService: EventService) {}
 
-  const queryParams = querystring.stringify({
-    ticket: ticket,
-    service: casurl
-  });
-  const validationurl = casValidateUrl + queryParams;
+  getCasValidate = async (
+    req: Request,
+    response: Response,
+    next: NextFunction
+  ) => {
+    const casValidateUrl =
+      "https://ssl.studiumdigitale.uni-frankfurt.de/cas/serviceValidate?";
+    const casurl = req.query.service;
+    const ticket = req.query.ticket;
 
-  let userAuthJson = {};
-  logger.debug("Attempting to login via CAS");
+    const queryParams = querystring.stringify({
+      ticket: ticket,
+      service: casurl
+    });
+    const validationurl = casValidateUrl + queryParams;
 
-  request(validationurl, {}, (err: any, res: any, body: any) => {
-    if (err) {
-      logger.error("Error Validating Cas: ", [err]);
-      return next(err);
+    let userAuthJson = {};
+    logger.debug("Attempting to login via CAS");
+
+    request(validationurl, {}, (err: any, res: any, body: any) => {
+      if (err) {
+        logger.error("Error Validating Cas: ", [err]);
+        return next(err);
+      }
+
+      xml2js.parseString(body, (err: any, parsedXml: any) => {
+        if (err) return next(err);
+
+        if (parsedXml) {
+          try {
+            const accountName = this.getAccountNameFromCasXML(parsedXml);
+
+            const user = new User({
+              accountName: accountName
+            });
+
+            User.findOne(
+              { accountName: accountName },
+              (err: any, existingUser) => {
+                if (err) {
+                  logger.error(`Error trying to retrieve existing user:`, err);
+                  return next(err);
+                }
+                if (existingUser) {
+                  userAuthJson = existingUser.toAuthJSON();
+                } else {
+                  user.save((err, createdUser) => {
+                    if (err) {
+                      logger.error(`Error trying to create new user:`, err);
+                      return next(err);
+                    }
+                    logger.debug("Created user: " + accountName);
+
+                    userAuthJson = createdUser.toAuthJSON();
+                    response.json({
+                      user: userAuthJson
+                    });
+                    this.eventService.GlobalEventEmitter.emit(
+                      EventUserCreate,
+                      createdUser
+                    );
+                  });
+                }
+              }
+            );
+          } catch (e) {
+            logger.error("Error while trying to parse CAS XML: ", e);
+          }
+        }
+      });
+    });
+  };
+
+  getAccountNameFromCasXML = (xml: any) => {
+    return xml["cas:serviceResponse"]["cas:authenticationSuccess"][0][
+      "cas:user"
+    ][0];
+  };
+
+  postSignIn = (req: Request, res: Response, next: NextFunction) => {
+    req.assert("password", "Password cannot be blank").notEmpty();
+
+    const errors = req.validationErrors();
+    if (errors) {
+      logger.error("Validation Errors", errors);
+      return res.redirect("/users/login");
     }
 
-    xml2js.parseString(body, (err: any, parsedXml: any) => {
-      if (err) return next(err);
+    logger.debug("Received login request");
 
-      if (parsedXml) {
-        try {
-          const accountName = getAccountNameFromCasXML(parsedXml);
-
-          const user = new User({
-            accountName: accountName
-          });
-
-          User.findOne(
-            { accountName: accountName },
-            (err: any, existingUser) => {
-              if (err) {
-                logger.error(`Error trying to retrieve existing user:`, err);
-                return next(err);
-              }
-              if (existingUser) {
-                userAuthJson = existingUser.toAuthJSON();
-              } else {
-                user.save((err, product) => {
-                  if (err) {
-                    logger.error(`Error trying to create new user:`, err);
-                    return next(err);
-                  }
-                  logger.debug("Created user: " + accountName);
-                  userAuthJson = product.toAuthJSON();
-                  return response.json({
-                    user: userAuthJson
-                  });
-                });
-              }
-            }
-          );
-        } catch (e) {
-          logger.error("Error while trying to parse CAS XML: ", e);
+    passport.authenticate(
+      "local",
+      (err: Error, user: UserModel, info: IVerifyOptions) => {
+        if (err) {
+          logger.error("Login Error: ", err);
+          return next(err);
         }
+        if (!user) {
+          logger.debug("No User Found: ", info.message);
+          return res.status(404).json({
+            user: null,
+            error: "User Not Found"
+          });
+        }
+        req.logIn(user, err => {
+          if (err) {
+            return next(err);
+          }
+          return res.json({ user: user.toAuthJSON() });
+        });
       }
-    });
-  });
-};
-
-export let getAccountNameFromCasXML = (xml: any) => {
-  return xml["cas:serviceResponse"]["cas:authenticationSuccess"][0][
-    "cas:user"
-  ][0];
-};
+    )(req, res, next);
+  };
+}
 
 export let getCasLogout = (
   req: Request,
@@ -89,41 +135,6 @@ export let getCasLogout = (
   next: NextFunction
 ) => {
   return response.status(501);
-};
-
-export let postSignIn = (req: Request, res: Response, next: NextFunction) => {
-  req.assert("password", "Password cannot be blank").notEmpty();
-
-  const errors = req.validationErrors();
-  if (errors) {
-    logger.error("Validation Errors", errors);
-    return res.redirect("/users/login");
-  }
-
-  logger.debug("Received login request");
-
-  passport.authenticate(
-    "local",
-    (err: Error, user: UserModel, info: IVerifyOptions) => {
-      if (err) {
-        logger.error("Login Error: ", err);
-        return next(err);
-      }
-      if (!user) {
-        logger.debug("No User Found: ", info.message);
-        return res.status(404).json({
-          user: null,
-          error: "User Not Found"
-        });
-      }
-      req.logIn(user, err => {
-        if (err) {
-          return next(err);
-        }
-        return res.json({ user: user.toAuthJSON() });
-      });
-    }
-  )(req, res, next);
 };
 
 /**
@@ -154,7 +165,6 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
       return next(err);
     }
     if (existingUser) {
-      logger.debug("User already exists: " + req.body.email);
       return res.json({
         error: "User Already Exists"
       });

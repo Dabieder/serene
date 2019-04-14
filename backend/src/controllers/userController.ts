@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import logger from "../util/logger";
 import { UserService } from "../services/UserService";
+import { ExperimentService } from "../services/ExperimentService";
 
 export class UserController {
   constructor(private userService: UserService) {}

@@ -37,6 +37,10 @@ import { SettingsService } from "./services/SettingsService";
 import { PushSubscriptionService } from "./services/PushSubscriptionService";
 import { PushSubscriptionController } from "./controllers/subscriptionController";
 import { UserLogService } from "./services/UserLogService";
+import { ExperimentService } from "./services/ExperimentService";
+import { EventService } from "./services/EventService";
+import { thisExpression } from "babel-types";
+import { AuthController } from "./controllers/authController";
 /**
  * Basic configurations of all middleware libraries are applied here.
  */
@@ -50,6 +54,8 @@ export class Server {
   settingsService: SettingsService;
   pushSubscriptionService: PushSubscriptionService;
   userLogService: UserLogService;
+  experimentService: ExperimentService;
+  eventService: EventService;
 
   userController: UserController;
   consentController: ConsentController;
@@ -61,6 +67,7 @@ export class Server {
   notificationController: NotificationController;
   settingsController: SettingsController;
   pushSubscriptionController: PushSubscriptionController;
+  authController: AuthController;
 
   app: express.Application;
 
@@ -134,7 +141,10 @@ export class Server {
   };
 
   private async initServices() {
-    this.userService = new UserService();
+    this.eventService = new EventService();
+    this.experimentService = new ExperimentService(this.eventService);
+    await this.experimentService.initialize();
+    this.userService = new UserService(this.eventService);
     await this.userService.generateUsersFromFile();
     this.pushSubscriptionService = new PushSubscriptionService();
     this.notificationService = new NotificationService(
@@ -149,6 +159,7 @@ export class Server {
     this.consentController = new ConsentController();
 
     this.userController = new UserController(this.userService);
+    this.authController = new AuthController(this.eventService);
     this.queryController = new QueryController();
     this.userLogController = new UserLogController(this.userLogService);
     this.srlWidgetController = new SrlWidgetController(
@@ -244,8 +255,11 @@ export class Server {
     );
 
     app.post(API_PREFIX + "/auth/signup", authController.postSignup);
-    app.post(API_PREFIX + "/auth/signin", authController.postSignIn);
-    app.get(API_PREFIX + "/auth/casvalidate", authController.getCasValidate);
+    app.post(API_PREFIX + "/auth/signin", this.authController.postSignIn);
+    app.get(
+      API_PREFIX + "/auth/casvalidate",
+      this.authController.getCasValidate
+    );
 
     app.get(API_PREFIX + "/health", healthController.getHealth);
 

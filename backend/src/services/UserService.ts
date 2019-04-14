@@ -4,7 +4,13 @@ import logger from "../util/logger";
 import { JWT_SECRET } from "../util/secrets";
 import userList from "../data/userList";
 import { defaultSettings } from "../data/defaultSettings";
+import { ExperimentService } from "./ExperimentService";
+import { EventUserCreate } from "../util/Events";
+import { EventService } from "./EventService";
+
 export class UserService {
+  constructor(private eventService: EventService) {}
+
   async generateUsersFromFile() {
     logger.verbose(
       "Attempting to create users that are provided in the user list"
@@ -37,9 +43,12 @@ export class UserService {
             e
           );
         });
+
+        this.eventService.GlobalEventEmitter.emit(EventUserCreate, createdUser);
         return createdUser;
       }
     } catch (err) {
+      logger.error(`Error while trying to create a new user:`, err);
       return err;
     }
   }
