@@ -3,7 +3,12 @@ import * as querystring from "querystring";
 import * as xml2js from "xml2js";
 import logger from "../util/logger";
 import passport from "passport";
-import { User, UserModel, getHashAndSalt } from "../models/User";
+import {
+  User,
+  UserModel,
+  getHashAndSalt,
+  GetUserWithDefaults
+} from "../models/User";
 import { IVerifyOptions } from "passport-local";
 import requestPromise from "request-promise";
 import xmldoc from "xmldoc";
@@ -29,8 +34,6 @@ export class AuthController {
       service: casurl
     });
     const validationurl = casValidateUrl + queryParams;
-
-    let userAuthJson = {};
     logger.debug("Attempting to login via CAS");
 
     request(validationurl, {}, (err: any, res: any, body: any) => {
@@ -46,10 +49,6 @@ export class AuthController {
           try {
             const accountName = this.getAccountNameFromCasXML(parsedXml);
 
-            const user = new User({
-              accountName: accountName
-            });
-
             User.findOne(
               { accountName: accountName },
               (err: any, existingUser) => {
@@ -58,18 +57,19 @@ export class AuthController {
                   return next(err);
                 }
                 if (existingUser) {
-                  userAuthJson = existingUser.toAuthJSON();
+                  response.json({
+                    user: existingUser.toAuthJSON()
+                  });
                 } else {
+                  const user = GetUserWithDefaults(accountName, null);
                   user.save((err, createdUser) => {
                     if (err) {
                       logger.error(`Error trying to create new user:`, err);
                       return next(err);
                     }
                     logger.debug("Created user: " + accountName);
-
-                    userAuthJson = createdUser.toAuthJSON();
                     response.json({
-                      user: userAuthJson
+                      user: createdUser.toAuthJSON()
                     });
                     this.eventService.GlobalEventEmitter.emit(
                       EventUserCreate,

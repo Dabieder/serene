@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-import { User, getHashAndSalt } from "../models/User";
+import { User, getHashAndSalt, GetUserWithDefaults } from "../models/User";
 import logger from "../util/logger";
 import { JWT_SECRET } from "../util/secrets";
 import userList from "../data/userList";
@@ -29,14 +29,7 @@ export class UserService {
         logger.debug(`User ${accountName} already exists`);
         return existing;
       } else {
-        const hashSalt = getHashAndSalt(password);
-        const newUser = new User({
-          email: "",
-          accountName,
-          password: hashSalt.hash,
-          salt: hashSalt.salt,
-          settings: defaultSettings.DIPF
-        });
+        const newUser = GetUserWithDefaults(accountName, password);
         const createdUser = await newUser.save().catch(e => {
           logger.error(
             `Error when trying to create new user: ${accountName}`,

@@ -1,5 +1,9 @@
 export const defaultSettings = {
   DIPF: {
-    enableNotifications: true
+    usePushNotifications: false,
+    useEMailNotifications: false,
+    email: "",
+    dateFormat: "",
+    language: "en"
   }
 };

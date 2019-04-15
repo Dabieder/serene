@@ -19,7 +19,7 @@ services:
 
   serene-backend:
     build: ./backend
-    env_file: lad-backend.env
+    env_file: serene-backend.env
     depends_on:
       - serene-db
     expose:

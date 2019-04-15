@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../util/secrets";
+import { defaultSettings } from "../data/defaultSettings";
 
 export type HashSalt = {
   hash: string;
@@ -102,6 +103,27 @@ const toAuthJSON: toAuthJSONFunction = function() {
     token: this.generateJWT(),
     consented: this.consented
   };
+};
+
+export const GetUserWithDefaults = (accountName: string, password: string) => {
+  const userData = {
+    email: "",
+    accountName,
+    settings: defaultSettings.DIPF,
+    consented: false
+  };
+  if (password) {
+    const hashSalt = getHashAndSalt(password);
+    return new User({
+      ...userData,
+      password: hashSalt.hash,
+      salt: hashSalt.salt
+    });
+  } else {
+    return new User({
+      ...userData
+    });
+  }
 };
 
 export const verfifyToken = (token: string) => {

@@ -13,6 +13,7 @@ import { BaseComponent } from "../../core/base-component";
 import { Observable } from "rxjs";
 import { LoggingService } from "src/app/core/services/logging.service";
 import { ConsentItem } from "../models/consent-item";
+import { ShowToolbarAction } from "src/app/core/actions/layout.actions";
 @Component({
   selector: "app-consent-page",
   templateUrl: "./consent-page.component.html",
@@ -41,16 +42,16 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
       consentSerene: new FormControl(false)
     });
 
-    this.store.dispatch(new ConsentRetrieveAction());
+    // this.store$.dispatch(new ConsentRetrieveAction());
 
-    this.store
-      .pipe(
-        select(getConsent),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(consent => {
-        this.consent = consent;
-      });
+    // this.store$
+    //   .pipe(
+    //     select(getConsent),
+    //     takeUntil(this.unsubscribe$)
+    //   )
+    //   .subscribe(consent => {
+    //     this.consent = consent;
+    //   });
 
     this.consentItemSerene = new ConsentItem(
       "abc",
@@ -65,6 +66,7 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
         "Navigation data"
       ]
     );
+    this.loggingService.logEvent("[Consent Form] Opened Consent Form");
     // this.loading$ = this.store.pipe(select(isLoading));
   }
 
@@ -78,7 +80,7 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
   }
 
   constructor(
-    private store: Store<AppState>,
+    private store$: Store<AppState>,
     private loggingService: LoggingService
   ) {
     super();
@@ -101,10 +103,10 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(
+    this.store$.dispatch(
       new ConsentSubmitAction({ consent: { ...this.consent } })
     );
-
+    this.store$.dispatch(new ShowToolbarAction());
     this.loggingService.logEvent("[Consent Form] Submit Consent Form");
   }
 }

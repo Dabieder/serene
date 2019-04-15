@@ -27,7 +27,6 @@ export class SettingsService {
     return this.settingsData;
   }
 
-  // TODO: Put into ngrx store
   updateSettings(changedSettings: any) {
     this.settings = { ...this.settings, ...changedSettings };
     this.store$.dispatch(new SubmitSettingsAction({ settings: this.settings }));

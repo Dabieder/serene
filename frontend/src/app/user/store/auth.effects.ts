@@ -1,7 +1,7 @@
 import { map, switchMap, catchError, tap } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { Effect, Actions, ofType } from "@ngrx/effects";
-import { Action } from "@ngrx/store";
+import { Action, Store } from "@ngrx/store";
 import { of, Observable } from "rxjs";
 import { UserService } from "../../core/services/user.service";
 import {
@@ -22,6 +22,8 @@ import { ConsentRetrieveAction } from "./user.actions";
 import { RouteService } from "src/app/core/services/route.service";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
 import { User } from "../models/user";
+import { AppState } from "src/app/reducers";
+import { HideToolbarAction } from "src/app/core/actions/layout.actions";
 
 @Injectable()
 export class AuthEffects {
@@ -32,7 +34,8 @@ export class AuthEffects {
     private apiService: ApiService,
     private authService: AuthenticationService,
     private jwtService: JwtService,
-    private routeService: RouteService
+    private routeService: RouteService,
+    private store$: Store<AppState>
   ) {}
 
   @Effect()
@@ -166,6 +169,7 @@ export class AuthEffects {
   }
 
   private navigateToConsentForm() {
+    this.store$.dispatch(new HideToolbarAction());
     this.router.navigate(["/consent"]);
   }
 }

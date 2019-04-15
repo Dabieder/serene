@@ -8,7 +8,7 @@
   </div>
   <div class="grid-container" *ngIf="!(loading$ | async)">
     <div class="consent-form">
-      <form [formGroup]="consentForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="consentForm">
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
@@ -411,6 +411,7 @@
           mat-raised-button
           color="primary"
           i18n="@@submit"
+          (click)="onSubmit()"
         >
           Submit
         </button>

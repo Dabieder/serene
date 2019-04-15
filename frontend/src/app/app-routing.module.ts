@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthenticationGuard } from "./core/services";
+import { ConsentPageComponent } from "./settings/components/consent-page.component";
 
 const routes: Routes = [
   {
@@ -9,8 +10,8 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard]
   },
   {
-    path: "dashboard",
-    loadChildren: "./dashboard/dashboard.module#DashboardModule",
+    path: "consent",
+    component: ConsentPageComponent,
     canActivate: [AuthenticationGuard]
   },
   { path: "user", loadChildren: "./user/user.module#UserModule" },

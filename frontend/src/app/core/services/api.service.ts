@@ -8,7 +8,8 @@ export const ENDPOINTS = {
   REGISTER_NOTIFICATIONS: "/notifications/register",
   SETTINGS: "/settings",
   USER: "/user",
-  HEALTH: "/health"
+  HEALTH: "/health",
+  CONSENT: "/consent"
 };
 
 @Injectable()
@@ -18,10 +19,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders();
-    this.headers = this.headers.set(
-      "Content-Type",
-      "application/json; charset=utf-8"
-    );
+    // this.headers = this.headers.set(
+    //   "Content-Type",
+    //   "application/json; charset=utf-8"
+    // );
   }
 
   private formatErrors(error: Response) {

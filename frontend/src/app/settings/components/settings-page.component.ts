@@ -51,7 +51,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     this.settings = {
       usePushNotifications: true,
       useEMailNotifications: true,
-      eMailAddress: "biedermann@dipf.de",
+      email: "biedermann@dipf.de",
       dateFormat: "dd/MM/yyyy",
       language: "en"
     };

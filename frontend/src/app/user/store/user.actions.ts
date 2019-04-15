@@ -24,7 +24,7 @@ export class ConsentSubmitSuccessAction implements Action {
 }
 
 export class ConsentSubmitErrorAction implements Action {
-  public readonly type = UserActionTypes.CONSENT_SUBMIT_SUCCESS;
+  public readonly type = UserActionTypes.CONSENT_SUBMITTED_ERROR;
   constructor(public payload?: any) {}
 }
 

@@ -1,7 +1,7 @@
 export interface Settings {
   usePushNotifications: boolean;
   useEMailNotifications: boolean;
-  eMailAddress: string;
+  email: string;
   dateFormat: string;
   language: string;
 }
