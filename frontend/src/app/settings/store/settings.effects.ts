@@ -23,7 +23,7 @@ export class SettingsEffects {
     private apiService: ApiService
   ) {}
 
-  @Effect({ dispatch: false })
+  @Effect()
   public submitSettings = this.actions$.pipe(
     ofType<SubmitSettingsAction>(SettingsActionTypes.SUBMIT_SETTINGS),
     switchMap(action => {

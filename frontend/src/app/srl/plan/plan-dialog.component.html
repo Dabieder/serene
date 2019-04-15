@@ -88,7 +88,7 @@
       <div class="container mb-2">
         <div *ngFor="let subPlan of plan.subPlans" class="row subplan pb-2">
           <button
-            class="btn close-btn"
+            class="close-btn"
             [style.background-image]="'url(/assets/btn-icons/x_black.svg)'"
             (click)="deleteSubPlan($event, subPlan)"
           ></button>

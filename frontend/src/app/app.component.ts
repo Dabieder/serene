@@ -41,9 +41,11 @@ export class AppComponent extends BaseComponent implements OnInit {
       }
     });
 
-    this.store$.pipe(select(getSettings)).subscribe(s => {
-      if (s.usePushNotifications) {
-        pushService.subscribeToPushNotifications();
+    this.store$.pipe(select(getSettingsState)).subscribe(settings => {
+      if (settings) {
+        if (settings.settings.usePushNotifications) {
+          pushService.subscribeToPushNotifications();
+        }
       }
     });
   }

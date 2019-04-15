@@ -12,20 +12,19 @@ export class HealthCheckService {
   interval = 10000;
 
   constructor(private store$: Store<CoreState>) {
-    interval(this.interval).subscribe(x => {
-      this.performHealthCheck();
-    });
-
-    const socket = this.websocketHealthCheck();
-
-    socket.subscribe(m => {
-      console.log("Websocket Message: ", m);
-    });
+    // TODO: Reactivate health check
+    // interval(this.interval).subscribe(x => {
+    //   this.performHealthCheck();
+    // });
+    // const socket = this.websocketHealthCheck();
+    // socket.subscribe(m => {
+    //   console.log("Websocket Message: ", m);
+    // });
   }
 
   websocketHealthCheck() {
     const socket = new WebSocket("wss://echo.websocket.org");
-    const observable = Observable.create((obs: Observer<MessageEvent>) => {
+    const observable = new Observable((obs: Observer<MessageEvent>) => {
       socket.onmessage = obs.next.bind(observer);
       socket.onerror = obs.error.bind(observer);
       socket.onclose = obs.complete.bind(observer);

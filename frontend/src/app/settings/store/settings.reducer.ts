@@ -15,12 +15,16 @@ export interface SettingsState {
   settings: Settings;
 }
 
-const initialState: Settings = {
-  usePushNotifications: false,
-  useEMailNotifications: true,
-  eMailAddress: "",
-  dateFormat: "dd/MM/yyyy",
-  language: "de"
+const initialState: SettingsState = {
+  settings: {
+    usePushNotifications: false,
+    useEMailNotifications: true,
+    eMailAddress: "",
+    dateFormat: "dd/MM/yyyy",
+    language: "de"
+  },
+  loading: false,
+  submitting: false
 };
 
 export function reducer(
