@@ -254,11 +254,14 @@ export class NotificationService {
       const text = `Have you reached your learning goals? Go to ${
         process.env["MONITORING_URL"]
       } and monitor your progress.`;
+      const html = `Have you reached your learning goals? <a href=${
+        process.env["MONITORING_URL"]
+      }> Click here to monitor your progress</a>`;
       const info = await this.transporter.sendMail({
         from: `"Serene Application" <serene@edutec.guru`,
         to: email,
         subject,
-        text
+        html
       });
       logger.debug(`Sent reminder mail to: `, info);
     } catch (error) {

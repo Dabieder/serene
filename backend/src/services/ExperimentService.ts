@@ -5,6 +5,7 @@ import logger from "../util/logger";
 import { EventUserCreate } from "../util/Events";
 import { EventEmitter } from "events";
 import { EventService } from "./EventService";
+import { NotificationService } from "./NotificationService";
 // TODO: Change this class for every experiment.
 
 export const ExperimentMonitorReminderTiming = "MonitorReminderTiming";
@@ -20,7 +21,10 @@ export class ExperimentService {
     ? +process.env["NOTIFICATION_CHECK_INTERVAL"]
     : 60000;
 
-  constructor(private eventService: EventService) {
+  constructor(
+    private eventService: EventService,
+    private notificationService: NotificationService
+  ) {
     this.registerForUserEvents();
   }
 
@@ -40,7 +44,7 @@ export class ExperimentService {
     );
     planReminderGroupOneRemindToCreatePlansTask.start();
 
-    // Every day at 10 send reminder to create new plans for monitoring group one
+    // Every day at 10 send reminder to create monitorings for monitoring group one
     const monitorReminderGroupOneRemindToMonitor = nodeCron.schedule(
       "* * 10 * * *",
       () => {
@@ -167,11 +171,21 @@ export class ExperimentService {
     }
   }
 
-  async sendReminderToCreatePlansGroupOne() {}
+  async sendReminderToCreatePlansGroupOne() {
+    logger.debug(
+      `Sending Reminder To Create Plans for the experiment group one`
+    );
+  }
 
-  async sendReminderToMonitorGroupOne() {}
+  async sendReminderToMonitorGroupOne() {
+    logger.debug(
+      `Sending Reminder To Create Monitorings for the experiment group one`
+    );
+  }
 
   async sendReminderToMonitorGroupTwo() {
-    const expGroup = 1;
+    logger.debug(
+      `Sending Reminder To Create Monitorings for the experiment group two`
+    );
   }
 }

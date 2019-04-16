@@ -137,8 +137,6 @@ export class Server {
 
   private async initServices() {
     this.eventService = new EventService();
-    this.experimentService = new ExperimentService(this.eventService);
-    await this.experimentService.initialize();
     this.userService = new UserService(this.eventService);
     await this.userService.generateUsersFromFile();
     this.pushSubscriptionService = new PushSubscriptionService();
@@ -148,6 +146,11 @@ export class Server {
     await this.notificationService.initialie();
     this.settingsService = new SettingsService();
     this.userLogService = new UserLogService();
+    this.experimentService = new ExperimentService(
+      this.eventService,
+      this.notificationService
+    );
+    await this.experimentService.initialize();
   }
 
   private async initControllers() {
