@@ -47,7 +47,7 @@ export class SettingsEffects {
       return this.apiService.get(ENDPOINTS.SETTINGS, action.payload).pipe(
         map((response: any) => {
           return new FetchSettingsSuccessAction({
-            settings: response.settings
+            settings: response.data
           });
         }),
         catchError(error => {

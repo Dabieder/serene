@@ -17,7 +17,7 @@ export class SettingsController {
 
       if (settings) {
         return res.status(200).json({
-          settings
+          data: settings
         });
       } else {
         return res.status(404);

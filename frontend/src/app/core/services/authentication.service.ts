@@ -47,16 +47,16 @@ export class AuthenticationService {
     const url = `${this.casValidateUrl}?service=${encodeURIComponent(
       service
     )}&ticket=${encodeURIComponent(ticket)}`;
-    return this.apiService.get(url).subscribe(data => {
-      this.bearer = data;
+    return this.apiService.get(url).subscribe(response => {
+      this.bearer = response.data.token;
       sessionStorage["bearer"] = this.bearer;
       this.store$.dispatch(
         new AuthenticationSuccessAction({
-          user: data.user,
-          token: data.token
+          user: response.data,
+          token: response.data.token
         })
       );
-      this.jwtService.saveToken(data.user.token);
+      this.jwtService.saveToken(response.data.user.token);
     });
   }
 

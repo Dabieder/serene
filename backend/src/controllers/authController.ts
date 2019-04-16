@@ -30,7 +30,6 @@ export class AuthController {
     });
     const validationurl = casValidateUrl + queryParams;
 
-    let userAuthJson = {};
     logger.debug("Attempting to login via CAS");
 
     request(validationurl, {}, (err: any, res: any, body: any) => {
@@ -58,7 +57,9 @@ export class AuthController {
                   return next(err);
                 }
                 if (existingUser) {
-                  userAuthJson = existingUser.toAuthJSON();
+                  response.json({
+                    data: existingUser.toAuthJSON()
+                  });
                 } else {
                   user.save((err, createdUser) => {
                     if (err) {
@@ -66,10 +67,8 @@ export class AuthController {
                       return next(err);
                     }
                     logger.debug("Created user: " + accountName);
-
-                    userAuthJson = createdUser.toAuthJSON();
                     response.json({
-                      user: userAuthJson
+                      data: createdUser.toAuthJSON()
                     });
                     this.eventService.GlobalEventEmitter.emit(
                       EventUserCreate,
@@ -122,7 +121,7 @@ export class AuthController {
           if (err) {
             return next(err);
           }
-          return res.json({ user: user.toAuthJSON() });
+          return res.json({ data: user.toAuthJSON() });
         });
       }
     )(req, res, next);
@@ -177,7 +176,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
       logger.debug("User saved: " + req.body.email);
       res.json({
         error: null,
-        user: user.toAuthJSON()
+        data: user.toAuthJSON()
       });
     });
   });

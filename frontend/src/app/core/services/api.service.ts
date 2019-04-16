@@ -8,7 +8,8 @@ export const ENDPOINTS = {
   REGISTER_NOTIFICATIONS: "/notifications/register",
   SETTINGS: "/settings",
   USER: "/user",
-  HEALTH: "/health"
+  HEALTH: "/health",
+  SIGN_IN: "/auth/signin"
 };
 
 @Injectable()

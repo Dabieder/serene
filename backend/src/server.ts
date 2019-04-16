@@ -13,16 +13,13 @@ import moment from "moment";
 
 // API keys and Passport configuration
 import * as passportConfig from "./config/passport";
-import * as dashboardController from "./controllers/dashboard";
 import * as healthController from "./controllers/healthController";
 import * as authController from "./controllers/authController";
 import logger from "./util/logger";
 import { KafkaService } from "./services/KafkaService";
-import { CourseController } from "./controllers/courses";
 import { ConsentController } from "./controllers/consentController";
 import { TrustStorService } from "./services/TrustStoreService";
 import { NextFunction } from "express-serve-static-core";
-import { QueryController } from "./controllers/queries";
 import { UserLogController } from "./controllers/userLogController";
 import { UserService } from "./services/UserService";
 import { UserController } from "./controllers/userController";
@@ -59,8 +56,6 @@ export class Server {
 
   userController: UserController;
   consentController: ConsentController;
-  courseController: CourseController;
-  queryController: QueryController;
   userLogController: UserLogController;
   srlWidgetController: SrlWidgetController;
   xApiController: XApiController;
@@ -160,7 +155,6 @@ export class Server {
 
     this.userController = new UserController(this.userService);
     this.authController = new AuthController(this.eventService);
-    this.queryController = new QueryController();
     this.userLogController = new UserLogController(this.userLogService);
     this.srlWidgetController = new SrlWidgetController(
       this.notificationService,
@@ -283,12 +277,6 @@ export class Server {
       API_PREFIX + `/widgets/srlwidget/monitorings`,
       jwtAuthRequired,
       this.srlWidgetController.postMonitorings
-    );
-
-    app.get(
-      API_PREFIX + "/queries/:queryId",
-      jwtAuthOptional,
-      this.queryController.getQueryById
     );
 
     app.post(

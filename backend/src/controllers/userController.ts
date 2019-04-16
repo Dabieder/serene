@@ -30,13 +30,13 @@ export class UserController {
       } else {
         return res.status(200).json({
           error: null,
-          user: user.toAuthJSON()
+          data: user.toAuthJSON()
         });
       }
     } else {
       return res.status(403).json({
         error: "No valid auth token found",
-        user: null
+        data: null
       });
     }
   };
