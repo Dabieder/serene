@@ -13,11 +13,8 @@ export class NotificationController {
   ) {
     const vapidPublic = process.env["VAPID_PUBLIC"];
     const vapidPrivate = process.env["VAPID_PRIVATE"];
-    webpush.setVapidDetails(
-      "mailto:biedermann@dipf.de",
-      vapidPublic,
-      vapidPrivate
-    );
+    const vapidMailTo = process.env["VAPID_MAILTO"];
+    webpush.setVapidDetails(vapidMailTo, vapidPublic, vapidPrivate);
   }
 
   sendAllRegisteredNotifications = async (

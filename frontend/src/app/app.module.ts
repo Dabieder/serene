@@ -22,12 +22,14 @@ import { SharedModule } from "./shared/shared.module";
 import { SettingsService } from "./settings/settings.service";
 import { registerLocaleData } from "@angular/common";
 import localeDe from "@angular/common/locales/de";
+import { MaterialModule } from "./material.module";
 
 registerLocaleData(localeDe, "de");
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    MaterialModule,
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,

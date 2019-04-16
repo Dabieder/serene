@@ -5,7 +5,9 @@ import {
   getShowToolbar,
   getIsAuthenticated,
   getSettingsState,
-  getSettings
+  getSettings,
+  isLoading,
+  getIsSubmitting
 } from "./reducers";
 import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
@@ -14,7 +16,6 @@ import * as moment from "moment";
 import { LoggingService } from "./core/services/logging.service";
 import { PushNotificationService } from "./core/services/push-notification.service";
 import { BaseComponent } from "./core/base-component";
-import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
@@ -26,6 +27,8 @@ export class AppComponent extends BaseComponent implements OnInit {
   isAuthenticated$: Observable<boolean> = this.store$.pipe(
     select(getIsAuthenticated)
   );
+  loading$ = this.store$.pipe(select(isLoading));
+  submitting$ = this.store$.pipe(select(getIsSubmitting));
   constructor(
     private store$: Store<AppState>,
     private router: Router,

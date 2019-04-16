@@ -16,8 +16,6 @@ import { createTransport, createTestAccount, Transporter } from "nodemailer";
 import moment = require("moment");
 
 export class NotificationService {
-  vapidPublic = process.env["VAPID_PUBLIC"];
-  vapidPrivate = process.env["VAPID_PRIVATE"];
   notificationInterval = +process.env["NOTIFICATION_CHECK_INTERVAL"]
     ? +process.env["NOTIFICATION_CHECK_INTERVAL"]
     : 60000;
@@ -50,11 +48,11 @@ export class NotificationService {
   }
 
   configureWebPush() {
-    webpush.setVapidDetails(
-      "mailto:biedermann@dipf.de",
-      this.vapidPublic,
-      this.vapidPrivate
-    );
+    const vapidPublic = process.env["VAPID_PUBLIC"];
+    const vapidPrivate = process.env["VAPID_PRIVATE"];
+    const vapidMailTo = process.env["VAPID_MAILTO"];
+    webpush.setVapidDetails(vapidMailTo, vapidPublic, vapidPrivate);
+    webpush.setVapidDetails(vapidMailTo, vapidPublic, vapidPrivate);
   }
 
   getPlanReminderNotification() {
@@ -100,7 +98,7 @@ export class NotificationService {
         }
       }
     } catch (error) {
-      logger.error("Error when trying to send all notifications");
+      logger.error("Error when trying to send all notifications: ", error);
     }
 
     // setTimeout(() => {
@@ -207,6 +205,8 @@ export class NotificationService {
       notification.accountName
     );
 
+    if (!pushSubscription) return false;
+
     for (const subscription of pushSubscription.subscriptions) {
       const planUrl = `/plan/${notification.planId}`;
       const message = `Hast du deine Lernziel erreicht? Denk daran, deine Beobachtung durchzuführen`;
@@ -249,13 +249,21 @@ export class NotificationService {
   };
 
   async sendEMailNotification(notification: NotificationModel, email: string) {
-    const info = await this.transporter.sendMail({
-      from: `"Serene Application" <serene@edutec.guru`,
-      to: email,
-      subject: "Remember to Monitor your Learning",
-      text: "serene.edutec.guru"
-    });
-    logger.debug(`Sent reminder mail to: `, info);
+    try {
+      const subject = "Remember to Monitor your Learning";
+      const text = `Have you reached your learning goals? Go to ${
+        process.env["MONITORING_URL"]
+      } and monitor your progress.`;
+      const info = await this.transporter.sendMail({
+        from: `"Serene Application" <serene@edutec.guru`,
+        to: email,
+        subject,
+        text
+      });
+      logger.debug(`Sent reminder mail to: `, info);
+    } catch (error) {
+      logger.error(`Could not send email reminder: `, error);
+    }
   }
 
   async sendTextNotification(

@@ -12,7 +12,7 @@ import { LoggingService } from "./logging.service";
 })
 export class PushNotificationService {
   readonly VAPID_PUBLIC_KEY =
-    "BIQIGNzNmqgaO6JU4-vxtCRiTWC2-gVP_dW1yvwGh8KxLeiGWhXiW8y0ibaof4TtfBowL4Pw0jzI6aK6Hq963Jw";
+    "BLm_8CB1vopVOuoH-Sk-V-sbE6OLHpW86czG1DYumOD880MxDgdnA03Dr65635pTAj1-cdTJmv6Lon7VZLPYlhc";
 
   constructor(
     private swPush: SwPush,

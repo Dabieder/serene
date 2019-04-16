@@ -11,7 +11,6 @@ import * as user from "../user/store/user.reducers";
 import * as core from "../core/reducers/core.reducer";
 import * as settings from "../settings/store/settings.reducer";
 import * as alerts from "../core/reducers/alerts.reducer";
-import { Settings } from "../settings/models/settings";
 
 export interface AppState {
   layout: fromLayout.State;
@@ -99,6 +98,13 @@ export const isLoading = createSelector(
     return coreState.loading || userState.loading;
   }
 );
+
+export const getIsSubmitting = createSelector(
+  getSettingsState,
+  (settingsState) => {
+    return settingsState.submitting;
+  }
+)
 
 export const getUser = createSelector(
   getUserState,
