@@ -26,7 +26,7 @@ export class PushNotificationService {
     //     this.subscribeToPushNotifications();
     //   }
     // });
-    this.handleNotificationClicks();
+    // this.handleNotificationClicks();
   }
 
   handleNotificationClicks() {
@@ -38,7 +38,7 @@ export class PushNotificationService {
         window.open(event.notification.data.url);
       }
       // this.logService.logNotificationClick(event);
-      fetch("http://localhost:8080/lad-backend/logs/sw", {
+      fetch("/lad-backend/logs/sw", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

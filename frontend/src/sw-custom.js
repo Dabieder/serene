@@ -79,9 +79,3 @@ console.log("Befor register Event Listeners");
 registerEventListeners();
 
 console.log("Using custom SW");
-
-// (function() {
-//   console.log("Using custom SW stuff ready");
-//   // Your page initialization code here  - WRONG
-//   // The DOM will be available here   - WRONG
-// })();
