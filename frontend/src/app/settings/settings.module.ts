@@ -13,6 +13,7 @@ import { SharedModule } from "../shared/shared.module";
 import { SettingsRoutingModule } from "./settings-routing.module";
 import { ConsentPageComponent } from "./components/consent-page.component";
 import { ConsentItemComponent } from "./components/consent-item.component";
+import { SettingsDialogComponent } from './components/settings-dialog.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { ConsentItemComponent } from "./components/consent-item.component";
     NotificationSettingsComponent,
     SettingsPageComponent,
     ConsentPageComponent,
-    ConsentItemComponent
+    ConsentItemComponent,
+    SettingsDialogComponent
   ],
   exports: [ConsentPageComponent]
 })

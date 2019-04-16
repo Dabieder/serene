@@ -14,6 +14,7 @@ import {
 import { Settings } from "../models/settings";
 import { BaseComponent } from "src/app/core/base-component";
 import { takeUntil } from "rxjs/operators";
+import { SettingsService } from "../settings.service";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -44,17 +45,12 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
   constructor(
     private store$: Store<Settings>,
     public dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private settingsService: SettingsService
   ) {
     super();
 
-    this.settings = {
-      usePushNotifications: true,
-      useEMailNotifications: true,
-      email: "biedermann@dipf.de",
-      dateFormat: "dd/MM/yyyy",
-      language: "en"
-    };
+    this.settings = this.settingsService.settings;
   }
 
   ngOnInit() {

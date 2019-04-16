@@ -39,12 +39,12 @@ export class NotificationService {
     const testAccount = await createTestAccount();
     logger.debug("TEST MAIL CREDENTIALS: ", testAccount);
     this.transporter = createTransport({
-      host: "smtp.ethereal.email",
+      host: process.env["REMINDER_SMTP_HOST"],
       port: 587,
       secure: false,
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass
+        user: process.env["REMINDER_SMTP_USER"],
+        pass: process.env["REMINDER_SMTP_PASS"]
       }
     });
   }

@@ -36,9 +36,9 @@ export class NotificationSettingsComponent extends BaseComponent
   implements OnInit {
   @Input() settings: Settings;
   formGroup: FormGroup = new FormGroup({
-    email: new FormControl("biedermann@dipf.de"),
-    usePushNotifications: new FormControl(true),
-    useEMailNotifications: new FormControl(true)
+    email: new FormControl(""),
+    usePushNotifications: new FormControl(false),
+    useEMailNotifications: new FormControl(false)
   });
 
   matcher = new MyErrorStateMatcher();

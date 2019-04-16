@@ -1,8 +1,6 @@
-import { Action } from "rxjs/internal/scheduler/Action";
 import { SettingsActionUnion, SettingsActionTypes } from "./settings.action";
 import { Settings } from "../models/settings";
 import * as fromRoot from "../../reducers";
-import { SettingsPageComponent } from "../components/settings-page.component";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface AppState extends fromRoot.AppState {

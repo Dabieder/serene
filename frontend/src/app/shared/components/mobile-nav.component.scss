@@ -15,7 +15,7 @@
 
 .active-mobile-nav-link {
   background-color: $dipf-blue-dark;
-  box-shadow: 0px -4px 0px $dipf-orange-dark inset;
+  box-shadow: 0px -4px 0px $dipf-orange inset;
 }
 
 .mobile-nav-list-item {
@@ -77,4 +77,11 @@
 .mobile-nav-link:hover {
   background-color: $dipf-blue-light;
   text-decoration: none;
+}
+
+.nav-dropdown {
+  @media screen and (min-width: $media-sm) {
+    position: absolute;
+    right: 1em;
+  }
 }
