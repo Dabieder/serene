@@ -18,10 +18,8 @@ import {
 import { Router } from "@angular/router";
 import { ApiService, JwtService, ENDPOINTS } from "../../core/services";
 import { AuthenticationService } from "../../core/services/authentication.service";
-import { ConsentRetrieveAction } from "./user.actions";
 import { RouteService } from "src/app/core/services/route.service";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
-import { User } from "../models/user";
 import { AppState } from "src/app/reducers";
 import { HideToolbarAction } from "src/app/core/actions/layout.actions";
 
@@ -43,14 +41,14 @@ export class AuthEffects {
     ofType<AuthenticateAction>(AuthActionTypes.AUTHENTICATE),
     switchMap(action => {
       return this.apiService
-        .post("/auth/signin", {
+        .post(ENDPOINTS.SIGN_IN, {
           accountName: action.payload.accountName,
           password: action.payload.password
         })
         .pipe(
-          map(data => {
-            if (data.user) {
-              return new AuthenticationSuccessAction({ user: data.user });
+          map(response => {
+            if (response.data) {
+              return new AuthenticationSuccessAction({ user: response.data });
             } else {
               return new AuthenticationErrorAction();
             }
@@ -67,9 +65,9 @@ export class AuthEffects {
     ofType<TokenSessionLoginAction>(AuthActionTypes.TOKEN_SESSION_LOGIN),
     switchMap(() => {
       return this.apiService.get(ENDPOINTS.USER).pipe(
-        map((user: User) => {
-          if (user) {
-            return new AuthenticationSuccessAction({ user: user });
+        map((response: any) => {
+          if (response.data) {
+            return new AuthenticationSuccessAction({ user: response.data });
           } else {
             return new AuthenticationRedirectAction();
           }

@@ -9,6 +9,7 @@ export const ENDPOINTS = {
   SETTINGS: "/settings",
   USER: "/user",
   HEALTH: "/health",
+  SIGN_IN: "/auth/signin",
   CONSENT: "/consent"
 };
 

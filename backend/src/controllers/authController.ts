@@ -58,7 +58,7 @@ export class AuthController {
                 }
                 if (existingUser) {
                   response.json({
-                    user: existingUser.toAuthJSON()
+                    data: existingUser.toAuthJSON()
                   });
                 } else {
                   const user = GetUserWithDefaults(accountName, null);
@@ -69,7 +69,7 @@ export class AuthController {
                     }
                     logger.debug("Created user: " + accountName);
                     response.json({
-                      user: createdUser.toAuthJSON()
+                      data: createdUser.toAuthJSON()
                     });
                     this.eventService.GlobalEventEmitter.emit(
                       EventUserCreate,
@@ -122,7 +122,7 @@ export class AuthController {
           if (err) {
             return next(err);
           }
-          return res.json({ user: user.toAuthJSON() });
+          return res.json({ data: user.toAuthJSON() });
         });
       }
     )(req, res, next);
@@ -177,7 +177,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
       logger.debug("User saved: " + req.body.email);
       res.json({
         error: null,
-        user: user.toAuthJSON()
+        data: user.toAuthJSON()
       });
     });
   });

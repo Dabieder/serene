@@ -1,21 +1,24 @@
 <nav
   class="mobile-bottom-nav d-flex flex-row align-items-center justify-content-between"
 >
-  <app-nav-dropdown></app-nav-dropdown>
-  <ul class="mobile-nav-list db-primary">
-    <li routerLinkActive="active-mobile-nav-link">
+  <app-nav-dropdown class="ml-2"></app-nav-dropdown>
+  <ul class="mobile-nav-list">
+    <li routerLinkActive="active-mobile-nav-link"
+    class="mobile-nav-list-item">
       <a routerLink="/serene/plan/new" class="mobile-nav-link">
         <img src="/assets/icons/bullseye_white.svg" class="mobile-nav-img" />
         <div class="bottom-nav-label" i18n="@@addGoal">Add Goal</div>
       </a>
     </li>
-    <li routerLinkActive="active-mobile-nav-link">
+    <li routerLinkActive="active-mobile-nav-link"
+    class="mobile-nav-list-item">
       <a routerLink="/serene/monitor" class="mobile-nav-link">
         <img src="/assets/btn-icons/observe_white.svg" class="mobile-nav-img" />
         <div class="bottom-nav-label" i18n="@@monitor">Monitor</div>
       </a>
     </li>
-    <li routerLinkActive="active-mobile-nav-link">
+    <li routerLinkActive="active-mobile-nav-link"
+    class="mobile-nav-list-item">
       <a routerLink="/serene/reflect" class="mobile-nav-link">
         <img
           src="/assets/btn-icons/mirror-reflection_white.svg"
@@ -24,7 +27,8 @@
         <div class="bottom-nav-label" i18n="@@reflect">Reflect</div>
       </a>
     </li>
-    <li routerLinkActive="active-mobile-nav-link">
+    <li routerLinkActive="active-mobile-nav-link"
+    class="mobile-nav-list-item">
       <a routerLink="/settings" class="mobile-nav-link">
         <img
           src="/assets/btn-icons/settings_white.svg"

@@ -1,0 +1,3 @@
+export class PrivacyController {
+  constructor() {}
+}
