@@ -1,6 +1,7 @@
 import { RatingItem } from "./rating-item";
 import { Plan } from "./plan";
 import { uniqueId } from "src/app/core/utility/utility-functions";
+import * as moment from "moment";
 
 export class LearningPlan implements Plan {
   id: string = uniqueId();
@@ -26,5 +27,16 @@ export class LearningPlan implements Plan {
     plan.endDate.setHours(date.getHours() + 2);
     plan.plannedDuration = { hours: 1, minutes: 0 };
     return plan;
+  }
+
+  static isCompletedBeforeDeadline(plan: LearningPlan) {
+    if (plan.completed) {
+      return moment(plan.completionDate).isBefore(plan.endDate);
+    }
+    return false;
+  }
+
+  static isBeforeDeadline(plan: LearningPlan) {
+    return moment(new Date(Date.now())).isBefore(plan.endDate);
   }
 }

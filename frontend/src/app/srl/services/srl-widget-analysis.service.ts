@@ -21,13 +21,13 @@ export class SrlWidgetAnalysisService {
 
     for (const plan of plans) {
       if (plan.completed) {
-        if (this.isCompletedBeforeDeadline(plan)) {
+        if (LearningPlan.isCompletedBeforeDeadline(plan)) {
           completedOnTime.push(plan);
         } else {
           completedBehindSchedule.push(plan);
         }
       } else {
-        if (this.isBeforeDeadline(plan)) {
+        if (LearningPlan.isBeforeDeadline(plan)) {
           openOnTime.push(plan);
         } else {
           openBehindSchedule.push(plan);
@@ -43,14 +43,5 @@ export class SrlWidgetAnalysisService {
     };
   }
 
-  isCompletedBeforeDeadline(plan: LearningPlan) {
-    if (plan.completed) {
-      return moment(plan.completionDate).isBefore(plan.endDate);
-    }
-    return false;
-  }
 
-  isBeforeDeadline(plan: LearningPlan) {
-    return moment(new Date(Date.now())).isBefore(plan.endDate);
-  }
 }

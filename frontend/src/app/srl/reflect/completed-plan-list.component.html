@@ -1,0 +1,13 @@
+<div class="completed-plan-list">
+  <div *ngFor="let completedPlan of (completedPlans$ | async)">
+    {{ completedPlan.goal }}
+    <div *ngIf="completedOnTime(completedPlan); else tooLate">
+      On Time
+    </div>
+    <ng-template #tooLate>
+    <div>
+      Too Late
+    </div>
+  </ng-template>
+  </div>
+</div>

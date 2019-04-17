@@ -8,7 +8,7 @@ export interface AppState extends fromRoot.AppState {
 }
 
 export interface SrlWidgetState {
-  srlWidget: fromSrlWidget.State;
+  srlWidget: fromSrlWidget.SrlState;
 }
 
 export const reducers: ActionReducerMap<SrlWidgetState> = {
@@ -41,20 +41,6 @@ export const getIsLoading = createSelector(
   state => state.loading
 );
 
-export const getCanEditData = createSelector(
-  getSelectedWeek,
-  week => {
-    const today = moment(new Date(Date.now()));
-    const endOfSelectedWeek = moment(week.endDate);
-    const difference = endOfSelectedWeek.diff(today, "days");
-    // If the current date is further in the past than the selected week start date, then data editing is not allowed
-    if (difference < 0) {
-      return false;
-    }
-    return true;
-  }
-);
-
 export const getReasons = createSelector(
   getWidgetState,
   state => state.reasons
@@ -83,4 +69,9 @@ export const getSelectedLearningPlan = createSelector(
 export const getMonitorings = createSelector(
   getWidgetState,
   state => state.monitorings
+);
+
+export const getCompletedLearningPlans = createSelector(
+  getLearningPlans,
+  plans => plans.filter(plan => plan.completed)
 );

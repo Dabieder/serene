@@ -7,9 +7,7 @@ import {
 } from "./store/srl-widget.actions";
 import {
   SrlWidgetState,
-  getSelectedWeek,
   getIsLoading,
-  getCanEditData,
   getSurveyResults,
   getPlanDialogOpen,
   getLearningPlans
@@ -37,7 +35,6 @@ export class SrlWidgetComponent extends BaseComponent
   selectedTabIndex = 0;
   learningPlans: LearningPlan[];
   planDialogOpen$ = this.store.pipe(select(getPlanDialogOpen));
-  canEdit$ = this.store.pipe(select(getCanEditData));
   loading$ = this.store.pipe(select(getIsLoading));
   surveyResults$ = this.store.pipe(select(getSurveyResults));
 

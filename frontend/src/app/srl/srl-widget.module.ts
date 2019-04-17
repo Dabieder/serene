@@ -35,8 +35,8 @@ import { CompletedPlanChartComponent } from "./reflect/visualizations/completed-
 import { CoreModule } from "src/app/core/core.module";
 import { SrlWidgetRoutingModule } from "./srl-widget-routing.module";
 import { RouterModule } from "@angular/router";
-import { SummaryComponent } from "./reflect/visualizations/summary.component";
 import { MaterialModule } from "../material.module";
+import { CompletedPlanListComponent } from './reflect/completed-plan-list.component';
 
 @NgModule({
   imports: [
@@ -77,7 +77,7 @@ import { MaterialModule } from "../material.module";
     AssistancePanelComponent,
     MonitorSubplanItemComponent,
     CompletedPlanChartComponent,
-    SummaryComponent
+    CompletedPlanListComponent,
   ],
   exports: [
     ReflectionPageComponent,

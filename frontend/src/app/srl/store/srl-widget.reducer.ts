@@ -8,7 +8,7 @@ import { MetaSettings } from "../models/meta-settings";
 import { LearningPlan } from "../models/learning-plan";
 import { Monitoring } from "../models/monitoring";
 
-export interface State {
+export interface SrlState {
   selectedWeek: Week;
   selectedDay: Date;
   reasons: RatingItem[];
@@ -23,7 +23,7 @@ export interface State {
 }
 
 const todayDate = new Date(Date.now());
-const initialState: State = {
+const initialState: SrlState = {
   monitorings: [],
   selectedWeek: new Week(todayDate),
   selectedDay: todayDate,
@@ -40,7 +40,7 @@ const initialState: State = {
 export function reducer(
   state = initialState,
   action: SrlWidgetActionsUnion
-): State {
+): SrlState {
   switch (action.type) {
     case SrlWidgetActionTypes.SELECTED_WEEK_CHANGE:
       return {
