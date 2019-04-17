@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AppState } from "../store";
 import { Store } from "@ngrx/store";
-import { SubmitXapi } from "src/app/dashboard/actions/xapi.actions";
 
 export const ObjectIds = {
   Navigation: "Navigation"
@@ -31,7 +30,6 @@ export class SrlWidgetXapiService {
     // } else {
     //   this.store.dispatch(new SubmitXapi(statement));
     // }
-    this.store.dispatch(new SubmitXapi(statement));
   }
 
   getNavigationStatement(

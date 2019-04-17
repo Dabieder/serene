@@ -2,7 +2,6 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReflectionPageComponent } from "./reflect/reflection-page.component";
 import { SrlWidgetComponent } from "./srl-widget.component";
-import { ChartsModule } from "ng2-charts";
 import { LearningGoalChartComponent } from "./reflect/visualizations/learning-goal-chart.component";
 import { SrlDimensionsChartComponent } from "./reflect/visualizations/srl-dimensions-chart.component";
 import { WeekSelectionComponent } from "./components/week-selection.component";
@@ -45,7 +44,6 @@ import { CompletedPlanListComponent } from './reflect/completed-plan-list.compon
     CommonModule,
     StoreModule.forFeature("srlWidget", reducer),
     EffectsModule.forFeature([SrlWidgetEffects]),
-    ChartsModule,
     MaterialModule,
     SharedModule,
     CoreModule

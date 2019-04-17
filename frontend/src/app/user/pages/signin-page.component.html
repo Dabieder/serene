@@ -5,7 +5,7 @@
         <div
           class="log-in-top-space pt-8 pb-4 pl-4 mb-2 align-content-end d-flex"
         >
-          <h1>Log in to Serene</h1>
+          <h1 i18n="@@logInTitle">Log in to Serene</h1>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
@@ -30,7 +30,11 @@
             </fieldset>
             <div *ngIf="showIncorrectUsernamePassword" class="row">
               <div class="col-md-6 offset-md-3 col-xs-12 pt-4">
-                <div class="alert alert-warning text-center" role="alert">
+                <div
+                  class="alert alert-warning text-center"
+                  role="alert"
+                  i18n="@@incorrectUsernameOrPassword"
+                >
                   Incorrect username or password.
                 </div>
               </div>
@@ -39,6 +43,7 @@
               <button
                 class="btn btn-block btn-lg btn-primary pull-xs-right"
                 type="submit"
+                i18n="@@logInButton"
               >
                 Log in
               </button>
@@ -49,8 +54,8 @@
           *ngIf="environment.allowThirdPartyLogIn"
           class="mt-2 mb-4 text-center or-container"
         >
-          <!-- <hr class="or-line" /> -->
-          <div class="or">OR</div>
+          <hr class="or-line" />
+          <div class="or" i18n="@@or">OR</div>
           <div class="d-flex justify-content-center pt-4 pb-4">
             <button
               class="btn btn-lg btn-block btn-primary pull-xs-right"

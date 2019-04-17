@@ -1,13 +1,19 @@
 <div class="completed-plan-list">
   <div *ngFor="let completedPlan of (completedPlans$ | async)">
-    {{ completedPlan.goal }}
-    <div *ngIf="completedOnTime(completedPlan); else tooLate">
-      On Time
+    <span
+      ><b>{{ completedPlan.goal }}</b></span
+    >
+    <div class="completion-indicator">
+      <span
+        *ngIf="completedOnTime(completedPlan); else tooLate"
+        class="badge badge-success"
+        i18n="@@completedOnTime"
+        >Early</span
+      >
+      <ng-template #tooLate>
+        <span class="badge badge-warning" i18n="@@completedLate">Late</span>
+      </ng-template>
     </div>
-    <ng-template #tooLate>
-    <div>
-      Too Late
-    </div>
-  </ng-template>
+    <hr />
   </div>
 </div>

@@ -4,7 +4,6 @@ import { Location } from "@angular/common";
 import { Effect, Actions, ofType } from "@ngrx/effects";
 import { map, tap } from "rxjs/operators";
 import * as RouterActions from "../actions/router.actions";
-import * as DashboardActions from "../../dashboard/actions/dashboard.actions";
 
 @Injectable()
 export class RouterEffects {
@@ -27,19 +26,6 @@ export class RouterEffects {
   navigateForward$ = this.actions$.pipe(
     ofType(RouterActions.ActionTypes.FORWARD),
     tap(() => this.location.forward())
-  );
-
-  @Effect()
-  navigateToCourse$ = this.actions$.pipe(
-    ofType(RouterActions.ActionTypes.OPEN_COURSE),
-    map((action: RouterActions.OpenCourse) => action.key),
-    map((courseId: string) => {
-      this.router.navigate([
-        "/dashboard/course/" + courseId + "/page/index",
-        {}
-      ]);
-      return new DashboardActions.DPLoad({ courseId: courseId });
-    })
   );
 
   constructor(
