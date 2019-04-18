@@ -29,7 +29,6 @@ import {
   LocalStorageService,
   STORAGE_KEYS
 } from "src/app/core/services/local-storage.service";
-import { Week } from "../models/week";
 
 @Injectable()
 export class SrlWidgetEffects {

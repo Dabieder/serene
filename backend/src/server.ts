@@ -267,7 +267,7 @@ export class Server {
 
     app.get(
       API_PREFIX + "/widgets/srlwidget",
-      jwtAuthOptional,
+      jwtAuthRequired,
       this.srlWidgetController.getWidgetData
     );
 
@@ -306,12 +306,13 @@ export class Server {
 
     app.post(
       API_PREFIX + "/notifications/register",
-      jwtAuthOptional,
+      jwtAuthRequired,
       this.pushSubscriptionController.postPushRegistration
     );
 
     app.post(
       API_PREFIX + "/notifications/send",
+      jwtAuthRequired,
       this.notificationController.sendAllRegisteredNotifications
     );
   };

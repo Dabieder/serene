@@ -19,13 +19,17 @@ import {
 } from "./user.actions";
 import { Router } from "@angular/router";
 import { ConsentService } from "../../settings/services/consent.service";
-import { AppState } from "src/app/reducers";
+import { AppState, getAuthenticatedUser, getSettings } from "src/app/reducers";
 import { ApiService, ENDPOINTS } from "src/app/core/services";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
+import { MatDialog } from "@angular/material";
+import { InitialSettingsDialogComponent } from "src/app/shared/dialogs/initial-settings-dialog.component";
+import { Settings } from "src/app/settings/models/settings";
 
 @Injectable()
 export class ConsentEffects {
   constructor(
+    public dialog: MatDialog,
     private actions: Actions,
     private consentService: ConsentService,
     private router: Router,
@@ -55,10 +59,13 @@ export class ConsentEffects {
   @Effect({ dispatch: false })
   public consentSubmitSuccess: Observable<Action> = this.actions.pipe(
     ofType(UserActionTypes.CONSENT_SUBMIT_SUCCESS),
-    tap(action => {
+    withLatestFrom(this.store$.pipe(select(getSettings))),
+    map(([action, state]: [ConsentSubmitSuccessAction, Settings]) => {
       this.router.navigate(["/serene/plan"], {
         queryParams: { fs: false }
       });
+      this.showInitialSettingsDialog();
+      return action;
     })
   );
 
@@ -91,4 +98,23 @@ export class ConsentEffects {
       queryParams: { fs: true }
     });
   };
+
+  showInitialSettingsDialog() {
+    const dialogRef = this.dialog.open(InitialSettingsDialogComponent, {
+      disableClose: true,
+      autoFocus: true,
+      width: "500px",
+      maxWidth: window.innerWidth,
+      data: {
+        surveyCode: "",
+        usePushNotifications: false,
+        useEmailNotifications: false,
+        eMail: ""
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
 }

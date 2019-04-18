@@ -20,7 +20,8 @@ const initialState: SettingsState = {
     useEMailNotifications: false,
     email: "",
     dateFormat: "dd/MM/yyyy",
-    language: "en"
+    language: "en",
+    firstLogIn: true
   },
   loading: false,
   submitting: false

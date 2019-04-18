@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { UserRoutingModule } from "./user-routing.module";
 import { MaterialModule } from "../material.module";
 import { CoreModule } from "../core/core.module";
-import { EventService } from "./services/event.service";
 import { SignupPageComponent } from "./pages/signup-page.component";
 import { SignInPageComponent } from "./pages/signin-page.component";
 import { EffectsModule } from "@ngrx/effects";
@@ -33,6 +32,6 @@ import { SrlWidgetModule } from "../srl/srl-widget.module";
     ContactFormComponent
   ],
   exports: [SignInPageComponent],
-  providers: [EventService]
+  providers: []
 })
 export class UserModule {}

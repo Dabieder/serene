@@ -25,7 +25,6 @@ import { ModalWindowComponent } from "./components/modal-window.component";
 import { PlanDialogComponent } from "./plan/plan-dialog.component";
 import { SubPlanItemComponent } from "./plan/subplan-item.component";
 import { MonitorPlanItemComponent } from "./monitor/monitor-plan-item.component";
-import { SrlMobileNavComponent } from "./nav/srl-mobile-nav.component";
 import { PlanDateComponent } from "./plan/plan-date.component";
 import { TimeSelectComponent } from "./components/time-select.component";
 import { AssistancePanelComponent } from "./reflect/assistance-panel.component";
@@ -68,7 +67,6 @@ import { CompletedPlanListComponent } from './reflect/completed-plan-list.compon
     PlanDialogComponent,
     SubPlanItemComponent,
     MonitorPlanItemComponent,
-    SrlMobileNavComponent,
     PlanDateComponent,
     TimeSelectComponent,
     TimeDisplayPipe,

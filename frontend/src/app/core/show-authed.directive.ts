@@ -9,15 +9,18 @@ import {
 import { AppState } from "../reducers";
 import { Store, select } from "@ngrx/store";
 import { Subscription } from "rxjs";
+import { BaseComponent } from "./base-component";
 
 // Inspired by: https://g00glen00b.be/authentication-angular/
 @Directive({ selector: "[appShowAuthed]" })
-export class ShowAuthedDirective implements OnInit, OnDestroy {
+export class ShowAuthedDirective extends BaseComponent implements OnInit {
   constructor(
     private templateRef: TemplateRef<any>,
     private store: Store<AppState>,
     private viewContainer: ViewContainerRef
-  ) {}
+  ) {
+    super();
+  }
 
   condition: boolean;
   subscription: Subscription;
@@ -35,10 +38,6 @@ export class ShowAuthedDirective implements OnInit, OnDestroy {
         })
       )
       .subscribe(auth => this.renderElementOnAuthenticated(auth));
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   renderElementOnAuthenticated(auth: boolean) {

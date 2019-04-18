@@ -104,7 +104,7 @@ export const getIsSubmitting = createSelector(
   (settingsState) => {
     return settingsState.submitting;
   }
-)
+);
 
 export const getUser = createSelector(
   getUserState,

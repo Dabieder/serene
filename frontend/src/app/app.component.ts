@@ -16,6 +16,8 @@ import * as moment from "moment";
 import { LoggingService } from "./core/services/logging.service";
 import { PushNotificationService } from "./core/services/push-notification.service";
 import { BaseComponent } from "./core/base-component";
+import { MatDialog } from "@angular/material";
+import { InitialSettingsDialogComponent } from "./shared/dialogs/initial-settings-dialog.component";
 
 @Component({
   selector: "app-root",
@@ -30,10 +32,10 @@ export class AppComponent extends BaseComponent implements OnInit {
   loading$ = this.store$.pipe(select(isLoading));
   submitting$ = this.store$.pipe(select(getIsSubmitting));
   constructor(
+    public dialog: MatDialog,
     private store$: Store<AppState>,
     private router: Router,
-    private loggingServe: LoggingService,
-    private pushService: PushNotificationService
+    private loggingServe: LoggingService
   ) {
     super();
     this.initMoment();
@@ -44,14 +46,15 @@ export class AppComponent extends BaseComponent implements OnInit {
       }
     });
 
-    this.store$.pipe(select(getSettingsState)).subscribe(settings => {
-      if (settings) {
-        if (settings.settings.usePushNotifications) {
-          pushService.subscribeToPushNotifications();
-        }
-      }
-    });
+    // this.store$.pipe(select(getSettingsState)).subscribe(settings => {
+    //   if (settings) {
+    //     if (settings.settings.usePushNotifications) {
+    //       pushService.subscribeToPushNotifications();
+    //     }
+    //   }
+    // });
   }
+
 
   @HostListener("window:resize", ["$event"])
   onResize(event) {

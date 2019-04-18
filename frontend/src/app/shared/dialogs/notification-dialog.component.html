@@ -1,14 +1,14 @@
-<h1 mat-dialog-title i18n>Reminder Settings</h1>
+<h1 mat-dialog-title i18n>Initial Settings</h1>
 <div mat-dialog-content>
-  <p>How would you like to be notified in the future</p>
+  <p i18n>How would you like to be notified in the future</p>
   <mat-form-field>
     <mat-checkbox [(ngModel)]="dialogResult.usePushNotifications"
-      >Push Notifications</mat-checkbox
+    i18n="@@pushNotifications">Push Notifications</mat-checkbox
     >
   </mat-form-field>
   <mat-form-field>
     <mat-checkbox [(ngModel)]="dialogResult.useEMailNotifications"
-      >Push Notifications</mat-checkbox
+    i18n="@@eMailNotifications">Email Notifications</mat-checkbox
     >
   </mat-form-field>
   <mat-form-field>

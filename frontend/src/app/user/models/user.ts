@@ -1,5 +1,3 @@
-import { Setting } from "./setting";
-
 export class User {
   firstName: string;
   lastName: string;
@@ -10,7 +8,5 @@ export class User {
   password: string;
   token: string;
   consented: boolean;
-  settings: {
-    privacy: Setting[];
-  };
+  settings: {};
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { SubmitSettingsAction } from "../store/settings.action";
-import { NotificationDialogComponent } from "src/app/shared/components/dialogs/notification-dialog.component";
+import { NotificationDialogComponent } from "src/app/shared/dialogs/notification-dialog.component";
 import { MatDialog, ErrorStateMatcher } from "@angular/material";
 import {
   FormControl,
@@ -58,7 +58,7 @@ export class SettingsPageComponent extends BaseComponent implements OnInit {
     this.settingsForm = this.fb.group({
       usePushNotifications: true,
       useEmailNotifications: false,
-      eMailAddress: "d@b.de"
+      eMailAddress: ""
     });
   }
 

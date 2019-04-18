@@ -28,14 +28,6 @@ const routes: Routes = [
         component: PlanDialogComponent
       }
     ]
-  },
-  {
-    path: "home",
-    component: SrlWidgetComponent
-  },
-  {
-    path: "widget",
-    component: SrlWidgetComponent
   }
 ];
 

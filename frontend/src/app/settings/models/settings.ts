@@ -4,4 +4,5 @@ export interface Settings {
   email: string;
   dateFormat: string;
   language: string;
+  firstLogIn: boolean;
 }

@@ -29,6 +29,7 @@ registerLocaleData(localeDe, "de");
   imports: [
     AppRoutingModule,
     BrowserModule,
+    MaterialModule,
     BrowserAnimationsModule,
     UserModule,
     SettingsModule,

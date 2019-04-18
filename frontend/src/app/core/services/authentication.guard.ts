@@ -51,19 +51,5 @@ export class AuthenticationGuard implements CanActivate {
         return false;
       })
     );
-
-    obs.subscribe(authenticated => {
-      this.routeService.lastIntendedRoute = state.url;
-      if (!authenticated) {
-        const jwt = LocalStorageService.getItem(STORAGE_KEYS.jwt);
-        if (jwt) {
-          this.store$.dispatch(new TokenSessionLoginAction());
-        } else {
-          this.store$.dispatch(new AuthenticationRedirectAction());
-        }
-      }
-    });
-
-    return obs;
   }
 }

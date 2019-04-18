@@ -25,9 +25,9 @@ export class Week {
 
   public equals = (otherWeek: Week) => {
     return moment(this.startDate).isSame(otherWeek.startDate);
-  };
+  }
 
   public toString = (): string => {
     return `${this.startDate}-${this.endDate}`;
-  };
+  }
 }

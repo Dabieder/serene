@@ -1,0 +1,85 @@
+<h1 mat-dialog-title i18n>Initial Settings</h1>
+<div mat-dialog-content>
+  <section>
+    <b i18n="@@surveyCode">Survey Code</b>
+    <p i18n>
+      To match this data with survey data, please enter a code consisting of:
+      <br />
+    </p>
+    <ul>
+      <li>The first two letters of your mothers first name</li>
+      <li>The first two letters of your fathers first name</li>
+      <li>The first two letters of the month you were born</li>
+    </ul>
+    <p>
+      For example: If your fathers name is <b>Ra</b>lf, your mothers name is
+      <b>An</b>na, and you were born in <b>Ja</b>nuary, then your code would be
+      <b>raanja</b>
+    </p>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Survey Code</mat-label>
+        <input
+          matInput
+          placeholder="Survey Code"
+          [(ngModel)]="data.surveyCode"
+        />
+      </mat-form-field>
+    </div>
+  </section>
+  <hr />
+  <section>
+    <b i18n="@@pushNotifications">Push Notifications</b>
+    <p i18n>
+      For push notifications, please accept the notifications dialog that will
+      appear.
+    </p>
+    <div>
+      <mat-checkbox
+        i18n="@@enable"
+        [(ngModel)]="data.usePushNotifications"
+        (click)="pushNotificationsClick()"
+      >
+        Enable
+      </mat-checkbox>
+    </div>
+  </section>
+  <hr />
+  <section>
+    <b i18n="@@eMailNotifications">E-Mail Notifications</b>
+    <p i18n="@@enterYourEmail">
+      Enter your e-mail address below.
+    </p>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label i18n="@@labelEmail">Email</mat-label>
+      <input matInput placeholder="Email" [(ngModel)]="data.eMail" />
+      <!-- <mat-error *ngIf="emailFormControl.hasError('email')">
+        Please enter a valid email address
+      </mat-error> -->
+    </mat-form-field>
+    <button
+      type="button"
+      class="ml-4 btn btn-primary"
+      (click)="updateEMail()"
+      i18n="@@update"
+    >
+      Update
+    </button>
+    <div>
+      <mat-checkbox i18n="@@enable">
+        Enable
+      </mat-checkbox>
+    </div>
+  </section>
+</div>
+<div mat-dialog-actions>
+  <button
+    [mat-dialog-close]="dialogResult"
+    type="button"
+    class="ml-4 btn btn-primary"
+    (click)="submit()"
+    i18n="@@submit"
+  >
+    Submit
+  </button>
+</div>

@@ -10,7 +10,6 @@ import { BaseComponent } from "src/app/core/base-component";
   providedIn: "root"
 })
 export class PlanService extends BaseComponent {
-  learningPlans: LearningPlan[];
 
   constructor(private store$: Store<SrlWidgetState>) {
     super();
@@ -23,11 +22,7 @@ export class PlanService extends BaseComponent {
         this.learningPlans = learningPlans;
       });
   }
-
-  getPlanById(planId: string): LearningPlan | null {
-    const plan = this.learningPlans.find(x => x.id === planId);
-    return plan;
-  }
+  learningPlans: LearningPlan[];
 
   // TODO: Move to server side
   public static getDefaultReasonsOffline() {
@@ -66,5 +61,10 @@ export class PlanService extends BaseComponent {
     defaultReasons.push(itemMotivation);
 
     return defaultReasons;
+  }
+
+  getPlanById(planId: string): LearningPlan | null {
+    const plan = this.learningPlans.find(x => x.id === planId);
+    return plan;
   }
 }

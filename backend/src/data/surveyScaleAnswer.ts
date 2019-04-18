@@ -20,7 +20,7 @@ export const sample = {
             },
             type: "http://id.tincanapi.com/activitytype/survey"
           },
-          id: "<bla@blubl.net>:Test-fc9bca7314",
+          id: "<!--suppress ALL --><bla@blubl.net>:Test-fc9bca7314",
           objectType: "Activity"
         }
       ]
@@ -67,7 +67,7 @@ export const sample = {
       },
       type: "http://fantasy.land/dimension"
     },
-    id: "<bla@blubl.net>:lernstrategien_wild_schiefele--5_anstrengung",
+    id: "<!--suppress ALL --><bla@blubl.net>:lernstrategien_wild_schiefele--5_anstrengung",
     objectType: "Activity"
   },
   result: [

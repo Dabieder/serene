@@ -4,6 +4,7 @@ export const defaultSettings = {
     useEMailNotifications: false,
     email: "",
     dateFormat: "",
-    language: "en"
+    language: "en",
+    firstLogIn: true
   }
 };

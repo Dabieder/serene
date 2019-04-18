@@ -11,6 +11,7 @@ import { Settings } from "../models/settings";
 import { SettingsService } from "../settings.service";
 import { BaseComponent } from "src/app/core/base-component";
 import { takeUntil } from "rxjs/operators";
+import { PushNotificationService } from "src/app/core/services/push-notification.service";
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -43,7 +44,10 @@ export class NotificationSettingsComponent extends BaseComponent
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private settingsService: SettingsService) {
+  constructor(
+    private settingsService: SettingsService,
+    private notificationService: PushNotificationService
+  ) {
     super();
 
     this.formGroup.patchValue(this.settingsService.settings);
@@ -60,6 +64,9 @@ export class NotificationSettingsComponent extends BaseComponent
       .subscribe(val => {
         console.log("Value Change usePushNotifications: ", val);
         this.settingsService.updateSettings({ usePushNotifications: val });
+        if (val) {
+          this.notificationService.subscribeToPushNotifications();
+        }
       });
 
     this.formGroup
