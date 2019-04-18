@@ -52,13 +52,10 @@ export function reducer(state: any = initialState, action: ActionsUnion) {
         submitting: false
       };
     case AuthActionTypes.AUTHENTICATE:
-    case UserActionTypes.CONSENT_RETRIEVE:
-    case UserActionTypes.CONSENT_SUBMIT:
       return Object.assign({}, state, {
         loading: true
       });
     case AuthActionTypes.SIGN_OUT_SUCCESS:
-    case UserActionTypes.CONSENT_RETRIEVE_SUCCESS:
     case AuthActionTypes.AUTHENTICATION_SUCCESS:
       return Object.assign({}, state, {
         loading: false

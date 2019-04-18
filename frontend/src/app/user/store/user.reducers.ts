@@ -95,13 +95,3 @@ export const getConsent = (state: UserState) => state.consent;
 export const isLoading = (state: UserState) => state.loading;
 
 export const userState = (state: UserState) => state;
-
-export const getConsentUser = createSelector(
-  userState,
-  getConsent
-);
-
-export const getIsLoadingUser = createSelector(
-  userState,
-  isLoading
-);

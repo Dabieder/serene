@@ -102,7 +102,7 @@ export class AuthController {
       return res.redirect("/users/login");
     }
 
-    logger.debug("Received login request");
+    logger.debug(`Received login request for ${req.body.accountName}`);
 
     passport.authenticate(
       "local",

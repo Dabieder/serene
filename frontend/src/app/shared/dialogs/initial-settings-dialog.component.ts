@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { SettingsService } from "src/app/settings/settings.service";
+import { PushNotificationService } from "src/app/core/services/push-notification.service";
 @Component({
   selector: "app-initial-settings-dialog",
   templateUrl: "./initial-settings-dialog.component.html",
@@ -10,7 +12,9 @@ export class InitialSettingsDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<InitialSettingsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InitialSettingsDialogData
+    @Inject(MAT_DIALOG_DATA) public data: InitialSettingsDialogData,
+    private settingsService: SettingsService,
+    private notificationService: PushNotificationService
   ) {}
 
   ngOnInit() {}
@@ -21,9 +25,12 @@ export class InitialSettingsDialogComponent implements OnInit {
 
   updateEMail() {}
 
-  pushNotificationsClick() {}
+  pushNotificationsClick() {
+    this.notificationService.subscribeToPushNotifications();
+  }
 
   submit() {
+    this.settingsService.updateSettings(this.data);
     this.dialogRef.close();
   }
 }
@@ -32,5 +39,5 @@ export interface InitialSettingsDialogData {
   surveyCode: string;
   usePushNotifications: boolean;
   useEMailNotifications: boolean;
-  eMail: string;
+  email: string;
 }
