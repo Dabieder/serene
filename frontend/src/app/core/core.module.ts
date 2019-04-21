@@ -16,7 +16,7 @@ import { AuthenticationService } from "./services/authentication.service";
 import { ShowIfCourseSelectedDirective } from "./course-selected.directive";
 
 import { ToolbarDropdownComponent } from "./layout/toolbar-dropdown.component";
-import { RouteService } from "./services/route.service";
+import { RouteLoggingService } from "./services/route-logging.service";
 import { HealthCheckService } from "./services/health-check.service";
 import { HealthCheckEffects } from "./effects/health-check.effects";
 import { PushNotificationService } from "./services/push-notification.service";
@@ -45,7 +45,8 @@ export class CoreModule {
   constructor(
     private healthCheckService: HealthCheckService,
     private pushNotificationService: PushNotificationService,
-    private updateService: UpdateService
+    private updateService: UpdateService,
+    private routeLoggingService: RouteLoggingService
   ) {}
 
   static forRoot() {
@@ -62,7 +63,7 @@ export class CoreModule {
         JwtService,
         HeaderService,
         AuthenticationService,
-        RouteService,
+        RouteLoggingService,
         HealthCheckService
       ]
     };

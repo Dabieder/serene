@@ -33,7 +33,7 @@ export class SrlWidgetController {
         user: null
       });
     }
-    logger.verbose(`Request Widget Data For: ${req.payload.sub}`);
+    logger.debug(`Request Widget Data For: ${req.payload.sub}`);
 
     let widgetSettings = await this.retrieveWidgetData(req, res, next);
 

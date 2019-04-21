@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AuthenticationGuard } from "./core/services";
 import { ConsentPageComponent } from "./settings/components/consent-page.component";
 import { SignInPageComponent } from "./user/pages/signin-page.component";
+import { AuthenticationGuard } from "./core/services/authentication.guard";
 
 const routes: Routes = [
   {

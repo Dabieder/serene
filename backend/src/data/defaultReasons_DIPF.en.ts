@@ -60,5 +60,14 @@ export let defaultReasons = [
     labelHelped: "Good",
     labelHindered: "Bad",
     labelQuestion: "My task strategy was:"
+  },
+  {
+    name: "Sleep",
+    icon: "assets/reason-icons/bed_dipf-blue.svg",
+    selected: false,
+    rating: 0,
+    labelHelped: "Good",
+    labelHindered: "Poor",
+    labelQuestion: "My sleep was:"
   }
 ];

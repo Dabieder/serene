@@ -18,7 +18,7 @@ import {
 import { Router } from "@angular/router";
 import { ApiService, JwtService, ENDPOINTS } from "../../core/services";
 import { AuthenticationService } from "../../core/services/authentication.service";
-import { RouteService } from "src/app/core/services/route.service";
+import { RouteLoggingService } from "src/app/core/services/route-logging.service";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
 import { AppState } from "src/app/reducers";
 import { HideToolbarAction } from "src/app/core/actions/layout.actions";
@@ -32,7 +32,7 @@ export class AuthEffects {
     private apiService: ApiService,
     private authService: AuthenticationService,
     private jwtService: JwtService,
-    private routeService: RouteService,
+    private routeService: RouteLoggingService,
     private store$: Store<AppState>
   ) {}
 

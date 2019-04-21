@@ -23,22 +23,12 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <div (click)="editClick()" class="dropdown-item">
           <div class="dropdown-icon-item">
-            <!-- <object
-              class="img-icon-small"
-              data="/assets/icons/edit_black.svg"
-              type="image/svg+xml"
-            ></object> -->
             <img src="/assets/icons/edit_black.svg" class="img-icon-small" />
             <span class="dropdown-item-text">Edit</span>
           </div>
         </div>
         <div (click)="deleteClick()" class="dropdown-item">
           <div class="dropdown-icon-item delete-item">
-            <!-- <object
-                class="img-icon-small"
-                data="/assets/icons/edit_black.svg"
-                type="image/svg+xml"
-              ></object> -->
             <img src="/assets/icons/trash_red.svg" class="img-icon-small" />
             <span class="dropdown-item-text">Delete</span>
           </div>
@@ -52,8 +42,15 @@
       src="/assets/icons/deadline_black.svg"
       class="img-icon-small align-self-center"
     />
+    <span class="ml-2 mr-2 mt-0">
+      {{ learningPlan.endDate | date: "dd.MM.yyyy" }}
+    </span>
+    <img
+      src="/assets/icons/clock_black.svg"
+      class="img-icon-small align-self-center"
+    />
     <span class="ml-2 mt-0">
-      {{ learningPlan.endDate | date: "dd.MM.yyyy, HH:mm " }}
+      {{ learningPlan.endDate | date: "HH:mm" }}
     </span>
   </div>
 

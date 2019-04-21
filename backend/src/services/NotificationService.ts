@@ -14,6 +14,10 @@ import { PushSubscriptionService } from "./PushSubscriptionService";
 import { User } from "../models/User";
 import { createTransport, createTestAccount, Transporter } from "nodemailer";
 import moment = require("moment");
+import {
+  LANGUAGE,
+} from "../util/constants";
+import { MESSAGES } from "../data/Messages";
 
 export class NotificationService {
   notificationInterval = +process.env["NOTIFICATION_CHECK_INTERVAL"]
@@ -65,7 +69,42 @@ export class NotificationService {
     };
   }
 
-  async sendAllNotificationsToListOfAccounts(accountNames: string[]) {}
+  async sendAllNotificationsToListOfAccounts(accountNames: string[]) {
+    const notifications = await Notification.find({
+      accountName: {
+        $in: accountNames
+      }
+    })
+      .exec()
+      .catch(e => {
+        logger.error(`Error trying to retrieve all subscriptions ${e}`);
+      });
+
+    if (!notifications) {
+      return false;
+    }
+
+    try {
+      for (const notification of notifications) {
+        // Check for each subscription if a message is due
+        // Currently because we do not have a lot of data, we can just iterate
+        // over all plans. In the future, they should be stored in something like
+        // "notifications due"
+        const isBefore = moment(notification.dueDate).isBefore(
+          new Date(Date.now())
+        );
+
+        if (isBefore) {
+          await this.sendNotificationBasedOnPreference(notification);
+          // TODO: Delete notification after it has been sent
+          logger.debug("Deleting sent reminder");
+          // await notification.remove();
+        }
+      }
+    } catch (error) {
+      logger.error("Error when trying to send all notifications: ", error);
+    }
+  }
 
   async sendAllRegisteredNotifications() {
     const notifications = await Notification.find()
@@ -77,8 +116,6 @@ export class NotificationService {
     if (!notifications) {
       return false;
     }
-
-    const notificationsToDelete = [];
 
     try {
       for (const notification of notifications) {
@@ -100,11 +137,6 @@ export class NotificationService {
     } catch (error) {
       logger.error("Error when trying to send all notifications: ", error);
     }
-
-    // setTimeout(() => {
-    //   logger.debug("Scheduling again to send all notifications in ");
-    //   this.sendAllRegisteredNotifications();
-    // }, this.notificationInterval);
   }
 
   addPlanReminder = async (accountName: string, plan: any) => {
@@ -191,14 +223,14 @@ export class NotificationService {
     }).exec();
 
     if (user.settings.usePushNotifications) {
-      await this.sendNotificationsToSubscriptions(notification);
+      await this.sendPushNotificationsToSubscriptions(notification);
     }
     if (user.settings.useEMailNotifications) {
       await this.sendEMailNotification(notification, user.settings.email);
     }
   }
 
-  sendNotificationsToSubscriptions = async (
+  sendPushNotificationsToSubscriptions = async (
     notification: NotificationModel
   ) => {
     const pushSubscription = await this.pushSubscriptionService.getSubscriptionForAccount(
@@ -209,13 +241,13 @@ export class NotificationService {
 
     for (const subscription of pushSubscription.subscriptions) {
       const planUrl = `/plan/${notification.planId}`;
-      const message = `Hast du deine Lernziel erreicht? Denk daran, deine Beobachtung durchzuführen`;
-      const title = `Serene reminder`;
+      const body = MESSAGES.PUSH_NOTIFICATION_BODY[LANGUAGE]; // this.getPushNotificationBody();
+      const title = MESSAGES.PUSH_NOTIFICAITON_TITLE[LANGUAGE];
       const notificationPayload = {
         notification: {
           icon: "/assets/icons/serene_icon.png",
-          title: title,
-          body: message,
+          title,
+          body,
           requireInteraction: true,
           vibrate: [100, 100, 200],
           data: {
@@ -250,10 +282,8 @@ export class NotificationService {
 
   async sendEMailNotification(notification: NotificationModel, email: string) {
     try {
-      const subject = "Remember to Monitor your Learning";
-      const text = `Have you reached your learning goals? Go to ${
-        process.env["MONITORING_URL"]
-      } and monitor your progress.`;
+      const subject = MESSAGES.MAIL_SUBJECT[LANGUAGE];
+      const text = MESSAGES.MAIL_BODY_TEXT[LANGUAGE];
       const html = `Have you reached your learning goals? <a href=${
         process.env["MONITORING_URL"]
       }> Click here to monitor your progress</a>`;
@@ -261,7 +291,7 @@ export class NotificationService {
         from: `"Serene Application" <serene@edutec.guru`,
         to: email,
         subject,
-        html
+        text
       });
       logger.debug(`Sent reminder mail to: `, info);
     } catch (error) {

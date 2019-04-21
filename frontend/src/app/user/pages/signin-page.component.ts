@@ -8,7 +8,7 @@ import {
   AuthenticateThirdPartyAction
 } from "../store/auth.actions";
 import { ActivatedRoute } from "@angular/router";
-import { ROUTE_PARAMS } from "src/app/core/services/route.service";
+import { ROUTE_PARAMS } from "src/app/core/services/route-logging.service";
 import { environment } from "src/environments/environment";
 @Component({
   selector: "app-signin-page",

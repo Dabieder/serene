@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { ScrollLogger } from "src/app/logging/scroll-logger";
 import { ClickLogger } from "src/app/logging/click-logger";
-import { ApiService } from "./api.service";
 import { interval } from "rxjs";
 import { map, tap } from "rxjs/operators";
-import { AppState } from "src/app/reducers";
-import { Store } from "@ngrx/store";
 import { AuthenticationService } from "./authentication.service";
+import { ApiService } from ".";
 
 @Injectable({
   providedIn: "root"
@@ -36,6 +34,10 @@ export class LoggingService {
 
   public logNotificationClick(notification: any) {
     this.logWhatever(notification, "notificationInteraction");
+  }
+
+  public logReferral(navigation: any) {
+    this.logWhatever(navigation, "referral");
   }
 
   public logNavigation(navigation: any) {
