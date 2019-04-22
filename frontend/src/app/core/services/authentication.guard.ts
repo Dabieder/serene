@@ -3,7 +3,6 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { Store, select } from "@ngrx/store";
@@ -13,7 +12,6 @@ import {
   AuthenticationRedirectAction
 } from "src/app/user/store/auth.actions";
 import { LocalStorageService, STORAGE_KEYS } from "./local-storage.service";
-import { RouteService } from "./route.service";
 import { User } from "src/app/user/models/user";
 import { withLatestFrom, map } from "rxjs/operators";
 
@@ -23,9 +21,7 @@ import { withLatestFrom, map } from "rxjs/operators";
 export class AuthenticationGuard implements CanActivate {
   user: User;
   constructor(
-    private store$: Store<AppState>,
-    private router: Router,
-    private routeService: RouteService
+    private store$: Store<AppState>
   ) {}
 
   canActivate(

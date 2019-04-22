@@ -16,7 +16,7 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div i18n>
+            <div>
               <p>
                 Declaration of consent for Prof. Dr. Drachsler and the
                 Educational Technologies research team consisting of George
@@ -47,16 +47,16 @@
             </div>
 
             <div>
-              <p>Please note the following conditions:</p>
+              <p i18n>Please note the following conditions:</p>
               <ol>
-                <li>
+                <li i18n>
                   The TEL environment is not used for assessment purposes at any
                   moment. Your participation in the TEL environment will not
                   affect your final grade for the seminar. The final grade for
                   the seminar will be solely based on the outcomes and
                   achievements of your seminar project.
                 </li>
-                <li>
+                <li i18n>
                   The TEL environment has been developed with great care. The
                   data will always stay within the boundaries of the Goethe
                   University Frankfurt am Main and no third-party software will
@@ -93,19 +93,20 @@
                     <mat-expansion-panel-header>
                       <mat-panel-title
                         class="log-expansion-terms-and-conditions"
+                        i18n="@@clickToReadMore"
                       >
                         Click to read more
                       </mat-panel-title>
                       <mat-panel-description> </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <div #whatAreThePurposes i18n>
-                      <p>
+                    <div #whatAreThePurposes>
+                      <p i18n>
                         The collection and processing of personal data within
                         the seminar has two purposes:
                       </p>
                       <ol>
-                        <li>
+                        <li i18n>
                           To explore and support your personal learning process.
                           We are able to provide insights into your personal
                           learning process, by collecting and processing your
@@ -115,7 +116,7 @@
                           TEL environment. This can help you to reflect and
                           improve your personal learning approach.
                         </li>
-                        <li>
+                        <li i18n>
                           To research the effects of the TEL environment for the
                           classroom of the future. We are interested in the
                           advantages and disadvantages of a TEL environment and
@@ -138,35 +139,35 @@
         <mat-card class="dashboard-card consent-card">
           <mat-card-header>
             <mat-card-title>
-              <h2>
+              <h2 i18n>
                 What does the application do? What data gets collected?
               </h2>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
             <div>
-              <p>
+              <p i18n>
                 Serene is a tool to assist you in planning and monitoring your
                 learning progress.
               </p>
-              <p>
+              <p i18n>
                 In order to improve this application in the future, as well as
                 to do research on planning we would like to use the data that
                 you create in Serene.
               </p>
-              <p>
+              <p i18n>
                 In Serene, we collect the following data:
               </p>
               <ul>
-                <li>Created Plans</li>
-                <li>Monitorings</li>
-                <li>Clicks in the application</li>
+                <li i18n>Created Plans</li>
+                <li i18n>Monitorings</li>
+                <li i18n>Clicks in the application</li>
               </ul>
             </div>
 
             <mat-card-actions>
               <label for="consentToggle">
-                <b>
+                <b i18n>
                   I consent to the processing of personalized data in Serene:</b
                 >
               </label>
@@ -195,7 +196,7 @@
         <mat-card class="dashboard-card consent-card">
           <mat-card-header>
             <mat-card-title>
-              <h2>What happens with the collected data?</h2>
+              <h2 i18n>What happens with the collected data?</h2>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
@@ -224,7 +225,7 @@
                     </mat-expansion-panel-header>
 
                     <div>
-                      <p>
+                      <p i18n>
                         Your data will be collected for the duration of the
                         course and the analysis results will only be available
                         to you and the course providers. Once the course is
@@ -249,7 +250,7 @@
         <mat-card class="dashboard-card consent-card">
           <mat-card-header>
             <mat-card-title>
-              <h2>What are your rights?</h2>
+              <h2 i18n>What are your rights?</h2>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
@@ -321,7 +322,7 @@
 
         <mat-card class="dashboard-card consent-card">
           <mat-card-content class="dashboard-card-content">
-            <h2>Do you have any questions?</h2>
+            <h2 i18n>Do you have any questions?</h2>
             <div class="container">
               <div class="row">
                 <div class="col-md-2">
@@ -331,7 +332,7 @@
                   />
                 </div>
                 <div class="col-md-10">
-                  <div>
+                  <div i18n>
                     <p>For content related questions, please contact:</p>
                     <p>
                       Prof. Dr. Drachsler, +49(0)69-24708-866,
@@ -373,11 +374,11 @@
         <mat-card class="dashboard-card">
           <mat-card-header>
             <mat-card-title>
-              <h2>Statement of consent</h2>
+              <h2 i18n>Statement of consent</h2>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <p>
+            <p i18n>
               By giving your consent, you indicate that you have read and
               understood the information above and had the opportunity to ask
               questions
@@ -389,7 +390,7 @@
                 name="checkboxIntroduction"
                 required
               >
-                <b class="consent-form-control">
+                <b class="consent-form-control" i18n>
                   I understand that I can choose not to opt-in into the
                   processing of data and that by doing so, I will suffer no
                   disadvantages
@@ -397,7 +398,7 @@
               </mat-checkbox>
               <br />
               <mat-checkbox formControlName="hasReadTermsAndConditions">
-                <b class="consent-form-control">
+                <b class="consent-form-control" i18n>
                   I have read and understood the terms and conditions.
                 </b>
               </mat-checkbox>

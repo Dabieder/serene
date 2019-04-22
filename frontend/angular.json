@@ -35,20 +35,27 @@
             ]
           },
           "configurations": {
-            "production-de": {
+            "production_de": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.dev.ts"
                 }
               ],
-              "aot": true,
               "outputPath": "dist/serene-de",
               "i18nFile": "src/i18n/messages.de.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "de",
-              "serviceWorker": true,
-              "sourceMap": true
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true
             },
             "de": {
               "fileReplacements": [

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import moment from "moment";
-import { defaultReasons } from "../../data/defaultReasons";
+import { defaultReasons as defaultReasonsDE } from "../../data/defaultReasons_DIPF.de";
+import { defaultReasons as defaultReasonsEN } from "../../data/defaultReasons_DIPF.en";
+import { LANGUAGE } from "../../util/constants";
 
 export interface SrlWidgetModel extends mongoose.Document {
   accountName: string;
@@ -43,7 +44,11 @@ export const generateNewPlanForId = (accountName: string) => {
 };
 
 const getDefaultReasons = () => {
-  return defaultReasons;
+  if (LANGUAGE === "de") {
+    return defaultReasonsDE;
+  } else {
+    return defaultReasonsEN;
+  }
 };
 
 export const SrlWidget: mongoose.Model<SrlWidgetModel> = mongoose.model<

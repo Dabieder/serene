@@ -6,6 +6,7 @@ import { EventUserCreate } from "../util/Events";
 import { EventEmitter } from "events";
 import { EventService } from "./EventService";
 import { NotificationService } from "./NotificationService";
+import { TIMEZONE } from "../util/constants";
 // TODO: Change this class for every experiment.
 
 export const ExperimentMonitorReminderTiming = "MonitorReminderTiming";
@@ -37,27 +38,39 @@ export class ExperimentService {
 
     // Every sunday and wednesday at 10 send reminder to create new plans
     const planReminderGroupOneRemindToCreatePlansTask = nodeCron.schedule(
-      "* * 10 * * Sunday,Wednesday",
+      "0 10 * * Sunday,Wednesday",
       () => {
         this.sendReminderToCreatePlansGroupOne();
+      },
+      {
+        scheduled: true,
+        timezone: TIMEZONE
       }
     );
     planReminderGroupOneRemindToCreatePlansTask.start();
 
     // Every day at 10 send reminder to create monitorings for monitoring group one
     const monitorReminderGroupOneRemindToMonitor = nodeCron.schedule(
-      "* * 10 * * *",
+      "0 13 * * *",
       () => {
-        this.sendReminderToMonitorGroupOne();
+        this.sendReminderToMonitorGroupFixedSchedule();
+      },
+      {
+        scheduled: true,
+        timezone: TIMEZONE
       }
     );
     monitorReminderGroupOneRemindToMonitor.start();
 
     // Every five minutes check if the groups needs to be reminded after a plan was finished
     const monitorReminderGroupTwoRemindToMonitor = nodeCron.schedule(
-      "* * 10 * * *",
+      "*/5 * * * *",
       () => {
-        this.sendReminderToCreatePlansGroupOne();
+        this.sendReminderToMonitorGroupByTask();
+      },
+      {
+        scheduled: true,
+        timezone: TIMEZONE
       }
     );
     monitorReminderGroupTwoRemindToMonitor.start();
@@ -177,15 +190,25 @@ export class ExperimentService {
     );
   }
 
-  async sendReminderToMonitorGroupOne() {
+  async sendReminderToMonitorGroupFixedSchedule() {
     logger.debug(
       `Sending Reminder To Create Monitorings for the experiment group one`
     );
   }
 
-  async sendReminderToMonitorGroupTwo() {
+  async sendReminderToMonitorGroupByTask() {
+    const experiment = await Experiment.findOne({
+      name: ExperimentMonitorReminderTiming
+    });
+    const group = experiment.groups.find(
+      x => x.name === GroupMonitorReminderByTask
+    );
+
     logger.debug(
-      `Sending Reminder To Create Monitorings for the experiment group two`
+      `Sending Reminder To Create Monitorings for the experiment group that gets reminders by tasks`
+    );
+    this.notificationService.sendAllNotificationsToListOfAccounts(
+      group.participants
     );
   }
 }
