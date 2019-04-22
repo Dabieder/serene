@@ -1,24 +1,24 @@
 <h1 mat-dialog-title i18n>Initial Settings</h1>
 <div mat-dialog-content>
   <section>
-    <b i18n="@@surveyCode">Survey Code</b>
+    <b i18n="@@surveyCode">Code</b>
     <p i18n>
       To match this data with survey data, please enter a code consisting of:
       <br />
     </p>
-    <ul>
+    <ul i18n>
       <li>The first two letters of your mothers first name</li>
       <li>The first two letters of your fathers first name</li>
       <li>The first two letters of the month you were born</li>
     </ul>
-    <p>
+    <p i18n>
       For example: If your fathers name is <b>Ra</b>lf, your mothers name is
       <b>An</b>na, and you were born in <b>Ja</b>nuary, then your code would be
       <b>raanja</b>
     </p>
     <div>
       <mat-form-field appearance="fill">
-        <mat-label>Survey Code</mat-label>
+        <mat-label i18n>Code</mat-label>
         <input
           matInput
           placeholder="Survey Code"
@@ -57,19 +57,19 @@
         Please enter a valid email address
       </mat-error> -->
     </mat-form-field>
-    <button
+    <!-- <button
       type="button"
       class="ml-4 btn btn-primary"
       (click)="updateEMail()"
       i18n="@@update"
     >
       Update
-    </button>
-    <div>
+    </button> -->
+    <!-- <div>
       <mat-checkbox i18n="@@enable">
         Enable
       </mat-checkbox>
-    </div>
+    </div> -->
   </section>
 </div>
 <div mat-dialog-actions>

@@ -56,6 +56,7 @@ export function reducer(state: any = initialState, action: ActionsUnion) {
         loading: true
       });
     case AuthActionTypes.SIGN_OUT_SUCCESS:
+    case AuthActionTypes.AUTHENTICATION_ERROR:
     case AuthActionTypes.AUTHENTICATION_SUCCESS:
       return Object.assign({}, state, {
         loading: false

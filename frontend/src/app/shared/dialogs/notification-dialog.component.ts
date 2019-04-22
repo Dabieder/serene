@@ -16,7 +16,7 @@ export class NotificationDialogComponent implements OnInit {
     this.dialogResult = {
       useEMailNotifications: true,
       usePushNotifications: true,
-      eMail: ""
+      email: ""
     };
   }
 
@@ -30,5 +30,5 @@ export class NotificationDialogComponent implements OnInit {
 export interface NotificationDialogData {
   usePushNotifications: boolean;
   useEMailNotifications: boolean;
-  eMail: string;
+  email: string;
 }

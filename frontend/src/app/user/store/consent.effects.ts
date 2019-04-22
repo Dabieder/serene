@@ -109,7 +109,7 @@ export class ConsentEffects {
         surveyCode: "",
         usePushNotifications: false,
         useEmailNotifications: false,
-        eMail: ""
+        email: ""
       }
     });
 

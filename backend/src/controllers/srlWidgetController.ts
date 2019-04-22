@@ -141,6 +141,9 @@ export class SrlWidgetController {
         } else {
           userWidgetData.learningPlans.push(plan);
         }
+        if (plan.progress >= 100) {
+          await this.notificationService.deleteRemindersForPlan(plan);
+        }
       }
     }
 

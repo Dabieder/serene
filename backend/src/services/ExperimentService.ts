@@ -7,6 +7,7 @@ import { EventEmitter } from "events";
 import { EventService } from "./EventService";
 import { NotificationService } from "./NotificationService";
 import { TIMEZONE } from "../util/constants";
+import { SrlWidget } from "../models/SRL/SrlWidget";
 // TODO: Change this class for every experiment.
 
 export const ExperimentMonitorReminderTiming = "MonitorReminderTiming";
@@ -38,7 +39,7 @@ export class ExperimentService {
 
     // Every sunday and wednesday at 10 send reminder to create new plans
     const planReminderGroupOneRemindToCreatePlansTask = nodeCron.schedule(
-      "0 10 * * Sunday,Wednesday",
+      "0 20 * * Sunday",
       () => {
         this.sendReminderToCreatePlansGroupOne();
       },
@@ -51,7 +52,7 @@ export class ExperimentService {
 
     // Every day at 10 send reminder to create monitorings for monitoring group one
     const monitorReminderGroupOneRemindToMonitor = nodeCron.schedule(
-      "0 13 * * *",
+      "0 10 * * *",
       () => {
         this.sendReminderToMonitorGroupFixedSchedule();
       },
@@ -196,19 +197,64 @@ export class ExperimentService {
     );
   }
 
-  async sendReminderToMonitorGroupByTask() {
-    const experiment = await Experiment.findOne({
-      name: ExperimentMonitorReminderTiming
-    });
-    const group = experiment.groups.find(
-      x => x.name === GroupMonitorReminderByTask
-    );
+  async getUsersWhoShouldReceiveReminders(accountNames: string[]) {
+    const shouldReceive = [];
 
-    logger.debug(
-      `Sending Reminder To Create Monitorings for the experiment group that gets reminders by tasks`
-    );
-    this.notificationService.sendAllNotificationsToListOfAccounts(
-      group.participants
-    );
+    let yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    for (let accountName of accountNames) {
+      let shouldReceiveReminder = true;
+      // This checks if there is a monitoring less than 24 hours old
+      try {
+        const srlData = await SrlWidget.findOne({
+          accountName
+        }).exec();
+
+        if (srlData) {
+          for (const monitoring of srlData.monitorings) {
+            if (new Date(monitoring.date) >= yesterday) {
+              shouldReceiveReminder = false;
+            }
+          }
+        }
+
+        if (shouldReceiveReminder) {
+          shouldReceive.push(accountName);
+        }
+      } catch (error) {
+        logger.error(
+          "Error trying to determine who should receive reminders: ",
+          error
+        );
+      }
+    }
+    return shouldReceive;
+  }
+
+  async sendReminderToMonitorGroupByTask() {
+    try {
+      const experiment = await Experiment.findOne({
+        name: ExperimentMonitorReminderTiming
+      }).exec();
+      const group = experiment.groups.find(
+        x => x.name === GroupMonitorReminderByTask
+      );
+
+      const usersWhoSchouldReceiveReminders = await this.getUsersWhoShouldReceiveReminders(
+        group.participants
+      );
+      logger.debug(
+        `Sending Reminder To Create Monitorings for the experiment group that gets reminders by tasks`
+      );
+      this.notificationService.sendAllNotificationsToListOfAccounts(
+        usersWhoSchouldReceiveReminders
+      );
+    } catch (error) {
+      logger.error(
+        `Error when trying to send task-scheduled reminder: `,
+        error
+      );
+    }
   }
 }

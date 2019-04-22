@@ -41,7 +41,7 @@
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit><trans-unit id="d5875e9e0099db2712c2a397d21fa5914b571674" datatype="html">
-        <source>Please note the following conditions:</source><target state="new">Please note the following conditions:</target>
+        <source>Please note the following conditions:</source><target state="translated">Bitte beachten Sie die folgenden Bedingungen:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
           <context context-type="linenumber">50</context>
@@ -72,7 +72,7 @@
           <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit><trans-unit id="f54ee341f6b2d738dc9864df44696065bb61341f" datatype="html">
-        <source>What are the purposes of data collection?</source><target state="translated">What are the purposes of data collection?</target>
+        <source>What are the purposes of data collection?</source><target state="translated">Was sind die Zwecke der Datenerhebung?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/consent-page.component.html</context>
           <context context-type="linenumber">75</context>
@@ -367,7 +367,7 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit><trans-unit id="surveyCode" datatype="html">
-        <source>Survey Code</source><target state="translated">Code</target>
+        <source>Code</source><target state="translated">Code</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
           <context context-type="linenumber">4</context>
@@ -383,6 +383,40 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
           <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
+      </trans-unit><trans-unit id="bfedeadd3ca18ad6c7755ec019de42bd6fe88d26" datatype="html">
+        <source>
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of your mothers first name<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of your fathers first name<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of the month you were born<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+    </source><target state="new">
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of your mothers first name<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of your fathers first name<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>The first two letters of the month you were born<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit><trans-unit id="5a35d280dc115f3fe7e01cf504d058d4ead362aa" datatype="html">
+        <source>
+      For example: If your fathers name is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Ra<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>lf, your mothers name is
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>An<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>na, and you were born in <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Ja<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>nuary, then your code would be
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>raanja<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
+    </source><target state="new">
+      For example: If your fathers name is <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Ra<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>lf, your mothers name is
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>An<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>na, and you were born in <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Ja<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>nuary, then your code would be
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>raanja<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit><trans-unit id="68572de01b84c678be4bf8a27b990ecac2f41ce9" datatype="html">
+        <source>Code</source><target state="new">Code</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
       </trans-unit><trans-unit id="afb79327318f30758601c604da23d234204cbf40" datatype="html">
         <source>
       For push notifications, please accept the notifications dialog that will
@@ -396,23 +430,11 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
         <source>
         Enable
       </source><target state="translated">Aktivieren</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
-          <context context-type="linenumber">40</context>
-        </context-group>
-      </trans-unit><trans-unit id="enterYourEmail" datatype="html">
+        
+        
+        
+        
+      <context-group purpose="location"><context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context><context context-type="linenumber">42</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/settings/components/notification-settings.component.html</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/settings/components/notification-settings.component.html</context><context context-type="linenumber">40</context></context-group></trans-unit><trans-unit id="enterYourEmail" datatype="html">
         <source>
       Enter your e-mail address below.
     </source><target state="translated">Gib hier deine E-Mail Adresse an.</target>
@@ -425,20 +447,6 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
           <context context-type="linenumber">54</context>
-        </context-group>
-      </trans-unit><trans-unit id="update" datatype="html">
-        <source>
-      Update
-    </source><target state="new">
-      Update
-    </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/dialogs/initial-settings-dialog.component.html</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
-          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       
@@ -461,7 +469,7 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit><trans-unit id="93bdc1d8769d2b41ad00f4aa061493fcb9b375a0" datatype="html">
-        <source>Completed Goals</source><target state="new">Completed Goals</target>
+        <source>Completed Goals</source><target state="translated">Abgeschlossene Ziele</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/reflect/reflection-page.component.html</context>
           <context context-type="linenumber">34</context>
@@ -529,7 +537,7 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
       </trans-unit>
       <trans-unit id="66abb23ed9adf4aa03eab3e4b75234d32748e44c" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{ title }}"/></source>
-        <target state="translated">sdgefa</target>
+        <target state="needs-translation"/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
           <context context-type="linenumber">5</context>
@@ -563,11 +571,9 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
         You are more likely to reach goals when you assign a schedule to them.
         <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
         <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Learn more about setting goals<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-      </source><target state="new">
+      </source><target state="translated">
         You are more likely to reach goals when you assign a schedule to them.
-        <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Learn more about setting goals<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-      </target>
+        <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Learn more about setting goals<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
           <context context-type="linenumber">79</context>
@@ -666,7 +672,10 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
         is stored about you and which is not directly related to the
         functionality of Serene, such as log data.
       </source>
-        <target state="translated">sdfsdf</target>
+        <target state="translated">
+        Sie können die Löschung aller <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>personalized<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/> Daten, die
+        wird über Sie gespeichert und steht in keinem direkten Zusammenhang mit der
+        Funktionalität von Serene, wie z.B. Protokolldaten.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
           <context context-type="linenumber">17</context>
@@ -676,7 +685,7 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
         <source>
         This process will remove the personlization from the following data:
       </source>
-        <target state="translated">dsfasdf</target>
+        <target state="translated">Dieser Vorgang entfernt die Personalisierung aus den folgenden Daten:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/privacy-settings.component.html</context>
           <context context-type="linenumber">22</context>
@@ -783,7 +792,7 @@ Wir interessieren uns für die Vor- und Nachteile einer TEL-Umgebung und wollen 
           If you want to be reminded of your plans and goals via e-mail, enter
           an e-mail address below.
         </source>
-        <target state="translated">Wenn du die Erinnerungen an deine Pläne über E-Mail erhalten möchtest, trag deine E-Mail Adresse unten ein</target>
+        <target state="translated">Wenn du die Erinnerungen via E-Mail erhalten möchtest, trag deine E-Mail Adresse unten ein</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
           <context context-type="linenumber">21</context>

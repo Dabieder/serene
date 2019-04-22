@@ -98,7 +98,7 @@ export class NotificationService {
           await this.sendNotificationBasedOnPreference(notification);
           // TODO: Delete notification after it has been sent
           logger.debug("Deleting sent reminder");
-          // await notification.remove();
+          await notification.remove();
         }
       }
     } catch (error) {
