@@ -31,6 +31,9 @@ export class PlanDateComponent implements OnInit {
   deadlineMinutes: number;
   time: string;
 
+  @Input() dateLabel: string;
+  @Input() timeLabel: string;
+
   private _date: Date;
   @Input("date")
   set date(date: Date) {
