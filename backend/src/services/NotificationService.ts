@@ -14,9 +14,7 @@ import { PushSubscriptionService } from "./PushSubscriptionService";
 import { User } from "../models/User";
 import { createTransport, createTestAccount, Transporter } from "nodemailer";
 import moment = require("moment");
-import {
-  LANGUAGE,
-} from "../util/constants";
+import { LANGUAGE } from "../util/constants";
 import { MESSAGES } from "../data/Messages";
 
 export class NotificationService {
@@ -83,6 +81,8 @@ export class NotificationService {
     if (!notifications) {
       return false;
     }
+
+    logger.debug(`Sending out ${notifications.length} notifications`);
 
     try {
       for (const notification of notifications) {

@@ -52,7 +52,7 @@ export class ExperimentService {
 
     // Every day at 10 send reminder to create monitorings for monitoring group one
     const monitorReminderGroupOneRemindToMonitor = nodeCron.schedule(
-      "0 10 * * *",
+      "0 20 * * Sunday,Wednesday",
       () => {
         this.sendReminderToMonitorGroupFixedSchedule();
       },
@@ -233,6 +233,7 @@ export class ExperimentService {
   }
 
   async sendReminderToMonitorGroupByTask() {
+    logger.debug(`Reminder by task schedule`);
     try {
       const experiment = await Experiment.findOne({
         name: ExperimentMonitorReminderTiming
@@ -244,12 +245,12 @@ export class ExperimentService {
       const usersWhoSchouldReceiveReminders = await this.getUsersWhoShouldReceiveReminders(
         group.participants
       );
-      logger.debug(
-        `Sending Reminder To Create Monitorings for the experiment group that gets reminders by tasks`
-      );
-      this.notificationService.sendAllNotificationsToListOfAccounts(
-        usersWhoSchouldReceiveReminders
-      );
+
+      if (usersWhoSchouldReceiveReminders.length > 0) {
+        this.notificationService.sendAllNotificationsToListOfAccounts(
+          usersWhoSchouldReceiveReminders
+        );
+      }
     } catch (error) {
       logger.error(
         `Error when trying to send task-scheduled reminder: `,

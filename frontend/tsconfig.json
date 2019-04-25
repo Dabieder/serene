@@ -12,7 +12,8 @@
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@root/*": ["app/*"]
+      "@root/*": ["app/*"],
+      "@shared/*": ["../../shared/*"]
     },
     "lib": ["es2017", "dom"]
   }
