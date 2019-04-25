@@ -1,5 +1,10 @@
 import * as jwt from "jsonwebtoken";
-import { User, getHashAndSalt, GetUserWithDefaults } from "../models/User";
+import {
+  User,
+  getHashAndSalt,
+  GetUserWithDefaults,
+  UserModel
+} from "../models/User";
 import logger from "../util/logger";
 import { JWT_SECRET } from "../util/secrets";
 import userList from "../data/userList";
@@ -44,6 +49,16 @@ export class UserService {
       logger.error(`Error while trying to create a new user:`, err);
       return err;
     }
+  }
+
+  async getAllUsers() {
+    let users = null;
+    try {
+      users = await User.find().exec();
+    } catch (error) {
+      logger.error(`Error trying to get all users`, error);
+    }
+    return users;
   }
 
   async deleteUser(accountName: string) {

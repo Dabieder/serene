@@ -15,6 +15,20 @@ export class UserController {
       .catch(err => logger.error("Error trying to create test user 'a'"));
   };
 
+  getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
+    const users = this.userService.getAllUsers();
+
+    if (users) {
+      res.status(200).json({
+        data: users
+      });
+    } else {
+      res.status(401).json({
+        error: "Users not found"
+      });
+    }
+  };
+
   getUser = async (req: Request, res: Response, next: NextFunction) => {
     if (req.payload) {
       logger.info(
