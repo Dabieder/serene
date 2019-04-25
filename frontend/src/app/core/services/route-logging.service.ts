@@ -29,20 +29,11 @@ export class RouteLoggingService {
       if (val instanceof NavigationStart) {
         if (val.url.includes("ref=")) {
           this.loggingService.logReferral(val.url);
-          console.log("Navigation Start: ", this.router);
         }
       }
       if (val instanceof NavigationEnd) {
         this.loggingService.logNavigation(val.url);
       }
-    });
-
-    this.route.queryParamMap.subscribe(paramMap => {
-      console.log("query param map: ", paramMap);
-    });
-
-    this.route.paramMap.subscribe(paramMap => {
-      console.log("param map: ", paramMap);
     });
   }
 }

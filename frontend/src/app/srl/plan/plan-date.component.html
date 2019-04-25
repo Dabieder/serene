@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-center align-items-center">
   <mat-form-field class="date-plan-date-picker mr-2">
     <input
+      class="plan-date-input"
       (dateChange)="onDateChange($event)"
       [value]="date | date: 'yyyy-MM-dd'"
       (input)="date = parseDate($event.target.value)"
@@ -18,6 +19,7 @@
   ></app-time-select> -->
   <mat-form-field class="date-plan-time-picker">
     <input
+      class="plan-date-input"
       matInput
       aria-label="State"
       type="time"

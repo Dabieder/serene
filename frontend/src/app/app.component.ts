@@ -25,6 +25,7 @@ export class AppComponent extends BaseComponent implements OnInit {
   );
   loading$ = this.store$.pipe(select(isLoading));
   submitting$ = this.store$.pipe(select(getIsSubmitting));
+  
   constructor(public dialog: MatDialog, private store$: Store<AppState>) {
     super();
     this.initMoment();
