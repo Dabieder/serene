@@ -106,5 +106,17 @@
 }
 
 .date-plan-time-picker .mat-form-field-infix {
+  width: 70px !important;
+}
+
+.date-plan-date-picker {
+  margin-top: 1px;
+}
+
+.date-plan-date-picker .mat-form-field-infix {
   width: 80px !important;
+}
+
+.plan-date .mat-form-field-label {
+  color: rgba(0, 0, 0, 0.9);
 }
