@@ -16,6 +16,7 @@ import { createTransport, createTestAccount, Transporter } from "nodemailer";
 import moment = require("moment");
 import { LANGUAGE } from "../util/constants";
 import { MESSAGES } from "../data/Messages";
+import { LogService } from "./LogService";
 
 export class NotificationService {
   notificationInterval = +process.env["NOTIFICATION_CHECK_INTERVAL"]
@@ -25,7 +26,10 @@ export class NotificationService {
   transporter: Transporter;
   schedules: ScheduledTask[] = [];
 
-  constructor(private pushSubscriptionService: PushSubscriptionService) {
+  constructor(
+    private pushSubscriptionService: PushSubscriptionService,
+    private logService: LogService
+  ) {
     // this.initialize();
   }
 
@@ -36,8 +40,6 @@ export class NotificationService {
   }
 
   async configureMailer() {
-    const testAccount = await createTestAccount();
-    logger.debug("TEST MAIL CREDENTIALS: ", testAccount);
     this.transporter = createTransport({
       host: process.env["REMINDER_SMTP_HOST"],
       port: 587,
@@ -129,8 +131,13 @@ export class NotificationService {
 
         if (isBefore) {
           await this.sendNotificationBasedOnPreference(notification);
-          // TODO: Delete notification after it has been sent
-          logger.debug("Deleting sent reminder");
+          this.logService.addServerLog({
+            type: "notification",
+            data: {
+              target: notification.accountName,
+              planId: notification.planId
+            }
+          });
           await notification.remove();
         }
       }

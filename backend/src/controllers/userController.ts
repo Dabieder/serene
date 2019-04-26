@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import logger from "../util/logger";
 import { UserService } from "../services/UserService";
 import { ExperimentService } from "../services/ExperimentService";
+import { Role } from "../models/User";
 
 export class UserController {
   constructor(private userService: UserService) {}
@@ -16,11 +17,21 @@ export class UserController {
   };
 
   getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
-    const users = this.userService.getAllUsers();
+    const requestingUser = await this.userService.getUser(req.payload.sub);
+
+    if (requestingUser.role !== Role.Administrator) {
+      logger.info(
+        `User ${req.payload.sub} without privileges tried to access all users`
+      );
+      return res.status(403).json({
+        error: "Not allowed to get all users"
+      });
+    }
+    const users = await this.userService.getAllUsers();
 
     if (users) {
       res.status(200).json({
-        data: users
+        data: users.map(u => u.toUserInfo())
       });
     } else {
       res.status(401).json({

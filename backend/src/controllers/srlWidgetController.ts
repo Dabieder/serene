@@ -6,12 +6,12 @@ import {
   generateNewPlanForId
 } from "../models/SRL/SrlWidget";
 import { NotificationService } from "../services/NotificationService";
-import { UserLogService } from "../services/UserLogService";
+import { LogService } from "../services/LogService";
 
 export class SrlWidgetController {
   constructor(
     private notificationService: NotificationService,
-    private userLogService: UserLogService
+    private userLogService: LogService
   ) {}
 
   /**

@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { UserLog, UserLogModel } from "../models/UserLogs";
 import logger from "../util/logger";
-import { UserLogService } from "../services/UserLogService";
+import { LogService } from "../services/LogService";
 
 export class UserLogController {
-  constructor(private userLogService: UserLogService) {}
+  constructor(private userLogService: LogService) {}
 
   submitLogs = async (req: Request, res: Response, next: NextFunction) => {
     logger.info(`Receiving Log Submit from: ${req.payload.sub}`);

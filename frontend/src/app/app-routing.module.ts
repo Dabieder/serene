@@ -6,6 +6,11 @@ import { AuthenticationGuard } from "./core/services/authentication.guard";
 
 const routes: Routes = [
   {
+    path: "admin",
+    loadChildren: "./administrator/administrator.module#AdministratorModule",
+    canActivate: [AuthenticationGuard]
+  },
+  {
     path: "courses",
     loadChildren: "./course/course.module#CourseModule",
     canActivate: [AuthenticationGuard]

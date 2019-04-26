@@ -9,6 +9,11 @@ export type HashSalt = {
   salt: string;
 };
 
+export enum Role {
+  User = "Learner",
+  Administrator = "Administrator"
+}
+
 export interface UserModel extends mongoose.Document {
   email: string;
   password: string;
@@ -16,6 +21,7 @@ export interface UserModel extends mongoose.Document {
   accountName: string;
   settings: any;
   consented: boolean;
+  role: Role;
 
   profile: {
     firstName: string;
@@ -29,6 +35,7 @@ export interface UserModel extends mongoose.Document {
   setPassword: setPasswordFunction;
   generateJWT: generateJWTFunction;
   toAuthJSON: toAuthJSONFunction;
+  toUserInfo: toUserInfoFunction;
 }
 
 export type PrivacySetting = {
@@ -40,6 +47,7 @@ type comparePasswordFunction = (candidatePassword: string) => boolean;
 type setPasswordFunction = (password: string) => void;
 type generateJWTFunction = () => string;
 type toAuthJSONFunction = () => object;
+type toUserInfoFunction = () => object;
 
 const userSchema = new mongoose.Schema(
   {
@@ -48,6 +56,7 @@ const userSchema = new mongoose.Schema(
     password: String,
     accountName: { type: String, unique: true },
     settings: Object,
+    role: Object,
     salt: String,
     profile: {
       firstName: String,
@@ -70,6 +79,7 @@ const generateJWT: generateJWTFunction = function() {
       id: this._id,
       sub: this.accountName,
       accountName: this.accountName,
+      role: this.role,
       exp: Math.round(expires.getTime() / 1000)
     },
     JWT_SECRET,
@@ -101,7 +111,15 @@ const toAuthJSON: toAuthJSONFunction = function() {
   return {
     accountName: this.accountName,
     token: this.generateJWT(),
-    consented: this.consented
+    consented: this.consented,
+    role: this.role
+  };
+};
+
+const toUserInfo: toUserInfoFunction = function() {
+  return {
+    accountName: this.accountName,
+    role: this.role
   };
 };
 
@@ -110,7 +128,8 @@ export const GetUserWithDefaults = (accountName: string, password: string) => {
     email: "",
     accountName,
     settings: defaultSettings.DIPF,
-    consented: false
+    consented: false,
+    role: Role.User
   };
   if (password) {
     const hashSalt = getHashAndSalt(password);
@@ -124,20 +143,6 @@ export const GetUserWithDefaults = (accountName: string, password: string) => {
       ...userData
     });
   }
-};
-
-export const verfifyToken = (token: string) => {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, this.jwtSecret, (err: any) => {
-      if (err) {
-        resolve(false);
-        return;
-      }
-
-      resolve(true);
-      return;
-    });
-  }) as Promise<boolean>;
 };
 
 const getHash = (pw: string, salt: string): string => {
@@ -167,6 +172,7 @@ userSchema.methods.comparePassword = comparePassword;
 userSchema.methods.setPassword = setPassword;
 userSchema.methods.generateJWT = generateJWT;
 userSchema.methods.toAuthJSON = toAuthJSON;
+userSchema.methods.toUserInfo = toUserInfo;
 
 export const User: mongoose.Model<UserModel> = mongoose.model<UserModel>(
   "User",

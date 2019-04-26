@@ -33,7 +33,7 @@ import { SettingsController } from "./controllers/settingsController";
 import { SettingsService } from "./services/SettingsService";
 import { PushSubscriptionService } from "./services/PushSubscriptionService";
 import { PushSubscriptionController } from "./controllers/subscriptionController";
-import { UserLogService } from "./services/UserLogService";
+import { LogService } from "./services/LogService";
 import { ExperimentService } from "./services/ExperimentService";
 import { EventService } from "./services/EventService";
 import { thisExpression } from "babel-types";
@@ -50,7 +50,7 @@ export class Server {
   notificationService: NotificationService;
   settingsService: SettingsService;
   pushSubscriptionService: PushSubscriptionService;
-  userLogService: UserLogService;
+  userLogService: LogService;
   experimentService: ExperimentService;
   eventService: EventService;
 
@@ -140,12 +140,13 @@ export class Server {
     this.userService = new UserService(this.eventService);
     await this.userService.generateUsersFromFile();
     this.pushSubscriptionService = new PushSubscriptionService();
+    this.userLogService = new LogService();
     this.notificationService = new NotificationService(
-      this.pushSubscriptionService
+      this.pushSubscriptionService,
+      this.userLogService
     );
     await this.notificationService.initialie();
     this.settingsService = new SettingsService();
-    this.userLogService = new UserLogService();
     this.experimentService = new ExperimentService(
       this.eventService,
       this.notificationService
@@ -234,6 +235,12 @@ export class Server {
     });
     // USER
     app.get(API_PREFIX + "/user", jwtAuthRequired, this.userController.getUser);
+    app.get(
+      API_PREFIX + "/users",
+      jwtAuthRequired,
+      this.userController.getAllUsers
+    );
+    // SETTINGS
     app.get(
       API_PREFIX + "/settings",
       jwtAuthRequired,

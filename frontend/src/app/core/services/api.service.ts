@@ -10,7 +10,8 @@ export const ENDPOINTS = {
   USER: "/user",
   HEALTH: "/health",
   SIGN_IN: "/auth/signin",
-  CONSENT: "/consent"
+  CONSENT: "/consent",
+  ALL_USERS: "/users"
 };
 
 @Injectable()
