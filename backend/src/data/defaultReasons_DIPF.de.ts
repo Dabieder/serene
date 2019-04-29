@@ -1,7 +1,7 @@
 export let defaultReasons = [
   {
     name: "Teacher Support",
-    icon: "assets/images/friends_dipf-blue.svg",
+    icon: "assets/reason-icons/friends_dipf-blue.svg",
     rating: 0,
     labelHelped: "Gut",
     labelHindered: "Schlecht",
@@ -9,7 +9,7 @@ export let defaultReasons = [
   },
   {
     name: "Time Management",
-    icon: "assets/images/time_dipf-blue.svg",
+    icon: "assets/reason-icons/time_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Gut",
@@ -18,7 +18,7 @@ export let defaultReasons = [
   },
   {
     name: "Team support",
-    icon: "assets/images/collaboration_dipf-blue.svg",
+    icon: "assets/reason-icons/collaboration_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Gut",
@@ -27,7 +27,7 @@ export let defaultReasons = [
   },
   {
     name: "Available Information",
-    icon: "assets/images/information_dipf-blue.svg",
+    icon: "assets/reason-icons/information_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Ausreichend",
@@ -36,16 +36,16 @@ export let defaultReasons = [
   },
   {
     name: "Goals",
-    icon: "assets/images/goal_dipf-blue.svg",
+    icon: "assets/reason-icons/goal_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Angemessen",
-    labelHindered: "Zu ambitioniert",
+    labelHindered: "Unangemessen",
     labelQuestion: "Meine Zielsetzung war:"
   },
   {
     name: "Motivation",
-    icon: "assets/images/motivation_dipf-blue.svg",
+    icon: "assets/reason-icons/motivation_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Hoch",
@@ -54,7 +54,7 @@ export let defaultReasons = [
   },
   {
     name: "Task Strategy",
-    icon: "assets/images/strategy_dipf-blue.svg",
+    icon: "assets/reason-icons/strategy_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Gut",
