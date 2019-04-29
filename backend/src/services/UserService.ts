@@ -66,7 +66,12 @@ export class UserService {
   }
 
   async getUser(accountName: string) {
-    return await User.findOne({ accountName }).exec();
+    try {
+      return await User.findOne({ accountName }).exec();
+    } catch (error) {
+      logger.error(`Error trying to retrieve user: ${accountName}`, error);
+    }
+    return null;
   }
 
   verfifyToken(token: string) {

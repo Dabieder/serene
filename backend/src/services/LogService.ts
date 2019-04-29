@@ -1,7 +1,8 @@
 import { UserLog, UserLogModel } from "../models/UserLogs";
 import logger from "../util/logger";
+import { ApplicationLog } from "../models/ApplicationLogs";
 
-export class UserLogService {
+export class LogService {
   constructor() {}
 
   async addEventLogs(logs: any, accountName: string) {
@@ -88,5 +89,21 @@ export class UserLogService {
         error
       );
     }
+  }
+
+  async addServerLog(log: any) {
+    ApplicationLog.updateOne(
+      {},
+      {
+        $push: {
+          logs: log
+        }
+      }
+    )
+      .exec()
+      .then()
+      .catch((error: any) => {
+        logger.error(`Error trying to append to server logs: `, error);
+      });
   }
 }
