@@ -56,7 +56,7 @@ export class AuthenticationService {
           token: response.data.token
         })
       );
-      this.jwtService.saveToken(response.data.user.token);
+      this.jwtService.saveToken(response.data.token);
     });
   }
 
