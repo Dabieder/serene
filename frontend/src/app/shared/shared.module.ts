@@ -9,6 +9,7 @@ import { NotificationDialogComponent } from "./dialogs/notification-dialog.compo
 import { MaterialModule } from "../material.module";
 import { MobileNavComponent } from "./components/mobile-nav.component";
 import { InitialSettingsDialogComponent } from "./dialogs/initial-settings-dialog.component";
+import { DatetimeinputComponent } from "./components/datetimeinput.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule],
@@ -20,7 +21,8 @@ import { InitialSettingsDialogComponent } from "./dialogs/initial-settings-dialo
     AlertsComponent,
     NotificationDialogComponent,
     MobileNavComponent,
-    InitialSettingsDialogComponent
+    InitialSettingsDialogComponent,
+    DatetimeinputComponent
   ],
   exports: [
     MenuItemComponent,
@@ -30,7 +32,8 @@ import { InitialSettingsDialogComponent } from "./dialogs/initial-settings-dialo
     AlertsComponent,
     NotificationDialogComponent,
     MobileNavComponent,
-    InitialSettingsDialogComponent
+    InitialSettingsDialogComponent,
+    DatetimeinputComponent
   ],
   entryComponents: [NotificationDialogComponent, InitialSettingsDialogComponent]
 })
