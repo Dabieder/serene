@@ -68,7 +68,7 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
   }
 
   onStartDateChange(deadline: Date) {
-    this.plan.endDate = deadline;
+    this.plan.startDate = deadline;
   }
 
   onEndDateChange(deadline: Date) {

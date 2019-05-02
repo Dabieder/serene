@@ -98,8 +98,8 @@ body {
 }
 
 .img-icon-small {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
 }
 
 .grid-container {
@@ -115,6 +115,11 @@ body {
 
 .card-header {
   position: relative;
+}
+
+.text-muted {
+  color: $dipf-gray-light;
+  font-size: 12px;
 }
 
 html,

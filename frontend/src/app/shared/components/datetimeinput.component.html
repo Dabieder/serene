@@ -1,4 +1,6 @@
-<div #flatpickr></div>
-<p>
-  Here be flatpickr
-</p>
+<div class="ng2-flatpickr-input-container">
+  <input 
+  class="date-time-input"
+  #flatpickr *ngIf="!hideButton" type="text" data-input />
+  <ng-content></ng-content>
+</div>

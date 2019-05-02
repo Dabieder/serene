@@ -17,7 +17,6 @@
       </button>
     </div>
   </div>
-  <app-datetimeinput></app-datetimeinput>
   <div class="card-body" *ngIf="learningPlans">
     <div *ngFor="let learningPlan of learningPlansOpen">
       <app-srl-monitor-plan-item
@@ -71,9 +70,9 @@
   </div>
 
   <div class="align-self-center footer-controls">
-    <span class="cancel-btn mr-4" (click)="closeDialog()" i18n="@@cancel">
+    <!-- <span class="cancel-btn mr-4" (click)="closeDialog()" i18n="@@cancel">
       Cancel
-    </span>
+    </span> -->
     <button
       class="ml-4 btn btn-rounded db-primary"
       (click)="submit()"

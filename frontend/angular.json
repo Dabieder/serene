@@ -28,7 +28,10 @@
               "src/sw-master.js",
               "src/sw-custom.js"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/flatpickr/dist/flatpickr.min.css"
+            ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"

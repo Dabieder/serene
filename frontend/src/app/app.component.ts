@@ -5,13 +5,16 @@ import {
   getShowToolbar,
   getIsAuthenticated,
   isLoading,
-  getIsSubmitting
+  getIsSubmitting,
+  getSettings
 } from "./reducers";
 import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
 import * as moment from "moment";
 import { BaseComponent } from "./core/base-component";
 import { MatDialog } from "@angular/material";
+import { map } from "rxjs/operators";
+import { PushNotificationService } from "./core/services/push-notification.service";
 
 @Component({
   selector: "app-root",
@@ -26,7 +29,11 @@ export class AppComponent extends BaseComponent implements OnInit {
   loading$ = this.store$.pipe(select(isLoading));
   submitting$ = this.store$.pipe(select(getIsSubmitting));
 
-  constructor(public dialog: MatDialog, private store$: Store<AppState>) {
+  constructor(
+    public dialog: MatDialog,
+    private store$: Store<AppState>,
+    private pushNotificationService: PushNotificationService
+  ) {
     super();
     this.initMoment();
   }
@@ -38,7 +45,60 @@ export class AppComponent extends BaseComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store$
+      .select(getSettings)
+      .pipe(
+        map(settings => settings.usePushNotifications),
+        map(usePush => {
+          console.log("USE PUSH SETTING");
+          if (usePush) {
+            this.pushNotificationService.subscribeToPushNotifications();
+          }
+        })
+      )
+      .subscribe();
+
+    document.querySelectorAll("img.svg").forEach(function(element) {
+      const imgID = element.getAttribute("id");
+      const imgClass = element.getAttribute("class");
+      const imgURL = element.getAttribute("src");
+
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          const svg = xhr.responseXML.getElementsByTagName("svg")[0];
+
+          if (imgID != null) {
+            svg.setAttribute("id", imgID);
+          }
+
+          if (imgClass != null) {
+            svg.setAttribute("class", imgClass + " replaced-svg");
+          }
+
+          svg.removeAttribute("xmlns:a");
+
+          if (
+            !svg.hasAttribute("viewBox") &&
+            svg.hasAttribute("height") &&
+            svg.hasAttribute("width")
+          ) {
+            svg.setAttribute(
+              "viewBox",
+              "0 0 " +
+                svg.getAttribute("height") +
+                " " +
+                svg.getAttribute("width")
+            );
+          }
+          element.parentElement.replaceChild(svg, element);
+        }
+      };
+      xhr.open("GET", imgURL, true);
+      xhr.send(null);
+    });
+  }
 
   initMoment() {
     moment.locale("de");

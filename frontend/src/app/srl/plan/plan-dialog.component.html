@@ -35,23 +35,34 @@
       </div>
     </div>
 
-    <div class="mt-4">
-      <b i18n="@@schedule" class="mb-2">Schedule</b>
+    <div class="mt-4 mb-4">
+      <b i18n="@@schedule" class="mb-2 mt-2">Schedule</b>
       <div class="d-flex flex-row align-items-center">
-        <app-plan-date
+        <label class="schedule-label">Start: </label>
+        <app-datetimeinput
+          [date]="plan.startDate"
+          (dateChange)="onStartDateChange($event)"
+        ></app-datetimeinput>
+        <!-- <app-plan-date
           [date]="plan.startDate"
           i18n-dateLabel="@@startDateLabel"
           dateLabel="Start:"
           (dateChange)="onStartDateChange($event)"
-        ></app-plan-date>
+        ></app-plan-date> -->
       </div>
+      <div class="mt-2 mb-2"></div>
       <div class="d-flex flex-row align-items-center">
-        <app-plan-date
+        <label class="schedule-label">End:</label>
+        <app-datetimeinput
+          [date]="plan.endDate"
+          (dateChange)="onEndDateChange($event)"
+        ></app-datetimeinput>
+        <!-- <app-plan-date
           i18n-dateLabel="@@endDateLabel"
           dateLabel="End:"
           [date]="plan.endDate"
           (dateChange)="onEndDateChange($event)"
-        ></app-plan-date>
+        ></app-plan-date> -->
       </div>
       <div
         *ngIf="!useEndDate && !useStartDate"
@@ -64,7 +75,7 @@
       </div>
     </div>
 
-    <div>
+    <div *ngIf="plan.subPlans.length > 0">
       <b i18n>Plans</b>
       <div class="container mb-2">
         <div *ngFor="let subPlan of plan.subPlans" class="row subplan pb-2">
@@ -84,21 +95,21 @@
 
       <div class="container" *ngIf="plan.subPlans.length > 0">
         <div class="row align-items-center justify-content-center">
-          <b i18n>Total:</b>
+          <b i18n class="mb-2 mt-2">Total:</b>
           <span class="ml-2 total-hours">{{
             plan.plannedDuration | timedisplay
           }}</span>
         </div>
       </div>
-      <button class="btn db-primary shadow" (click)="addSubPlan($event)">
-        <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
-        <span class="ml-2" i18n>Add Plan</span>
-      </button>
     </div>
+    <button class="btn db-primary shadow" (click)="addSubPlan($event)">
+      <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
+      <span class="ml-2" i18n>Add Plan</span>
+    </button>
   </div>
 
   <div class="align-self-center footer-controls">
-    <span class="cancel-btn mr-4" (click)="closeDialog()" i18n> Cancel </span>
+    <!-- <span class="cancel-btn mr-4" (click)="closeDialog()" i18n> Cancel </span> -->
     <button
       class="ml-4 btn db-primary shadow"
       (click)="submit()"

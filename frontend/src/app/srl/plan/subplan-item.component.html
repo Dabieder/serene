@@ -10,7 +10,18 @@
   ></textarea>
 </div>
 <div class="d-md-flex flex-row align-items-center ">
-  <app-plan-date class="mr-4"
+  <label class="schedule-label">Start: </label>
+  <app-datetimeinput
+    [date]="plan.startDate"
+    (dateChange)="onStartDateChange($event)"
+  ></app-datetimeinput>
+  <label class="schedule-label ml-4">End:</label>
+  <app-datetimeinput
+    [date]="plan.endDate"
+    (dateChange)="onEndDateChange($event)"
+  ></app-datetimeinput>
+  <!-- <app-plan-date
+    class="mr-4"
     i18n-dateLabel="@@startDateLabel"
     dateLabel="Start:"
     [date]="plan.startDate"
@@ -21,5 +32,5 @@
     dateLabel="End:"
     [date]="plan.endDate"
     (dateChange)="onEndDateChange($event)"
-  ></app-plan-date>
+  ></app-plan-date> -->
 </div>

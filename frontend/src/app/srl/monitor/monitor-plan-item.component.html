@@ -8,7 +8,7 @@
   <div
     class="ml-4 d-flex justify-content-between align-items-center goal-item-header"
   >
-    <h5 class="mt-2 mb-2">{{ learningPlan.goal }}</h5>
+    <b class="mt-2 mb-2">{{ learningPlan.goal }}</b>
 
     <div class="menu">
       <button
@@ -37,19 +37,19 @@
     </div>
   </div>
 
-  <div class="row ml-4">
+  <div class="row ml-4 text-muted">
     <img
-      src="/assets/icons/deadline_black.svg"
+      src="/assets/icons/deadline_gray.svg"
       class="img-icon-small align-self-center"
     />
     <span class="ml-2 mr-2 mt-0">
       {{ learningPlan.endDate | date: "dd.MM.yyyy" }}
     </span>
-    <img
+    <!-- <img
       src="/assets/icons/clock_black.svg"
       class="img-icon-small align-self-center"
-    />
-    <span class="ml-2 mt-0">
+    /> -->
+    <span class="mt-0">
       {{ learningPlan.endDate | date: "HH:mm" }}
     </span>
   </div>

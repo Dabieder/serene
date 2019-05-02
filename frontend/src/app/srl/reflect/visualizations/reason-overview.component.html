@@ -7,7 +7,7 @@
     "
   >
     <div *ngIf="reasonsPositive.length > 0" class="col-12">
-      <h5 i18n="@@positive">Positive:</h5>
+      <b i18n="@@positive">Positive:</b>
       <ul class="list-group list-group-flush">
         <li
           *ngFor="let reason of reasonsPositive"
@@ -28,7 +28,7 @@
     </div>
 
     <div *ngIf="reasonsNegative.length > 0" class="col-12">
-      <h5 i18n="@@negative">Negative:</h5>
+      <b i18n="@@negative">Negative:</b>
       <ul class="list-group list-group-flush">
         <li
           *ngFor="let reason of reasonsNegative"

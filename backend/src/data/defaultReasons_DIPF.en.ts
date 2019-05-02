@@ -1,7 +1,7 @@
 export let defaultReasons = [
   {
     name: "Teacher Support",
-    icon: "assets/images/friends_dipf-blue.svg",
+    icon: "assets/reason-icons/friends_dipf-blue.svg",
     rating: 0,
     labelHelped: "Good",
     labelHindered: "Bad",
@@ -9,7 +9,7 @@ export let defaultReasons = [
   },
   {
     name: "Time Management",
-    icon: "assets/images/time_dipf-blue.svg",
+    icon: "assets/reason-icons/time_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Good",
@@ -17,17 +17,17 @@ export let defaultReasons = [
     labelQuestion: "My time management was:"
   },
   {
-    name: "Team support",
-    icon: "assets/images/collaboration_dipf-blue.svg",
+    name: "Peer support",
+    icon: "assets/reason-icons/collaboration_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Good",
     labelHindered: "Bad",
-    labelQuestion: "Team support was:"
+    labelQuestion: "Peer support was:"
   },
   {
     name: "Available Information",
-    icon: "assets/images/information_dipf-blue.svg",
+    icon: "assets/reason-icons/information_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Sufficient",
@@ -35,17 +35,17 @@ export let defaultReasons = [
     labelQuestion: "The information that I had was:"
   },
   {
-    name: "Goals",
-    icon: "assets/images/goal_dipf-blue.svg",
+    name: "Learning Goals",
+    icon: "assets/reason-icons/goal_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Appropriate",
     labelHindered: "Too ambitious",
-    labelQuestion: "My goals were:"
+    labelQuestion: "My learning goals were:"
   },
   {
     name: "Motivation",
-    icon: "assets/images/motivation_dipf-blue.svg",
+    icon: "assets/reason-icons/motivation_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "High",
@@ -53,13 +53,13 @@ export let defaultReasons = [
     labelQuestion: "My motivation was:"
   },
   {
-    name: "Task Strategy",
-    icon: "assets/images/strategy_dipf-blue.svg",
+    name: "Learning Strategy",
+    icon: "assets/reason-icons/strategy_dipf-blue.svg",
     selected: false,
     rating: 0,
     labelHelped: "Good",
     labelHindered: "Bad",
-    labelQuestion: "My task strategy was:"
+    labelQuestion: "My learning strategy was:"
   },
   {
     name: "Sleep",
