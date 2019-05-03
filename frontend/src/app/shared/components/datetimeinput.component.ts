@@ -22,7 +22,7 @@ export class DatetimeinputComponent
   @ViewChild("flatpickr") flatpickrElement;
   dateTimePicker: any;
 
-  @Input() dateFormat = "d.m.Y H:m";
+  @Input() dateFormat = "d.m.Y H:i";
   @Input() minDate = new Date();
   @Input() timeFormat = "";
   @Input() placeholder: String;
@@ -47,7 +47,8 @@ export class DatetimeinputComponent
       dateFormat: this.dateFormat,
       time_24hr: true,
       minDate: this.minDate,
-      onChange: this.eventOnChange
+      onChange: this.eventOnChange,
+      minuteIncrement: 5
     };
 
     // this.dateTimePicker = nativeElement.flatpickr({});
@@ -62,7 +63,7 @@ export class DatetimeinputComponent
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("On Chagnes: ", changes);
+    console.log("On Changes: ", changes);
   }
 
   protected eventOnChange = (
@@ -70,6 +71,7 @@ export class DatetimeinputComponent
     dateStr: string,
     instance: Object
   ): void => {
+    console.log("On Flatpickr Change");
     this.dateChange.emit(selectedDates[0]);
   }
 }
