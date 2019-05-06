@@ -35,6 +35,7 @@ import { SrlWidgetRoutingModule } from "./srl-widget-routing.module";
 import { RouterModule } from "@angular/router";
 import { MaterialModule } from "../material.module";
 import { CompletedPlanListComponent } from './reflect/completed-plan-list.component';
+import { LearningStrategySelectComponent } from './components/learning-strategy-select.component';
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { CompletedPlanListComponent } from './reflect/completed-plan-list.compon
     MonitorSubplanItemComponent,
     CompletedPlanChartComponent,
     CompletedPlanListComponent,
+    LearningStrategySelectComponent,
   ],
   exports: [
     ReflectionPageComponent,

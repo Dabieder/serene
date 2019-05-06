@@ -1,0 +1,42 @@
+<div class="dropdown">
+  <button
+    class="bg-transparent dropdown-menu-button"
+    type="button"
+    #dropdownMenuButton
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <img src="/assets/btn-icons/menu_white.svg" class="img-icon" />
+    <span>Learning Strategies</span>
+  </button>
+  <div
+    class="dropdown-menu"
+    (click)="dropdownClick($event)"
+    aria-labelledby="dropdownMenuButton"
+  >
+    <mat-checkbox i18n="@@enable">
+      Strategy One
+    </mat-checkbox>
+    <mat-checkbox i18n="@@enable">
+      Strategy Two
+    </mat-checkbox>
+    <mat-checkbox i18n="@@enable">
+      Strategy Three
+    </mat-checkbox>
+    <mat-checkbox i18n="@@enable">
+      Strategy Four
+    </mat-checkbox>
+    <mat-checkbox i18n="@@enable">
+      Strategy Five
+    </mat-checkbox>
+    <mat-checkbox i18n="@@enable">
+      Strategy Six
+    </mat-checkbox>
+
+    <!-- <hr />
+    <a class="dropdown-item" routerLink="/admin" i18n="@@settings"
+      >Admin</a
+    > -->
+  </div>
+</div>

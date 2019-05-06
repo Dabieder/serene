@@ -9,13 +9,9 @@ import { SignOutAction } from "src/app/user/store/auth.actions";
   styleUrls: ["./nav-dropdown.component.scss"]
 })
 export class NavDropdownComponent implements OnInit {
-  @Input() show = false;
-
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
-
-  toggle() {}
 
   signOutClick(event: any) {
     this.store.dispatch(new SignOutAction());
