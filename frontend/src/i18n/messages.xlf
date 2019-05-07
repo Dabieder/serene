@@ -329,11 +329,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
@@ -344,7 +344,7 @@
         <source>Add Goal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context>
@@ -355,7 +355,7 @@
         <source>Monitor</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context>
@@ -366,7 +366,7 @@
         <source>Reflect</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context>
@@ -377,7 +377,7 @@
         <source>Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/mobile-nav.component.html</context>
@@ -388,7 +388,7 @@
         <source>Sign Out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/dropdown/nav-dropdown.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9807b58aa7bff88682fc80796c25ca9ea9767429" datatype="html">
@@ -504,6 +504,30 @@
           <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/srl/components/learning-strategy-select.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
@@ -549,11 +573,11 @@
           <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8b4bc68f1bf21bbb4c360633f6bde6fe0e63a08d" datatype="html">
-        <source>Monitor Goal Progress</source>
+      <trans-unit id="036a7702632b485afb0e2f33a3533937ea3eeef3" datatype="html">
+        <source>Monitor</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel" datatype="html">
@@ -562,11 +586,7 @@
       </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
@@ -579,14 +599,14 @@
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8b1faad0303a322949945dc53134550312716b47" datatype="html">
         <source>What affected your goal achievement lately?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/monitor/monitoring-page.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="other" datatype="html">
@@ -621,8 +641,8 @@
           <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="66abb23ed9adf4aa03eab3e4b75234d32748e44c" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{ title }}"/></source>
+      <trans-unit id="plan" datatype="html">
+        <source>Plan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
           <context context-type="linenumber">5</context>
@@ -635,25 +655,11 @@
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4a4f46a2dcec36bd5c8c371ceee55c2226dec27f" datatype="html">
+      <trans-unit id="schedule" datatype="html">
         <source>Schedule</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
           <context context-type="linenumber">39</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="startDateLabel" datatype="html">
-        <source>Start:</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="endDateLabel" datatype="html">
-        <source>End:</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="planningScheduleAlert" datatype="html">
@@ -664,35 +670,28 @@
       </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ddcef56b981da3cd79e02d7e9d31c693d5dd4b39" datatype="html">
         <source>Plans</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e657507a4e9ff27ce501080e9e0b93cf6811a185" datatype="html">
         <source>Total:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e72a74bd3b6a6bfec873d701ed3a0b0e20e5b117" datatype="html">
         <source>Add Plan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">114</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c6f6f20c130c34728eaae3656466e25deb9d1dfa" datatype="html">
-        <source> Cancel </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="134d4dcbdf14d91b4d88bd9e920f3f0c91eebb43" datatype="html">
@@ -701,7 +700,7 @@
     </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/srl/plan/plan-dialog.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="completedOnTime" datatype="html">
@@ -861,6 +860,15 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
           <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="update" datatype="html">
+        <source>
+          Update
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/components/notification-settings.component.html</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="generalSettings" datatype="html">

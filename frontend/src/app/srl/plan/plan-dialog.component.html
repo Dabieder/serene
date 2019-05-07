@@ -2,7 +2,7 @@
   <div
     class="dialog-page-header d-flex justify-content-between align-items-center"
   >
-    <h4 class="float-left mb-0" i18n>{{ title }}</h4>
+    <h4 class="float-left mb-0" i18n="@@plan">Plan</h4>
 
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()" i18n="@@cancel">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="mt-4 mb-4">
-      <b i18n="@@schedule" class="mb-2 mt-2">Schedule</b>
+      <b i18n="@@schedule" class="mb-2 mt-2" i18n="@@schedule">Schedule</b>
       <div class="d-flex flex-row align-items-center">
         <label class="schedule-label">Start: </label>
         <app-datetimeinput
