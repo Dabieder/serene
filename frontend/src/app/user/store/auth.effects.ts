@@ -149,13 +149,7 @@ export class AuthEffects {
   );
 
   private navigateFullScreenSignIn() {
-    if (this.router.url.includes("/signin")) {
-      this.router.navigate(["/signin"], {
-        queryParams: { fs: true, wp: "1" }
-      });
-    } else {
-      this.router.navigate(["/signin"], { queryParams: { fs: true } });
-    }
+    this.router.navigate(["/signin"]);
   }
 
   private navigateToOriginallyIntendedRoute() {

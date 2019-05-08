@@ -60,7 +60,7 @@ export class LogService {
     }
   }
 
-  async addDeletionLog(deletedPlan: any, accountName: string) {
+  async addPlanDeletionLog(deletedPlan: any, accountName: string) {
     logger.info(`Appending deletion to logs`);
     try {
       const logs = await UserLog.findOne({ accountName }).exec();

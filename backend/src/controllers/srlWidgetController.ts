@@ -110,7 +110,7 @@ export class SrlWidgetController {
 
       for (const removedPlan of removedPlans) {
         await this.notificationService.deleteRemindersForPlan(removedPlan);
-        await this.userLogService.addDeletionLog(removedPlan, req.payload.sub);
+        await this.userLogService.addPlanDeletionLog(removedPlan, req.payload.sub);
       }
     } else {
       logger.error(

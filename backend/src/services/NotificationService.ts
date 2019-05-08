@@ -59,16 +59,6 @@ export class NotificationService {
     webpush.setVapidDetails(vapidMailTo, vapidPublic, vapidPrivate);
   }
 
-  getPlanReminderNotification() {
-    const notificationPayload = {
-      notification: {
-        title: "serene test notification",
-        body: "notification body",
-        icon: "../assets/icons/serene_icon.png"
-      }
-    };
-  }
-
   async sendAllNotificationsToListOfAccounts(accountNames: string[]) {
     const notifications = await Notification.find({
       accountName: {
@@ -84,8 +74,7 @@ export class NotificationService {
       return false;
     }
 
-    logger.debug(`Sending out ${notifications.length} notifications`);
-
+    let notificationsSent = 0;
     try {
       for (const notification of notifications) {
         // Check for each subscription if a message is due
@@ -101,8 +90,18 @@ export class NotificationService {
           // TODO: Delete notification after it has been sent
           logger.debug("Deleting sent reminder");
           await notification.remove();
+          this.logService.addServerLog({
+            type: "notification",
+            data: {
+              target: notification.accountName,
+              planId: notification.planId
+            }
+          });
+          notificationsSent++;
         }
       }
+
+      logger.debug(`sent out ${notificationsSent} notifications`);
     } catch (error) {
       logger.error("Error when trying to send all notifications: ", error);
     }
