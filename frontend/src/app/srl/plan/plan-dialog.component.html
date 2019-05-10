@@ -38,7 +38,7 @@
     <div class="mt-4 mb-4">
       <b i18n="@@schedule" class="mb-2 mt-2" i18n="@@schedule">Schedule</b>
       <div class="d-flex flex-row align-items-center">
-        <label class="schedule-label">Start: </label>
+        <label class="schedule-label" i18n="@@startLabel">Start: </label>
         <app-datetimeinput
           [date]="plan.startDate"
           (dateChange)="onStartDateChange($event)"
@@ -52,7 +52,7 @@
       </div>
       <div class="mt-2 mb-2"></div>
       <div class="d-flex flex-row align-items-center">
-        <label class="schedule-label">End:</label>
+        <label class="schedule-label" i18n="@@endLabel">End:</label>
         <app-datetimeinput
           [date]="plan.endDate"
           (dateChange)="onEndDateChange($event)"
