@@ -1,6 +1,7 @@
 <div
   class="srl-widget container-fluid page mt-2"
   *ngIf="!(loading$ | async); else spinner"
+  (swipe)="onSwipe($event)"
 >
   <router-outlet></router-outlet>
 </div>
