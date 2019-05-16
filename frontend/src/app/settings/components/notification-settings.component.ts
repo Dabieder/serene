@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { Settings } from "../models/settings";
-import { SettingsService } from "../settings.service";
+import { SettingsService } from "../services/settings.service";
 import { BaseComponent } from "src/app/core/base-component";
 import { takeUntil } from "rxjs/operators";
 import { PushNotificationService } from "src/app/core/services/push-notification.service";

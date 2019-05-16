@@ -1,4 +1,7 @@
-.goal-item-header {
+.goal-late {
+  color: rgb(180, 80, 80);
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .goal-content {
@@ -24,11 +27,6 @@
 
 .monitor-item-wrapper:hover {
   border: 1px solid orange;
-}
-
-.item-complete {
-  // border: 2px solid rgba(85, 168, 206, 0.966);
-  // background-color: rgba(85, 168, 206, 0.25);
 }
 
 .item-completed-check {

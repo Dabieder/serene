@@ -17,10 +17,11 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { EffectsModule } from "@ngrx/effects";
 import { SettingsModule } from "./settings/settings.module";
 import { SharedModule } from "./shared/shared.module";
-import { SettingsService } from "./settings/settings.service";
+import { SettingsService } from "./settings/services/settings.service";
 import { registerLocaleData } from "@angular/common";
 import localeDe from "@angular/common/locales/de";
 import { MaterialModule } from "./material.module";
+import { InlineSVGModule } from "ng-inline-svg";
 
 registerLocaleData(localeDe, "de");
 
@@ -47,7 +48,8 @@ registerLocaleData(localeDe, "de");
     }),
     ServiceWorkerModule.register("sw-master.js", {
       enabled: environment.production
-    })
+    }),
+    InlineSVGModule.forRoot()
   ],
   providers: [
     AuthenticationGuard,

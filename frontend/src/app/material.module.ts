@@ -26,7 +26,7 @@ import {
   MatTooltipModule,
   MAT_DATE_LOCALE
 } from "@angular/material";
-import { SettingsService } from "./settings/settings.service";
+import { SettingsService } from "./settings/services/settings.service";
 
 const MODULES = [
   [

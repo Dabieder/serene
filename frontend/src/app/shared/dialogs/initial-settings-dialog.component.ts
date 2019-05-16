@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { SettingsService } from "src/app/settings/settings.service";
+import { SettingsService } from "src/app/settings/services/settings.service";
 import { PushNotificationService } from "src/app/core/services/push-notification.service";
 @Component({
   selector: "app-initial-settings-dialog",

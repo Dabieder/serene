@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LearningPlan } from "../models/learning-plan";
-import { MatSliderChange } from "@angular/material";
+import { MatSliderChange, MatIconRegistry } from "@angular/material";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-srl-monitor-plan-item",
@@ -17,7 +18,17 @@ export class MonitorPlanItemComponent implements OnInit {
   planCompleted = new EventEmitter<LearningPlan>();
   @Output()
   planChanged = new EventEmitter<LearningPlan>();
-  constructor() {}
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      "calendar",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        "/assets/icons/deadline_gray.svg"
+      )
+    );
+  }
 
   ngOnInit() {}
 
@@ -25,6 +36,10 @@ export class MonitorPlanItemComponent implements OnInit {
 
   onSliderValueInput(event: MatSliderChange) {
     this.learningPlan.progress = event.value;
+  }
+
+  beforeDeadline(plan: LearningPlan) {
+    return LearningPlan.isBeforeDeadline(plan);
   }
 
   onSliderValueChange(event: MatSliderChange) {

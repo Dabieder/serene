@@ -10,11 +10,11 @@
           type="button"
           class="btn rating-item-button"
           [ngClass]="{ 'positive-selected': item.rating > 0 }"
-          (click)="positiveClick()"
+          (click)="ratingChange(1)"
         >
           {{ item.labelHelped }}
         </button>
-        <button
+        <!-- <button
           type="button"
           [ngClass]="{
             'neutal-selected': item.rating === 0
@@ -23,11 +23,11 @@
           (click)="neutralClick()"
         >
           -
-        </button>
+        </button> -->
         <button
           type="button"
           [ngClass]="{ 'negative-selected': item.rating < 0 }"
-          (click)="negativeClick()"
+          (click)="ratingChange(-1)"
           class="btn rating-item-button"
         >
           {{ item.labelHindered }}

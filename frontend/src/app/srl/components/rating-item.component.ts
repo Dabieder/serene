@@ -22,17 +22,8 @@ export class RatingItemComponent implements OnInit {
     this.showRatingButtons = !this.showRatingButtons;
   }
 
-  neutralClick() {
-    this.item.rating = 0;
-  }
-
-  positiveClick() {
-    this.item.rating = 1;
-    this.itemChange.emit(this.item);
-  }
-
-  negativeClick() {
-    this.item.rating = -1;
+  ratingChange(newValue: number) {
+    this.item.rating = this.item.rating === newValue ? 0 : newValue;
     this.itemChange.emit(this.item);
   }
 }
