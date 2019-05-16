@@ -9,7 +9,10 @@
     rows="2"
   ></textarea>
 </div>
-<div class="d-md-flex flex-row align-items-center ">
+<div
+  *ngIf="(applicationSettings$ | async).useStartDate; else onlyDeadline"
+  class="d-md-flex flex-row align-items-center "
+>
   <label class="schedule-label" i18n="@@startLabel">Start: </label>
   <app-datetimeinput
     [date]="plan.startDate"
@@ -21,3 +24,14 @@
     (dateChange)="onEndDateChange($event)"
   ></app-datetimeinput>
 </div>
+<ng-template #onlyDeadline>
+  <div class="mt-4 mb-4">
+    <div class="d-flex flex-row align-items-center">
+      <mat-icon svgIcon="calendar" class="mr-2"> </mat-icon>
+      <app-datetimeinput
+        [date]="plan.endDate"
+        (dateChange)="onEndDateChange($event)"
+      ></app-datetimeinput>
+    </div>
+  </div>
+</ng-template>

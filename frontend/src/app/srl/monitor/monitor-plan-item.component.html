@@ -44,17 +44,9 @@
     }"
   >
     <mat-icon class="mat-icon-small" svgIcon="calendar"> </mat-icon>
-    <!-- <div
-      class="img-icon-small align-self-center"
-      [inlineSVG]="'/assets/icons/deadline_gray.svg'"
-    ></div> -->
     <span class="ml-2 mr-2 mt-0">
       {{ learningPlan.endDate | date: "dd.MM.yyyy" }}
     </span>
-    <!-- <img
-      src="/assets/icons/clock_black.svg"
-      class="img-icon-small align-self-center"
-    /> -->
     <span class="mt-0">
       {{ learningPlan.endDate | date: "HH:mm" }}
     </span>
@@ -62,7 +54,7 @@
 
   <div
     *ngIf="learningPlan.subPlans.length <= 0"
-    class="row justify-content-center align-items-center"
+    class="row ml-4 align-items-center"
   >
     <mat-slider
       class="mat-slider-wide"
@@ -80,7 +72,6 @@
     class="subgoals mr-4 mb-4 mt-4"
     *ngIf="learningPlan.subPlans?.length > 0"
   >
-    <!-- <h5 class="ml-4">Subgoals</h5> -->
     <div
       class="ml-4"
       [class.item-complete]="subPlan.completed"
@@ -92,12 +83,4 @@
       ></app-srl-monitor-subplan-item>
     </div>
   </div>
-
-  <!-- <button
-    *ngIf="learningPlan.completed"
-    (click)="onCompletedClick($event)"
-    class="m-4 btn btn-rounded db-secondary finish-button"
-  >
-    Goal completed!
-  </button> -->
 </div>

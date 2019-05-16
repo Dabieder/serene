@@ -10,8 +10,10 @@ import { MatSliderChange, MatDatepickerInputEvent } from "@angular/material";
 import { addLeadingZero } from "src/app/core/utility/utility-functions";
 import * as moment from "moment";
 import { Plan } from "../models/plan";
-import { Time } from "@angular/common";
 import { TimeService } from "src/app/shared/services/time.service";
+import { Observable } from "rxjs";
+import { ApplicationSettings } from "src/app/settings/models/application-settings";
+import { SettingsService } from "src/app/settings/services/settings.service";
 
 @Component({
   selector: "app-srl-subplan-item",
@@ -19,6 +21,7 @@ import { TimeService } from "src/app/shared/services/time.service";
   styleUrls: ["./subplan-item.component.scss"]
 })
 export class SubPlanItemComponent implements OnInit {
+  applicationSettings$: Observable<ApplicationSettings>;
   toTimeValid = true;
   @Input()
   name: string;
@@ -47,9 +50,11 @@ export class SubPlanItemComponent implements OnInit {
   container;
   expanded: boolean;
 
-  constructor() {}
+  constructor(private settingsService: SettingsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.applicationSettings$ = this.settingsService.getApplicationSettings();
+  }
 
   onSliderValueChange(event: MatSliderChange) {
     this.plan.plannedDuration = TimeService.decimalNumberToTime(event.value);
