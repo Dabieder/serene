@@ -8,7 +8,6 @@ import { WeekSelectionComponent } from "./components/week-selection.component";
 import { MonitoringPageComponent } from "./monitor/monitoring-page.component";
 import { ReasonComponent } from "./monitor/reason.component";
 import { TrackingItemComponent } from "./components/tracking-item.component";
-import { RatingComponent } from "./monitor/rating.component";
 import { reducer } from "./store/srl-widget.reducer";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -34,8 +33,8 @@ import { CoreModule } from "src/app/core/core.module";
 import { SrlWidgetRoutingModule } from "./srl-widget-routing.module";
 import { RouterModule } from "@angular/router";
 import { MaterialModule } from "../material.module";
-import { CompletedPlanListComponent } from './reflect/completed-plan-list.component';
-import { LearningStrategySelectComponent } from './components/learning-strategy-select.component';
+import { CompletedPlanListComponent } from "./reflect/completed-plan-list.component";
+import { LearningStrategySelectComponent } from "./components/learning-strategy-select.component";
 
 @NgModule({
   imports: [
@@ -57,7 +56,6 @@ import { LearningStrategySelectComponent } from './components/learning-strategy-
     MonitoringPageComponent,
     ReasonComponent,
     TrackingItemComponent,
-    RatingComponent,
     WeekDisplayPipe,
     WeekOverviewComponent,
     RatingItemComponent,
@@ -75,7 +73,7 @@ import { LearningStrategySelectComponent } from './components/learning-strategy-
     MonitorSubplanItemComponent,
     CompletedPlanChartComponent,
     CompletedPlanListComponent,
-    LearningStrategySelectComponent,
+    LearningStrategySelectComponent
   ],
   exports: [
     ReflectionPageComponent,
@@ -86,7 +84,6 @@ import { LearningStrategySelectComponent } from './components/learning-strategy-
     MonitoringPageComponent,
     ReasonComponent,
     TrackingItemComponent,
-    RatingComponent,
     WeekDisplayPipe,
     RatingItemComponent,
     TimeDisplayPipe

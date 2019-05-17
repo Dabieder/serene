@@ -35,7 +35,10 @@
       </div>
     </div>
 
-    <div class="mt-4 mb-4">
+    <div
+      *ngIf="applicationSettings$.useStartDate; else onlyDeadline"
+      class="mt-4 mb-4"
+    >
       <b i18n="@@schedule" class="mb-2 mt-2" i18n="@@schedule">Schedule</b>
       <div class="d-flex flex-row align-items-center">
         <label class="schedule-label" i18n="@@startLabel">Start: </label>
@@ -64,7 +67,7 @@
           (dateChange)="onEndDateChange($event)"
         ></app-plan-date> -->
       </div>
-      <div
+      <!-- <div
         *ngIf="!useEndDate && !useStartDate"
         class="alert alert-info"
         i18n="@@planningScheduleAlert"
@@ -72,8 +75,20 @@
         You are more likely to reach goals when you assign a schedule to them.
         <br />
         <a href="#">Learn more about setting goals</a>
-      </div>
+      </div> -->
     </div>
+
+    <ng-template #onlyDeadline>
+      <div class="mt-4 mb-4">
+        <div class="d-flex flex-row align-items-center">
+          <mat-icon svgIcon="calendar" class="mr-2"> </mat-icon>
+          <app-datetimeinput
+            [date]="plan.endDate"
+            (dateChange)="onEndDateChange($event)"
+          ></app-datetimeinput>
+        </div>
+      </div>
+    </ng-template>
 
     <div *ngIf="plan.subPlans.length > 0">
       <b i18n>Plans</b>
@@ -94,7 +109,10 @@
       </div>
 
       <div class="container" *ngIf="plan.subPlans.length > 0">
-        <div class="row align-items-center justify-content-center">
+        <div
+          *ngIf="(applicationSettings$ | async).useStartDate | async"
+          class="row align-items-center justify-content-center"
+        >
           <b i18n class="mb-2 mt-2">Total:</b>
           <span class="ml-2 total-hours">{{
             plan.plannedDuration | timedisplay
@@ -102,7 +120,7 @@
         </div>
       </div>
     </div>
-    <button class="btn db-primary shadow" (click)="addSubPlan($event)">
+    <button class="btn db-primary shadow mt-4" (click)="addSubPlan($event)">
       <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
       <span class="ml-2" i18n>Add Plan</span>
     </button>

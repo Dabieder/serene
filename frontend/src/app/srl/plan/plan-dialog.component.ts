@@ -7,6 +7,9 @@ import { BaseComponent } from "src/app/core/base-component";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { TimeService } from "src/app/shared/services/time.service";
 import { PlanService } from "../services/plan.service";
+import { Observable } from "rxjs";
+import { ApplicationSettings } from "src/app/settings/models/application-settings";
+import { SettingsService } from "src/app/settings/services/settings.service";
 @Component({
   selector: "app-plan-dialog",
   templateUrl: "./plan-dialog.component.html",
@@ -15,15 +18,15 @@ import { PlanService } from "../services/plan.service";
 export class PlanDialogComponent extends BaseComponent implements OnInit {
   @Input() plan: LearningPlan = new LearningPlan();
 
-  useStartDate = true;
-  useEndDate = true;
+  applicationSettings$: Observable<ApplicationSettings>;
 
   title: string;
   constructor(
     private store$: Store<SrlWidgetState>,
     private router: Router,
     private planService: PlanService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private settingsService: SettingsService
   ) {
     super();
     this.route.paramMap.subscribe(params => {
@@ -37,27 +40,13 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
         this.plan = this.planService.getPlanById(id);
       }
     });
-    // const id = params["id"];
-
-    // this.store$
-    //   .pipe(
-    //     select(getLearningPlans),
-    //     takeUntil(this.unsubscribe$)
-    //   )
-    //   .subscribe(learningPlans => {
-    //     if (selectedLearningPlan) {
-    //       this.title = "Edit Goal";
-    //       this.plan = { ...selectedLearningPlan };
-    //     } else {
-    //       this.title = "Add Goal";
-    //       this.plan = LearningPlan.createForDate(new Date(Date.now()));
-    //     }
-    //   });
 
     this.calculateTotalTime();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.applicationSettings$ = this.settingsService.getApplicationSettings();
+  }
 
   closeDialog() {
     this.router.navigate([`serene/monitor`]);

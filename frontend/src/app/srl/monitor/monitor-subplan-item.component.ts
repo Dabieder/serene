@@ -19,7 +19,9 @@ export class MonitorSubplanItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  onRatingValueChanged(event: any) {}
+  beforeDeadline(plan: LearningPlan) {
+    return LearningPlan.isBeforeDeadline(plan);
+  }
 
   onSliderValueInput(event: MatSliderChange) {
     this.learningPlan.progress = event.value;

@@ -100,8 +100,9 @@ export class NotificationService {
           notificationsSent++;
         }
       }
-
-      logger.debug(`sent out ${notificationsSent} notifications`);
+      if (notificationsSent > 0) {
+        logger.debug(`sent out ${notificationsSent} notifications`);
+      }
     } catch (error) {
       logger.error("Error when trying to send all notifications: ", error);
     }

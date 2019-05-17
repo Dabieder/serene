@@ -14,7 +14,7 @@ import {
 import { Settings } from "../models/settings";
 import { BaseComponent } from "src/app/core/base-component";
 import { takeUntil } from "rxjs/operators";
-import { SettingsService } from "../settings.service";
+import { SettingsService } from "../services/settings.service";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(

@@ -60,6 +60,13 @@ export class SrlWidgetComponent extends BaseComponent
       });
   }
 
+  onSwipe(event: any) {
+    const direction =
+      Math.abs(event.deltaX) > 40 ? (event.deltaX > 0 ? "right" : "left") : "";
+
+    console.log(`On swipe to the ${direction}`);
+  }
+
   onSelectedWeekChange(week: Week) {
     this.dispatchWeekChange(week);
   }

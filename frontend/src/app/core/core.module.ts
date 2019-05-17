@@ -22,6 +22,7 @@ import { HealthCheckEffects } from "./effects/health-check.effects";
 import { PushNotificationService } from "./services/push-notification.service";
 import { UpdateService } from "./services/update.service";
 import { MaterialModule } from "../material.module";
+import { CustomIconService } from "./services/custom-icon.service";
 
 export const COMPONENTS = [
   ShowAuthedDirective,
@@ -41,12 +42,17 @@ export const COMPONENTS = [
   declarations: COMPONENTS,
   exports: COMPONENTS
 })
+/*
+  Initialize all services here which are singleton services and have no
+  other explicit place to be initialized
+ */
 export class CoreModule {
   constructor(
     private healthCheckService: HealthCheckService,
     private pushNotificationService: PushNotificationService,
     private updateService: UpdateService,
-    private routeLoggingService: RouteLoggingService
+    private routeLoggingService: RouteLoggingService,
+    private customIconService: CustomIconService
   ) {}
 
   static forRoot() {
