@@ -8,7 +8,7 @@ export class LearningPlan implements Plan {
   plannedDuration = { hours: 0, minutes: 0 };
   progress = 0;
   comment = "";
-  goal: string;
+  goal  = "";
   creationDate: Date = new Date(Date.now());
   startDate: Date;
   endDate: Date;
