@@ -7,6 +7,8 @@
 @import "~@angular/material/theming";
 @include mat-core();
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/quill/dist/quill.bubble.css";
+@import "../node_modules/quill/dist/quill.snow.css";
 @import "/assets/css/dipf-material-theme.scss";
 
 @include angular-material-theme($dipf-material-theme);

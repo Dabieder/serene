@@ -22,6 +22,7 @@ import { registerLocaleData } from "@angular/common";
 import localeDe from "@angular/common/locales/de";
 import { MaterialModule } from "./material.module";
 import { InlineSVGModule } from "ng-inline-svg";
+import { QuillModule } from "ngx-quill";
 
 registerLocaleData(localeDe, "de");
 
@@ -34,6 +35,7 @@ registerLocaleData(localeDe, "de");
     BrowserAnimationsModule,
     UserModule,
     SettingsModule,
+    QuillModule,
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(reducers),

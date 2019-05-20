@@ -35,6 +35,8 @@ import { RouterModule } from "@angular/router";
 import { MaterialModule } from "../material.module";
 import { CompletedPlanListComponent } from "./reflect/completed-plan-list.component";
 import { LearningStrategySelectComponent } from "./components/learning-strategy-select.component";
+import {QuillModule} from "ngx-quill";
+import { GoalEditorComponent } from './plan/goal-editor.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,8 @@ import { LearningStrategySelectComponent } from "./components/learning-strategy-
     EffectsModule.forFeature([SrlWidgetEffects]),
     MaterialModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    QuillModule
   ],
   declarations: [
     ReflectionPageComponent,
@@ -73,7 +76,8 @@ import { LearningStrategySelectComponent } from "./components/learning-strategy-
     MonitorSubplanItemComponent,
     CompletedPlanChartComponent,
     CompletedPlanListComponent,
-    LearningStrategySelectComponent
+    LearningStrategySelectComponent,
+    GoalEditorComponent
   ],
   exports: [
     ReflectionPageComponent,
