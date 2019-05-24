@@ -20,7 +20,6 @@ import { ReasonOverviewComponent } from "./reflect/visualizations/reason-overvie
 import { SharedModule } from "src/app/shared/shared.module";
 import { EditOverlayComponent } from "./components/edit-overlay";
 import { SrlWidgetCardComponent } from "./components/srl-widget-card.component";
-import { ModalWindowComponent } from "./components/modal-window.component";
 import { PlanDialogComponent } from "./plan/plan-dialog.component";
 import { SubPlanItemComponent } from "./plan/subplan-item.component";
 import { MonitorPlanItemComponent } from "./monitor/monitor-plan-item.component";
@@ -35,8 +34,9 @@ import { RouterModule } from "@angular/router";
 import { MaterialModule } from "../material.module";
 import { CompletedPlanListComponent } from "./reflect/completed-plan-list.component";
 import { LearningStrategySelectComponent } from "./components/learning-strategy-select.component";
-import {QuillModule} from "ngx-quill";
-import { GoalEditorComponent } from './plan/goal-editor.component';
+import { QuillModule } from "ngx-quill";
+import { GoalEditorComponent } from "./plan/goal-editor.component";
+import { MonitorDateDisplayComponent } from "./monitor/monitor-date-display.component";
 
 @NgModule({
   imports: [
@@ -65,13 +65,13 @@ import { GoalEditorComponent } from './plan/goal-editor.component';
     ReasonOverviewComponent,
     EditOverlayComponent,
     SrlWidgetCardComponent,
-    ModalWindowComponent,
     PlanDialogComponent,
     SubPlanItemComponent,
     MonitorPlanItemComponent,
     PlanDateComponent,
     TimeSelectComponent,
     TimeDisplayPipe,
+    MonitorDateDisplayComponent,
     AssistancePanelComponent,
     MonitorSubplanItemComponent,
     CompletedPlanChartComponent,

@@ -56,6 +56,10 @@ export class DatetimeinputComponent
     console.log("Date Time Picker: ", this.dateTimePicker);
   }
 
+  onClick() {
+    this.dateTimePicker.open();
+  }
+
   ngOnDestroy() {
     if (this.dateTimePicker) {
       this.dateTimePicker.destroy();

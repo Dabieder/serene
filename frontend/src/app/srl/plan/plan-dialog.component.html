@@ -39,7 +39,7 @@
     </div>
 
     <div
-      *ngIf="applicationSettings$.useStartDate; else onlyDeadline"
+      *ngIf="(applicationSettings$ | async).useStartDate; else onlyDeadline"
       class="mt-4 mb-4"
     >
       <b i18n="@@schedule" class="mb-2 mt-2" i18n="@@schedule">Schedule</b>
@@ -83,13 +83,10 @@
 
     <ng-template #onlyDeadline>
       <div class="mt-4 mb-4">
-        <div class="d-flex flex-row align-items-center">
-          <mat-icon svgIcon="calendar" class="mr-2"> </mat-icon>
-          <app-datetimeinput
-            [date]="plan.endDate"
-            (dateChange)="onEndDateChange($event)"
-          ></app-datetimeinput>
-        </div>
+        <app-datetimeinput
+          [date]="plan.endDate"
+          (dateChange)="onEndDateChange($event)"
+        ></app-datetimeinput>
       </div>
     </ng-template>
 
@@ -125,7 +122,7 @@
     </div>
     <button class="btn db-primary shadow mt-4" (click)="addSubPlan($event)">
       <img class="img-icon-small" src="/assets/btn-icons/add_white.svg" />
-      <span class="ml-2" i18n>Add Plan</span>
+      <span class="ml-2" i18n>Add Subgoal</span>
     </button>
   </div>
 

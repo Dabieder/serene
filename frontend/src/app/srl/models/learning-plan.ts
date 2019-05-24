@@ -8,7 +8,7 @@ export class LearningPlan implements Plan {
   plannedDuration = { hours: 0, minutes: 0 };
   progress = 0;
   comment = "";
-  goal  = "";
+  goal = "";
   creationDate: Date = new Date(Date.now());
   startDate: Date;
   endDate: Date;
@@ -29,14 +29,14 @@ export class LearningPlan implements Plan {
     return plan;
   }
 
-  static isCompletedBeforeDeadline(plan: LearningPlan) {
+  static isCompletedBeforeDeadline(plan: Plan) {
     if (plan.completed) {
       return moment(plan.completionDate).isBefore(plan.endDate);
     }
     return false;
   }
 
-  static isBeforeDeadline(plan: LearningPlan) {
+  static isBeforeDeadline(plan: Plan) {
     return moment(new Date(Date.now())).isBefore(plan.endDate);
   }
 }

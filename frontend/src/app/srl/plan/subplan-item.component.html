@@ -26,12 +26,9 @@
 </div>
 <ng-template #onlyDeadline>
   <div class="mt-4 mb-4">
-    <div class="d-flex flex-row align-items-center">
-      <mat-icon svgIcon="calendar" class="mr-2"> </mat-icon>
-      <app-datetimeinput
-        [date]="plan.endDate"
-        (dateChange)="onEndDateChange($event)"
-      ></app-datetimeinput>
-    </div>
+    <app-datetimeinput
+      [date]="plan.endDate"
+      (dateChange)="onEndDateChange($event)"
+    ></app-datetimeinput>
   </div>
 </ng-template>

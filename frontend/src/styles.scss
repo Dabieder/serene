@@ -9,6 +9,8 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/quill/dist/quill.bubble.css";
 @import "../node_modules/quill/dist/quill.snow.css";
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill-mention/dist/quill.mention.min.css";
 @import "/assets/css/dipf-material-theme.scss";
 
 @include angular-material-theme($dipf-material-theme);

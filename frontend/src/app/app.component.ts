@@ -51,7 +51,6 @@ export class AppComponent extends BaseComponent implements OnInit {
       .pipe(
         map(settings => settings.usePushNotifications),
         map(usePush => {
-          console.log("USE PUSH SETTING");
           if (usePush) {
             this.pushNotificationService.subscribeToPushNotifications();
           }

@@ -35,22 +35,7 @@
       </div>
     </div>
   </div>
-
-  <div
-    class="row ml-4 text-muted"
-    [ngClass]="{
-      'text-muted': beforeDeadline(learningPlan),
-      'goal-late': !beforeDeadline(learningPlan)
-    }"
-  >
-    <mat-icon class="mat-icon-small" svgIcon="calendar"> </mat-icon>
-    <span class="ml-2 mr-2 mt-0">
-      {{ learningPlan.endDate | date: "dd.MM.yyyy" }}
-    </span>
-    <span class="mt-0">
-      {{ learningPlan.endDate | date: "HH:mm" }}
-    </span>
-  </div>
+  <app-monitor-date-display [plan]="learningPlan"></app-monitor-date-display>
 
   <div
     *ngIf="learningPlan.subPlans.length <= 0"

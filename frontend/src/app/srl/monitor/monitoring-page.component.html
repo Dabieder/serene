@@ -27,34 +27,6 @@
         (planChanged)="onPlanChanged($event)"
       ></app-srl-monitor-plan-item>
     </div>
-    <!-- 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Overdue </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngFor="let learningPlan of learningPlans" class="mt-2">
-          <app-srl-monitor-plan-item
-            [learningPlan]="learningPlan"
-            (planChanged)="onPlanChanged($event)"
-            (deleteItem)="deletePlan($event)"
-            (editItem)="editPlan($event)"
-          ></app-srl-monitor-plan-item>
-        </div>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title> Future</mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngFor="let learningPlan of learningPlans" class="mt-2">
-          <app-srl-monitor-plan-item
-            [learningPlan]="learningPlan"
-            (deleteItem)="deletePlan($event)"
-            (editItem)="editPlan($event)"
-            (planChanged)="onPlanChanged($event)"
-          ></app-srl-monitor-plan-item>
-        </div>
-      </mat-expansion-panel> -->
 
     <app-srl-widget-card
       class="col-md-12"
@@ -70,9 +42,6 @@
   </div>
 
   <div class="align-self-center footer-controls">
-    <!-- <span class="cancel-btn mr-4" (click)="closeDialog()" i18n="@@cancel">
-      Cancel
-    </span> -->
     <button
       class="ml-4 btn btn-rounded db-primary"
       (click)="submit()"

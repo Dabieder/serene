@@ -1,6 +1,12 @@
-<div class="ng2-flatpickr-input-container">
-  <input 
-  class="date-time-input"
-  #flatpickr type="text" data-input />
-  <ng-content></ng-content>
+<div class="picker-container">
+  <!-- <input class="date-time-input" #flatpickr type="text" data-input /> -->
+
+  <input
+    class="date-time-input input-with-icon"
+    #flatpickr
+    type="text"
+    data-input
+  />
+  <mat-icon (click)="onClick()" svgIcon="calendar" class="calendar-icon">
+  </mat-icon>
 </div>

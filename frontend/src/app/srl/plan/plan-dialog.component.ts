@@ -31,7 +31,6 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
     super();
     this.route.paramMap.subscribe(params => {
       const id = params.get("id");
-      console.log("Id is: ", params);
       if (id === "new") {
         this.title = "Add Goal";
         this.plan = LearningPlan.createForDate(new Date(Date.now()));

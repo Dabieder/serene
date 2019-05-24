@@ -1,8 +1,24 @@
+.picker-container {
+  position: relative;
+}
+
 .date-time-input {
   border-radius: 2px;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  padding: 4px 2px;
+  padding: 6px 2px;
   text-align: center;
-  width: 160px;
+  min-width: 160px;
+  max-width: 200px;
+}
+
+.input-with-icon {
+  padding-left: 1em;
+}
+
+.calendar-icon {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  cursor: pointer;
 }

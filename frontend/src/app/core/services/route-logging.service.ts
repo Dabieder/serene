@@ -27,6 +27,7 @@ export class RouteLoggingService {
   ) {
     this.router.events.subscribe(val => {
       if (val instanceof NavigationStart) {
+        this.lastIntendedRoute = val.url;
         if (val.url.includes("ref=")) {
           this.loggingService.logReferral(val.url);
         }

@@ -1,4 +1,10 @@
 <quill-editor
-[modules]="modules"
-(onContentChanged)="onContentChanged($event)"
+  [modules]="modules"
+  (onContentChanged)="onContentChanged($event)"
+  (onSelectionChanged)="onSelectionChanged($event)"
+  (onEditorCreated)="onEditorCreated($event)"
+  (keydown)="onKeydown($event)"
 ></quill-editor>
+<div>{{ isTagging }}</div>
+<div>{{ caretRange | json }}</div>
+<div>{{ caretPosition | json }}</div>

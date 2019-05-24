@@ -21,7 +21,6 @@ export class SettingsService {
     private store$: Store<SettingsState>
   ) {
     this.store$.pipe(select(getSettings)).subscribe(settings => {
-      console.log("Got Settings In Settings Service: ", settings);
       this.settings = settings;
     });
   }
