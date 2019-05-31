@@ -19,7 +19,7 @@ import flatpickr from "flatpickr";
 })
 export class DatetimeinputComponent
   implements AfterViewInit, OnInit, OnDestroy, OnChanges {
-  @ViewChild("flatpickr") flatpickrElement;
+  @ViewChild("flatpickr", { static: true }) flatpickrElement;
   dateTimePicker: any;
 
   @Input() dateFormat = "d.m.Y H:i";

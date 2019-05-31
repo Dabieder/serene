@@ -14,7 +14,7 @@ import { SurveyResult } from "../../models/survey-result";
   styleUrls: ["./srl-dimensions-chart.component.scss"]
 })
 export class SrlDimensionsChartComponent implements OnInit, AfterViewInit {
-  @ViewChild("chartCanvas")
+  @ViewChild("chartCanvas", { static: true })
   chartRef;
   chart: any;
 

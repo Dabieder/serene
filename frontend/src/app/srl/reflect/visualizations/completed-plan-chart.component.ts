@@ -32,9 +32,9 @@ export class CompletedPlanChartComponent implements OnInit {
     "Overdue And Not Completed"
   ];
 
-  @ViewChild("canvasDonutChart")
+  @ViewChild("canvasDonutChart", { static: false })
   chartRefDonut;
-  @ViewChild("canvasBarChart")
+  @ViewChild("canvasBarChart", { static: true })
   chartRefBar;
 
   constructor(private analysisService: SrlWidgetAnalysisService) {}

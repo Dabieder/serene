@@ -46,7 +46,7 @@ declare var Quill: any;
 })
 export class GoalEditorComponent implements OnInit {
   modules = {};
-  @ViewChild(QuillEditorComponent) editor: QuillEditorComponent;
+  @ViewChild(QuillEditorComponent, { static: true }) editor: QuillEditorComponent;
 
   tagList = [{ id: 1, value: "learning" }];
 

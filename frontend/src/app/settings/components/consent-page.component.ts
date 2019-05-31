@@ -26,9 +26,9 @@ export class ConsentPageComponent extends BaseComponent implements OnInit {
   courseId: string;
   consent: Consent;
   user: User;
-  @ViewChild("consentFormWrapper")
+  @ViewChild("consentFormWrapper", { static: true })
   consentFormWrapper: ElementRef;
-  @ViewChild("termsAndConditions")
+  @ViewChild("termsAndConditions", { static: false })
   termsAndConditions: ElementRef;
 
   consentItemSerene: ConsentItem;

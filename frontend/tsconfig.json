@@ -9,12 +9,13 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
+    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@root/*": ["app/*"],
       "@shared/*": ["../../shared/*"]
     },
-    "lib": ["es2017", "dom"]
+    "lib": ["es2018", "dom"]
   }
 }

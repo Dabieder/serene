@@ -46,7 +46,7 @@ export class SubPlanItemComponent implements OnInit {
   get plan() {
     return this._plan;
   }
-  @ViewChild("container")
+  @ViewChild("container", { static: false })
   container;
   expanded: boolean;
 

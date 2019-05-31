@@ -42,7 +42,7 @@ export class LearningGoalChartComponent implements OnInit, AfterViewInit {
     this.createChart(labels, dataCompleted);
   }
 
-  @ViewChild("chartCanvasLearningGoals")
+  @ViewChild("chartCanvasLearningGoals", { static: true })
   chartRef;
   chart: any;
 

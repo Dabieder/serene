@@ -1,9 +1,9 @@
-@import "/assets/css/variables.scss";
-@import "/assets/css/dropdown.scss";
-@import "/assets/css/grid.scss";
-@import "/assets/css/bootstrap-modifications.scss";
-@import "/assets/css/material-modifications.scss";
-@import "/assets/css/buttons.scss";
+@import "variables.scss";
+@import "dropdown.scss";
+@import "grid.scss";
+@import "bootstrap-modifications.scss";
+@import "material-modifications.scss";
+@import "buttons.scss";
 @import "~@angular/material/theming";
 @include mat-core();
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
@@ -11,7 +11,7 @@
 @import "../node_modules/quill/dist/quill.snow.css";
 @import "../node_modules/quill/dist/quill.core.css";
 @import "../node_modules/quill-mention/dist/quill.mention.min.css";
-@import "/assets/css/dipf-material-theme.scss";
+@import "dipf-material-theme.scss";
 
 @include angular-material-theme($dipf-material-theme);
 
