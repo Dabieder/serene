@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LearningPlan } from "../models/learning-plan";
-import { MatSliderChange } from "@angular/material";
+import { MatSliderChange } from "@angular/material/slider";
 
 @Component({
   selector: "app-srl-monitor-subplan-item",

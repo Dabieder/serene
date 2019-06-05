@@ -12,7 +12,7 @@ import { Observable } from "rxjs";
 import { HideSidenavAction } from "./core/actions/layout.actions";
 import * as moment from "moment";
 import { BaseComponent } from "./core/base-component";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { map } from "rxjs/operators";
 import { PushNotificationService } from "./core/services/push-notification.service";
 

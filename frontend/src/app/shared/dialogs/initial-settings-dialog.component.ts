@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { SettingsService } from "src/app/settings/services/settings.service";
 import { PushNotificationService } from "src/app/core/services/push-notification.service";
 @Component({

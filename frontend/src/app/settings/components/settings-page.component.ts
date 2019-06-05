@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { SubmitSettingsAction } from "../store/settings.action";
 import { NotificationDialogComponent } from "src/app/shared/dialogs/notification-dialog.component";
-import { MatDialog, ErrorStateMatcher } from "@angular/material";
+import { ErrorStateMatcher } from "@angular/material/core";
+import { MatDialog } from "@angular/material/dialog";
 import {
   FormControl,
   FormGroupDirective,

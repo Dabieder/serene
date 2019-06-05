@@ -22,7 +22,7 @@ import { ConsentService } from "../../settings/services/consent.service";
 import { AppState, getAuthenticatedUser, getSettings } from "src/app/reducers";
 import { ApiService, ENDPOINTS } from "src/app/core/services";
 import { FetchSettingsAction } from "src/app/settings/store/settings.action";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { InitialSettingsDialogComponent } from "src/app/shared/dialogs/initial-settings-dialog.component";
 import { Settings } from "src/app/settings/models/settings";
 

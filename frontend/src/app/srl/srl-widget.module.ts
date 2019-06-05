@@ -37,6 +37,7 @@ import { LearningStrategySelectComponent } from "./components/learning-strategy-
 import { QuillModule } from "ngx-quill";
 import { GoalEditorComponent } from "./plan/goal-editor.component";
 import { MonitorDateDisplayComponent } from "./monitor/monitor-date-display.component";
+import { PeerComparisonComponent } from './reflect/visualizations/peer-comparison.component';
 
 @NgModule({
   imports: [
@@ -77,7 +78,8 @@ import { MonitorDateDisplayComponent } from "./monitor/monitor-date-display.comp
     CompletedPlanChartComponent,
     CompletedPlanListComponent,
     LearningStrategySelectComponent,
-    GoalEditorComponent
+    GoalEditorComponent,
+    PeerComparisonComponent
   ],
   exports: [
     ReflectionPageComponent,

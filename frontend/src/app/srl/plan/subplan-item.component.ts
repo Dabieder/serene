@@ -6,7 +6,8 @@ import {
   EventEmitter,
   ViewChild
 } from "@angular/core";
-import { MatSliderChange, MatDatepickerInputEvent } from "@angular/material";
+import { MatDatepickerInputEvent } from "@angular/material/datepicker";
+import { MatSliderChange } from "@angular/material/slider";
 import { addLeadingZero } from "src/app/core/utility/utility-functions";
 import * as moment from "moment";
 import { Plan } from "../models/plan";

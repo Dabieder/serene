@@ -20,7 +20,7 @@ import {
   ObjectIds,
   ItemTypes
 } from "./services/srl-widget-x-api.service";
-import { MatTabChangeEvent } from "@angular/material";
+import { MatTabChangeEvent } from "@angular/material/tabs";
 import { LearningPlan } from "./models/learning-plan";
 
 @Component({

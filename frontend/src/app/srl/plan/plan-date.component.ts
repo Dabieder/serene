@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
-import {
-  MatDatepickerInputEvent,
-  DateAdapter,
-  MAT_DATE_LOCALE,
-  MAT_DATE_FORMATS
-} from "@angular/material";
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from "@angular/material/core";
+import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import * as moment from "moment";
 import { Time } from "@angular/common";
 import { TimeService } from "src/app/shared/services/time.service";
