@@ -4,8 +4,9 @@ import "quill-mention";
 import * as quillMention from "quill-mention";
 import { QuillEditorComponent } from "ngx-quill";
 import { Key } from "src/app/shared/enums/key.enum";
+// import { Quill } from "quill";
 
-declare var Quill: any;
+// declare var Quill: any;
 // const Embed = Quill.import("blots/embed");
 
 // export class TagBlot extends Embed {
@@ -46,9 +47,10 @@ declare var Quill: any;
 })
 export class GoalEditorComponent implements OnInit {
   modules = {};
-  @ViewChild(QuillEditorComponent, { static: true }) editor: QuillEditorComponent;
+  @ViewChild(QuillEditorComponent, { static: true })
+  editor: QuillEditorComponent;
 
-  tagList = [{ id: 1, value: "learning" }];
+  tagList = [];
 
   isTagging = false;
   lastTypedCharacter = null;
@@ -56,7 +58,8 @@ export class GoalEditorComponent implements OnInit {
   mentionCharPos = null;
   caretRange = null;
   caretPosition = 0;
-  quillEditor;
+  currentTagStartPosition = 0;
+  quillEditor: any;
   SOURCE_USER = "user";
 
   constructor() {
@@ -95,38 +98,61 @@ export class GoalEditorComponent implements OnInit {
     console.log("Key Down Event: ", event);
     switch (event.keyCode) {
       case Key.Space:
-        this.isTagging = false;
+        this.onSpacePressed(null, null);
         break;
     }
   }
 
   onTagPressed = (range: any, context: any) => {
-    // const delta = this.quillEditor.insertEmbed(
-    //   0,
-    //   "mention",
-    //   "miau",
-    //   this.SOURCE_USER
-    // );
     console.log("Tag Pressed");
-    this.quillEditor.insertText(
-      this.caretPosition,
-      "#",
-      {
-        color: "#0000ee",
-        bold: true
-      },
-      this.SOURCE_USER
-    );
+    // If we are already tagging, store the current tag as well
+    if (this.isTagging) {
+      this.saveCurrentTag();
+    }
+    this.tagTextMode();
+    // this.quillEditor.insertText(this.caretPosition, "#", "user");
+    this.currentTagStartPosition = this.caretPosition + 1;
     this.isTagging = true;
-    this.quillEditor.setSelection(this.caretPosition + 1, 0, this.SOURCE_USER);
+    return true;
+    // this.quillEditor.setSelection(this.currentTagStartPosition, 0, "user");
   };
 
   onSpacePressed = (range: any, context: any) => {
+    if (this.isTagging) {
+      this.saveCurrentTag();
+    }
+
     this.isTagging = false;
+    this.normalTextMode();
+  };
+
+  saveCurrentTag = () => {
+    const tagText = this.quillEditor.getText(
+      this.currentTagStartPosition,
+      this.caretPosition - this.currentTagStartPosition
+    );
+    if (tagText !== "") {
+      this.tagList.push({
+        id: this.tagList.length,
+        value: tagText
+      });
+    }
   };
 
   onBackspacePressed = (range: any, context: any) => {
     this.isTagging = false;
+    const currentContents = this.quillEditor.getContents();
+    return true;
+  };
+
+  tagTextMode = () => {
+    this.quillEditor.format("color", "#1111ee");
+    this.quillEditor.format("bold", true);
+  };
+
+  normalTextMode = () => {
+    this.quillEditor.format("color", "#111111");
+    this.quillEditor.format("bold", false);
   };
 
   onContentChanged(event: any) {
@@ -148,9 +174,7 @@ export class GoalEditorComponent implements OnInit {
 
   onSomethingChanged(event: any) {
     this.caretRange = this.quillEditor.getSelection();
-    if (event.index) {
-      this.caretPosition = event.index;
-    }
+    this.caretPosition = this.caretRange.index;
   }
 
   ngOnInit() {}

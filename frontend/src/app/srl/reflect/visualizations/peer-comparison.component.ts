@@ -10,6 +10,8 @@ export class PeerComparisonComponent implements OnInit, AfterContentInit {
   @ViewChild("canvasChart", { static: true })
   chartRef;
 
+  chart: any;
+
   constructor() {}
 
   ngOnInit() {}
@@ -51,7 +53,7 @@ export class PeerComparisonComponent implements OnInit, AfterContentInit {
       ],
     }
 
-    this.proportionChart = new Chart(this.chartRefBar.nativeElement, {
+    this.chart = new Chart(this.chartRef.nativeElement, {
       type: "horizontalBar",
       data: data,
       options: options

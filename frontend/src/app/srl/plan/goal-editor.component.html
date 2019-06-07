@@ -5,6 +5,7 @@
   (onEditorCreated)="onEditorCreated($event)"
   (keydown)="onKeydown($event)"
 ></quill-editor>
-<div>{{ isTagging }}</div>
+<div>Is Tagging: {{ isTagging }}</div>
 <div>{{ caretRange | json }}</div>
 <div>{{ caretPosition | json }}</div>
+<div>Tag List {{ tagList | json }}</div>
