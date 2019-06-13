@@ -1,17 +1,16 @@
 <div class="completed-plan-list">
-  <div *ngFor="let completedPlan of completedPlans$ | async" class="card">
+  <div *ngFor="let completedPlan of completedPlans$ | async" class="card pb-2">
     <span class="mt-2 ml-2">{{ completedPlan.goal }}</span>
-    <div class="completion-indicator">
+    <div class="completion-indicator ml-2">
       <span
-        *ngIf="!completedOnTime(completedPlan); else allGood"
-        class="badge badge-warning"
+        *ngIf="completedOnTime(completedPlan); else late"
+        class="badge badge-success"
         i18n="@@completedOnTime"
-        >Late</span
+        >On Time</span
       >
-      <ng-template #allGood>
+      <ng-template #late>
         <span class="badge badge-warning" i18n="@@completedLate"></span>
       </ng-template>
     </div>
-    <hr />
   </div>
 </div>
