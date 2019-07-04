@@ -51,7 +51,7 @@ export class PeerComparisonComponent implements OnInit, AfterContentInit {
         "You",
         "Course Average"
       ],
-    }
+    };
 
     this.chart = new Chart(this.chartRef.nativeElement, {
       type: "horizontalBar",

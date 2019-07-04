@@ -3,7 +3,7 @@
     class="dialog-page-header d-flex justify-content-between align-items-center"
   >
     <h4 class="float-left mb-0" i18n>Monitor</h4>
-
+    <app-tag-selection> </app-tag-selection>
     <div class="header-controls float-right">
       <span class="cancel-btn" (click)="closeDialog()" i18n="@@cancel">
         Cancel
@@ -28,7 +28,7 @@
       ></app-srl-monitor-plan-item>
     </div>
 
-    <app-srl-widget-card
+    <!-- <app-srl-widget-card
       class="col-md-12"
       i18n-title
       title="What affected your goal achievement lately?"
@@ -38,7 +38,7 @@
         (reasonsChange)="onReasonsChanged($event)"
         [reasons]="reasons"
       ></app-reason>
-    </app-srl-widget-card>
+    </app-srl-widget-card> -->
   </div>
 
   <div class="align-self-center footer-controls">

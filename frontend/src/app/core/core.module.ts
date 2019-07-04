@@ -8,13 +8,11 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpTokenInterceptor } from "./interceptors/http.token.interceptor";
 import { EffectsModule } from "@ngrx/effects";
 import { RouterEffects } from "./effects/router.effects";
-import { ShowAuthedDirective } from "./show-authed.directive";
+import { ShowAuthedDirective } from "./directives/show-authed.directive";
 import { SidenavComponent } from "./layout/sidenav.component";
 import { ToolbarComponent } from "./layout/toolbar.component";
 import { HeaderService } from "./services/header.service";
 import { AuthenticationService } from "./services/authentication.service";
-import { ShowIfCourseSelectedDirective } from "./course-selected.directive";
-
 import { ToolbarDropdownComponent } from "./layout/toolbar-dropdown.component";
 import { RouteLoggingService } from "./services/route-logging.service";
 import { HealthCheckService } from "./services/health-check.service";
@@ -23,11 +21,12 @@ import { PushNotificationService } from "./services/push-notification.service";
 import { UpdateService } from "./services/update.service";
 import { MaterialModule } from "../material.module";
 import { CustomIconService } from "./services/custom-icon.service";
+import { DropdownDirective } from "./directives/dropdown.directive";
 
 export const COMPONENTS = [
   ShowAuthedDirective,
-  ShowIfCourseSelectedDirective,
   SidenavComponent,
+  DropdownDirective,
   ToolbarComponent,
   ToolbarDropdownComponent
 ];

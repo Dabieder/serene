@@ -6,7 +6,7 @@ import {
   Input
 } from "@angular/core";
 import { Chart } from "chart.js";
-import { SurveyResult } from "../../models/survey-result";
+import { SurveyResult, SurveyResultDimension } from "../../models/survey-result";
 
 @Component({
   selector: "app-srl-dimensions-chart",
@@ -82,7 +82,15 @@ export class SrlDimensionsChartComponent implements OnInit, AfterViewInit {
     console.log(e);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const survey = new SurveyResult();
+    const d1 = new SurveyResultDimension();
+    d1.min = 0;
+    d1.max = 10;
+    d1.value = 7.5;
+    d1.name = "A";
+    this.surveyResults = new SurveyResult();
+  }
 
   ngAfterViewInit(): void {}
 

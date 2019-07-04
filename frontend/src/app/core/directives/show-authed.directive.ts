@@ -6,10 +6,10 @@ import {
   TemplateRef,
   ViewContainerRef
 } from "@angular/core";
-import { AppState } from "../reducers";
 import { Store, select } from "@ngrx/store";
 import { Subscription } from "rxjs";
-import { BaseComponent } from "./base-component";
+import { BaseComponent } from "../base-component";
+import { AppState } from "src/app/reducers";
 
 // Inspired by: https://g00glen00b.be/authentication-angular/
 @Directive({ selector: "[appShowAuthed]" })
