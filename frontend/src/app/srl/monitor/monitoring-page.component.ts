@@ -24,6 +24,12 @@ export class MonitoringPageComponent extends BaseComponent implements OnInit {
   learningPlansToday: LearningPlan[] = [];
   learningPlansOverDue: LearningPlan[] = [];
   learningPlansOpen: LearningPlan[] = [];
+  tags = [
+    "PhD",
+    "Edu Tec Semianr",
+    "Self-Regulated Learning",
+    "My Custom Tag"
+  ];
   private _monitoring: Monitoring = new Monitoring();
   private _learningPlans: LearningPlan[] = [];
   @Input("learningPlans")
@@ -158,5 +164,9 @@ export class MonitoringPageComponent extends BaseComponent implements OnInit {
 
   closeDialog() {
     this.router.navigate([`serene/reflect`]);
+  }
+
+  tagClicked(tag: string) {
+    console.log("Filter Clicked: ", tag);
   }
 }

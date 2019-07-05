@@ -24,7 +24,9 @@ export enum SrlWidgetActionTypes {
   DELETE_PLAN = "[planningWidget] Delete Plan",
   SUBMIT_MONITORING = "[planningWidget] Submit Monitoring",
   UPDATE_PLANS = "[planningWidget] Update Plans",
-  COMPLETE_PLAN = "[planningWidget] Complete Plan"
+  COMPLETE_PLAN = "[planningWidget] Complete Plan",
+  FILTER_ACTIVATE = "[planningWidget] Filter Activated",
+  FILTER_DEACTIVATE = "[planningWidget] Filter Deactivated"
 }
 
 export class SelectedWeekChangeAction implements Action {
@@ -153,6 +155,18 @@ export class CompletePlanAction implements Action {
   public readonly type = SrlWidgetActionTypes.COMPLETE_PLAN;
 
   constructor(public payload: { plan: LearningPlan }) {}
+}
+
+export class ActivateFilterAction implements Action {
+  public readonly type = SrlWidgetActionTypes.FILTER_ACTIVATE;
+
+  constructor(public payload: { filter: string }) {}
+}
+
+export class DeActivateFilterAction implements Action {
+  public readonly type = SrlWidgetActionTypes.FILTER_DEACTIVATE;
+
+  constructor(public payload: { filter: string }) {}
 }
 
 export type SrlWidgetActionsUnion =
