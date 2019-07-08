@@ -147,11 +147,11 @@ export class Server {
     );
     await this.notificationService.initialie();
     this.settingsService = new SettingsService();
-    this.experimentService = new ExperimentService(
-      this.eventService,
-      this.notificationService
-    );
-    await this.experimentService.initialize();
+    // this.experimentService = new ExperimentService(
+    //   this.eventService,
+    //   this.notificationService
+    // );
+    // await this.experimentService.initialize();
   }
 
   private async initControllers() {

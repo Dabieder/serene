@@ -7,6 +7,7 @@ import { RatingItem } from "../models/rating-item";
 import { MetaSettings } from "../models/meta-settings";
 import { LearningPlan } from "../models/learning-plan";
 import { Monitoring } from "../models/monitoring";
+import { Tag } from "src/app/shared/models/tag";
 
 export interface SrlState {
   selectedWeek: Week;
@@ -20,6 +21,7 @@ export interface SrlState {
   learningPlans: LearningPlan[];
   selectedLearningPlan: LearningPlan;
   monitorings: Monitoring[];
+  tags: Tag[];
 }
 
 const todayDate = new Date(Date.now());
@@ -34,7 +36,14 @@ const initialState: SrlState = {
   metaSettings: new MetaSettings(),
   surveyResults: {},
   planDialogOpen: false,
-  selectedLearningPlan: null
+  selectedLearningPlan: null,
+  tags: [
+    { id: "1", name: "PhD" },
+    { id: "2", name: "Edu Tec Seminar" },
+    { id: "3", name: "Self-Regulated Learning" },
+    { id: "4", name: "My Custom Tag" },
+    { id: "5", name: "Development Tasks" },
+  ]
 };
 
 export function reducer(

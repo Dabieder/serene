@@ -126,6 +126,14 @@
     </button>
   </div>
 
+  <div>
+    <app-tag-selection
+      [tags]="tags$ | async"
+      (tagActivated)="tagActivated($event)"
+      (tagDeActivated)="tagActivated($event)"
+    ></app-tag-selection>
+  </div>
+
   <div class="align-self-center footer-controls">
     <button
       class="ml-4 btn db-primary shadow"

@@ -1,7 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { takeUntil } from "rxjs/operators";
-import { SrlWidgetState, getLearningPlans, getReasons } from "../store";
+import {
+  SrlWidgetState,
+  getLearningPlans,
+  getReasons,
+  getTags
+} from "../store";
 import { BaseComponent } from "src/app/core/base-component";
 import {
   DeletePlanAction,
@@ -13,6 +18,7 @@ import { LearningPlan } from "../models/learning-plan";
 import { Router } from "@angular/router";
 import * as moment from "moment";
 import { Monitoring } from "../models/monitoring";
+import { Tag } from "src/app/shared/models/tag";
 
 @Component({
   selector: "app-srl-monitoring-page",
@@ -24,12 +30,7 @@ export class MonitoringPageComponent extends BaseComponent implements OnInit {
   learningPlansToday: LearningPlan[] = [];
   learningPlansOverDue: LearningPlan[] = [];
   learningPlansOpen: LearningPlan[] = [];
-  tags = [
-    "PhD",
-    "Edu Tec Semianr",
-    "Self-Regulated Learning",
-    "My Custom Tag"
-  ];
+  tags$ = this.store$.pipe(select(getTags));
   private _monitoring: Monitoring = new Monitoring();
   private _learningPlans: LearningPlan[] = [];
   @Input("learningPlans")
@@ -166,7 +167,11 @@ export class MonitoringPageComponent extends BaseComponent implements OnInit {
     this.router.navigate([`serene/reflect`]);
   }
 
-  tagClicked(tag: string) {
-    console.log("Filter Clicked: ", tag);
+  tagActivated(tag: Tag) {
+    console.log("Filter Activated: ", tag);
+  }
+
+  tagDeActivated(tag: Tag) {
+    console.log("Tag DeActivated: ", tag);
   }
 }

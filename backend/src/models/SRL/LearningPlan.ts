@@ -4,6 +4,7 @@ export interface LearningPlan {
   endDate: Date;
   creationDate: Date;
   subPlans: LearningPlan[];
+  tags: String[];
   remind: boolean;
 }
 

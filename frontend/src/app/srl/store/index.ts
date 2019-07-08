@@ -75,3 +75,8 @@ export const getCompletedLearningPlans = createSelector(
   getLearningPlans,
   plans => plans.filter(plan => plan.completed)
 );
+
+export const getTags = createSelector(
+  getWidgetState,
+  state => state.tags
+);

@@ -18,6 +18,7 @@ export class LearningPlan implements Plan {
   completionDate: Date;
   remind = true;
   reminderDate: Date;
+  tags = [];
 
   static createForDate(date: Date) {
     const plan = new LearningPlan();

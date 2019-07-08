@@ -4,8 +4,9 @@
   >
     <h4 class="float-left mb-0" i18n>Goals</h4>
     <app-tag-selection
-      [tags]="tags"
-      (tagClicked)="tagClicked($event)"
+      [tags]="tags$ | async"
+      (tagActivated)="tagActivated($event)"
+      (tagDeActivated)="tagActivated($event)"
     >
     </app-tag-selection>
     <div class="header-controls float-right">

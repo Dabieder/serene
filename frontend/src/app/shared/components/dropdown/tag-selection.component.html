@@ -1,6 +1,6 @@
-<div class="dropdown filter-panel">
+<div class="dropdown">
   <button
-    class="bg-transparent dropdown-menu-button"
+    class="btn btn-rounded db-primary dropdown-menu-button"
     type="button"
     #dropdownMenuButton
     aria-haspopup="true"
@@ -11,14 +11,14 @@
     <img src="/assets/btn-icons/menu_white.svg" class="img-icon" />
   </button>
   <div
-    class="dropdown-menu allow-focus show filter-panel"
+    class="dropdown-menu allow-focus show filter-panel shadow"
     [ngClass]="{ show: isOpen }"
     aria-labelledby="dropdownMenuButton"
   >
     <div class="filter-items">
       <div *ngFor="let tag of tags">
-        <mat-checkbox (click)="tagClick(tag)">
-          {{ tag }}
+        <mat-checkbox (click)="tagClick(tag)" (change)="tagChange($event, tag)">
+          {{ tag.name }}
         </mat-checkbox>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { SrlWidgetState } from "../store";
+import { Store, select } from "@ngrx/store";
+import { SrlWidgetState, getTags } from "../store";
 import { SubmitNewPlanAction } from "../store/srl-widget.actions";
 import { LearningPlan } from "../models/learning-plan";
 import { BaseComponent } from "src/app/core/base-component";
@@ -10,6 +10,7 @@ import { PlanService } from "../services/plan.service";
 import { Observable } from "rxjs";
 import { ApplicationSettings } from "src/app/settings/models/application-settings";
 import { SettingsService } from "src/app/settings/services/settings.service";
+import { Tag } from "src/app/shared/models/tag";
 @Component({
   selector: "app-plan-dialog",
   templateUrl: "./plan-dialog.component.html",
@@ -19,6 +20,7 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
   @Input() plan: LearningPlan = new LearningPlan();
 
   applicationSettings$: Observable<ApplicationSettings>;
+  tags$ = this.store$.pipe(select(getTags));
 
   title: string;
   constructor(
@@ -100,5 +102,19 @@ export class PlanDialogComponent extends BaseComponent implements OnInit {
       totalTime = TimeService.addTimes(totalTime, subPlan.plannedDuration);
     }
     this.plan.plannedDuration = totalTime;
+  }
+
+  tagActivated(tag: Tag) {
+    console.log("Filter Activated: ", tag);
+    this.plan.tags.push(tag.id);
+  }
+
+  tagDeActivated(tag: Tag) {
+    console.log("Tag DeActivated: ", tag);
+    this.plan.tags.push(tag.id);
+    const index = this.plan.tags.indexOf(tag.id);
+    if (index > -1) {
+      this.plan.tags.splice(index, 1);
+    }
   }
 }

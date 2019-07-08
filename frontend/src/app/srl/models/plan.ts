@@ -1,4 +1,5 @@
 import { Time } from "@angular/common";
+import { Tag } from "src/app/shared/models/tag";
 
 export interface Plan {
   plannedDuration: Time;
@@ -10,4 +11,5 @@ export interface Plan {
   goal: string;
   comment: string;
   id: string;
+  tags: string[];
 }
