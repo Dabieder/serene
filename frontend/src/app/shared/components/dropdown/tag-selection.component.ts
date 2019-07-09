@@ -9,6 +9,7 @@ import { Tag } from "src/app/shared/models/tag";
 })
 export class TagSelectionComponent implements OnInit {
   isOpen = false;
+  showEditor = false;
 
   @Input() tags;
   @Output() tagClicked = new EventEmitter<Tag>();
@@ -30,12 +31,23 @@ export class TagSelectionComponent implements OnInit {
   }
 
   tagChange(event: MatCheckboxChange, tag: Tag) {
-    console.log("Mat Checkbox change: ", event);
-    console.log("Tag: ", tag);
     if (event.checked) {
       this.tagActivated.emit(tag);
     } else {
       this.tagDeActivated.emit(tag);
     }
+  }
+
+  tagEdit(event, tag: Tag) {
+    console.log("Edited tag: ", tag);
+    console.log("Edited tag Event: ", event);
+  }
+
+  toggleEditTags() {
+    this.showEditor = !this.showEditor;
+  }
+
+  deleteTagClick(tag: Tag) {
+    console.log("Delete Tag Click", tag);
   }
 }

@@ -27,5 +27,28 @@
       <a class="dropdown-item" routerLink="/admin" i18n="@@settings"
         >Admin</a
       > -->
+    <button
+      class="btn btn-rounded db-primary dropdown-menu-button"
+      type="button"
+      (click)="toggleEditTags()"
+    >
+      Edit Tags
+      <img src="/assets/btn-icons/menu_white.svg" class="img-icon" />
+    </button>
+    <div *ngIf="showEditor">
+      <div class="tag-editor">
+        <div *ngFor="let tag of tags" class="mb-2">
+          <input
+            (click)="tagClick(tag)"
+            (change)="tagEdit($event, tag)"
+            [value]="tag.name"
+          />
+          <span class="dropdown-icon-item delete-tag"
+          (click)="deleteTagClick(tag)">
+            <img src="/assets/icons/trash_red.svg" class="img-icon-small" />
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
