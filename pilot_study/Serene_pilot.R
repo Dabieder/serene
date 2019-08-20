@@ -1,5 +1,5 @@
 
-#### #Setup ####
+#### Setup ####
 
 install.packages('GPArotation')
 
@@ -16,8 +16,10 @@ library("knitr")
 library("GPArotation")
 
 #einlesenderdaten
-Alldata <- read.table("/Users/leonard/Desktop/Datenauswertung/SERENE/SereneImplementation_DATA_2019-08-08_0932.csv", header=T,sep=",", encoding="latin1")
-
+uri <- "https://redcap.idea-frankfurt.eu/redcap/api/"
+token <- "" # insert your API token (never push to Github with token!!!! if you did --> delete your token)
+rcon <- redcapConnection(url = uri, token = token)
+Alldata <- exportRecords(rcon, lables=F, factors=F)
 
 Obstacles <- subset(Alldata, select = c(no_plan_b:proc_2_b,conc_1_d:mood_d)) 
 
@@ -37,9 +39,10 @@ fourfactor <- fa(Obstacles,nfactors = 4,rotate = "oblimin",fm="minres")
 
 print(fourfactor$loadings,cutoff = 0.3)
 
-#### ausz??hlen ####
+#### auszaehlen ####
 
 mean_obstacles <- (sapply(Obstacles, mean, na.rm=TRUE))
 
 mean_obstacles
 sort(mean_obstacles, decreasing = T)
+
