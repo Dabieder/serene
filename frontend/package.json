@@ -42,7 +42,7 @@
     "core-js": "^2.6.5",
     "flatpickr": "^4.6.1",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "ng-inline-svg": "^8.4.1",
     "ngx-quill": "^5.2.0",
